@@ -112,10 +112,13 @@ code {
 }
 pre {
   background: #f4f2f7; border: 1px solid #e0dae9; border-radius: 6px;
-  padding: 2.5mm 3mm; margin: 2.5mm 0; overflow-wrap: anywhere;
+  padding: 2.5mm 3mm; margin: 2.5mm 0;
   direction: ltr; text-align: left;
+  white-space: pre-wrap;        /* لفّ الأسطر الطويلة بدل قطعها */
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
-pre code { background: none; font-size: 8.6pt; line-height: 1.45; }
+pre code { background: none; font-size: 8.4pt; line-height: 1.5; }
 
 a { color: #6b4f9e; text-decoration: none; }
 """
