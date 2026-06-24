@@ -4,8 +4,9 @@
 import re, markdown
 from weasyprint import HTML
 
-SRC = "/home/user/newproject/القصة.md"
-OUT = "/home/user/newproject/القصة.pdf"
+import sys
+SRC = sys.argv[1] if len(sys.argv) > 1 else "/home/user/newproject/القصة.md"
+OUT = sys.argv[2] if len(sys.argv) > 2 else SRC.rsplit(".", 1)[0] + ".pdf"
 
 with open(SRC, encoding="utf-8") as f:
     md = f.read()
