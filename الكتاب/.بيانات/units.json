@@ -1038,5 +1038,2037 @@
 "lines": "7-32",
 "summary": "كائن مفرد يحفظ وضع تور في تفضيلات مشتركة باسم bitchat_settings، يكشف tedfّق modeFlow (قيمته الابتدائية ON)؛ init يقرأ الوضع المحفوظ وينشره في التدفّق، و set يحفظ الوضع وينشره، و get يقرأ الوضع المحفوظ، مع افتراض ON عند أي فشل."
 }
+],
+"app/src/main/java/com/bitchat/android/mesh/BLEPacketPaddingPolicy.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BLEPacketPaddingPolicy.kt",
+"name": "BLEPacketPaddingPolicy",
+"lines": "11-18",
+"summary": "كائن مفرد (object) يجمع سياسة الحشو الخاصة بـ BLE في مكان واحد. هو الغلاف الذي يحوي الدالة الوحيدة في الملف، وقد وُضِع ليبقى مطابقاً لنظيره على iOS كما يوضح تعليق التوثيق في الأسطر 5-10."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BLEPacketPaddingPolicy.kt",
+"name": "shouldPadForBLE",
+"lines": "12-17",
+"summary": "دالة تأخذ نوع الرسالة (type) كبايت غير مُوقَّع (UByte) وتقرّر هل تُحشى الرزمة عند الإرسال عبر BLE. تستدعي MessageType.fromValue(type) لتحويل البايت إلى نوع رسالة (السطر 13)، ثم عبر تعبير when تُعيد true فقط لإطارات نويز: NOISE_ENCRYPTED أو NOISE_HANDSHAKE (السطر 14)، وتُعيد false لأي نوع آخر (السطر 15)."
+}
+],
+"app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionManager.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionManager.kt",
+"name": "تعريف الصنف وحقوله ومكوّناته",
+"lines": "17-89",
+"summary": "يُعلِن الصنف «مدير اتصال البلوتوث» (BluetoothConnectionManager) ويأخذ في بانيه: السياق (context) ومعرّف الندّ الخاص (myPeerID) ومدير التجزئة (fragmentManager)، ويُحقّق واجهة «مفوَّض مدير الطاقة» (PowerManagerDelegate). يُنشئ كل المكوّنات الفرعية ويُمرّر بعضها لبعض: مدير البلوتوث النظامي والمحوّل، ثم مدير الطاقة (powerManager)، ونطاق كوروتين للاتصال (connectionScope)، ثم مدير الأذونات (permissionManager)، ومتتبّع الاتصال (connectionTracker)، وباثّ الرزم (packetBroadcaster). كما يُعرّف خريطة العنوان‑الندّ (addressPeerMap) المُفوّضة لمتتبّع الاتصال."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionManager.kt",
+"name": "المفوَّض الداخلي componentDelegate ومديرا الخادم والعميل",
+"lines": "44-80",
+"summary": "كائن مجهول componentDelegate يُحقّق واجهة المفوَّض ليستقبل النداءات العكسية من المكوّنات الفرعية ويُمرّرها للمفوَّض الخارجي (delegate): عند استلام رزمة (onPacketReceived) يقرأ أفضل قوة إشارة من متتبّع الاتصال ويُبلّغ بها، ويتجاهل رزم الذات، وعند اتصال جهاز (onDeviceConnected) يستدعي فرض الحدود (enforceStrictLimits). ثم يُنشئ مدير الخادم (serverManager) ومدير العميل (clientManager) ويُمرّر لهما هذا المفوَّض وبقية المكوّنات."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionManager.kt",
+"name": "دوال فحص تفعيل النقل والأدوار (BLE/GATT)",
+"lines": "91-107",
+"summary": "ثلاث دوال خاصة تقرأ إعدادات التنقيح من «مدير إعدادات التنقيح» (DebugSettingsManager) مع احتياطي «مدير تفضيلات التنقيح» (DebugPreferenceManager): isBleTransportEnabled (هل النقل الرئيسي مُفعَّل)، وisGattServerEnabled وisGattClientEnabled اللتان تشترطان أيضاً تفعيل النقل الرئيسي. هذه الدوال يُستند إليها قبل بدء أو إيقاف الخادم/العميل في باقي الملف."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionManager.kt",
+"name": "كتلة التهيئة init ومراقبة إعدادات التنقيح",
+"lines": "109-153",
+"summary": "تربط مدير الطاقة بهذا الكائن (powerManager.delegate = this)، ثم تُطلق كوروتينات على نطاق الاتصال تراقب تدفقات الإعدادات: عند تعطيل النقل تستدعي disableTransport؛ وعند تبديل تفعيل دور الخادم/العميل أثناء النشاط تستدعي startServer/stopServer وstartClient/stopClient؛ وعند تغيّر أي من حدود الاتصال (الإجمالي/الخادم/العميل) عبر combine تستدعي enforceStrictLimits."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionManager.kt",
+"name": "enforceStrictLimits — فرض حدود الاتصال المركزي",
+"lines": "158-186",
+"summary": "تقرأ الحدود القصوى (الإجمالي والخادم والعميل) من إعدادات التنقيح، وتطلب من متتبّع الاتصال (connectionTracker.getConnectionsToEvict) قائمة الاتصالات الواجب طردها، ثم تطرد كلاً منها: العميل بقطع gatt، والخادم عبر serverManager.disconnectDevice. تُستدعى من المفوَّض الداخلي وكتلة التهيئة وعند تغيّر وضع الطاقة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionManager.kt",
+"name": "startServices — بدء كل خدمات البلوتوث",
+"lines": "191-268",
+"summary": "تتحقق من تفعيل نقل BLE ومن أذونات البلوتوث ومن تفعيل المحوّل، وإلا تُعيد false. عند النجاح تضبط isActive=true وتُطلق كوروتيناً يبدأ متتبّع الاتصال ثم مدير الطاقة، ثم يبدأ مدير الخادم و/أو مدير العميل بحسب isGattServerEnabled/isGattClientEnabled، مع التراجع (isActive=false) عند الفشل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionManager.kt",
+"name": "disableTransport — تعطيل النقل دون إلغاء النطاق",
+"lines": "273-281",
+"summary": "تضبط isActive=false وتُطلق كوروتيناً يوقف مدير العميل ثم مدير الخادم ثم متتبّع الاتصال، دون إلغاء نطاق الكوروتين كي يمكن إعادة التفعيل لاحقاً. تُستدعى من كتلة التهيئة ومن startServices عند تعطيل BLE."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionManager.kt",
+"name": "stopServices و isReusable — الإيقاف الكامل وفحص إعادة الاستخدام",
+"lines": "286-320",
+"summary": "stopServices تضبط isActive=false وتُطلق كوروتيناً يوقف العميل والخادم ومدير الطاقة ومتتبّع الاتصال، ثم تُلغي نطاق الاتصال (connectionScope.cancel) نهائياً. isReusable تُعيد ما إذا كان النطاق ما زال نشطاً (أي لم يُلغَ) لتحديد إمكان إعادة الاستخدام لبدء لاحق."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionManager.kt",
+"name": "دوال الإرسال: broadcastPacket و sendToPeer و cancelTransfer و sendPacketToPeer",
+"lines": "326-361",
+"summary": "واجهة الإرسال العامة التي تُفوّض كلها إلى باثّ الرزم (packetBroadcaster) بعد التحقق من isActive وتفعيل النقل: broadcastPacket تبثّ رزمة مُوجَّهة للأجهزة المتصلة، sendToPeer وsendPacketToPeer ترسلان إلى ندّ محدّد (مع تمرير خادم جات وخاصيته من مدير الخادم)، وcancelTransfer تلغي نقلاً جارياً بمعرّفه."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionManager.kt",
+"name": "ضوابط الدور وحاقن مُحلّل الاسم المستعار",
+"lines": "365-377",
+"summary": "دوال عامة لكشف ضوابط الدور لواجهة التنقيح: startServer/stopServer وstartClient/stopClient تُطلق كوروتينات لبدء/إيقاف مدير الخادم أو العميل حسب الفحوص. وsetNicknameResolver تحقن دالة تحويل المعرّف إلى اسم مستعار في باثّ الرزم لسجلّاته."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionManager.kt",
+"name": "دوال لقطات ومعلومات التنقيح للأجهزة",
+"lines": "380-396",
+"summary": "getConnectedDeviceEntries تُعيد قائمة ثلاثيّات (عنوان، هل عميل، قوة الإشارة) من متتبّع الاتصال. getLocalAdapterAddress تُعيد عنوان المحوّل المحلّي. isClientConnection تُعيد ما إذا كان اتصال عنوان معيّن من جهة العميل. جميعها محميّة باستثناءات تُعيد قيمة فارغة عند الفشل، وموجَّهة لواجهة التنقيح."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionManager.kt",
+"name": "مساعِدات الاتصال/قطع الاتصال للأجهزة",
+"lines": "401-421",
+"summary": "connectToAddress تطلب من مدير العميل الاتصال بعنوان (بعد فحص النشاط والنقل). disconnectAddress تطلب من متتبّع الاتصال قطع جهاز. disconnectAll تُطلق كوروتيناً يوقف العميل والخادم ثم يؤخّر 200 جزء من الثانية ثم يعيد تشغيلهما إن كانت الخدمة نشطة، لفرض قطع كل الاتصالات."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionManager.kt",
+"name": "getConnectedDeviceCount و getDebugInfo",
+"lines": "427-445",
+"summary": "getConnectedDeviceCount تُعيد عدد الأجهزة المتصلة من متتبّع الاتصال. getDebugInfo تبني نصاً تشخيصياً يجمع عنوان MAC وحالة النشاط وتفعيل البلوتوث والأذونات وحالة خادم جات، إضافة إلى معلومات الطاقة من مدير الطاقة ومعلومات التنقيح من متتبّع الاتصال."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionManager.kt",
+"name": "تنفيذ مفوَّض مدير الطاقة: onPowerModeChanged و onScanStateChanged",
+"lines": "449-495",
+"summary": "onPowerModeChanged تستجيب لتغيّر وضع الطاقة داخل كوروتين: توقف العميل والخادم إن لم يكن النقل نشطاً، وإلا تُحدّث الإعلان (restartAdvertising) حسب تفعيل الخادم، وتعيد تشغيل المسح (restartScanning) فقط إذا تغيّر سلوك دورة العمل (shouldUseDutyCycle)، ثم تفرض الحدود. onScanStateChanged تُمرّر طلب المسح إلى مدير العميل، أو تُجبر إيقافه عند تعطّل النقل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionManager.kt",
+"name": "واجهة BluetoothConnectionManagerDelegate",
+"lines": "500-508",
+"summary": "واجهة المفوَّض التي تُعرّف ردّات النداء العليا للملف: onPacketReceived عند استلام رزمة، وonDeviceConnected وonDeviceDisconnected عند اتصال/قطع جهاز، وonRSSIUpdated عند تحديث قوة الإشارة. ينفّذها المستهلك الأعلى للصنف، ويستدعيها componentDelegate عكسياً عبر الحقل delegate."
+}
+],
+"app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionTracker.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionTracker.kt",
+"name": "إعلان الحزمة والاستيرادات",
+"lines": "1-11",
+"summary": "يحدّد الحزمة `com.bitchat.android.mesh` ويستورد أصناف البلوتوث (`BluetoothDevice`، `BluetoothGatt`، `BluetoothGattCharacteristic`)، و`Log`، وأدوات الكوروتين (`CoroutineScope`، `delay`، `launch`)، وبنى التزامن (`ConcurrentHashMap`، `CopyOnWriteArrayList`)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionTracker.kt",
+"name": "تعريف الصنف والكائن المرافق والحقول",
+"lines": "13-33",
+"summary": "يُعرِّف الصنف `BluetoothConnectionTracker` الوارث من `MeshConnectionTracker` بمعاملين خاصين (`connectionScope`، `powerManager`). يحوي كائناً مرافقاً فيه الثابتان `TAG` و`CLEANUP_DELAY`. ويُنشئ حقول التتبّع: خريطة `connectedDevices`، وقائمة `subscribedDevices`، وخريطة عامة `addressPeerMap`، وخريطة `firstAnnounceSeen`، وخريطة `scanRSSI`."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionTracker.kt",
+"name": "صنف البيانات DeviceConnection",
+"lines": "35-46",
+"summary": "صنف بيانات يجمع معلومات اتصال جهاز واحد: الجهاز (`device`)، وكائن `gatt` و`characteristic` القابلان للعدم، وشدة الإشارة `rssi`، وراية `isClient`، وطابع `connectedAt` الزمني، ومعرّف `peerID`. هو وحدة التخزين الأساسية المُخزّنة في `connectedDevices`."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionTracker.kt",
+"name": "دورة الحياة: start و stop",
+"lines": "48-56",
+"summary": "`start` تستدعي تنفيذ الأب فقط. `stop` تستدعي الأب ثم تُشغّل `cleanupAllConnections` (قطع/إغلاق جات) و`clearAllConnections` (مسح كل الخرائط)، فتُنهي دورة حياة المتتبّع."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionTracker.kt",
+"name": "تطبيقات مجرّدة: isConnected و disconnect و getConnectionCount",
+"lines": "58-69",
+"summary": "`isConnected` تفحص وجود مفتاح في `connectedDevices`. `disconnect` تقطع جات الجهاز ضمن `try/catch` ثم تنادي `cleanupDeviceConnection` وتسجّل. `getConnectionCount` تُعيد حجم `connectedDevices`. هذه تجاوزات لدوال الصنف الأب."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionTracker.kt",
+"name": "إضافة وتحديث وجلب اتصالات الأجهزة",
+"lines": "71-101",
+"summary": "`addDeviceConnection` تخزّن الاتصال في `connectedDevices`، وتنادي `removePendingConnection` الموروثة، وتضبط `firstAnnounceSeen` إلى false. `updateDeviceConnection` تستبدل القيمة فقط. `getDeviceConnection` و`getConnectedDevices` تُعيدان عنصراً واحداً أو نسخة خريطة كاملة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionTracker.kt",
+"name": "دوال الأجهزة المشتركة وشدة الإشارة RSSI",
+"lines": "103-147",
+"summary": "`getSubscribedDevices` تُعيد نسخة قائمة. `getDeviceRSSI` تُعيد شدة اتصال صالحة (تتجاهل `Int.MIN_VALUE`). `updateScanRSSI` تخزّن شدة المسح في `scanRSSI`. `getBestRSSI` تُفضّل شدة الاتصال ثم ترجع إلى شدة المسح. `addSubscribedDevice` و`removeSubscribedDevice` تعدّلان قائمة `subscribedDevices`."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionTracker.kt",
+"name": "استعلامات الاتصال: isDeviceConnected و isPeerConnected و disconnectDevice و getConnectedDeviceCount",
+"lines": "149-170",
+"summary": "`isDeviceConnected` تفوّض لـ`isConnected`. `isPeerConnected` تفحص تطابق `peerID` بين قيم `connectedDevices`. `disconnectDevice` تفوّض لـ`disconnect`. `getConnectedDeviceCount` تفوّض لـ`getConnectionCount`. كلها دوال تسهيل تستند إلى الدوال الأساسية."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionTracker.kt",
+"name": "التحقّق من الحدود: canConnectAsClient",
+"lines": "172-182",
+"summary": "تحسب المجموع الكلي وعدد العملاء من `connectedDevices`، وتُعيد صدقاً إذا كان المجموع أقل من `maxOverall` والعملاء أقل من `maxClient` معاً. تُستخدم قبل قبول اتصال عميل جديد."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionTracker.kt",
+"name": "حساب الاتصالات الواجب طردها: getConnectionsToEvict",
+"lines": "184-230",
+"summary": "خوارزمية الطرد على مرحلتين: (1) فرض حدود الأدوار بطرد الفائض الأقدم من العملاء (`maxClient`) ومن الخوادم (`maxServer`) مرتّبين حسب `connectedAt`؛ (2) فرض الحدّ الكلي `maxOverall` بطرد الفائض المتبقّي مع تفضيل العملاء أولاً ثم الخوادم. تُعيد قائمة `DeviceConnection` للطرد دون لمس الحالة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionTracker.kt",
+"name": "تنظيف اتصال جهاز محدّد: cleanupDeviceConnection",
+"lines": "232-242",
+"summary": "تُزيل الجهاز من `connectedDevices`، وعند نجاح الإزالة تُزيل مدخلاته من `subscribedDevices` و`addressPeerMap`، ثم تُزيل مدخله من `firstAnnounceSeen` وتسجّل. تُنادى من `disconnect` (السطر 65)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionTracker.kt",
+"name": "التنظيف الشامل: cleanupAllConnections و clearAllConnections",
+"lines": "244-275",
+"summary": "`cleanupAllConnections` تقطع جات كل الأجهزة فوراً، ثم تُطلق كوروتين على `connectionScope` ينتظر `CLEANUP_DELAY` قبل إغلاق جات كلٌّ ضمن `try/catch`. `clearAllConnections` تمسح كل الخرائط والقوائم بما فيها `pendingConnections` الموروثة. تُناديان من `stop` (السطران 54-55)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionTracker.kt",
+"name": "تتبّع أول إعلان: noteAnnounceReceived و hasSeenFirstAnnounce",
+"lines": "277-289",
+"summary": "`noteAnnounceReceived` تضبط `firstAnnounceSeen` للعنوان إلى true عند استقبال أول إعلان (ANNOUNCE). `hasSeenFirstAnnounce` تُعيد ما إذا كانت القيمة المخزّنة تساوي true. تعملان على راية تُهيّأ في `addDeviceConnection` وتُمسح في التنظيف."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothConnectionTracker.kt",
+"name": "معلومات التصحيح: getDebugInfo",
+"lines": "291-316",
+"summary": "تبني نصاً تشخيصياً عبر `buildString` يلخّص: الأجهزة المتصلة وأقصى عدد من `powerManager.getMaxConnections()` مع دور كل جهاز وعمره وشدّته، والأجهزة المشتركة، والاتصالات المعلّقة `pendingConnections` الموروثة مع عدد محاولاتها، ومخزّن `scanRSSI`."
+}
+],
+"app/src/main/java/com/bitchat/android/mesh/BluetoothGattClientManager.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothGattClientManager.kt",
+"name": "إنشاء الصنف ومكوّنات البلوتوث الأساسية وثوابت الاسترداد",
+"lines": "24-101",
+"summary": "يُعرّف الصنف «مدير عميل GATT للبلوتوث» (BluetoothGattClientManager) وحقن تبعيّاته (context، connectionScope، connectionTracker، permissionManager، powerManager، delegate). الكائن المرافق يحمل ثوابت ضبط الاسترداد ذاتي الإصلاح (SCAN_RETRY_BASE_MS، SCAN_MAX_RETRY_DELAY_MS، SCAN_WATCHDOG_INTERVAL_MS، SCAN_STALE_RESULT_MS). ثم يشتقّ مدير البلوتوث ومهايئه وماسح BLE من السياق، ويُعرّف حالات المسح (lastScanStartTime، isCurrentlyScanning، scanRateLimit، scanningDesired، scanRetryCount، scanWatchdogJob، rssiMonitoringJob، isActive)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothGattClientManager.kt",
+"name": "isBleTransportEnabled و isClientRoleEnabled (فحص التفعيل)",
+"lines": "48-59",
+"summary": "دالتان خاصّتان تقرآن أعلام التنقيح: isBleTransportEnabled تقرأ قيمة bleEnabled من DebugSettingsManager (مع رجوع آمن إلى true عند الفشل)، و isClientRoleEnabled تجمعها مع علم gattClientEnabled. تُستخدمان كبوابة في كل مكان (start، startScanning، connectToDevice، الكلب الحارس) لاحترام إعداد المستخدم."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothGattClientManager.kt",
+"name": "connectToAddress (اتصال يدوي عبر عنوان MAC)",
+"lines": "64-78",
+"summary": "دالة عامّة لواجهة التنقيح: تتحقّق من تفعيل دور العميل، تحلّ الجهاز من العنوان عبر bluetoothAdapter، تجلب أفضل RSSI من connectionTracker، ثم تنادي connectToDevice. تُعيد نجاح/فشل العملية."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothGattClientManager.kt",
+"name": "start (بدء مدير العميل)",
+"lines": "106-150",
+"summary": "بوّابة الدخول لتشغيل المدير: تتحقّق من تفعيل العميل والخمول وأذونات البلوتوث وتفعيل المهايئ وتوفّر الماسح، ثم تضبط isActive=true. داخل كوروتين على connectionScope تقرّر -حسب shouldUseDutyCycle من powerManager- إمّا ترك دورة العمل تقود المسح أو ضبط scanningDesired وبدء startScanning، ثم تطلق startRSSIMonitoring و startScanWatchdog."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothGattClientManager.kt",
+"name": "stop (إيقاف مدير العميل)",
+"lines": "155-181",
+"summary": "تطفئ scanningDesired وتوقف الكلب الحارس. إن كان غير نشط تنفّذ إيقافاً متعادلاً (stopScanning و stopRSSIMonitoring) وتعود. وإلا تضبط isActive=false، وفي كوروتين تقطع كل اتصالات العميل من connectionTracker عبر gatt.disconnect ثم توقف المسح والمراقبة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothGattClientManager.kt",
+"name": "onScanStateChanged (استجابة لتغيّر حالة المسح من مدير الطاقة)",
+"lines": "186-194",
+"summary": "نقطة دخول يناديها مدير الطاقة/دورة العمل: تضبط scanningDesired بحاصل shouldScan و isClientRoleEnabled، ثم تنادي startScanning أو stopScanning تبعاً لذلك. هي همزة الوصل بين منطق دورة العمل وحالة المسح الفعلية."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothGattClientManager.kt",
+"name": "startRSSIMonitoring و stopRSSIMonitoring (مراقبة قوّة الإشارة الدورية)",
+"lines": "199-229",
+"summary": "startRSSIMonitoring تطلق كوروتين دائم (rssiMonitoringJob) يدور ما دام isActive، يطلب readRemoteRssi من كل اتصالات العميل في connectionTracker ثم ينتظر RSSI_UPDATE_INTERVAL_MS من AppConstants. نتائج القراءة ترِد عبر ردّ النداء onReadRemoteRssi. stopRSSIMonitoring تلغي المهمّة وتصفّرها."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothGattClientManager.kt",
+"name": "startScanning (بدء المسح مع تحديد المعدّل وردّ نداء المسح)",
+"lines": "235-336",
+"summary": "القلب التشغيلي للمسح: يفحص الأذونات والتفعيل والنشاط، ويطبّق تحديد معدّل scanRateLimit (يجدول بدءاً مؤجّلاً إن لزم). يبني ScanFilter على SERVICE_UUID، وينشئ scanCallback يحوّل onScanResult/onBatchScanResults إلى handleScanResult، ويعالج onScanFailed عبر when على رمز الخطأ (1/2/3/4/5/6) بمناداة scheduleScanRestart بتراجع مناسب. ثم يبدأ startScan بإعدادات getScanSettings من powerManager."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothGattClientManager.kt",
+"name": "stopScanning (إيقاف المسح)",
+"lines": "342-358",
+"summary": "يفحص الأذونات وتوفّر الماسح، وإن كان المسح جارياً يستدعي bleScanner.stopScan على scanCallback ضمن try، ثم يضبط isCurrentlyScanning=false ويسجّل lastScanStopTime."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothGattClientManager.kt",
+"name": "scheduleScanRestart (إعادة بدء المسح بتراجع تدريجي)",
+"lines": "365-375",
+"summary": "يزيد scanRetryCount ويحسب تأخيراً تصاعدياً محصوراً بـ SCAN_MAX_RETRY_DELAY_MS، ثم في كوروتين بعد الانتظار يعيد startScanning بشرط بقاء النشاط والرغبة والتفعيل وعدم وجود مسح جارٍ. يُستدعى من onScanFailed لتعافي الإخفاقات العابرة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothGattClientManager.kt",
+"name": "startScanWatchdog و stopScanWatchdog و forceRestartScan (الإصلاح الذاتي للماسح)",
+"lines": "382-428",
+"summary": "startScanWatchdog يطلق كوروتين دورياً (كل SCAN_WATCHDOG_INTERVAL_MS) يعيد بدء المسح إن كان مرغوباً وغير جارٍ، أو يستدعي forceRestartScan إن مرّ زمن طويل (SCAN_STALE_RESULT_MS) بلا نتائج رغم اعتقاد أن المسح يعمل. forceRestartScan يوقف المسح ثم بعد 500ms يعيد بدءه نظيفاً. stopScanWatchdog يلغي المهمّة. يعالج توقّف أندرويد الصامت للمسح."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothGattClientManager.kt",
+"name": "handleScanResult (تصفية نتيجة المسح وبدء الاتصال)",
+"lines": "433-524",
+"summary": "يعالج كل نتيجة مسح: يرفض الأجهزة التي لا تحمل SERVICE_UUID، يحدّث lastScanResultTime ويصفّر scanRetryCount (دليل حياة الماسح). يستخرج peerID من بيانات الخدمة لإزالة التكرار عبر isPeerConnected، يخزّن RSSI في connectionTracker وينشره لواجهة التنقيح عبر DebugScanResult، يرشّح بالإشارة الضعيفة (getRSSIThreshold)، يتحقّق من عدم الاتصال/المحاولة المسبقة ومن حدود الاتصالات (canConnectAsClient)، ثم يضيف اتصالاً معلّقاً وينادي connectToDevice."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothGattClientManager.kt",
+"name": "connectToDevice ودورة حياة اتصال GATT (gattCallback)",
+"lines": "530-685",
+"summary": "ينشئ gattCallback ثم يبدأ connectGatt على TRANSPORT_LE. ردود النداء: onConnectionStateChange يطلب MTU=517 عند الاتصال وينظّف عند الانفصال ويُخطر delegate.onDeviceDisconnected؛ onMtuChanged يسجّل DeviceConnection في connectionTracker ثم discoverServices؛ onServicesDiscovered يجلب الخدمة والخاصية والواصف ويفعّل الإشعارات (ENABLE_NOTIFICATION_VALUE) ثم يُخطر delegate.onDeviceConnected؛ onCharacteristicChanged يحلّل البيانات إلى BitchatPacket ويمررها عبر delegate.onPacketReceived؛ onReadRemoteRssi يحدّث RSSI في المتتبّع."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothGattClientManager.kt",
+"name": "restartScanning (إعادة التشغيل عند تغيّر وضع الطاقة)",
+"lines": "690-707",
+"summary": "دالة عامّة تُستدعى عند تبدّل وضع الطاقة: تتحقّق من النشاط والتفعيل، ثم في كوروتين توقف المسح وتنتظر 1000ms لتجنّب تحديد المعدّل، ثم -حسب shouldUseDutyCycle- إمّا تترك دورة العمل تتولّى المسح أو تبدأ startScanning للوضع المتواصل."
+}
+],
+"app/src/main/java/com/bitchat/android/mesh/BluetoothGattServerManager.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothGattServerManager.kt",
+"name": "تعريف الصنف وخصائصه (BluetoothGattServerManager + companion + الحقول)",
+"lines": "21-51",
+"summary": "يعرّف صنف مدير خادم جات (BluetoothGattServerManager) ومُنشئه الذي يستقبل السياق ونطاق الاتصال ومتعقّب الاتصال (connectionTracker) ومدير الأذونات ومدير الطاقة والمفوَّض ومعرّف القرين. الكائن المرافق يحمل الوسم (TAG) وثابتي ضبط تراجع إعادة الإعلان (ADVERTISE_RETRY_BASE_MS=3000 و ADVERTISE_MAX_RETRY_DELAY_MS=30000). ثم يهيّئ مكونات البلوتوث الأساسية: bluetoothManager من خدمة النظام، و bluetoothAdapter منه، و bleAdvertiser من المحوّل، إضافة إلى متغيّرات الحالة gattServer و characteristic و advertiseCallback و advertiseRetryCount و isActive."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothGattServerManager.kt",
+"name": "isBleTransportEnabled",
+"lines": "53-59",
+"summary": "دالة خاصة تقرأ علم تفعيل BLE من DebugSettingsManager، ومع أي استثناء ترجع إلى DebugPreferenceManager.getBleEnabled(true)، وإلا true. تُستعمل كأساس لتحديد ما إذا كان دور الخادم مسموحاً."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothGattServerManager.kt",
+"name": "isServerRoleEnabled",
+"lines": "61-64",
+"summary": "دالة خاصة تجمع بـ«و» المنطقي بين isBleTransportEnabled() وعلم gattServerEnabled من إعدادات التنقيح (مع true عند الاستثناء). هي البوّابة التي تستعملها start و startAdvertising و scheduleAdvertiseRestart و restartAdvertising لاحترام إعدادات التنقيح."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothGattServerManager.kt",
+"name": "disconnectDevice",
+"lines": "69-75",
+"summary": "دالة عامة تقطع اتصال جهاز محدد عبر gattServer?.cancelConnection داخل try/catch، يستعملها مدير الاتصال (ConnectionManager) لفرض الحدود الإجمالية."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothGattServerManager.kt",
+"name": "start",
+"lines": "80-115",
+"summary": "دالة عامة تبدأ خادم جات: تتحقق من isServerRoleEnabled ومن isActive (لا تكرّر) ومن أذونات البلوتوث وتفعيل المحوّل وتوفّر bleAdvertiser. عند النجاح تضبط isActive=true ثم تطلق كوروتيناً على connectionScope ينادي setupGattServer ثم ينتظر 300مس ثم startAdvertising. تعيد true/false حسب النجاح."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothGattServerManager.kt",
+"name": "stop",
+"lines": "120-151",
+"summary": "دالة عامة توقف الخادم بصورة لا تتأثر بالتكرار: إن لم يكن نشطاً توقف الإعلان وتغلق gattServer وتعيده null وتخرج. وإلا تضبط isActive=false وتطلق كوروتيناً يوقف الإعلان ثم يلغي كل اتصالات الخادم (المرشّحة من connectionTracker بأنها ليست عملاء) ثم يغلق gattServer ويعيده null."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothGattServerManager.kt",
+"name": "getGattServer / getCharacteristic",
+"lines": "156-161",
+"summary": "دالتان عامتان قصيرتان تعيدان نسخة خادم جات (gattServer) ونسخة الخاصية الوصفية (characteristic) القابلتين للفراغ، لتستعملهما الطبقات الأعلى."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothGattServerManager.kt",
+"name": "setupGattServer + serverCallback",
+"lines": "167-332",
+"summary": "دالة خاصة تبني خادم جات. تنشئ serverCallback (يرث BluetoothGattServerCallback) يتضمن: onConnectionStateChange الذي يضيف اتصال جهاز (DeviceConnection بـ isClient=false وأفضل RSSI) إلى connectionTracker ويُخطر delegate.onDeviceConnected عند الاتصال، ويُنظّف الاتصال ويُخطر onDeviceDisconnected عند القطع؛ و onServiceAdded للتسجيل؛ و onCharacteristicWriteRequest الذي يفكّك القيمة عبر BitchatPacket.fromBinaryData ويستخرج peerID ويسلّمه delegate.onPacketReceived ثم يرد عند الحاجة؛ و onDescriptorWriteRequest الذي يسجّل الجهاز المشترِك عند تفعيل الإشعار. كل ردود النداء محروسة بـ isActive. بعدها تُغلق أي خادم سابق وتنام 100مس ثم تفتح خادماً جديداً عبر openGattServer وتنشئ الخاصية (قراءة/كتابة/كتابة بلا رد/إشعار) وتضيف لها واصِفاً ثم تبني الخدمة الأساسية وتضيفها للخادم."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothGattServerManager.kt",
+"name": "startAdvertising + advertiseCallback",
+"lines": "338-433",
+"summary": "دالة خاصة تبدأ الإعلان. تتحقق من شروط الحراسة (أذونات، محوّل غير فارغ، نشاط، تفعيل، توفّر المُعلِن، دعم الإعلان المتعدّد) بلا رمي استثناءات. تبني إعدادات الإعلان من powerManager، وبيانات الإعلان بمعرّف الخدمة، و scanResponse يحمل أوّل 8 بايت من myPeerID كهوية ثابتة لإزالة التكرار رغم دوران MAC. تنشئ advertiseCallback: onStartSuccess يصفّر العدّاد ويسجّل، و onStartFailure يفرّع على رمز الخطأ ويستدعي scheduleAdvertiseRestart للأخطاء العابرة. ثم تستدعي bleAdvertiser.startAdvertising داخل try/catch."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothGattServerManager.kt",
+"name": "stopAdvertising",
+"lines": "439-446",
+"summary": "دالة خاصة توقف الإعلان: إن غابت الأذونات أو كان المُعلِن null تعود، وإلا تستدعي bleAdvertiser.stopAdvertising على advertiseCallback داخل try/catch."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothGattServerManager.kt",
+"name": "scheduleAdvertiseRestart",
+"lines": "451-463",
+"summary": "دالة خاصة تجدول إعادة تشغيل الإعلان بتراجع تزايدي: تزيد advertiseRetryCount وتحسب delayMs = أساس × العدّاد مقيّداً بالحد الأقصى، ثم تطلق كوروتيناً ينتظر المهلة وإن بقي نشطاً ومُفعّلاً يوقف الإعلان وينتظر 100مس ثم يبدأه. تستدعيها onStartFailure."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothGattServerManager.kt",
+"name": "restartAdvertising",
+"lines": "468-481",
+"summary": "دالة عامة تعيد تشغيل الإعلان لأجل تغييرات وضع الطاقة: إن لم يكن نشطاً أو مُفعّلاً توقف الإعلان وتعود، وإلا تطلق كوروتيناً يوقف الإعلان ثم ينتظر 100مس ثم يبدأه."
+}
+],
+"app/src/main/java/com/bitchat/android/mesh/BluetoothMeshService.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothMeshService.kt",
+"name": "تعريف الصنف والمكوّنات والحالة",
+"lines": "38-77",
+"summary": "يُعرّف الصنف BluetoothMeshService كمُنسّق (coordinator) يُنفّذ واجهة طبقة النقل TransportBridgeService.TransportLayer. يبني المكوّنات الأساسية (خدمة التشفير، مدير النظراء، مدير الأجزاء، مدير الأمان، مدير التخزين والإرسال، معالج الرسائل، مدير الاتصال، معالج الحزم) ويشتقّ myPeerID من بصمة هوية نويز (أول ١٦ حرفاً). يُعرّف حالة الخدمة (isActive، terminated)، المُفوَّض delegate، ونطاق الكوروتينات serviceScope. الثابت MAX_TTL يأتي من AppConstants.MESSAGE_TTL_HOPS."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothMeshService.kt",
+"name": "كتلة التهيئة init",
+"lines": "78-118",
+"summary": "تُهيّئ الخدمة: تُعدّ VerificationService، تستدعي setupDelegates، تربط packetProcessor بـ messageHandler، تبني gossipSyncManager بمزوّد إعدادات (سعة المرئيّ، حدّ بايتات GCS، نسبة الإيجابيات الكاذبة)، تُسجّل مدير الإشاعة في MeshServiceHolder مع لامبدا توقيع قبل البثّ، تُسجّل نقل BLE في TransportBridgeService، وتحقن فحص الاتصال المباشر isPeerDirectlyConnected في peerManager اعتماداً على addressPeerMap."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothMeshService.kt",
+"name": "دوال الإرسال الأساسية وفحص النقل",
+"lines": "120-142",
+"summary": "تُنفّذ send و sendToPeer (من واجهة طبقة النقل) بتفويضهما إلى connectionManager بعد التحقّق من تفعيل BLE. broadcastRoutedPacket يبثّ عبر connectionManager ثم عبر TransportBridgeService. isBleTransportEnabled يقرأ علم التفعيل من DebugSettingsManager/DebugPreferenceManager مع قيم احتياطية."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothMeshService.kt",
+"name": "التسجيل الدوري والإعلان الدوري",
+"lines": "144-182",
+"summary": "startPeriodicDebugLogging (مُعطّلة الاستدعاء) تطبع حالة التنقيح كل ١٠ ثوانٍ ضمن حلقة بنطاق الخدمة. sendPeriodicBroadcastAnnounce تُلغي مهمّة الإعلان السابقة وتُطلق حلقة تستدعي sendBroadcastAnnounce كل ٣٠ ثانية ما دامت الخدمة نشطة، وتحفظ المهمّة في announceJob."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothMeshService.kt",
+"name": "تهيئة مُفوَّضي المكوّنات (setupDelegates)",
+"lines": "187-640",
+"summary": "الدالة المحورية للربط بين المكوّنات: تُزوّد مُحلِّل الاسم المستعار. تربط مُفوَّض peerManager (تحديث قائمة النظراء، إزالة نظير مع تنظيف الإشاعة وطوبولوجيا MeshGraph وجلسة نويز). تربط مُفوَّض securityManager (إتمام تبادل المفاتيح فيُرسل الإعلان والرسائل المخزّنة، وإرسال ردّ المصافحة، وجلب معلومات النظير). تربط مُفوَّض storeForwardManager (isFavorite، isPeerOnline، sendPacket). تربط مُفوَّض messageHandler الواسع (إدارة النظراء، عمليات الحزم، عمليات التشفير والتحقّق، عمليات نويز، تحديث ربط مُعرّف النظير، استقبال الرسائل والإقرارات وتحدّيات التحقّق). تربط مُفوَّض packetProcessor (التحقّق الأمني، معالجة الإعلان مع ربط عنوان-نظير عند أقصى TTL، معالجة الرسائل والمغادرة والأجزاء وطلبات المزامنة). تربط مُفوَّض connectionManager (استقبال الحزم وتمريرها لمعالج الحزم، اتصال/انفصال الأجهزة، تحديث RSSI)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothMeshService.kt",
+"name": "دورة حياة الخدمة (بدء/إيقاف/إعادة استخدام)",
+"lines": "642-760",
+"summary": "startServices تمنع البدء المزدوج، تتحقّق من تفعيل BLE وعدم الإنهاء، تبدأ connectionManager وتُفعّل الإعلانات والمزامنة الدورية. setBleTransportEnabled و pauseServicesForTransportDisable يطبّقان مفتاح النقل دون تدمير النسخة. stopServices يُرسل إعلان مغادرة ثم يوقف كل المكوّنات ويُلغي serviceScope ويُعلّم النسخة كمُنهاة. isReusable يفحص قابلية إعادة الاستخدام."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothMeshService.kt",
+"name": "إرسال الرسائل والملفات العامّة",
+"lines": "762-892",
+"summary": "sendMessage يبني حزمة MESSAGE بثّية مُوقّعة ويبثّها ويتتبّعها للمزامنة. sendFileBroadcast يُرمّز الملف ويبني حزمة FILE_TRANSFER (إصدار ٢) مع مُعرّف نقل مبني على بصمة الحمولة. sendFilePrivate يُرسل الملف مُشفّراً بنويز ضمن حزمة NOISE_ENCRYPTED إن وُجدت جلسة، وإلّا يبدأ المصافحة. cancelFileTransfer يُفوّض الإلغاء إلى connectionManager."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothMeshService.kt",
+"name": "مساعد التجزئة sha256Hex",
+"lines": "894-899",
+"summary": "دالة مساعدة خاصة تُجزّئ مصفوفة بايتات بخوارزمية SHA-256 وتُعيد سلسلة ست-عشرية ثابتة تُستعمل كمُعرّف نقل لربط تقدّم نقل الملفات، مع قيمة احتياطية عند الاستثناء."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothMeshService.kt",
+"name": "إرسال الرسائل الخاصة وإيصالات القراءة",
+"lines": "901-1033",
+"summary": "sendPrivateMessage يبني رسالة خاصة مُرمّزة TLV ملفوفة في NoisePayload نوع PRIVATE_MESSAGE ويُشفّرها بنويز ضمن حزمة NOISE_ENCRYPTED (متوافقة مع iOS)، أو يبدأ المصافحة إن لم توجد جلسة. sendReadReceipt يُوجّه إيصالات الجيوهاش عبر MessageRouter، ويتجنّب التكرار عبر SeenMessageStore، ثم يُرسل إيصالاً مُشفّراً نوع READ_RECEIPT ويحفظه كمقروء."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothMeshService.kt",
+"name": "تحقّق رمز QR عبر نويز",
+"lines": "1035-1077",
+"summary": "sendVerifyChallenge و sendVerifyResponse يبنيان حمولة TLV عبر VerificationService بنوعَي VERIFY_CHALLENGE/VERIFY_RESPONSE ويُرسلانها عبر sendNoisePayloadToPeer. الأخيرة دالة خاصة تُشفّر حمولة النويز ضمن حزمة NOISE_ENCRYPTED مُوقّعة وتبثّها للنظير المُستقبِل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothMeshService.kt",
+"name": "إعلانات الهوية (بثّ وموجّه لنظير)",
+"lines": "1079-1224",
+"summary": "sendBroadcastAnnounce و sendAnnouncementToPeer يبنيان IdentityAnnouncement (الاسم المستعار، المفتاح الثابت، مفتاح التوقيع) مُرمّزاً TLV، يُلحقان TLV الإشاعة بحتى ١٠ جيران مباشرين عبر getDirectPeerIDsForGossip، يُحدّثان عقدة الذات في MeshGraphService، يُوقّعان حزمة ANNOUNCE بمفتاح التوقيع ويبثّانها (بشكل متوافق مع iOS). getDirectPeerIDsForGossip يجمع النظراء المُتحقَّق منهم المباشرين ويتقاطع مع نظراء النقل في AppStateStore ويأخذ حتى ١٠."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothMeshService.kt",
+"name": "إعلان المغادرة",
+"lines": "1229-1240",
+"summary": "sendLeaveAnnouncement (خاصة) يبني حزمة LEAVE بحمولة فارغة ويُوقّعها ويبثّها، تُستدعى عند إيقاف الخدمة لإبلاغ الشبكة بمغادرة هذا النظير."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothMeshService.kt",
+"name": "واجهات الاستعلام العامّة (نظراء/جلسات/هوية)",
+"lines": "1242-1354",
+"summary": "دوال استعلام عامّة تُفوّض غالباً لمكوّناتها: getPeerNicknames و getPeerRSSI، hasEstablishedSession و getSessionState، initiateNoiseHandshake (تفويض لمُفوَّض معالج الرسائل)، getPeerFingerprint، getActivePeerCount، getPeerInfo، updatePeerInfo، getIdentityFingerprint، getStaticNoisePublicKey، shouldShowEncryptionIcon، getEncryptedPeers (مبسّطة تُعيد فارغاً)، getDeviceAddressForPeer و getDeviceAddressToPeerMapping و printDeviceAddressesForPeers من خريطة addressPeerMap."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothMeshService.kt",
+"name": "حالة التنقيح getDebugStatus",
+"lines": "1359-1380",
+"summary": "تبني سلسلة مُجمّعة بمعلومات التنقيح من كل المكوّنات (مدير الاتصال، مدير النظراء وبصماته، مدير الأجزاء، مدير الأمان، مدير التخزين والإرسال، معالج الرسائل، معالج الحزم) مع مُعرّف النظير الخاص."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothMeshService.kt",
+"name": "تحويل مُعرّف النظير الست-عشري",
+"lines": "1385-1401",
+"summary": "hexStringToByteArray (خاصة) تحوّل سلسلة ست-عشرية لمُعرّف نظير إلى مصفوفة ٨ بايتات بالضبط مُهيّأة بالأصفار، بطريقة مطابقة لنظام iOS، تُستعمل لبناء senderID/recipientID في الحزم."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothMeshService.kt",
+"name": "توقيع الحزمة وحساب المسار",
+"lines": "1406-1445",
+"summary": "signPacketBeforeBroadcast (خاصة) تُرفق اختيارياً مساراً مصدرياً للحزم المُعنونة (عبر RoutePlanner.shortestPath، مستبعدةً المُرسِل والمستلِم، وترفع الإصدار إلى v2 لراية HAS_ROUTE)، ثم تُحوّل الحزمة إلى بياناتها القانونية وتُوقّعها بمفتاح التوقيع عبر encryptionService.signData، وتُعيد نسخة مُوقّعة أو غير مُوقّعة عند الفشل. هذه الدالة هي البوابة المشتركة قبل كل بثّ."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothMeshService.kt",
+"name": "دعم وضع الذعر (Panic Mode)",
+"lines": "1452-1482",
+"summary": "clearAllInternalData تُوقف الخدمات وتمسح كل المُدراء (الأجزاء، التخزين، الأمان، النظراء وبصماتهم). clearAllEncryptionData تمسح الهوية الدائمة لخدمة التشفير (تشمل مفاتيح Ed25519). كلتاهما لطوارئ الخصوصية."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothMeshService.kt",
+"name": "واجهة المُفوَّض BluetoothMeshDelegate",
+"lines": "1485-1492",
+"summary": "واجهة مُفوِّض ردود نداء شبكة BLE تُوسّع MeshDelegate المشترك لتستقبل الواجهات المستقلّة عن النقل تيار ردود النداء نفسه، وتُضيف didReceiveVerifyChallenge و didReceiveVerifyResponse لتحدّي/ردّ التحقّق."
+}
+],
+"app/src/main/java/com/bitchat/android/mesh/BluetoothPacketBroadcaster.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothPacketBroadcaster.kt",
+"name": "إعلان الصنف ومعاملات الباني والكائن المُرافِق",
+"lines": "40-50",
+"summary": "يُعرّف الصنف `BluetoothPacketBroadcaster` (باثّ حزم البلوتوث) مع معاملاته: `connectionScope` (نطاق الاتصال)، `connectionTracker` (مُتتبِّع الاتصال)، `fragmentManager` (مدير التجزئة) و`myPeerID` (معرّف النِّدّ الخاص). الكائن المُرافِق يحمل الوسم `TAG` وثابت `CLEANUP_DELAY` (تأخير التنظيف) المستعمل عند الفشل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothPacketBroadcaster.kt",
+"name": "setNicknameResolver - حقن محلّل الاسم المستعار",
+"lines": "52-57",
+"summary": "يُخزّن دالة `nicknameResolver` (تُحوّل معرّف النِّدّ إلى اسم مستعار) المحقونة من طبقة أعلى. تُستعمل لاحقاً في `logPacketRelay` و`broadcastSinglePacketInternal` لترجمة المعرّفات إلى ألقاب مقروءة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothPacketBroadcaster.kt",
+"name": "logPacketRelay - تسجيل تمرير الحزمة للتنقيح",
+"lines": "62-107",
+"summary": "دالة مساعِدة للتسجيل فقط: تحلّ ألقاب المصدر والوجهة عبر `nicknameResolver`، ثمّ تستدعي على `DebugSettingsManager` كلاً من `logOutgoing` و`logPacketRelayDetailed`. تلتقط أي استثناء وتتجاهله بصمت. يناديها كل مسار إرسال ناجح في الملف."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothPacketBroadcaster.kt",
+"name": "BroadcastRequest - صنف بيانات طلب البثّ",
+"lines": "110-114",
+"summary": "صنف بيانات خاص يحمل ما يحتاجه المُمثِّل لمعالجة بثّ واحد: `routed` (الحزمة المُوجَّهة) و`gattServer` (خادم جات) و`characteristic` (الخاصيّة). هو نوع عناصر قناة `broadcasterActor`."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothPacketBroadcaster.kt",
+"name": "الحقول: broadcasterScope وfragmentingSender وbroadcasterActor",
+"lines": "117-133",
+"summary": "يُعرّف `broadcasterScope` (نطاق الباثّ على `Dispatchers.IO` مع `SupervisorJob`)، و`fragmentingSender` (مُرسِل التجزئة الذي يقطّع الحزم الكبيرة)، و`broadcasterActor` (مُمثِّل بسعة غير محدودة) الذي يقرأ كل `BroadcastRequest` من قناته بالترتيب ويناولها إلى `broadcastSinglePacketInternal`، مُحقِّقاً تسلسل كل عمليات البثّ."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothPacketBroadcaster.kt",
+"name": "broadcastPacket - نقطة دخول البثّ العامة",
+"lines": "135-144",
+"summary": "الواجهة العامة للبثّ إلى كل الأجهزة: تسلّم الحزمة إلى `fragmentingSender.send` (للتجزئة إن لزم)، وكل قطعة ناتجة تُمرَّر إلى `broadcastSinglePacket`."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothPacketBroadcaster.kt",
+"name": "cancelTransfer - إلغاء نقل مُجزّأ",
+"lines": "146-148",
+"summary": "تُفوِّض إلغاء نقل بمعرّفه `transferId` إلى `fragmentingSender.cancelTransfer` وتُعيد نتيجته."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothPacketBroadcaster.kt",
+"name": "sendPacketToPeer - إرسال موجّه عبر التجزئة",
+"lines": "154-164",
+"summary": "إرسال إلى نِدّ محدّد دون بثّ: يفحص أولاً `hasPeerConnection` فيُعيد false إن لا اتصال، وإلا يمرّر عبر `fragmentingSender.send` حيث تُرسَل كل قطعة بـ `sendSinglePacketToPeer`. يُعيد true عند نجاح مسار مباشر."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothPacketBroadcaster.kt",
+"name": "sendSinglePacketToPeer - إرسال قطعة مفردة إلى نِدّ هدف",
+"lines": "166-209",
+"summary": "يُحوّل الحزمة إلى بيانات ثنائية (بحشو انتقائي عبر `BLEPacketPaddingPolicy`)، ثم يبحث عن النِّدّ الهدف أولاً في الأجهزة المشتركة (`getSubscribedDevices`) فيُخطره بـ `notifyDevice`، وإلا في الأجهزة المتصلة (`getConnectedDevices`) فيكتب إليه بـ `writeToDeviceConn`. عند النجاح يستدعي `logPacketRelay` ويُعيد true، وإلا false."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothPacketBroadcaster.kt",
+"name": "broadcastSinglePacket - تقديم البثّ إلى المُمثِّل",
+"lines": "215-230",
+"summary": "نقطة الدخول التي تُحقّق التسلسل: تُطلِق كوروتين يرسل `BroadcastRequest` إلى `broadcasterActor`. إن فشل الإرسال إلى المُمثِّل تُسجّل تحذيراً وترجع إلى المعالجة المباشرة عبر `broadcastSinglePacketInternal`."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothPacketBroadcaster.kt",
+"name": "sendToPeer - إرسال موجّه (نسخة ثانية)",
+"lines": "236-246",
+"summary": "دالة شبيهة بـ `sendPacketToPeer` لكن بترتيب معاملات مختلف: تفحص `hasPeerConnection` ثم تمرّر عبر `fragmentingSender.send` لتسليم كل قطعة بـ `sendSinglePacketToPeer`."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothPacketBroadcaster.kt",
+"name": "hasPeerConnection - فحص وجود اتصال بالنِّدّ",
+"lines": "248-255",
+"summary": "تُعيد true إذا وُجد النِّدّ الهدف ضمن الأجهزة المشتركة أو الأجهزة المتصلة، بمطابقة عنوان كل جهاز على `addressPeerMap`. تُستعمل كحارس في دوال الإرسال الموجّه."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothPacketBroadcaster.kt",
+"name": "broadcastSinglePacketInternal - منطق البثّ الفعلي المتسلسل",
+"lines": "260-393",
+"summary": "الدالة المُعلّقة الجوهرية التي يناديها المُمثِّل. تُجهّز البيانات الثنائية بحشو BLE الانتقائي، ثم: (أ) إن كنّا المرسِل ولدى الحزمة مسار مصدري صريح تُرسِل فقط إلى القفزة الأولى (`firstHop`) عبر الخادم ثم العميل؛ (ب) إن لم يكن المستلِم هو `BROADCAST` تبحث عن المستلِم المحدّد وترسل إليه مباشرة؛ (ج) وإلا تبثّ إلى كل الأجهزة المشتركة والمتصلة مع تخطّي المُرحِّل والمرسِل لتفادي العودة الخلفية. كل إرسال ناجح يُسجَّل بـ `logPacketRelay`."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothPacketBroadcaster.kt",
+"name": "notifyDevice - الإرسال من الخادم إلى العميل",
+"lines": "398-419",
+"summary": "تضبط قيمة الخاصيّة بالبيانات وتستدعي `notifyCharacteristicChanged` على `gattServer` لإخطار جهاز مشترك واحد. عند الاستثناء تسجّل تحذيراً وتُطلِق كوروتين يؤخّر بـ `CLEANUP_DELAY` ثم يزيل الجهاز من الأجهزة المشتركة ومن `addressPeerMap`، وتُعيد false."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothPacketBroadcaster.kt",
+"name": "writeToDeviceConn - الإرسال من العميل إلى الخادم",
+"lines": "424-442",
+"summary": "تضبط قيمة خاصيّة الاتصال وتستدعي `writeCharacteristic` على `gatt` لاتصال عميل واحد. عند الاستثناء تسجّل تحذيراً وتُطلِق كوروتين يؤخّر بـ `CLEANUP_DELAY` ثم ينظّف الاتصال بـ `cleanupDeviceConnection`، وتُعيد false."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothPacketBroadcaster.kt",
+"name": "getDebugInfo - معلومات التنقيح",
+"lines": "447-454",
+"summary": "تبني نصاً يلخّص حالة الباثّ: نشاط `broadcasterScope`، وهل قناة `broadcasterActor` مغلقة للإرسال، ونشاط `connectionScope`."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothPacketBroadcaster.kt",
+"name": "shutdown - الإيقاف الرشيق",
+"lines": "459-469",
+"summary": "تُغلق `broadcasterActor` (ممّا يُنهي حلقة `for` ويُطلق كتلة `finally`) ثم تُلغي `broadcasterScope`، مع تسجيل رسائل بداية ونهاية الإيقاف."
+}
+],
+"app/src/main/java/com/bitchat/android/mesh/BluetoothPermissionManager.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothPermissionManager.kt",
+"name": "BluetoothPermissionManager (تعريف الصنف ومُنشئه)",
+"lines": "11-11",
+"summary": "يعرّف صنف مدير أذونات البلوتوث (BluetoothPermissionManager) بمُنشئ يستقبل سياق التطبيق (context) من نوع Context ويحتفظ به كمُعطى خاص غير قابل للتغيير. هذا السياق هو المدخل الذي تستعمله الدالة لاحقاً لفحص الأذونات."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/BluetoothPermissionManager.kt",
+"name": "hasBluetoothPermissions (دالة فحص الأذونات)",
+"lines": "16-40",
+"summary": "دالة تعيد قيمة منطقية (Boolean) تجيب: هل كل أذونات البلوتوث المطلوبة ممنوحة؟ تبني أولاً قائمة الأذونات (permissions) فارغة (سطر 17)، ثم تتفرّع حسب إصدار النظام: إذا كان SDK_INT أكبر من أو يساوي إصدار أندرويد S (سطر 19) تضيف أذونات BLUETOOTH_ADVERTISE وBLUETOOTH_CONNECT وBLUETOOTH_SCAN (أسطر 21-23)، وإلّا تضيف أذونات BLUETOOTH وBLUETOOTH_ADMIN القديمة (أسطر 27-28). بعد ذلك تضيف في كل الحالات إذنَي الموقع التقريبي والدقيق (أسطر 33-34). أخيراً تمرّ على كل عنصر في القائمة وتتحقّق عبر checkSelfPermission مع السياق (context) أنه يساوي PERMISSION_GRANTED، وتعيد true فقط إذا تحقّق ذلك لجميع الأذونات (أسطر 37-39)."
+}
+],
+"app/src/main/java/com/bitchat/android/mesh/FragmentManager.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/FragmentManager.kt",
+"name": "تعريف الصنف وحقول الحالة والثوابت (FragmentManager state & companion)",
+"lines": "20-44",
+"summary": "يعرّف الصنف «مدير الشظايا» (FragmentManager) وكائنه المرافق الذي يحمل الثوابت المنقولة من AppConstants: عتبة حجم الشظية (FRAGMENT_SIZE_THRESHOLD) وأقصى حجم شظية (MAX_FRAGMENT_SIZE) ومهلة الشظية (FRAGMENT_TIMEOUT) وفترة التنظيف (CLEANUP_INTERVAL). ثم يعرّف خرائط الحالة المتزامنة: الشظايا الواردة (incomingFragments) تربط معرّف الشظية بخريطة فهرس→بايتات، وبيانات الوصف (fragmentMetadata) تخزّن ثلاثية (النوع الأصلي، الإجمالي، الطابع الزمني)، والحجم التراكمي (fragmentCumulativeSize)، وقفل الحالة (fragmentStateLock)، وعدّاد البايتات العامة (globalBufferedBytes)، والمفوّض (delegate)، ونطاق الكوروتينات (managerScope)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/FragmentManager.kt",
+"name": "كتلة التهيئة (init)",
+"lines": "46-48",
+"summary": "عند إنشاء الكائن تستدعي «بدء التنظيف الدوري» (startPeriodicCleanup) لتشغيل مؤقّت تنظيف الشظايا القديمة في الخلفية."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/FragmentManager.kt",
+"name": "إنشاء الشظايا (createFragments)",
+"lines": "54-151",
+"summary": "تأخذ حزمة كبيرة (BitchatPacket) وتقطّعها إلى قائمة حزم شظايا متوافقة مع iOS. ترمّز الحزمة (toBinaryData) ثم تزيل حشوها (MessagePadding.unpad)؛ فإن كان الحجم أصغر من أو يساوي عتبة حجم الشظية تعيد الحزمة كما هي بلا تشظية. وإلا تولّد معرّف شظية (generateFragmentID)، وتحسب عبء الحزمة وأقصى حجم بيانات (maxDataSize) يلائم MTU=512 آخذةً المسار والإصدار بالحسبان، ثم تقطّع البيانات عبر «الخطو» (stride) إلى قطع، وتبني لكل قطعة حمولة شظية (FragmentPayload) وتغلّفها في حزمة شظية (BitchatPacket) من النوع FRAGMENT وارثةً ttl والمُرسِل والمُستقبِل والمسار، وتجمعها في القائمة المُعادة. تعالج الأخطاء بإعادة قائمة فارغة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/FragmentManager.kt",
+"name": "معالجة الشظية الواردة وإعادة التجميع (handleFragment)",
+"lines": "157-290",
+"summary": "تستقبل حزمة شظية وتعيد الحزمة الأصلية بعد اكتمال التجميع أو null. تتحقق من الحد الأدنى للحجم وتفك ترميز الحمولة (FragmentPayload.decode) وتتحقق من صلاحيتها وعدم تجاوز أقصى عدد شظايا. ثم تدخل كتلة متزامنة على قفل الحالة: تتحقق من اتّساق بيانات الوصف مع المخزّن، وتطبّق حدوداً وقائية (أقصى مجموعات نشطة، أقصى مجموع بايتات للمجموعة، أقصى بايتات عامة) رافضةً ومنظّفةً عبر «إزالة مجموعة الشظايا تحت القفل» (removeFragmentSetLocked) عند التجاوز. تخزّن بيانات الشظية في خريطتها وتحدّث العدّادات. وعند اكتمال كل الشظايا تجمعها بالترتيب في «البيانات المعاد تجميعها» (reassembledData)، وتفك ترميزها إلى حزمة أصلية (fromBinaryData)، وتنظّف الحالة، وتضبط ttl=0 لكبت الترحيل، وتعيد «الحزمة مكبوتة العمر» (suppressedTtlPacket)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/FragmentManager.kt",
+"name": "إزالة مجموعة الشظايا تحت القفل (removeFragmentSetLocked)",
+"lines": "292-299",
+"summary": "دالة خاصة تُستدعى دائماً من داخل كتلة متزامنة؛ تحذف معرّف الشظية من خرائط الشظايا الواردة وبيانات الوصف والحجم التراكمي، وتنقص البايتات المخزّنة عالمياً بمقدار ما كان محسوباً للمجموعة (بحدّ أدنى صفر). تُستعمل من handleFragment وcleanupOldFragments للتنظيف الموحّد للحالة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/FragmentManager.kt",
+"name": "دالة الخطو المساعدة (stride)",
+"lines": "305-313",
+"summary": "دالة خاصة معمّمة تحاكي stride في iOS: تتكرّر من from إلى to بخطوة by، وتطبّق دالة تحويل على كل إزاحة وتجمع النتائج في قائمة. يستعملها createFragments لتقطيع البيانات إلى قطع شظايا."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/FragmentManager.kt",
+"name": "تنظيف الشظايا القديمة (cleanupOldFragments)",
+"lines": "319-335",
+"summary": "دالة خاصة متزامنة تحسب حداً فاصلاً زمنياً (الآن ناقص مهلة الشظية)، وتجمع معرّفات المجموعات التي تجاوز طابعها الزمني الحد، ثم تزيلها عبر «إزالة مجموعة الشظايا تحت القفل». تُستدعى دورياً من startPeriodicCleanup."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/FragmentManager.kt",
+"name": "معلومات التصحيح (getDebugInfo)",
+"lines": "340-358",
+"summary": "دالة عامة متزامنة تبني نصاً تشخيصياً يعرض عدد المجموعات النشطة والعتبات والبايتات العامة، ولكل معرّف شظية يعرض عدد المُستلَم من الإجمالي والبايتات والنوع والعمر بالثواني، اعتماداً على خرائط الحالة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/FragmentManager.kt",
+"name": "بدء التنظيف الدوري (startPeriodicCleanup)",
+"lines": "363-370",
+"summary": "دالة خاصة تطلق كوروتيناً في نطاق المدير يكرّر ما دام نشطاً: ينتظر فترة التنظيف (delay) ثم يستدعي «تنظيف الشظايا القديمة». تُستدعى من كتلة التهيئة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/FragmentManager.kt",
+"name": "مسح كل الشظايا (clearAllFragments)",
+"lines": "375-382",
+"summary": "دالة عامة متزامنة تمسح خرائط الشظايا الواردة وبيانات الوصف والحجم التراكمي وتصفّر البايتات المخزّنة عالمياً. تُستعمل مباشرةً ومن داخل shutdown."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/FragmentManager.kt",
+"name": "إيقاف المدير (shutdown)",
+"lines": "387-390",
+"summary": "دالة عامة تلغي نطاق الكوروتينات (managerScope.cancel) لإيقاف مؤقّت التنظيف، ثم تستدعي «مسح كل الشظايا» لتحرير الحالة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/FragmentManager.kt",
+"name": "واجهة المفوّض (FragmentManagerDelegate)",
+"lines": "396-398",
+"summary": "واجهة خارج الصنف تعرّف رد النداء «عند إعادة تجميع الحزمة» (onPacketReassembled) الذي يأخذ حزمة بِت‑تشات. يربطها حقل delegate في الصنف، وهي قناة إبلاغ المستهلك بالحزمة الأصلية المُجمّعة."
+}
+],
+"app/src/main/java/com/bitchat/android/mesh/FragmentingPacketSender.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/FragmentingPacketSender.kt",
+"name": "تعريف الصنف وحقوله (FragmentingPacketSender)",
+"lines": "20-26",
+"summary": "يُعرّف الصنف مُرسِل الحزم المُجزِّئ (FragmentingPacketSender) ومُنشئه الذي يأخذ: النطاق (scope) من نوع CoroutineScope، ومدير التجزئة (fragmentManager) القابل للفراغ، ووسم السجلّ (logTag)، والتأخير بين الأجزاء (interFragmentDelayMs) بقيمة افتراضية 20 مللي ثانية. كما يُهيّئ حقلاً داخلياً اسمه مهمّات النقل (transferJobs) وهو خريطة هاش متزامنة تربط كل مُعرّف نقل (String) بمهمّته (Job)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/FragmentingPacketSender.kt",
+"name": "الدالة send (الإرسال مع التجزئة وتتبّع التقدّم)",
+"lines": "28-93",
+"summary": "الدالة الرئيسة. تحسب مُعرّف النقل (transferId) عبر transferIdFor، ثم تحضّر الحزم عبر packetsForTransport؛ وإن رجع null تُعيد false. إذا كان عدد الحزم واحداً أو أقل (total<=1) تُرسلها مباشرة عبر sendSingle وتُبلّغ مدير تقدّم النقل (start/progress/complete) ثم تُعيد نتيجة الإرسال. وإلا تسجّل أنها تُجزّئ، وتبدأ التقدّم بـ total، ثم تُطلق كوروتيناً كسولاً (CoroutineStart.LAZY) يمرّ على كل جزء: يتحقق من النشاط والإلغاء، ويُرسل الجزء داخل try/catch، ويتوقف عند الفشل، ويزيد العدّاد ويُحدّث التقدّم ويؤخّر بين الأجزاء، ثم يُكمل التقدّم. تُخزّن المهمّة في transferJobs وتُزال عند اكتمالها، وأخيراً تبدأ المهمّة وتُعيد true."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/FragmentingPacketSender.kt",
+"name": "الدالة cancelTransfer (إلغاء النقل)",
+"lines": "95-99",
+"summary": "تأخذ مُعرّف نقل وتُزيل مهمّته من خريطة مهمّات النقل (transferJobs)؛ إن لم توجد تُعيد false، وإلا تُلغي المهمّة (job.cancel) وتُعيد true."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/FragmentingPacketSender.kt",
+"name": "الدالة packetsForTransport (تحضير حزم النقل)",
+"lines": "101-119",
+"summary": "دالة خاصة تُحوّل حزمة واحدة (BitchatPacket) إلى قائمة حزم جاهزة للنقل. إن كانت الحزمة من نوع جزء (FRAGMENT) تُعيدها كما هي في قائمة مفردة. وإن غاب مدير التجزئة تُعيد الحزمة وحدها. وإلا تستدعي manager.createFragments داخل try/catch؛ فإن رجعت الأجزاء فارغة سجّلت خطأً وأعادت null، وإن نجحت أعادت الأجزاء، وعند الاستثناء سجّلت خطأً وأعادت null."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/FragmentingPacketSender.kt",
+"name": "الدالة transferIdFor (اشتقاق مُعرّف النقل)",
+"lines": "121-129",
+"summary": "دالة خاصة تُعيد مُعرّف النقل للحزمة الموجَّهة. إن كان لدى الحزمة الموجَّهة transferId مُسبق أعادته. وإلا فإن كانت الحزمة من نوع نقل ملف (FILE_TRANSFER) حسبت بصمة sha256Hex لحمولتها (payload) واستعملتها مُعرّفاً، وإلا أعادت null."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/FragmentingPacketSender.kt",
+"name": "الدالة sha256Hex (حساب بصمة SHA-256 الست عشرية)",
+"lines": "131-137",
+"summary": "دالة خاصة تحسب بصمة SHA-256 لمصفوفة بايتات وتُعيدها نصاً ست عشرياً عبر MessageDigest. وعند أي استثناء تتراجع وتُعيد حجم البايتات محوَّلاً إلى نصٍّ بالأساس 16 كقيمة بديلة."
+}
+],
+"app/src/main/java/com/bitchat/android/mesh/MeshConnectionTracker.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshConnectionTracker.kt",
+"name": "تعريف الصنف المجرّد ومعاملات الباني (MeshConnectionTracker)",
+"lines": "17-20",
+"summary": "يعرّف صنفاً مجرّداً يمثّل قاعدة مشتركة لمتعقّبي اتصالات الشبكة المتشابكة (BLE وWi-Fi Aware). يأخذ في بانيه نطاق كوروتين خاصّاً (scope) لتشغيل المهام غير المتزامنة ووسماً محمياً (tag) يُستعمل في رسائل السجلّ."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshConnectionTracker.kt",
+"name": "الكائن المرافق: ثوابت الضبط (companion object)",
+"lines": "21-25",
+"summary": "يعرّف ثلاثة ثوابت للضبط: تأخير إعادة محاولة الاتصال (CONNECTION_RETRY_DELAY) بخمس ثوانٍ، والحد الأقصى لمحاولات الاتصال (MAX_CONNECTION_ATTEMPTS) بثلاث محاولات، وفترة التنظيف (CLEANUP_INTERVAL) بثلاثين ثانية. تستهلك هذه الثوابت في منطق isExpired وshouldRetry وحلقة التنظيف الدوري."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshConnectionTracker.kt",
+"name": "صنف بيانات محاولة الاتصال (ConnectionAttempt) ودالتاه isExpired وshouldRetry",
+"lines": "30-40",
+"summary": "صنف بيانات محمي يحمل عدد المحاولات (attempts) وختم زمن آخر محاولة (lastAttempt) الافتراضي هو الوقت الحالي. تعيد isExpired صحيحاً إذا تجاوز الفرق الزمني ضِعف تأخير إعادة المحاولة (السطر 35)، وتعيد shouldRetry صحيحاً إذا كانت المحاولات دون الحد الأقصى ومضى عليها وقتٌ يفوق تأخير إعادة المحاولة (الأسطر 38-39). تُستهلك هاتان الدالتان في isConnectionAttemptAllowed وaddPendingConnection والتنظيف الدوري."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshConnectionTracker.kt",
+"name": "حالة المتعقّب: pendingConnections وisActive",
+"lines": "43-45",
+"summary": "تعرّف خريطة متزامنة محمية (pendingConnections) تربط المعرّف النصّي بكائن محاولة اتصال، وتتعقّب المحاولات الجارية أو الفاشلة. ويعرّف علماً خاصّاً (isActive) يضبط ما إذا كان المتعقّب يعمل، ويتحكّم في حلقة التنظيف الدوري."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshConnectionTracker.kt",
+"name": "دالة البدء (start)",
+"lines": "50-53",
+"summary": "دالة قابلة للتجاوز تضبط isActive إلى true ثم تستدعي startPeriodicCleanup لإطلاق حلقة التنظيف. تمثّل نقطة تشغيل المتعقّب."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshConnectionTracker.kt",
+"name": "دالة الإيقاف (stop)",
+"lines": "58-61",
+"summary": "دالة قابلة للتجاوز تضبط isActive إلى false (مما يوقف حلقة التنظيف) ثم تفرّغ خريطة الاتصالات المعلّقة بـ clear. تمثّل نقطة إيقاف المتعقّب وتنظيف حالته."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshConnectionTracker.kt",
+"name": "دالة فحص السماح بالمحاولة (isConnectionAttemptAllowed)",
+"lines": "66-74",
+"summary": "تأخذ معرّفاً وتعيد هل يُسمح بمحاولة اتصال له. تجلب المحاولة الموجودة من pendingConnections؛ فإن وُجدت سمحت إذا كانت منتهية الصلاحية (isExpired) أو يجب إعادة محاولتها (shouldRetry)، وإن لم توجد محاولة أصلاً سمحت بـ true. دالة فحص للقراءة فقط لا تعدّل الحالة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshConnectionTracker.kt",
+"name": "دالة تسجيل محاولة معلّقة (addPendingConnection)",
+"lines": "80-97",
+"summary": "تسجّل محاولة اتصال جديدة داخل كتلة متزامنة على pendingConnections. ترفض وتعيد false إذا وُجدت محاولة حالية غير منتهية ولا يجب إعادة محاولتها (السطر 85). وإلا تحسب عدّاد المحاولات: تعيده إلى 1 إن انتهت الصلاحية، وإلا تزيده بواحد (السطر 92)، ثم تخزّن محاولة اتصال جديدة وتسجّل في السجلّ وتعيد true. تنتج مدخلات تستهلكها isConnectionAttemptAllowed والتنظيف الدوري."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshConnectionTracker.kt",
+"name": "دالة إزالة محاولة معلّقة (removePendingConnection)",
+"lines": "102-104",
+"summary": "تحذف مدخل المحاولة المعلّقة ذا المعرّف المعطى من الخريطة، وتُستدعى عند نجاح الاتصال أو عند خطأ قاتل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshConnectionTracker.kt",
+"name": "الدوال المجرّدة: isConnected وdisconnect وgetConnectionCount",
+"lines": "109-119",
+"summary": "ثلاث دوال مجرّدة على الأصناف الفرعية تنفيذها: isConnected تحدّد معنى «متّصل» لمعرّف، وdisconnect تنفّذ منطق قطع الاتصال، وgetConnectionCount تُبلّغ عن عدد الاتصالات النشطة. تمثّل عقد الربط بين القاعدة المجرّدة والنقل المحدّد (BLE/Wi-Fi)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshConnectionTracker.kt",
+"name": "دالة حلقة التنظيف الدوري (startPeriodicCleanup)",
+"lines": "121-142",
+"summary": "دالة خاصّة تطلق كوروتيناً على scope يدور ضمن حلقة while ما دام isActive صحيحاً. في كل دورة ينتظر فترة التنظيف (delay)، ثم يكسر الحلقة إن توقّف النشاط، ويُرشّح المحاولات المنتهية الصلاحية (isExpired) ويزيلها من pendingConnections، ويسجّل عددها. يلتقط استثناء الإلغاء بالكسر، وأي استثناء آخر بتسجيل تحذير. تستدعيها start، وتُستهلك مخرجاتها (تنظيف الخريطة) ضمن الحالة المشتركة."
+}
+],
+"app/src/main/java/com/bitchat/android/mesh/MeshCore.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshCore.kt",
+"name": "Hooks (data class)",
+"lines": "42-50",
+"summary": "صنف بيانات يجمع دوال خطّاف اختيارية (كلّها تقبل null) تسمح للمستخدِم الخارجي بالتدخّل في أحداث النواة: استقبال رسالة، تحديث ربط معرّف النِدّ، معالجة الإعلان، اعتراض إيصال القراءة وإرساله، مزوِّد الاسم المستعار للإعلان، ومزوِّد حمولة المغادرة. تستهلكها دوال الإرسال والمعالجة لاحقًا."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshCore.kt",
+"name": "تعريف الصنف وخصائصه والباني",
+"lines": "31-67",
+"summary": "يعلن الصنف MeshCore ومعامِلات بانيه (السياق، النطاق، الناقل، خدمة التشفير، المعرّف، أقصى مدّة بقاء، مدير إشاعة مشترَك، مزوّد إعدادات، خطّافات). ينشئ المدراء الفرعيين (الأنداد، الشظايا، الأمان، التخزين والتوجيه، معالِج الرسائل، مُعالِج الحُزَم) ومجموعة الأنداد المباشرين، ويهيّئ مدير الإشاعة (مشترَكًا أو مملوكًا)، والمفوَّض، ومهمّة الإعلان، وراية الفعالية."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshCore.kt",
+"name": "init",
+"lines": "69-90",
+"summary": "كتلة التهيئة: تربط مُعالِج الحُزَم بمعالِج الرسائل، وتعرّف كيف يُعرف النِدّ المباشر عبر مجموعة directPeers، وتستدعي setupDelegates، وإذا كانت النواة تملك مدير الإشاعة تُسنِد له مفوَّضًا يعرف كيف يبثّ حُزمة (dispatchGlobal) أو يرسلها لنِدّ (transport + جسر النقل) أو يوقّعها قبل البثّ."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshCore.kt",
+"name": "startCore / stopCore / shutdown",
+"lines": "92-118",
+"summary": "دورة الحياة: startCore تشغّل الإعلان الدوري ومدير الإشاعة إن كانت تملكه؛ stopCore تلغي مهمّة الإعلان وتوقف الإشاعة؛ shutdown يوقف كلّ المدراء الفرعيين. كلّها تحرس على راية isActive."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshCore.kt",
+"name": "processIncoming / sendFromBridge / dispatchGlobal",
+"lines": "120-131",
+"summary": "مسارات التدفّق الأساسية: processIncoming يمرّر الوارد إلى مُعالِج الحُزَم ملفوفًا في RoutedPacket؛ sendFromBridge يبثّ عبر الناقل؛ dispatchGlobal (نقطة الإرسال المركزية الخاصّة) يبثّ عبر الناقل المحلّي وعبر خدمة جسر النقل معًا. تستدعيه أغلب دوال الإرسال والمفوَّضين."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshCore.kt",
+"name": "startPeriodicBroadcastAnnounce",
+"lines": "133-143",
+"summary": "يطلق كوروتين في النطاق يكرّر كلّ ثلاثين ثانية استدعاء sendBroadcastAnnounce ما دامت النواة فعّالة، مع التقاط الاستثناءات وتجاهلها لئلّا تتوقّف الحلقة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshCore.kt",
+"name": "setupDelegates",
+"lines": "145-412",
+"summary": "أكبر دالة في الملفّ: تُسنِد كائنات مجهولة مفوَّضة لكلّ مدير فرعي. مفوَّض مدير الأنداد ينشر القائمة لمخزن الحالة وللمفوَّض الخارجي وينظّف عند الإزالة. مفوَّض مدير الأمان يرسل الإعلان والرسائل المخزَّنة بعد اكتمال تبادل المفاتيح ويرسل ردّ المصافحة ويجلب معلومات النِدّ. مفوَّض مدير التخزين والتوجيه يقرّر التفضيل والاتصال ويرسل الحُزَم. مفوَّض معالِج الرسائل يربط بين معالجة الرسائل وإدارة الأنداد والتشفير والمفوَّض الخارجي (إضافة/تحديث الأنداد، تحديث الربط، التحقّق من التوقيع، التشفير وفكّه، أحداث الاستقبال والإيصالات والتحدّيات). مفوَّض مُعالِج الحُزَم يتحقّق من أمن الحزمة ويعالج المصافحة والمشفَّر والإعلان والرسالة والمغادرة والشظايا وطلب المزامنة ويغذّي مدير الإشاعة بالحُزَم العامّة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshCore.kt",
+"name": "sendMessage",
+"lines": "414-431",
+"summary": "يبني حُزمة رسالة عامّة بالبثّ (نوع MESSAGE) بمحتوى نصّي مرمَّز UTF-8، يوقّعها قبل البثّ، يوزّعها عالميًّا، ويُعلِم مدير الإشاعة بأنّها رُئيت كحزمة عامّة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshCore.kt",
+"name": "sendFileBroadcast",
+"lines": "433-455",
+"summary": "يرمّز حزمة الملفّ ويبني حُزمة نقل ملفّ بالبثّ (إصدار 2)، يوقّعها، يحسب معرّف نقل من بصمة SHA-256، يوزّعها عالميًّا، ويُعلِم مدير الإشاعة. يلتقط الأخطاء ويسجّلها."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshCore.kt",
+"name": "sendFilePrivate",
+"lines": "457-484",
+"summary": "إرسال ملفّ خاصّ مشفَّر: إن لم توجد جلسة نويز يبدأ المصافحة ويخرج، وإلّا يرمّز الملفّ في حمولة نويز من نوع نقل ملفّ، يشفّرها للمستلِم، يبني حُزمة NOISE_ENCRYPTED (يختار الإصدار حسب الحجم)، يوقّعها ويوزّعها بمعرّف نقل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshCore.kt",
+"name": "cancelFileTransfer",
+"lines": "486-488",
+"summary": "يفوّض إلغاء نقل ملفّ بمعرّفه إلى الناقل ويعيد نتيجته المنطقية."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshCore.kt",
+"name": "sendPrivateMessage",
+"lines": "490-523",
+"summary": "إرسال رسالة خاصّة: يولّد معرّف رسالة إن لم يُمرَّر، وإن وُجدت جلسة قائمة يبني حُزمة رسالة خاصّة في حمولة نويز ويشفّرها للمستلِم ويبني حُزمة NOISE_ENCRYPTED ويوقّعها ويوزّعها؛ وإلّا يبدأ مصافحة نويز."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshCore.kt",
+"name": "sendReadReceipt",
+"lines": "525-550",
+"summary": "يرسل إيصال قراءة مشفَّرًا: يحترم معترِض الخطّاف (يخرج إن منع)، يبني حمولة نويز من نوع إيصال قراءة تحمل معرّف الرسالة، يشفّرها، يبني حُزمة NOISE_ENCRYPTED ويوقّعها ويوزّعها، ثمّ يستدعي خطّاف ما بعد الإرسال."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshCore.kt",
+"name": "sendVerifyChallenge / sendVerifyResponse",
+"lines": "552-567",
+"summary": "دالّتان تبنيان حمولة نويز للتحقّق (تحدّي أو ردّ) باستعمال خدمة التحقّق ومفتاح نويز ورقم عشوائي، ثمّ تفوّضان الإرسال المشفَّر إلى sendNoisePayloadToPeer."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshCore.kt",
+"name": "sendNoisePayloadToPeer",
+"lines": "569-588",
+"summary": "دالّة مساعِدة خاصّة تشفّر أيّ حمولة نويز للمستلِم، تبني حُزمة NOISE_ENCRYPTED وتوقّعها وتوزّعها عالميًّا. تستعملها دوال التحقّق وغيرها."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshCore.kt",
+"name": "sendBroadcastAnnounce",
+"lines": "590-615",
+"summary": "يبثّ إعلان هويّة دوريًّا: يحدّد الاسم المستعار (من الخطّاف ثمّ المفوَّض ثمّ المعرّف)، يجلب المفتاحين الثابت والتوقيعي (يخرج مع تسجيل خطأ إن غابا)، يبني إعلان الهويّة وحمولته عبر buildAnnouncementPayload، يبني حُزمة ANNOUNCE ويوقّعها ويوزّعها ويُعلِم مدير الإشاعة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshCore.kt",
+"name": "sendAnnouncementToPeer",
+"lines": "617-636",
+"summary": "يرسل إعلان هويّة موجَّهًا لنِدّ معيّن مرّة واحدة (يخرج إن سبق الإعلان له)، يبني الحمولة والحُزمة كما في إعلان البثّ، يوقّعها ويوزّعها ويسم النِدّ بأنّه أُعلِن له ويُعلِم مدير الإشاعة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshCore.kt",
+"name": "buildAnnouncementPayload",
+"lines": "638-649",
+"summary": "يبني حمولة الإعلان بصيغة TLV: يرمّز الإعلان، ويُلحِق به جيران الإشاعة المباشرين إن وُجدوا، ويحدّث خدمة رسم الشبكة من الإعلان. يستعملها sendBroadcastAnnounce وsendAnnouncementToPeer."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshCore.kt",
+"name": "getDirectPeerIDsForGossip",
+"lines": "651-667",
+"summary": "يجمع معرّفات الأنداد المباشرين (المتحقَّق منهم بالاتصال المباشر مع مجموعة directPeers)، ينشر مجموعتهم لمخزن الحالة، يحسب اتحادًا عبر النواقل، ويعيد حتّى عشرة معرّفات مميَّزة. عند الخطأ يعيد directPeers مقتطعة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshCore.kt",
+"name": "sendLeaveAnnouncement",
+"lines": "669-679",
+"summary": "يبني حُزمة مغادرة (نوع LEAVE) بحمولة من خطّاف المغادرة أو فارغة، يوقّعها ويوزّعها عالميًّا لإعلام الشبكة بمغادرة النِدّ."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshCore.kt",
+"name": "واجهات استعلام الأنداد",
+"lines": "681-714",
+"summary": "مجموعة دوال عامّة قصيرة تفوّض إلى مدير الأنداد: أسماء الأنداد المستعارة، قوّة الإشارة RSSI، اسم نِدّ، إضافة/تحديث/إزالة نِدّ، ضبط الاتصال المباشر (يحدّث directPeers ويحدّث القائمة)، تحديث RSSI، ومعلومات التصحيح والبصمات."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshCore.kt",
+"name": "واجهات الجلسات والتشفير والهويّة",
+"lines": "716-723",
+"summary": "دوال عامّة تفوّض إلى خدمة التشفير: هل توجد جلسة قائمة، وحالة جلسة نويز لنِدّ."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshCore.kt",
+"name": "initiateNoiseHandshake",
+"lines": "724-743",
+"summary": "يبدأ مصافحة نويز مع نِدّ: يجلب بيانات المصافحة من خدمة التشفير، يبني حُزمة NOISE_HANDSHAKE موجَّهة للنِدّ، يوقّعها ويوزّعها. تستدعيه دوال الإرسال الخاصّة ومفوَّض معالِج الرسائل عند غياب الجلسة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshCore.kt",
+"name": "واجهات الهويّة والمفاتيح والأنداد المتفرّقة",
+"lines": "745-773",
+"summary": "دوال عامّة قصيرة تفوّض للمدراء والخدمات: بصمة النِدّ، معلومات النِدّ، تحديث معلومات النِدّ، بصمة الهويّة، المفتاح الثابت العامّ، إظهار أيقونة التشفير، قائمة المشفَّرين (فارغة)، عدد الأنداد النشِطين، تحديث القائمة، وعناوين الأجهزة للأنداد."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshCore.kt",
+"name": "getDebugStatus",
+"lines": "775-795",
+"summary": "يبني نصّ حالة تصحيح شامل عبر buildString: عنوان، معرّف النِدّ، أسطر إضافية، معلومات الناقل، ثمّ معلومات تصحيح كلّ مدير فرعي (الأنداد، الشظايا، الأمان، التخزين والتوجيه، معالِج الرسائل، مُعالِج الحُزَم)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshCore.kt",
+"name": "clearAllInternalData / clearAllEncryptionData",
+"lines": "797-807",
+"summary": "دالّتا تنظيف: الأولى تمسح الشظايا والذاكرة المؤقتة وبيانات الأمان والأنداد والبصمات؛ الثانية تمسح الهويّة الدائمة في خدمة التشفير."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshCore.kt",
+"name": "signPacketBeforeBroadcast",
+"lines": "809-842",
+"summary": "دالّة محورية خاصّة تُستدعى قبل كلّ بثّ تقريبًا: إن كان المستلِم محدَّدًا (غير بثّ) تحسب أقصر مسار عبر مخطّط المسار وتضع الوسطاء في الحزمة (إصدار 2) أو تمسح المسار، ثمّ تحوّل الحزمة لبيانات ثنائية وتوقّعها بخدمة التشفير وتعيد نسخة موقَّعة. كلّ الأخطاء تُلتقط وتُعيد الحزمة الأصلية."
+}
+],
+"app/src/main/java/com/bitchat/android/mesh/MeshDelegate.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshDelegate.kt",
+"name": "ترويسة الملف والاستيراد (package + import)",
+"lines": "1-4",
+"summary": "يُعلِن أنّ الملف ينتمي للحزمة com.bitchat.android.mesh، ويستورد الصنف رسالة بِت‌شات (BitchatMessage) من حزمة com.bitchat.android.model ليُستعمل لاحقاً في توقيع الدوال."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshDelegate.kt",
+"name": "توثيق وتعريف الواجهة (KDoc + interface MeshDelegate)",
+"lines": "5-8",
+"summary": "تعليق توثيقي يصف الواجهة بأنها واجهة مفوِّض شبكة متشابكة مشتركة لردود نداء مستقلة عن وسيلة النقل، ثم تعريف الواجهة MeshDelegate وفتح نطاقها. هذه الواجهة عقدٌ يُطبِّقه مَن يريد تلقّي أحداث الشبكة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshDelegate.kt",
+"name": "ردود نداء استقبال الرسائل وقائمة النظائر (didReceiveMessage / didUpdatePeerList)",
+"lines": "9-10",
+"summary": "دالتان مجرّدتان بلا جسم: didReceiveMessage تُخطِر المُطبِّق بوصول رسالة (BitchatMessage)، وdidUpdatePeerList تُخطِره بتحديث قائمة النظائر المتصلين (List<String>)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshDelegate.kt",
+"name": "ردود نداء أحداث القناة والإقرارات (didReceiveChannelLeave / didReceiveDeliveryAck / didReceiveReadReceipt)",
+"lines": "11-13",
+"summary": "ثلاث دوال مجرّدة: didReceiveChannelLeave تُخطِر بمغادرة نظير لقناة، وdidReceiveDeliveryAck تُخطِر بوصول إقرار تسليم لرسالة، وdidReceiveReadReceipt تُخطِر بوصول إيصال قراءة؛ وكلها تربط معرّف الرسالة/القناة بمعرّف النظير المعنيّ."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshDelegate.kt",
+"name": "ردود نداء التحقّق الافتراضية (didReceiveVerifyChallenge / didReceiveVerifyResponse)",
+"lines": "14-15",
+"summary": "دالتان لهما جسمٌ فارغ {} (تطبيق افتراضي اختياري): didReceiveVerifyChallenge عند استلام تحدِّي تحقُّق وdidReceiveVerifyResponse عند استلام ردّ التحقُّق، وكلٌّ منهما يأخذ معرّف النظير وحمولة بايتات (payload) وطابعاً زمنياً بالملّي ثانية (timestampMs)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshDelegate.kt",
+"name": "دوال الخدمة المُساعِدة وإغلاق الواجهة (decryptChannelMessage / getNickname / isFavorite)",
+"lines": "16-19",
+"summary": "ثلاث دوال يطلب فيها المفوِّض خدمة من المُطبِّق: decryptChannelMessage تفكّ تشفير محتوى قناة وتُعيد نصاً قابلاً للفراغ (String?)، وgetNickname تُعيد الاسم المستعار، وisFavorite تُعيد هل النظير مفضَّل (Boolean)، ثم يُغلَق نطاق الواجهة."
+}
+],
+"app/src/main/java/com/bitchat/android/mesh/MeshPacketUtils.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshPacketUtils.kt",
+"name": "hexStringToByteArray",
+"lines": "10-25",
+"summary": "دالة تحوّل معرّف النظير (peer ID) المكتوب كنص ست عشري (hexString) إلى مصفوفة من ٨ بايتات، بما يطابق سلوك iOS. تبدأ بمصفوفة نتيجة (result) طولها ٨ مملوءة بالصفر (س11)، ثم تكرّر بحلقة طالما (س15) ما دام في النص حرفان فأكثر والفهرس (index) أقل من ٨: تقتطع أول حرفين (hexByte، س16)، وتحوّلهما إلى عدد بالأساس ١٦ ثم إلى بايت (byte، س17)، وإن نجح التحويل تضعه في النتيجة عند الفهرس (س19). بعدها تحذف أول حرفين من النص وتزيد الفهرس (س21-22)، وتعيد المصفوفة في النهاية (س24). مثال بسيط: مثل تقطيع كلمة طويلة إلى أزواج حروف وتحويل كل زوج إلى رقم."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshPacketUtils.kt",
+"name": "sha256Hex",
+"lines": "30-36",
+"summary": "دالة تأخذ بايتات (bytes) وتنتج لها بصمة (hash) ثابتة بصيغة نص ست عشري لأجل تتبع النقل (transfer tracking). تنشئ هاضم رسالة (md) بخوارزمية SHA-256 (س31)، تُغذّيه بالبايتات (س32)، ثم تحسب البصمة وتحوّل كل بايت إلى خانتين ست عشريتين وتدمجها في نص واحد (س33). إن حدث أي خطأ، تلتقط الاستثناء (س34) وتعيد حجم البايتات كنص بالأساس ١٦ كقيمة بديلة (س35). مثال بسيط: مثل بصمة الإصبع، نفس المحتوى يعطي دائماً نفس المعرّف."
+}
+],
+"app/src/main/java/com/bitchat/android/mesh/MeshService.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshService.kt",
+"name": "الحزمة والاستيراد وتعريف الواجهة (package, import, interface MeshService)",
+"lines": "1-8",
+"summary": "يُعلن انتماء الملف للحزمة `com.bitchat.android.mesh`، ويستورد الصنف `BitchatFilePacket`، ثم يفتح واجهة `MeshService` الموصوفة في تعليقها بأنها واجهة برمجية لخدمة الشبكة المتشابكة غير معتمدة على وسيلة النقل، مخصّصة لطبقتَي الواجهة والتوجيه."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshService.kt",
+"name": "الخصائص: هوية الندّ والمُفوَّض (myPeerID, delegate)",
+"lines": "9-10",
+"summary": "تُعرّف خاصيتين للواجهة: `myPeerID` نصّ للقراءة فقط يحمل معرّف الندّ الخاص، و`delegate` خاصية قابلة للتغيير من نوع `MeshDelegate` تقبل الفراغ، وهي قناة ردّ النداء التي ترفع الخدمة عبرها الأحداث إلى الطبقة العليا."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshService.kt",
+"name": "دورة حياة الخدمة (startServices, stopServices)",
+"lines": "12-13",
+"summary": "دالّتان لإدارة دورة حياة الخدمة: `startServices` لبدء الخدمات و`stopServices` لإيقافها، بلا وُسطاء ولا قيمة مُعادة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshService.kt",
+"name": "إرسال الرسائل والإيصالات والإشعارات (sendMessage … sendFavoriteNotification)",
+"lines": "15-19",
+"summary": "مجموعة دوالّ إرسال: `sendMessage` لرسالة عامّة مع إشارات وقناة اختيارية، `sendPrivateMessage` لرسالة خاصة لندّ مستقبِل، `sendReadReceipt` لإيصال قراءة، و`sendDeliveryAck` (إقرار تسليم) و`sendFavoriteNotification` (إشعار تفضيل) بجسمين افتراضيين فارغين أي اختياريتي التنفيذ."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshService.kt",
+"name": "تحدّي وردّ التحقّق (sendVerifyChallenge, sendVerifyResponse)",
+"lines": "20-21",
+"summary": "دالّتان للتحقّق من الهوية تأخذان كلتاهما `peerID` و`noiseKeyHex` (مفتاح Noise بالنظام الستّ عشري) و`nonceA` (رقم عشوائي مؤقّت): `sendVerifyChallenge` لإرسال التحدّي و`sendVerifyResponse` للردّ عليه."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshService.kt",
+"name": "نقل الملفات (sendFileBroadcast, sendFilePrivate, cancelFileTransfer)",
+"lines": "22-24",
+"summary": "دوالّ نقل الملفات التي تتعامل مع `BitchatFilePacket`: `sendFileBroadcast` لبثّ ملف للجميع، `sendFilePrivate` لإرساله لندّ بعينه، و`cancelFileTransfer` لإلغاء نقل عبر `transferId` وتُعيد قيمة منطقية تدلّ على النجاح."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshService.kt",
+"name": "إعلانات الحضور (sendBroadcastAnnounce, sendAnnouncementToPeer)",
+"lines": "26-27",
+"summary": "دالّتان للإعلان عن الحضور في الشبكة: `sendBroadcastAnnounce` لبثّ إعلان لجميع الأنداد، و`sendAnnouncementToPeer` لإرسال إعلان موجّه إلى ندّ محدّد عبر `peerID`."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshService.kt",
+"name": "استعلامات حالة الأنداد (getPeerNicknames, getPeerRSSI, getActivePeerCount)",
+"lines": "29-31",
+"summary": "دوالّ قراءة لحالة الأنداد تغذّي الواجهة بالبيانات: `getPeerNicknames` تُعيد خريطة معرّف الندّ إلى اسمه المستعار، `getPeerRSSI` تُعيد خريطة معرّف الندّ إلى قوّة إشارته (RSSI)، و`getActivePeerCount` تُعيد عدد الأنداد النشِطين."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshService.kt",
+"name": "إدارة جلسات Noise (hasEstablishedSession, getSessionState, initiateNoiseHandshake)",
+"lines": "32-34",
+"summary": "دوالّ متعلّقة بجلسات بروتوكول Noise لندّ مُعطى: `hasEstablishedSession` تستعلم هل توجد جلسة مُنشأة، `getSessionState` تُعيد حالة الجلسة من نوع `NoiseSessionState`، و`initiateNoiseHandshake` تبدأ مصافحة Noise."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshService.kt",
+"name": "بصمات الأنداد ومعلوماتهم (getPeerFingerprint, getPeerInfo, updatePeerInfo)",
+"lines": "35-43",
+"summary": "دوالّ لهوية الأنداد ومعلوماتهم: `getPeerFingerprint` تُعيد بصمة الندّ نصّاً يقبل الفراغ، `getPeerInfo` تُعيد كائن `PeerInfo` يقبل الفراغ، و`updatePeerInfo` تحدّث بيانات الندّ (الاسم المستعار، المفتاح العامّ لـ Noise، المفتاح العامّ للتوقيع، وحالة التحقّق) وتُعيد قيمة منطقية تدلّ على نجاح التحديث."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshService.kt",
+"name": "هوية وتشفير الجهاز المحلّي والأنداد (getIdentityFingerprint … getEncryptedPeers)",
+"lines": "44-47",
+"summary": "دوالّ متعلّقة بالهوية والتشفير: `getIdentityFingerprint` تُعيد بصمة هوية الجهاز نصّاً، `getStaticNoisePublicKey` تُعيد مفتاح Noise العامّ الثابت كمصفوفة بايتات تقبل الفراغ، `shouldShowEncryptionIcon` تحدّد إن كان يُعرَض رمز التشفير لندّ، و`getEncryptedPeers` تُعيد قائمة الأنداد المُشفَّرين."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshService.kt",
+"name": "ربط عناوين الأجهزة بالأنداد والتنقيح (getDeviceAddressForPeer … getDebugStatus)",
+"lines": "49-52",
+"summary": "دوالّ ربط طبقة النقل بالأنداد وأدوات التشخيص: `getDeviceAddressForPeer` تُعيد عنوان الجهاز لندّ، `getDeviceAddressToPeerMapping` تُعيد خريطة العناوين إلى الأنداد، `printDeviceAddressesForPeers` و`getDebugStatus` تُعيدان نصوصاً تشخيصية لحالة التنقيح."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshService.kt",
+"name": "مسح البيانات (clearAllInternalData, clearAllEncryptionData)",
+"lines": "54-56",
+"summary": "دالّتان لإعادة الضبط ثم إغلاق نطاق الواجهة: `clearAllInternalData` لمسح كل البيانات الداخلية، و`clearAllEncryptionData` لمسح كل بيانات التشفير، بلا وُسطاء ولا قيمة مُعادة."
+}
+],
+"app/src/main/java/com/bitchat/android/mesh/MeshTransport.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshTransport.kt",
+"name": "رأس الملف والاستيرادات (package + imports)",
+"lines": "1-5",
+"summary": "يعلن انتماء الملف إلى الحزمة `com.bitchat.android.mesh`، ثم يستورد صنفين يُستعملان في توقيعات الدوال: `RoutedPacket` (الرزمة الموجَّهة) من حزمة `model`، و`BitchatPacket` (رزمة بِت‑شات) من حزمة `protocol`."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshTransport.kt",
+"name": "واجهة MeshTransport: التجريد والمعرّف",
+"lines": "6-10",
+"summary": "تعليق توثيقي يوضّح أن هذه الواجهة هي تجريد للنقل يستعمله `MeshCore` لإرسال الرزم عبر وسيط محدّد. ثم يُفتح تعريف الواجهة `MeshTransport`، وتُعرَّف خاصيّة القراءة `id` من النوع `String` التي تميّز كل ناقل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshTransport.kt",
+"name": "دوال الإرسال: broadcastPacket و sendPacketToPeer",
+"lines": "12-14",
+"summary": "دالّتان أساسيّتان للإرسال: `broadcastPacket` تبثّ رزمة موجَّهة (`RoutedPacket`) إلى الجميع دون قيمة مُعادة، و`sendPacketToPeer` ترسل رزمة (`BitchatPacket`) إلى نظير محدّد عبر `peerID` وتُعيد `Boolean` يدلّ على نجاح الإرسال."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MeshTransport.kt",
+"name": "دوال اختيارية بقيم افتراضية: الإلغاء والعنونة والتنقيح",
+"lines": "16-23",
+"summary": "أربع دوال لها أجسام افتراضية فلا يُلزَم المنفّذ بها: `cancelTransfer` تلغي نقلاً عبر `transferId` وتُعيد `false` افتراضياً؛ `getDeviceAddressForPeer` تجلب عنوان جهاز نظير وتُعيد `null` افتراضياً؛ `getDeviceAddressToPeerMapping` تُعيد خريطة عناوين الأجهزة إلى النظراء وافتراضها خريطة فارغة؛ `getTransportDebugInfo` تُعيد نصّ معلومات تنقيح وافتراضه نصّ فارغ. ثم يُغلَق نطاق الواجهة."
+}
+],
+"app/src/main/java/com/bitchat/android/mesh/MessageHandler.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MessageHandler.kt",
+"name": "تعريف الصنف وحقوله (MessageHandler header)",
+"lines": "20-34",
+"summary": "بانِي الصنف «معالِج الرسائل» (MessageHandler) يأخذ معرّف النظير الخاص (myPeerID) وسياق التطبيق (appContext). يحوي كائناً مرافقاً فيه وسم التسجيل (TAG) وثابت تسامح انحراف الساعة للإعلان (ANNOUNCE_CLOCK_SKEW_TOLERANCE_MS = عشر دقائق). ويُعرّف حقل المُفوَّض (delegate) الذي يوجَّه إليه كل ردّ نداء، وحقل معالِج الحِزَم (packetProcessor)، ونطاق الكوروتينات (handlerScope) على موزّع الإدخال/الإخراج مع مهمّة مشرفة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MessageHandler.kt",
+"name": "handleNoiseEncrypted — التعامل مع الرسالة المُعمّاة بـ Noise",
+"lines": "40-175",
+"summary": "دالّة مُعلّقة تتلقى حزمة موجَّهة (RoutedPacket). تتخطّى رسائلنا الخاصّة، وتتأكّد أن المستلِم هو أنا، ثم تفكّ التعمية عبر المُفوَّض (decryptFromPeer) وتحلّل حمولة Noise (NoisePayload.decode). حسب نوع الحمولة توزّع المعالجة بـ when: رسالة خاصّة (PRIVATE_MESSAGE) فتبني BitchatMessage وتُخطر المُفوَّض ثم تُرسل إقرار التسليم؛ نقل ملفّ (FILE_TRANSFER) فتحفظ الملفّ عبر FileUtils وتُخطر؛ أو إقرار تسليم (DELIVERED) أو إيصال قراءة (READ_RECEIPT) أو تحدّي/ردّ تحقّق (VERIFY_CHALLENGE/VERIFY_RESPONSE) فتنادي ردّ النداء المقابل في المُفوَّض. كما تكشف إشعارات التفضيل المضمَّنة وتُحوّلها إلى handleFavoriteNotificationFromMesh."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MessageHandler.kt",
+"name": "sendDeliveryAck — إرسال إقرار التسليم",
+"lines": "180-213",
+"summary": "دالّة خاصّة مُعلّقة تبني حمولة Noise من نوع DELIVERED تحوي معرّف الرسالة، تُعمّيها عبر المُفوَّض (encryptForPeer)، ثم تغلّفها في حزمة BitchatPacket من نوع NOISE_ENCRYPTED وترسلها عبر delegate.sendPacket. تُستهلَك من handleNoiseEncrypted بعد استلام رسالة خاصّة أو ملفّ."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MessageHandler.kt",
+"name": "handleAnnounce — التعامل مع إعلان الهويّة",
+"lines": "218-303",
+"summary": "دالّة مُعلّقة تُعيد قيمة منطقية (هل هو أول إعلان). ترفض الإعلان إن كان انحراف ساعة الجهاز مفرطاً، ثم تفكّ ترميز إعلان الهويّة بصيغة TLV (IdentityAnnouncement.decode)، وتتحقّق من توقيع الحزمة بمفتاح التوقيع العام المُعلَن (verifyEd25519Signature). إن كان للقرين القائم مفتاح Noise مختلف تُبطل التحقّق. لا تقبل إلا الإعلان المُتحقَّق منه؛ فتحدّث معلومات القرين (updatePeerInfo) وربط المعرّف (updatePeerIDBinding) وتُحدّث رسم الشبكة من جيران القيل والقال (MeshGraphService)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MessageHandler.kt",
+"name": "handleNoiseHandshake — التعامل مع مصافحة Noise",
+"lines": "309-357",
+"summary": "دالّة مُعلّقة تتخطّى مصافحاتنا الخاصّة وتتأكّد أنها موجَّهة إلينا، ثم تمرّر حمولة المصافحة إلى المُفوَّض (processNoiseHandshakeMessage). إن وُلِّد ردّ تغلّفه في حزمة BitchatPacket من نوع NOISE_HANDSHAKE وترسله عبر sendPacket، ثم تتحقّق إن أُنشئت جلسة Noise (hasNoiseSession)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MessageHandler.kt",
+"name": "handleMessage — التوزيع بين البثّ والرسالة الخاصّة",
+"lines": "362-382",
+"summary": "دالّة مُعلّقة تمثّل نقطة التوزيع للرسائل العامة غير المُعمّاة. تتخطّى رسائلنا، وتحدّث كنية المُرسِل، ثم تقرّر: إن كان المستلِم هو مستلِم البثّ تنادي handleBroadcastMessage، وإن كان معرّف المستلِم هو معرّفي تنادي handlePrivateMessage. إعادة البثّ صارت من مسؤولية PacketRelayManager المركزي."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MessageHandler.kt",
+"name": "handleBroadcastMessage — التعامل مع رسالة البثّ",
+"lines": "387-434",
+"summary": "دالّة خاصّة مُعلّقة تفرض قبول الرسائل العامة فقط من قرين معروف ومُتحقَّق كنيته (isVerifiedNickname)، وإلا تُسقطها. تحاول أولاً فكّ ترميزها كحزمة ملفّ (BitchatFilePacket) فتحفظها وتُخطر المُفوَّض، وإلا فتعالجها كنصّ صِرف وتبني BitchatMessage وتُخطر المُفوَّض."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MessageHandler.kt",
+"name": "handlePrivateMessage — التعامل مع الرسالة الخاصّة (غير المُعمّاة) الموجَّهة إلينا",
+"lines": "439-484",
+"summary": "دالّة خاصّة مُعلّقة تتحقّق من توقيع الحزمة إن وُجد (verifySignature)، ثم تحاول فكّ ترميزها كحزمة ملفّ فتحفظها عبر FileUtils وتُخطر، وإلا فتعالجها كنصّ صِرف. تبني BitchatMessage بعلامة isPrivate=true وتُخطر المُفوَّض عبر onMessageReceived."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MessageHandler.kt",
+"name": "handleLeave — التعامل مع رسالة المغادرة",
+"lines": "491-505",
+"summary": "دالّة مُعلّقة تقرأ محتوى الحزمة كنصّ؛ إن بدأ بـ # تعدّه مغادرة قناة فتنادي onChannelLeave، وإلا تعدّه قطع اتصال قرين فتنادي removePeer. إعادة البثّ من مسؤولية PacketRelayManager."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MessageHandler.kt",
+"name": "getDebugInfo — جلب معلومات التتبُّع",
+"lines": "510-516",
+"summary": "دالّة تبني نصّاً تشخيصياً يبيّن نشاط نطاق المعالِج (handlerScope.isActive) ومعرّف النظير الخاص (myPeerID)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MessageHandler.kt",
+"name": "hexStringToByteArray — تحويل النص السداسي إلى ثماني بايتات",
+"lines": "521-537",
+"summary": "دالّة خاصّة تُحوّل معرّف القرين النصّي السداسي العشري إلى مصفوفة من ثماني بايتات (مماثلة لتنفيذ iOS). تُستهلَك عند بناء الحِزَم لضبط senderID و recipientID في sendDeliveryAck و handleNoiseHandshake."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MessageHandler.kt",
+"name": "shutdown — إيقاف المعالِج",
+"lines": "542-544",
+"summary": "دالّة تُلغي نطاق الكوروتينات (handlerScope.cancel) لإنهاء أي معالجة جارية."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MessageHandler.kt",
+"name": "handleFavoriteNotificationFromMesh — التعامل مع إشعار التفضيل/إلغاء التفضيل",
+"lines": "550-592",
+"summary": "دالّة خاصّة تعالج محتوى رسالة خاصّة بصيغة [FAVORITED]:npub... أو [UNFAVORITED]. تستخرج مفتاح نوستر (npub)، وتجلب مفتاح Noise للقرين، ثم تحدّث حالة التفضيل المتبادل وفهرسة مفتاح نوستر في خدمة تخزين المفضّلات (FavoritesPersistenceService)، وتُصدر رسالة نظام إرشادية عبر onMessageReceived. تُستدعى من handleNoiseEncrypted."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/MessageHandler.kt",
+"name": "MessageHandlerDelegate — واجهة المُفوَّض",
+"lines": "598-637",
+"summary": "واجهة العقد بين معالِج الرسائل وبقية النظام، مقسّمة إلى: إدارة القرين (addOrUpdatePeer، removePeer، getPeerNickname، getPeerInfo، updatePeerInfo...)، وعمليات الرزمة (sendPacket، relayPacket، getBroadcastRecipient)، والعمليات التعمويّة (verifySignature، encryptForPeer، decryptFromPeer، verifyEd25519Signature)، وعمليات بروتوكول Noise (hasNoiseSession، processNoiseHandshakeMessage، updatePeerIDBinding)، وعمليات الرسالة، وردود النداء (onMessageReceived، onChannelLeave، onDeliveryAckReceived، onReadReceiptReceived، onVerifyChallengeReceived، onVerifyResponseReceived). كل دوال المعالجة في الصنف تستهلك هذه الواجهة."
+}
+],
+"app/src/main/java/com/bitchat/android/mesh/PacketProcessor.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PacketProcessor.kt",
+"name": "تعريف الصنف والحقول (PacketProcessor: properties & companion)",
+"lines": "18-63",
+"summary": "رأس الصنف مُعالِج الحزم (PacketProcessor) الذي يأخذ معرّف نظيري (myPeerID). يُعرِّف حقوله الأساسية: مدير التنقيح (debugManager) المُهيَّأ كسولاً، والوسم (TAG) في الكائن المُرافِق، والمُفوَّض إليه (delegate) لردود النداء، ومدير ترحيل الحزم (packetRelayManager)، ونطاق المُعالِج (processorScope) القائم على مُوزِّع الإدخال/الإخراج مع مهمّة مُشرِفة، وخريطتَي المُمثِّلين (peerActors و actors). يحتوي أيضاً الدالة المساعِدة تنسيق النظير للتسجيل (formatPeerForLog) التي تدمج معرّف النظير مع كنيته."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PacketProcessor.kt",
+"name": "getOrCreateActorForPeer",
+"lines": "45-59",
+"summary": "دالة تُنشئ مُمثِّلاً (actor) كوروتينياً بسعة قناة غير محدودة لكل نظير على حِدة. يلتقط المُمثِّل الحزم من قناته (channel) واحدةً تلو الأخرى ويستدعي معالجة الحزمة المُستلَمة (handleReceivedPacket) لكل حزمة، مع تسجيل بداية ونهاية كل معالجة وإنهاء المُمثِّل في كتلة finally. الهدف تسلسُل المعالجة لكل نظير ومنع التسابق في إدارة الجلسة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PacketProcessor.kt",
+"name": "init",
+"lines": "64-67",
+"summary": "كتلة التهيئة تستدعي ضبط مدير الترحيل (setupRelayManager) فور إنشاء الكائن."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PacketProcessor.kt",
+"name": "processPacket",
+"lines": "73-95",
+"summary": "نقطة الدخول الرئيسية لكل الحزم الواردة. تتحقق من وجود معرّف النظير (وإلّا تتجاهل الحزمة)، ثم تجلب أو تُنشئ المُمثِّل المخصّص للنظير من خريطة المُمثِّلين عبر getOrCreateActorForPeer، وتُطلِق كوروتيناً يرسل الحزمة المُوجَّهة (routed) إلى قناة ذلك المُمثِّل ليتمّ تسلسُلها؛ وعند فشل الإرسال ترجع إلى المعالجة المباشرة باستدعاء handleReceivedPacket."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PacketProcessor.kt",
+"name": "setupRelayManager",
+"lines": "100-117",
+"summary": "تضبط مُفوَّض مدير ترحيل الحزم (packetRelayManager) عبر كائن مجهول يُحقِّق واجهة PacketRelayManagerDelegate، فيُمرِّر طلبات حجم الشبكة (getNetworkSize) ومُستلِم البثّ (getBroadcastRecipient) وبثّ الحزمة (broadcastPacket عبر relayPacket) والإرسال إلى النظير (sendToPeer) إلى المُفوَّض إليه الرئيسي (delegate) مع قيم احتياطية عند الفراغ."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PacketProcessor.kt",
+"name": "handleReceivedPacket",
+"lines": "122-177",
+"summary": "المنطق الأساسي للبروتوكول. يتحقق أولاً من أمان الحزمة (validatePacketSecurity) ويتجاهلها عند الفشل، ثم يحوّل نوع الرسالة (MessageType.fromValue) ويُسجِّل الحزمة الواردة في مدير التنقيح. يتفرّع بتعبير when: الأنواع العامّة (ANNOUNCE، MESSAGE، FILE_TRANSFER، LEAVE، FRAGMENT، REQUEST_SYNC) تُوجَّه مباشرةً إلى معالِجاتها؛ أمّا الأنواع الخاصّة (NOISE_HANDSHAKE، NOISE_ENCRYPTED) فتُعالَج فقط إن كانت الحزمة موجَّهة إلينا (isPacketAddressedToMe). أخيراً إن كانت الحزمة صالحة يحدّث آخر ظهور للنظير ويُسلِّم قرار الترحيل إلى مدير ترحيل الحزم (handlePacketRelay)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PacketProcessor.kt",
+"name": "handleNoiseHandshake",
+"lines": "182-186",
+"summary": "تُسجِّل استلام مصافحة Noise من النظير وتُفوِّض معالجتها إلى المُفوَّض إليه (delegate.handleNoiseHandshake)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PacketProcessor.kt",
+"name": "handleNoiseEncrypted",
+"lines": "191-195",
+"summary": "تُسجِّل استلام رسالة نقل مُشفَّرة بـ Noise وتُفوِّض معالجتها إلى المُفوَّض إليه (delegate.handleNoiseEncrypted)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PacketProcessor.kt",
+"name": "handleAnnounce",
+"lines": "200-204",
+"summary": "تُسجِّل استلام رسالة إعلان وتُفوِّض معالجتها إلى المُفوَّض إليه (delegate.handleAnnounce)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PacketProcessor.kt",
+"name": "handleMessage",
+"lines": "209-213",
+"summary": "تُسجِّل استلام رسالة عادية وتُفوِّض معالجتها إلى المُفوَّض إليه (delegate.handleMessage). تُستعمَل أيضاً لنوع نقل الملف (FILE_TRANSFER)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PacketProcessor.kt",
+"name": "handleLeave",
+"lines": "218-222",
+"summary": "تُسجِّل استلام رسالة مغادرة وتُفوِّض معالجتها إلى المُفوَّض إليه (delegate.handleLeave)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PacketProcessor.kt",
+"name": "handleFragment",
+"lines": "227-238",
+"summary": "تُفوِّض شظيّة الرسالة إلى المُفوَّض إليه (delegate.handleFragment) لإعادة تجميعها؛ وإن نتجت حزمة مُعاد تجميعها (reassembledPacket) كاملة، تعيد إدخالها في المعالجة عبر handleReceivedPacket داخل حزمة مُوجَّهة جديدة. ترحيل الشظايا أصبح من مسؤولية مدير ترحيل الحزم المركزي."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PacketProcessor.kt",
+"name": "handleRequestSync",
+"lines": "243-247",
+"summary": "تُسجِّل استلام طلب مزامنة (REQUEST_SYNC، حزمة عامّة بعمر TTL=1) وتُفوِّض معالجته إلى المُفوَّض إليه (delegate.handleRequestSync)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PacketProcessor.kt",
+"name": "getDebugInfo",
+"lines": "261-275",
+"summary": "تبني نصّاً يحوي معلومات تنقيح المُعالِج: هل نطاق المُعالِج نشط، عدد مُمثِّلي النظراء النشطين، معرّف النظير الخاص بي، وقائمة بمفاتيح النظراء النشطين."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PacketProcessor.kt",
+"name": "shutdown",
+"lines": "280-296",
+"summary": "تُغلِق كل مُمثِّلي النظراء بلطف وتُفرِغ خريطتهم، ثم تُوقِف مدير ترحيل الحزم (packetRelayManager.shutdown) وتُلغي نطاق المُعالِج (processorScope.cancel)، مع تسجيل خطوات الإيقاف."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PacketProcessor.kt",
+"name": "PacketProcessorDelegate",
+"lines": "302-328",
+"summary": "الواجهة التي يجب أن يُحقِّقها المُفوَّض إليه. تُعرِّف عقد التفاعل: التحقق الأمني (validatePacketSecurity)، إدارة النظراء (updatePeerLastSeen، getPeerNickname)، معلومات الشبكة (getNetworkSize، getBroadcastRecipient)، معالِجات أنواع الرسائل (handleNoiseHandshake، handleNoiseEncrypted، handleAnnounce، handleMessage، handleLeave، handleFragment، handleRequestSync)، والاتصال (sendAnnouncementToPeer، sendCachedMessages، relayPacket، sendToPeer)."
+}
+],
+"app/src/main/java/com/bitchat/android/mesh/PacketRelayManager.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PacketRelayManager.kt",
+"name": "تعريف الصنف وخصائصه (PacketRelayManager: properties)",
+"lines": "17-34",
+"summary": "يعلن الصنف PacketRelayManager (مدير ترحيل الحزم) بمُنشئ يأخذ myPeerID. يهيّئ خصائصه: debugManager (مدير التنقيح) بكسل مع التقاط الاستثناء وإعادة null، والثابت TAG للتسجيل، والمفوَّض delegate القابل للعدم، ونطاق الكوروتينات relayScope المبني على Dispatchers.IO مع SupervisorJob."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PacketRelayManager.kt",
+"name": "isRelayEnabled",
+"lines": "24-26",
+"summary": "دالة خاصة تقرأ packetRelayEnabled.value من DebugSettingsManager لتحديد إن كان الترحيل مفعَّلاً، وتُعيد true افتراضياً عند أي استثناء. تُستعمَل في handlePacketRelay (سطر 101) كشرط أول لقرار الترحيل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PacketRelayManager.kt",
+"name": "handlePacketRelay",
+"lines": "40-107",
+"summary": "الدالة المعلَّقة الرئيسية لقرار الترحيل ونقطة الدخول. تستخرج packet وpeerID من routed، ثم تُسقط الحزمة في أربع حالات: موجَّهة إلينا (isPacketAddressedToMe)، أو من أنفسنا (peerID==myPeerID)، أو انتهت TTL=0، أو وجود قفزات مكرَّرة في route. تُنقص TTL بواحد لتكوّن relayPacket. ثم تجرّب التوجيه المبني على المصدر: إن شملنا route تحسب القفزة التالية وتُرسلها عبر delegate.sendToPeer؛ وعند الفشل تتراجع إلى البث. وإلا تطبّق منطق الترحيل الاحتمالي عبر isRelayEnabled وshouldRelayPacket، وإن قرّرت الترحيل تنادي relayPacket."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PacketRelayManager.kt",
+"name": "isPacketAddressedToMe",
+"lines": "112-129",
+"summary": "دالة داخلية تفحص إن كانت الحزمة موجَّهة إلينا تحديداً. تُعيد false إذا غاب recipientID (بث) أو طابق مستلِم البث من delegate.getBroadcastRecipient، وإلا تقارن recipientID النصي بـ myPeerID. تُستدعى من handlePacketRelay (سطر 47)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PacketRelayManager.kt",
+"name": "shouldRelayPacket",
+"lines": "134-163",
+"summary": "دالة خاصة تقرّر الترحيل الاحتمالي. تُرحِّل دائماً إن كانت TTL>=4 أو حجم الشبكة <=3. وإلا تحسب احتمال ترحيل متكيّفاً (relayProb) بحسب حجم الشبكة من delegate.getNetworkSize عبر when (1.0 حتى 0.4)، ثم تقارنه بعدد عشوائي من Random.nextDouble وتُعيد القرار. تُستدعى من handlePacketRelay (سطر 101)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PacketRelayManager.kt",
+"name": "relayPacket",
+"lines": "168-171",
+"summary": "دالة خاصة تنفّذ البثّ الفعلي للترحيل: تسجّل رسالة تنقيح ثم تنادي delegate.broadcastPacket(routed). تُستدعى من handlePacketRelay (سطر 103) عند قرار الترحيل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PacketRelayManager.kt",
+"name": "getDebugInfo",
+"lines": "176-183",
+"summary": "دالة عامة تبني نصاً تشخيصياً عبر buildString يضمّ حالة relayScope.isActive وقيمة myPeerID وحجم الشبكة من delegate.getNetworkSize."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PacketRelayManager.kt",
+"name": "shutdown",
+"lines": "188-191",
+"summary": "دالة عامة لإيقاف المدير: تسجّل رسالة ثم تلغي نطاق الكوروتينات بـ relayScope.cancel()."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PacketRelayManager.kt",
+"name": "PacketRelayManagerDelegate (interface)",
+"lines": "197-205",
+"summary": "واجهة المفوَّض التي تربط المدير ببقية النظام. تصرّح بدوال معلومات الشبكة: getNetworkSize وgetBroadcastRecipient، وبدوال عمليات الحزمة: broadcastPacket (للبثّ) وsendToPeer (للإرسال الموجَّه إلى قفزة محدَّدة وتُعيد نجاح الاتصال). يستهلكها الصنف عبر خاصية delegate."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PacketRelayManager.kt",
+"name": "hexStringToPeerBytes",
+"lines": "207-217",
+"summary": "دالة مساعدة على مستوى الملف (خارج الصنف) تحوّل سلسلة ست عشرية إلى مصفوفة 8 بايتات، ببناء كل بايت من زوج محارف عبر toIntOrNull(16). تُستعمَل في handlePacketRelay (سطر 76) لتجهيز myIdBytes ومطابقتها بعناصر route."
+}
+],
+"app/src/main/java/com/bitchat/android/mesh/PeerFingerprintManager.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PeerFingerprintManager.kt",
+"name": "تعريف الحزمة والاستيرادات",
+"lines": "1-21",
+"summary": "يعلن انتماء الملف لحزمة com.bitchat.android.mesh، ويستورد Log وMessageDigest وConcurrentHashMap. ثم كتلة توثيق تشرح أن الصنف مفردة مركزية تدير تخزين واسترجاع بصمات النِّد كمصدر واحد للحقيقة، وأن البصمات هي تجزئات SHA-256 للمفاتيح العامة الساكنة ولا تُخزَّن إلا بعد مصافحة Noise ناجحة، مع مبادئ تصميم: آمن للخيوط، ربط ثنائي الاتجاه، دعم تدوير المعرّف، وتسجيل مركزي."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PeerFingerprintManager.kt",
+"name": "الكائن المرافق والمفردة (companion object / getInstance)",
+"lines": "22-38",
+"summary": "يعرّف الصنف ببانٍ خاص لمنع الإنشاء المباشر، ويحوي كائناً مرافقاً فيه الثابت TAG، والمتغير المتطاير INSTANCE، والدالة getInstance التي تطبّق نمط القفل المزدوج (double-checked locking) عبر synchronized لإنشاء نسخة وحيدة وإسنادها إلى INSTANCE وإعادتها."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PeerFingerprintManager.kt",
+"name": "الخريطتان ثنائيتا الاتجاه",
+"lines": "40-42",
+"summary": "يعرّف بنيتي التخزين الأساسيتين: peerIDToFingerprint (من معرّف النِّد إلى البصمة) وfingerprintToPeerID (من البصمة إلى المعرّف الحالي)، وكلتاهما ConcurrentHashMap لضمان الأمان عبر الخيوط، وتُستعملان في كل دوال الملف."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PeerFingerprintManager.kt",
+"name": "storeFingerprintForPeer — تخزين البصمة",
+"lines": "44-69",
+"summary": "الدالة الوحيدة المخوّلة بتخزين البصمات بعد مصافحة Noise. تجلب البصمة الموجودة عبر getFingerprintForPeer، وتحسب البصمة الجديدة عبر calculateFingerprint من publicKey. إن اختلفت البصمة الموجودة عن الجديدة تسجّل تحذيراً وترمي IllegalStateException، وإلا تخزّن الربط في الخريطتين معاً وتسجّل وتعيد البصمة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PeerFingerprintManager.kt",
+"name": "updatePeerIDMapping — تحديث ربط المعرّف عند التدوير",
+"lines": "71-103",
+"summary": "تحدّث ربط معرّف النِّد مع الحفاظ على البصمة الثابتة عند تدوير المعرّف. تتحقق من أن newPeerID وfingerprint ليسا فارغين (وإلا تسجّل تحذيراً وتعود)، تزيل الربط القديم من peerIDToFingerprint إن وُجِد وطابقت بصمته، ثم تضيف الربط الجديد في الخريطتين وتسجّل العملية."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PeerFingerprintManager.kt",
+"name": "getFingerprintForPeer — جلب البصمة بالمعرّف",
+"lines": "105-116",
+"summary": "تعيد البصمة المرتبطة بمعرّف نِّد محدد من خريطة peerIDToFingerprint، وتعيد null إن كان المعرّف فارغاً أو غير موجود. تُستدعى من storeFingerprintForPeer وhasFingerprintForPeer."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PeerFingerprintManager.kt",
+"name": "getPeerIDForFingerprint — جلب المعرّف بالبصمة",
+"lines": "118-127",
+"summary": "البحث العكسي: تعيد معرّف النِّد الحالي المرتبط ببصمة محددة من خريطة fingerprintToPeerID، وتعيد null إن كانت البصمة فارغة أو غير موجودة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PeerFingerprintManager.kt",
+"name": "hasFingerprintForPeer — هل توجد بصمة للنِّد",
+"lines": "129-137",
+"summary": "تعيد true إن كانت توجد بصمة للنِّد المحدد، عبر فحص ما إذا كانت نتيجة getFingerprintForPeer غير null."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PeerFingerprintManager.kt",
+"name": "getAllPeerFingerprints و getAllFingerprintMappings — نسخ الروابط",
+"lines": "139-155",
+"summary": "دالتان تعيدان نسخة غير قابلة للتغيير (toMap) من الخريطتين: الأولى من peerIDToFingerprint والثانية من fingerprintToPeerID، لإتاحة قراءة الروابط دون تعديل البنى الأصلية."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PeerFingerprintManager.kt",
+"name": "removePeer — إزالة بمعرّف النِّد",
+"lines": "157-172",
+"summary": "تُستدعى عند انفصال النِّد. تزيل المعرّف من peerIDToFingerprint وتحصل على بصمته، فإن وُجِدت تزيل البصمة المقابلة من fingerprintToPeerID وتسجّل العملية، محافظةً على تطابق الخريطتين."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PeerFingerprintManager.kt",
+"name": "removeFingerprint — إزالة بالبصمة",
+"lines": "174-187",
+"summary": "نظير removePeer بالاتجاه المعاكس: تزيل البصمة من fingerprintToPeerID وتحصل على معرّفها، فإن وُجِد تزيل المعرّف المقابل من peerIDToFingerprint وتسجّل العملية."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PeerFingerprintManager.kt",
+"name": "clearAllFingerprints — المسح الطارئ",
+"lines": "189-196",
+"summary": "تُستعمل للمسح الطارئ/وضع الذعر. تقرأ عدد العناصر ثم تمسح كلتا الخريطتين peerIDToFingerprint وfingerprintToPeerID بالكامل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PeerFingerprintManager.kt",
+"name": "calculateFingerprint — حساب بصمة SHA-256",
+"lines": "198-210",
+"summary": "دالة خاصة تحسب بصمة SHA-256 من المفتاح العام: تنشئ MessageDigest بخوارزمية SHA-256، تجزّئ publicKey، ثم ترمّز الناتج نصاً ست عشرياً عبر joinToString بتنسيق %02x. هي مصدر كل البصمات، وتُستدعى من storeFingerprintForPeer."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PeerFingerprintManager.kt",
+"name": "getDebugInfo — معلومات التنقيح وفحص الاتساق",
+"lines": "212-245",
+"summary": "تبني نصاً تشخيصياً عبر buildString: ترويسة وعدد الروابط الكلي، ثم تعرض روابط المعرّف إلى البصمة (مقتطعة لـ16 محرفاً) أو رسالة عدم وجود روابط. ثم تتحقق من اتساق الخريطتين بمقارنة كل (peerID, fingerprint) مع المعرّف العكسي من fingerprintToPeerID، وتجمع التناقضات في inconsistentMappings وتعرضها إن وُجِدت."
+}
+],
+"app/src/main/java/com/bitchat/android/mesh/PeerManager.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PeerManager.kt",
+"name": "PeerInfo (بنية بيانات النِّدّ + equals/hashCode)",
+"lines": "12-57",
+"summary": "صنف بيانات (PeerInfo) يحمل كل ما نعرفه عن جار واحد في الشبكة: معرّفه (id)، واسمه المستعار (nickname)، وهل هو متّصل (isConnected)، وهل الاتصال مباشر (isDirectConnection)، ومفتاحَيه العامَّين (noisePublicKey وsigningPublicKey)، وهل اسمه موثّق (isVerifiedNickname)، ووقت آخر ظهور (lastSeen). يُعيد تعريف equals وhashCode يدوياً لأن الحقول تحوي مصفوفات بايتات تُقارَن بمحتواها (contentEquals) لا بمرجعها. متوافق مع بنية iOS نفسها."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PeerManager.kt",
+"name": "حقول الحالة والتهيئة (PeerManager: الحقول + init)",
+"lines": "66-97",
+"summary": "رأس صنف مدير-الأنداد (PeerManager) وما يخزّنه: خريطة الأنداد (peers) وهي مصدر الحقيقة الوحيد لكل جار، وخريطة قوى الإشارة (peerRSSI)، وقائمتا الأنداد-المُعلَنين (announcedPeers) والمُعلَن-إليهم (announcedToPeers)، ومرجع مدير-البصمات المركزي (fingerprintManager)، ومُفوَّض ردود النداء (delegate)، ودالة مُحقونة للتحقّق من الاتصال المباشر (isPeerDirectlyConnected)، ونطاق كوروتين للخلفية (managerScope). كتلة init تشغّل التنظيف الدوري عند الإنشاء عبر startPeriodicCleanup."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PeerManager.kt",
+"name": "updatePeerInfo (المسار الموثّق لإضافة/تحديث جار)",
+"lines": "105-168",
+"summary": "الدالة الرئيسة لإدخال جار موثّق بمفاتيحه. تقارن البيانات الجديدة بالموجودة عبر دالة محلّية تطابق-المفاتيح (keysMatch) لتعرف ما تغيّر (الاسم، المفاتيح، الاتصال، التوثيق)، ثم تكتب مثيل PeerInfo جديداً في خريطة الأنداد، وتقرّر هل تستحق الإشعار (shouldNotify) فتنادي notifyPeerListUpdate. تضيف الجار إلى announcedPeers إن كان جديداً وموثّقاً، وتُرجِع true في تلك الحالة فقط."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PeerManager.kt",
+"name": "getPeerInfo / isPeerVerified / getVerifiedPeers (قراءة الحالة مع حساب الاتصال المباشر)",
+"lines": "173-200",
+"summary": "دوال قراءة. getPeerInfo تجلب معلومات جار وتحدّث حقل الاتصال المباشر ديناميكياً عبر isPeerDirectlyConnected ناتجةً نسخة معدّلة عند الاختلاف. isPeerVerified تخبر هل اسم الجار موثّق. getVerifiedPeers تُرشّح الموثّقين فقط وتطبّق الحساب الديناميكي نفسه على كل واحد."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PeerManager.kt",
+"name": "updatePeerLastSeen / addOrUpdatePeer (المسار القديم غير الموثّق)",
+"lines": "207-267",
+"summary": "updatePeerLastSeen تحدّث وقت آخر ظهور لجار قائم فقط. addOrUpdatePeer مسار توافقي يضيف أو يحدّث جاراً بالاسم فقط (بلا مفاتيح): ينظّف أولاً المعرّفات البائتة التي تحمل الاسم نفسه (لم تُرَ خلال 10 ثوانٍ) ويزيلها بـ removePeer دون إشعار، ثم يكتب الجار، ويتعامل مع الإعلان لأول مرة فيضيفه إلى announcedPeers وينادي notifyPeerListUpdate ويُرجِع true."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PeerManager.kt",
+"name": "removePeer (إزالة جار من كل الخرائط)",
+"lines": "272-286",
+"summary": "تزيل الجار من خريطة الأنداد وقوى الإشارة وقائمتَي الإعلان، وتطلب من مدير-البصمات إزالة ربط بصمته. إن طُلب الإشعار وكان الجار موجوداً فعلاً تنادي onPeerRemoved على المُفوَّض (داخل try/catch) ثم notifyPeerListUpdate. تستدعيها addOrUpdatePeer وcleanupStalePeers."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PeerManager.kt",
+"name": "updatePeerRSSI ودوال الإعلان والاستعلام البسيطة",
+"lines": "291-357",
+"summary": "مجموعة دوال قصيرة: updatePeerRSSI تخزّن قوة إشارة جار؛ hasAnnouncedToPeer وmarkPeerAsAnnouncedTo تقرآن/تكتبان قائمة المُعلَن-إليهم لمنع تكرار الإعلان؛ isPeerActive تخبر هل الجار متّصل؛ getPeerNickname وgetAllPeerNicknames وgetAllPeerRSSI استعلامات عرض؛ getActivePeerIDs تُرجِع معرّفات المتّصلين مرتّبة، وgetActivePeerCount تُرجِع عددهم."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PeerManager.kt",
+"name": "clearAllPeers (مسح شامل)",
+"lines": "362-372",
+"summary": "تمسح كل خرائط وقوائم الحالة (peers، peerRSSI، announcedPeers، announcedToPeers) وتطلب من مدير-البصمات مسح كل البصمات، ثم تنادي notifyPeerListUpdate لإبلاغ الواجهة. تستدعيها shutdown."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PeerManager.kt",
+"name": "getDebugInfo / getDebugInfoWithDeviceAddresses (تقارير التصحيح)",
+"lines": "377-420",
+"summary": "getDebugInfo تبني نصاً يلخّص حالة كل جار (نشط/خامل، مباشر/مُوجَّه، زمن آخر ظهور، قوة الإشارة، وعنوان الجهاز إن مُرِّرت خريطة العناوين) مع حساب الاتصال المباشر ديناميكياً. getDebugInfoWithDeviceAddresses تبني أولاً جدول ربط عنوان-الجهاز بالجار ثم تُلحِق ناتج getDebugInfo."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PeerManager.kt",
+"name": "notifyPeerListUpdate / refreshPeerList (جسر الإشعار للمُفوَّض)",
+"lines": "425-432",
+"summary": "notifyPeerListUpdate (خاصة) تجمع معرّفات الأنداد النشطين عبر getActivePeerIDs وتمرّرها إلى onPeerListUpdated على المُفوَّض؛ هي القناة الوحيدة لإبلاغ الطبقة الأعلى بتغيّر القائمة. refreshPeerList نقطة دخول عامة تنادي notifyPeerListUpdate يدوياً."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PeerManager.kt",
+"name": "startPeriodicCleanup / cleanupStalePeers (التنظيف الدوري في الخلفية)",
+"lines": "437-464",
+"summary": "startPeriodicCleanup تطلق كوروتين على managerScope يكرّر الانتظار بفترة PEER_CLEANUP_INTERVAL_MS ثم ينادي cleanupStalePeers ما دام النطاق نشطاً. cleanupStalePeers تُرشّح الأنداد الذين تجاوز سكوتهم مهلة stalePeerTimeoutMs وتزيلهم بـ removePeer وتسجّل العدد."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PeerManager.kt",
+"name": "دوال البصمات (واجهة تفويض إلى مدير-البصمات)",
+"lines": "475-541",
+"summary": "سبع دوال تفوّض كل عملها مباشرة إلى مدير-البصمات المركزي (fingerprintManager): تخزين بصمة بعد مصافحة Noise (storeFingerprintForPeer)، وتحديث ربط المعرّف عند تدوير المعرّفات (updatePeerIDMapping)، وجلب البصمة بالمعرّف أو المعرّف بالبصمة، والتحقّق من وجود بصمة، وجلب كل الروابط، والمسح الطارئ، وجلب معلومات تصحيح البصمات. مدير-الأنداد هنا مجرّد واجهة تمرير."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PeerManager.kt",
+"name": "shutdown (الإيقاف)",
+"lines": "546-549",
+"summary": "تلغي نطاق الكوروتين (managerScope) فتوقف حلقة التنظيف الدوري، ثم تنادي clearAllPeers لتفريغ كل الحالة. هي نقطة الإغلاق النظيف للمدير."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PeerManager.kt",
+"name": "PeerManagerDelegate (واجهة ردود النداء)",
+"lines": "555-558",
+"summary": "واجهة المُفوَّض التي تربط المدير بالطبقة الأعلى (BluetoothMeshService): onPeerListUpdated تُستدعى عند تغيّر قائمة الأنداد النشطين، وonPeerRemoved تُستدعى عند إزالة جار محدّد."
+}
+],
+"app/src/main/java/com/bitchat/android/mesh/PowerManager.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PowerManager.kt",
+"name": "الإعلان والاستيرادات وثوابت الإعدادات (companion object)",
+"lines": "1-46",
+"summary": "يُعلن الحزمة ويستورد أصناف البلوتوث منخفض الطاقة (إعدادات الإعلان والمسح) وأصناف أندرويد للبثّ والبطارية ودورة الحياة والكوروتينات. ثم يفتح الصنف `PowerManager` ويعرّف داخل كائن المرافقة ثوابت السجل وعتبات البطارية (حرجة/منخفضة/متوسطة) وفترات دورة عمل المسح (تشغيل/إيقاف) لكل وضع وحدود الاتصالات القصوى، وكلها مأخوذة من `AppConstants.Power`."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PowerManager.kt",
+"name": "تعداد أوضاع الطاقة والحالة الداخلية",
+"lines": "48-63",
+"summary": "يعرّف التعداد `PowerMode` بأربع قيم (أداء، متوازن، موفّر، فائق الانخفاض)، ثم حقول الحالة: الوضع الحالي (افتراضياً متوازن)، هل يشحن، مستوى البطارية، هل التطبيق في الخلفية، ونطاق كوروتين `powerScope` على موزّع الإدخال/الإخراج، ومهمة `dutyCycleJob`، والمفوَّض `delegate`. هذه الحقول هي المدخلات التي تقرأها بقية الدوال."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PowerManager.kt",
+"name": "مستقبِل البطارية batteryReceiver",
+"lines": "65-92",
+"summary": "كائن `BroadcastReceiver` مجهول تستقبل دالته `onReceive` بثوث أندرويد: عند تغيّر البطارية يحسب `batteryLevel` من المستوى والمقياس ويحدّد `isCharging`، وعند توصيل/فصل الطاقة يضبط `isCharging`. في كل حالة ينادي `updatePowerMode` لإعادة احتساب الوضع. هو منتِج رئيسي للحالة التي يستهلكها `updatePowerMode`."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PowerManager.kt",
+"name": "كتلة التهيئة init",
+"lines": "94-107",
+"summary": "تُنفَّذ عند إنشاء الكائن: تنادي `registerBatteryReceiver` لتسجيل مستقبِل البطارية، وتسجّل هذا الكائن مراقباً لدورة حياة العملية عبر `ProcessLifecycleOwner` على الخيط الرئيسي (داخل try/catch)، ثم تنادي `updatePowerMode` لتثبيت الوضع الابتدائي."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PowerManager.kt",
+"name": "start و stop",
+"lines": "109-127",
+"summary": "`start` تسجّل بداية الإدارة وتنادي `startDutyCycle`. `stop` تسجّل الإيقاف وتلغي `powerScope` وتنادي `unregisterBatteryReceiver`، ثم تزيل مراقب دورة الحياة على الخيط الرئيسي ضمن try/catch. هما نقطتا التحكم الخارجية في دورة حياة المدير."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PowerManager.kt",
+"name": "onStateChanged (مراقب دورة الحياة)",
+"lines": "129-143",
+"summary": "تنفيذ الواجهة `LifecycleEventObserver`: عند حدث البدء (ON_START) تضبط `isAppInBackground=false`، وعند التوقف (ON_STOP) تضبطها `true`، وفي الحالتين تنادي `updatePowerMode`. تُغذّي حالة الواجهة الأمامية/الخلفية إلى منطق اختيار الوضع."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PowerManager.kt",
+"name": "getScanSettings",
+"lines": "145-175",
+"summary": "تبني `ScanSettings` بحسب `currentMode`: وضع الأداء يستخدم زمن استجابة منخفض ومطابقة عدوانية وأقصى عدد إعلانات، والمتوازن يستخدم مسحاً متوازناً، والموفّر وفائق الانخفاض يستخدمان مسح طاقة منخفضة ومطابقة لاصقة وإعلاناً واحداً، ثم تبني الإعدادات بتأخير تقرير صفر. مستهلِك لـ `currentMode`."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PowerManager.kt",
+"name": "getAdvertiseSettings",
+"lines": "180-210",
+"summary": "تبني `AdvertiseSettings` بحسب `currentMode`: من زمن استجابة منخفض وقدرة إرسال عالية في الأداء، تدريجياً إلى وضع طاقة منخفضة وقدرة إرسال فائقة الانخفاض في فائق الانخفاض، مع إبقاء الإعلان قابلاً للاتصال وبلا مهلة. مستهلِك لـ `currentMode`."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PowerManager.kt",
+"name": "getMaxConnections و getRSSIThreshold و shouldUseDutyCycle",
+"lines": "215-241",
+"summary": "ثلاث دوال استعلام تعتمد على `currentMode`: `getMaxConnections` تعيد حد الاتصالات (عادي/موفّر/فائق)، `getRSSIThreshold` تعيد عتبة قوة الإشارة (من -95 في الأداء إلى -65 في فائق الانخفاض)، و`shouldUseDutyCycle` تعيد صحيحاً لكل الأوضاع عدا الأداء."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PowerManager.kt",
+"name": "getPowerInfo",
+"lines": "246-257",
+"summary": "تبني نصاً تشخيصياً يلخّص حالة المدير: الوضع الحالي ومستوى البطارية وحالة الشحن وحالة الخلفية، مع استدعاء `getMaxConnections` و`getRSSIThreshold` و`shouldUseDutyCycle` لعرض قيمها. دالة قراءة فقط تجمع مخرجات دوال الاستعلام."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PowerManager.kt",
+"name": "updatePowerMode",
+"lines": "259-297",
+"summary": "القلب المنطقي: تحسب الوضع الأساسي من الشحن/البطارية (شحن في الواجهة=أداء، بطارية حرجة=فائق الانخفاض، منخفضة=موفّر، وإلا متوازن)، ثم إن كان التطبيق في الخلفية تحدّ الوضع بما لا يقل عن موفّر مع حفظ فائق الانخفاض. وعند تغيّر الوضع تحدّث `currentMode` وتُسجّل وتنادي `delegate.onPowerModeChanged` ثم تبدأ أو توقف دورة التشغيل. يستهلك كل حقول الحالة وينادَى من المستقبِل ودورة الحياة والتهيئة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PowerManager.kt",
+"name": "startDutyCycle",
+"lines": "299-331",
+"summary": "توقف أي دورة قائمة أولاً، فإن كان الوضع لا يحتاج دورة (أداء) تطلب مسحاً دائماً عبر `delegate.onScanStateChanged(true)` وتعود. وإلا تختار مدتي التشغيل/الإيقاف حسب الوضع، وتطلق على `powerScope` حلقة معلَّقة تبدّل حالة المسح: تشغيل لمدة ثم إيقاف لمدة (مع إبقاء الإعلان نشطاً)، عبر استدعاءات `onScanStateChanged` و`delay`."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PowerManager.kt",
+"name": "stopDutyCycle",
+"lines": "333-336",
+"summary": "تلغي مهمة دورة التشغيل `dutyCycleJob` وتعيدها إلى العدم. تُنادى من `startDutyCycle` ومن `updatePowerMode` و`stop`."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PowerManager.kt",
+"name": "registerBatteryReceiver و unregisterBatteryReceiver",
+"lines": "338-357",
+"summary": "`registerBatteryReceiver` تبني مُرشِّح نيّات لأفعال تغيّر البطارية وتوصيل/فصل الطاقة وتسجّل `batteryReceiver` على السياق ضمن try/catch. `unregisterBatteryReceiver` تلغي تسجيله ضمن try/catch. هما يربطان مستقبِل البطارية بنظام البثّ في أندرويد."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/PowerManager.kt",
+"name": "واجهة PowerManagerDelegate",
+"lines": "360-366",
+"summary": "واجهة المفوَّض التي يُبلَّغ عبرها مستهلِك المدير: `onPowerModeChanged` عند تغيّر وضع الطاقة، و`onScanStateChanged` عند طلب تشغيل/إيقاف المسح. هي العقد بين `PowerManager` والطبقة التي تتحكم فعلياً بالبلوتوث."
+}
+],
+"app/src/main/java/com/bitchat/android/mesh/SecurityManager.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/SecurityManager.kt",
+"name": "تعريف الصنف وحقول التتبّع والتهيئة (SecurityManager + companion + init)",
+"lines": "18-41",
+"summary": "يعرّف صنف مدير الأمان (SecurityManager) ببانٍ يأخذ خدمة التشفير (encryptionService) ومعرّف نِدّي الخاص (myPeerID). يحوي كائناً مرافقاً فيه ثوابت ضبط: مهلة الرسالة (MESSAGE_TIMEOUT) خمس دقائق، وفترة التنظيف (CLEANUP_INTERVAL)، والحدّ الأقصى للرسائل المعالَجة وتبادلات المفاتيح. ويملك ثلاث بُنى تتبّع متزامنة: مجموعة الرسائل المعالَجة (processedMessages) ومجموعة تبادلات المفاتيح المعالَجة (processedKeyExchanges) وخريطة طوابع زمن الرسائل (messageTimestamps)، إضافة إلى مفوَّض (delegate) ونطاق كوروتين (managerScope) على موزّع الإدخال/الإخراج. كتلة التهيئة (init) تشغّل التنظيف الدوري عند الإنشاء."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/SecurityManager.kt",
+"name": "التحقق من أمان الرزمة (validatePacket)",
+"lines": "46-86",
+"summary": "الدالة العامة الرئيسة للتحقق. تتجاوز رِزَم النِّد نفسه، ثم تولّد معرّف رسالة عبر generateMessageID لكشف التكرار. إذا كان المعرّف موجوداً في الرسائل المعالَجة تُسقِط الرزمة، إلا أن تكون إعلاناً طازجاً (isFreshAnnounce) من جار مباشر (TTL أقصى) فتسمح به لأجل الربط. تضيف المعرّف والطابع الزمني، ثم تفرض التحقق الإلزامي من التوقيع باستدعاء verifyPacketSignature، وتُعيد true عند النجاح. تُنتج المعرّف لمجموعتي التتبّع وتستهلك خدمة generateMessageID وverifyPacketSignature."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/SecurityManager.kt",
+"name": "معالجة مصافحة Noise (handleNoiseHandshake)",
+"lines": "92-154",
+"summary": "دالة معلَّقة تعالج رِزَم المصافحة الموجَّهة إلينا فقط. تتجاوز ما لا يخصّنا ورِزَمنا الذاتية والحمولة الفارغة. إن وُجدت جلسة قائمة تُسقِطها (removePeer) لإعادة التأسيس وترفع علم forcedRehandshake. تمنع المعالجة المكرّرة عبر مفتاح التبادل (exchangeKey) المخزَّن في processedKeyExchanges. ثم تمرّر الحمولة إلى خدمة التشفير عبر processHandshakeMessage؛ وعند وجود ردّ تُرسله عبر delegate.sendHandshakeResponse، وعند اكتمال الجلسة تُبلّغ delegate.onKeyExchangeCompleted. تستهلك خدمة التشفير وتُنادي المفوَّض."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/SecurityManager.kt",
+"name": "التحقق العام من التوقيع (verifySignature)",
+"lines": "159-172",
+"summary": "دالة عامة تتحقق من توقيع الرزمة باستعمال encryptionService.verify على الحمولة. إذا غاب التوقيع تُعيد true (لا توقيع يعني نجاح التحقق)، وتلتقط الاستثناءات وتُعيد false عند الفشل. واجهة مبسّطة فوق خدمة التشفير، تختلف عن verifyPacketSignature الأكثر صرامة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/SecurityManager.kt",
+"name": "توقيع الرزمة (signPacket)",
+"lines": "177-184",
+"summary": "دالة عامة تُوقّع حمولة عبر encryptionService.sign وتُعيد التوقيع، أو null عند حدوث استثناء مع تسجيل الخطأ."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/SecurityManager.kt",
+"name": "التشفير لنِدّ (encryptForPeer)",
+"lines": "189-196",
+"summary": "دالة عامة تُشفّر بيانات لنِدّ محدَّد (recipientPeerID) عبر encryptionService.encrypt، وتُعيد null عند الاستثناء مع تسجيل الخطأ."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/SecurityManager.kt",
+"name": "فكّ التشفير من نِدّ (decryptFromPeer)",
+"lines": "201-208",
+"summary": "دالة عامة تفكّ تشفير بيانات واردة من نِدّ مُرسِل (senderPeerID) عبر encryptionService.decrypt، وتُعيد null عند الاستثناء مع تسجيل الخطأ."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/SecurityManager.kt",
+"name": "بيانات المفتاح العام المجمَّعة (getCombinedPublicKeyData)",
+"lines": "213-215",
+"summary": "دالة عامة تُمرّر طلب الحصول على بيانات المفتاح العام المجمَّعة لتبادل المفاتيح مباشرةً إلى خدمة التشفير وتُعيد النتيجة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/SecurityManager.kt",
+"name": "توليد معرّف الرسالة (generateMessageID)",
+"lines": "220-232",
+"summary": "دالة خاصة تولّد معرّفاً نصياً فريداً للرسالة لكشف التكرار. للشظايا (FRAGMENT) تدمج الطابع الزمني ومعرّف النِّد ونوع الرزمة وبصمة الحمولة كاملة؛ ولبقية الأنواع تستعمل بصمة مقتطعة لأول 64 بايت. يستهلكها validatePacket."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/SecurityManager.kt",
+"name": "التحقق الصارم من توقيع الرزمة (verifyPacketSignature)",
+"lines": "238-305",
+"summary": "دالة خاصة تفرض تحقّقاً إلزامياً من التوقيع وتُعيد true فقط إذا كان موجوداً وصالحاً. تتحقق حصراً من أنواع ANNOUNCE وMESSAGE وFILE_TRANSFER (وتُعيد true لغيرها). ترفض غياب التوقيع. تستخرج مفتاح التوقيع العام (signingPublicKey): من الإعلان نفسه عبر IdentityAnnouncement.decode لرِزَم ANNOUNCE، أو من معلومات النِّد عبر delegate.getPeerInfo لغيرها؛ وترفض إن غاب المفتاح. تبني البيانات المعياريّة عبر toBinaryDataForSigning ثم تتحقق عبر encryptionService.verifyEd25519Signature. يستدعيها validatePacket."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/SecurityManager.kt",
+"name": "وجود مفاتيح للنِّد (hasKeysForPeer)",
+"lines": "310-312",
+"summary": "دالة عامة تُعيد ما إذا كانت توجد جلسة تشفير مؤسَّسة للنِّد عبر encryptionService.hasEstablishedSession."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/SecurityManager.kt",
+"name": "معلومات التنقيح (getDebugInfo)",
+"lines": "317-334",
+"summary": "دالة عامة تبني نصّاً تشخيصياً يعرض أحجام الرسائل المعالَجة وتبادلات المفاتيح والطوابع الزمنية، مع سرد أول عشرة تبادلات مفاتيح وإشارة لعدد ما زاد عنها."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/SecurityManager.kt",
+"name": "بدء التنظيف الدوري (startPeriodicCleanup)",
+"lines": "339-346",
+"summary": "دالة خاصة تُطلق كوروتيناً ضمن نطاق المدير يدور طالما النطاق نشط، ينتظر فترة التنظيف (CLEANUP_INTERVAL) ثم يستدعي cleanupOldData. تستدعيها كتلة التهيئة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/SecurityManager.kt",
+"name": "تنظيف البيانات القديمة (cleanupOldData)",
+"lines": "351-386",
+"summary": "دالة خاصة تحذف المدخلات الأقدم من زمن القطع (الوقت الحالي ناقص مهلة الرسالة) من طوابع الزمن والرسائل المعالَجة المقابلة. ثم تحدّ من حجم مجموعتي الرسائل وتبادلات المفاتيح عند تجاوز الحدود القصوى بحذف الفائض الأقدم، مستعينةً بـ removeFromMessageTimestamps، وتسجّل عدد المحذوفات. يستدعيها التنظيف الدوري."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/SecurityManager.kt",
+"name": "الحذف من طوابع زمن الرسائل (removeFromMessageTimestamps)",
+"lines": "391-395",
+"summary": "دالة خاصة مساعدة تحذف قائمة من معرّفات الرسائل من خريطة طوابع الزمن. تستدعيها cleanupOldData عند تقليص حجم مجموعة الرسائل المعالَجة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/SecurityManager.kt",
+"name": "مسح كل البيانات (clearAllData)",
+"lines": "400-404",
+"summary": "دالة عامة تُفرّغ مجموعات الرسائل المعالَجة وتبادلات المفاتيح وخريطة طوابع الزمن. تستدعيها shutdown."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/SecurityManager.kt",
+"name": "الإيقاف (shutdown)",
+"lines": "409-412",
+"summary": "دالة عامة تُلغي نطاق المدير (managerScope) لإيقاف الكوروتينات ثم تستدعي clearAllData لمسح البيانات."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/SecurityManager.kt",
+"name": "واجهة مفوَّض مدير الأمان (SecurityManagerDelegate)",
+"lines": "418-422",
+"summary": "واجهة استدعاءات راجعة يحتاجها مدير الأمان: onKeyExchangeCompleted (عند اكتمال تبادل المفاتيح)، وsendHandshakeResponse (إرسال ردّ المصافحة)، وgetPeerInfo (الحصول على معلومات النِّد للتحقق من التوقيع). يستعملها handleNoiseHandshake وverifyPacketSignature عبر الحقل delegate."
+}
+],
+"app/src/main/java/com/bitchat/android/mesh/StoreForwardManager.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/StoreForwardManager.kt",
+"name": "الترويسة والاستيرادات (الحزمة والمستورَدات)",
+"lines": "1-9",
+"summary": "يعرّف اسم الحزمة com.bitchat.android.mesh، ويستورد Log، وأنواع البروتوكول (BitchatPacket وMessageType وSpecialRecipients)، والكوروتينات، وأدوات java.util وConcurrentHashMap التي تستعملها بقية الملف."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/StoreForwardManager.kt",
+"name": "كائن المرافقة والثوابت (companion object)",
+"lines": "17-23",
+"summary": "يحوي الوسم TAG وثوابت السياسة المسحوبة من AppConstants.StoreForward: مهلة المخزن (١٢ ساعة)، والحد الأقصى للرسائل العادية، والحد الأقصى لرسائل المفضّلين، وفترة التنظيف (١٠ دقائق). تستهلكها دوال التخزين والتنظيف وعرض التنقيح."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/StoreForwardManager.kt",
+"name": "صنف البيانات StoredMessage",
+"lines": "28-33",
+"summary": "صنف بيانات خاص يمثّل عنصر التخزين الواحد: الحزمة (packet)، والطابع الزمني، ومعرّف الرسالة، وعلَم isForFavorite. هو الوحدة الأساسية التي تنتجها cacheMessage وتستهلكها sendCachedMessages والتنظيف والعدّ."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/StoreForwardManager.kt",
+"name": "حالة الصنف (مخازن البيانات والمفوَّض والنطاق والتهيئة)",
+"lines": "36-49",
+"summary": "يعرّف المخزن العادي المتزامن messageCache، وطابور المفضّلين favoriteMessageQueue (خريطة متزامنة من معرّف القرين إلى قائمة)، ومجموعتي deliveredMessages وcachedMessagesSentToPeer، والمفوَّض delegate، ونطاق الكوروتينات managerScope على Dispatchers.IO مع SupervisorJob. كتلة init تستدعي startPeriodicCleanup لبدء التنظيف عند الإنشاء."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/StoreForwardManager.kt",
+"name": "cacheMessage: تخزين رسالة للتسليم اللاحق",
+"lines": "54-116",
+"summary": "يتخطّى أنواع الرسائل غير المناسبة (مصافحة/تشفير Noise وANNOUNCE وLEAVE) ورسائل البثّ، ويستخلص معرّف القرين المستلِم من recipientID. يسأل المفوَّض isFavorite ليبني StoredMessage. إن كان لمفضَّل خزّنه في favoriteMessageQueue بحدّ MAX_CACHED_MESSAGES_FAVORITES، وإلا نظّف ثم أضاف إلى messageCache بحدّ MAX_CACHED_MESSAGES (يحذف الأقدم عند التجاوز)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/StoreForwardManager.kt",
+"name": "sendCachedMessages: إرسال المخزون عند اتصال القرين",
+"lines": "121-179",
+"summary": "يمنع التكرار عبر cachedMessagesSentToPeer، ثم يطلق كوروتين في managerScope: ينظّف المخزن، ويجمع رسائل المفضّلين غير المُسلَّمة (ويزيل مدخل الطابور) والرسائل العادية الموجَّهة لهذا القرين، يرتّبها زمنياً، يعلّمها مُسلَّمة في deliveredMessages، ثم يرسلها عبر delegate.sendPacket بتأخير ١٠ ملي ثانية بين كل رسالة، وأخيراً يحذف المُرسَل من messageCache."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/StoreForwardManager.kt",
+"name": "shouldCacheForPeer: قرار التخزين للقرين",
+"lines": "184-190",
+"summary": "يسأل المفوَّض isPeerOnline وisFavorite ويُعيد صحيحاً فقط إذا كان القرين غير متّصل ومفضَّلاً في آن، ليقرّر المستدعي الخارجي هل يستحق التخزين."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/StoreForwardManager.kt",
+"name": "markMessageAsDelivered: تعليم رسالة كمُسلَّمة",
+"lines": "195-197",
+"summary": "يضيف معرّف الرسالة إلى deliveredMessages لمنع إعادة إرسالها لاحقاً في sendCachedMessages وعدّها."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/StoreForwardManager.kt",
+"name": "getCachedMessageCount: عدّ رسائل القرين",
+"lines": "202-210",
+"summary": "يُعيد مجموع عدد رسائل المفضّلين لهذا القرين من favoriteMessageQueue والعدد العادي المطابق لمعرّفه في messageCache."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/StoreForwardManager.kt",
+"name": "getDebugInfo: تقرير حالة نصّي",
+"lines": "215-237",
+"summary": "يبني نصّاً يلخّص أحجام المخزن العادي وطوابير المفضّلين (مفصّلة لكل قرين) ومجموعتي المُسلَّمة والمُرسَل إليهم، إضافة إلى تحليل أعمار المخزن العادي (المتوسّط والأقصى بالثواني)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/StoreForwardManager.kt",
+"name": "startPeriodicCleanup: حلقة التنظيف الدورية",
+"lines": "242-250",
+"summary": "يطلق كوروتيناً في managerScope يدور ما دام النطاق نشطاً، ينتظر CLEANUP_INTERVAL ثم يستدعي cleanupMessageCache وcleanupDeliveredMessages بشكل متكرّر. تُستدعى من init."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/StoreForwardManager.kt",
+"name": "cleanupMessageCache: حذف الرسائل العادية المنتهية",
+"lines": "255-264",
+"summary": "يحسب وقت القطع (الآن ناقص MESSAGE_CACHE_TIMEOUT) ويحذف من messageCache كل رسالة غير مفضّلة أقدم من وقت القطع، ويسجّل عدد المحذوف. تُستدعى من cacheMessage وsendCachedMessages والتنظيف الدوري وforceCleanup."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/StoreForwardManager.kt",
+"name": "cleanupDeliveredMessages: كبح تضخّم مجموعتي التتبُّع",
+"lines": "269-279",
+"summary": "يمنع تسرّب الذاكرة بإفراغ deliveredMessages إذا تجاوزت ١٠٠٠ مدخل، وإفراغ cachedMessagesSentToPeer إذا تجاوز ٢٠٠ مدخل، مع تسجيل تنقيح."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/StoreForwardManager.kt",
+"name": "clearAllCache: مسح كل المخازن",
+"lines": "284-290",
+"summary": "يفرغ messageCache وfavoriteMessageQueue وdeliveredMessages وcachedMessagesSentToPeer دفعة واحدة. تستدعيها shutdown."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/StoreForwardManager.kt",
+"name": "forceCleanup: تنظيف فوري للاختبار",
+"lines": "295-298",
+"summary": "تستدعي cleanupMessageCache وcleanupDeliveredMessages مباشرة دون انتظار الدورة، لأغراض الاختبار."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/StoreForwardManager.kt",
+"name": "shutdown: إيقاف المدير",
+"lines": "303-306",
+"summary": "يلغي managerScope (فيوقف الحلقة الدورية والكوروتينات) ثم يستدعي clearAllCache لتحرير كل البيانات."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/StoreForwardManager.kt",
+"name": "واجهة StoreForwardManagerDelegate",
+"lines": "312-316",
+"summary": "واجهة ردود النداء التي يعتمد عليها المدير: isFavorite وisPeerOnline لاتخاذ قرارات التخزين، وsendPacket لإرسال الحزم فعلياً عبر طبقة الشبكة. يحقّنها المستدعي الخارجي (BluetoothMeshService)."
+}
+],
+"app/src/main/java/com/bitchat/android/mesh/TransferProgressManager.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/TransferProgressManager.kt",
+"name": "TransferProgressEvent (صنف بيانات حدث تقدّم النقل)",
+"lines": "10-15",
+"summary": "صنف بيانات (data class) يحمل لقطة عن حالة عملية نقل واحدة. يضمّ أربع خصائص ثابتة: transferId (معرّف النقل) كنصّ، وsent (عدد المُرسَل) وtotal (الإجمالي) كأعداد صحيحة، وcompleted (هل اكتمل) كقيمة منطقية. هذا الصنف هو الرسالة التي يبثّها المدير عبر التدفّق."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/TransferProgressManager.kt",
+"name": "TransferProgressManager — الحالة والتدفّق (scope و_events وevents)",
+"lines": "17-20",
+"summary": "كائن مفرد (object) يحفظ الحالة المشتركة. يُنشئ scope كنطاق متعاونات يعمل على موزّع الإدخال/الإخراج Dispatchers.IO مع SupervisorJob ليبقى الأطفال مستقلين عند فشل أحدهم. يُنشئ _events كتدفّق مشترك قابل للتعديل (replay=0، بسعة تخزين إضافية 32) خاصًّا للكتابة، ويكشفه للخارج للقراءة فقط عبر الخاصية العامة events من نوع SharedFlow."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/TransferProgressManager.kt",
+"name": "start / progress / complete (واجهة الاستدعاء العامة)",
+"lines": "22-24",
+"summary": "ثلاث دوال عامة قصيرة تمثّل مراحل النقل، وكلّها تُفوّض إلى emit الخاصة. start تبدأ النقل بإرسال (id, 0, total, false). progress تُحدّث التقدّم بـ (id, sent, total, sent >= total) فتحسب علم الاكتمال تلقائيًّا. complete تُنهي النقل بـ (id, total, total, true)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/TransferProgressManager.kt",
+"name": "emit (دالة البثّ الخاصة)",
+"lines": "26-28",
+"summary": "دالة خاصة (private) تتلقى (id, sent, total, done) من الدوال الثلاث أعلاه، ثم تُطلق (launch) متعاونة على scope تبني كائن TransferProgressEvent بهذه القيم وتبثّه عبر _events.emit. هي نقطة الالتقاء الوحيدة التي تكتب في التدفّق."
+}
+],
+"app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "تعريف الصنف والباني والكائن المرافق",
+"lines": "17-24",
+"summary": "يُعرّف الصنف «خدمة الشبكة المتشابكة الموحَّدة» (UnifiedMeshService) الذي يأخذ في بانيه «السياق» (context) و«نقل البلوتوث» (bluetooth)، ويحقّق واجهتي «خدمة الشبكة» (MeshService) و«مندوب شبكة البلوتوث» (BluetoothMeshDelegate). الكائن المرافق يحمل ثابت الوسم TAG. هذا هو الهيكل الأساسي الذي تنتمي إليه كل الدوال التالية."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "خاصيّتا myPeerID وdelegate",
+"lines": "26-33",
+"summary": "خاصية «معرّف النِّدّ الخاص بي» (myPeerID) تُفوَّض إلى البلوتوث. خاصية «المندوب» (delegate) عند تغييرها تستدعي «تحديث المندوبين» (refreshDelegates) لتمرير التغيير إلى وسائل النقل. هاتان الخاصيتان مصدر بيانات للدوال اللاحقة وللضابط الذي ينادي refreshDelegates."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "refreshDelegates",
+"lines": "35-38",
+"summary": "تضبط مندوب البلوتوث ومندوب «خدمة الواي-فاي» (wifiService) ليكونا هذا الكائن إذا كان «المندوب» (delegate) موجوداً وإلا null، ضمن كتل محاولة تبتلع الاستثناءات. تُنادى من ضابط delegate ومن «بدء الخدمات» (startServices)، فهي حلقة الوصل التي توجّه نداءات المندوب الراجعة إلى هذا الصنف."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "startServices / stopServices",
+"lines": "40-57",
+"summary": "«بدء الخدمات» (startServices) يبدأ نقل البلوتوث إن كان مُفعَّلاً (isBleEnabled) وإلا يعطّله، ثم يبدأ واي-فاي أوير عبر WifiAwareController، ثم ينادي refreshDelegates. «إيقاف الخدمات» (stopServices) يوقف البلوتوث وواي-فاي أوير. هما نقطتا التشغيل/الإيقاف لدورة حياة وسائل النقل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "sendMessage",
+"lines": "59-64",
+"summary": "توجّه إرسال رسالة بثّ عامة: إن كان البلوتوث مُفعَّلاً تستخدمه، وإلا تستخدم خدمة الواي-فاي. تُجسّد قاعدة «البلوتوث هو المصدر المعياري للبثّ» المذكورة في توثيق الصنف."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "sendPrivateMessage",
+"lines": "66-79",
+"summary": "توجّه الرسالة الخاصة حسب جاهزية النِّدّ: إن كان البلوتوث جاهزاً (isBleReady) فالبلوتوث، وإلا إن كان الواي-فاي جاهزاً (isWifiReady) فالواي-فاي، وإلا تُفضّل البلوتوث عند اتصاله أو عند تفعيله وعدم اتصال الواي-فاي، وإلا الواي-فاي. هذا منطق اختيار النقل المعنون المشترك بين عدة دوال إرسال."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "sendReadReceipt",
+"lines": "81-86",
+"summary": "ترسل إيصال القراءة عبر البلوتوث إن كان جاهزاً، وإلا عبر الواي-فاي إن كان جاهزاً، معتمدةً على دالّتي isBleReady وisWifiReady."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "sendFavoriteNotification",
+"lines": "88-99",
+"summary": "تبني محتوى إشعار التفضيل/إلغائه متضمّناً معرّف نوستر العام (npub) المجلوب عبر «جسر هويّة نوستر» (NostrIdentityBridge)، وتجلب لقب النِّدّ من getPeerNicknames، ثم إن وُجدت جلسة مؤسَّسة (hasEstablishedSession) تستدعي sendPrivateMessage مع معرّف رسالة عشوائي. منتِجة تستهلك خدمات الهوية والألقاب وتغذّي مسار الإرسال الخاص."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "sendVerifyChallenge / sendVerifyResponse",
+"lines": "101-113",
+"summary": "دالّتان متماثلتان توجّهان تحدّي التحقّق وردّه (مع مفتاح نويز الستّ-عشري والرقم العشوائي A) عبر البلوتوث إن كان جاهزاً وإلا الواي-فاي، باستخدام منطق الجاهزية ذاته."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "sendFileBroadcast / sendFilePrivate",
+"lines": "115-130",
+"summary": "«إرسال بثّ ملف» يتبع قاعدة البثّ (بلوتوث إن مُفعَّل وإلا واي-فاي). «إرسال ملف خاص» يتبع منطق الاختيار المعنون الكامل (الجاهزية ثم تفضيل البلوتوث ثم الواي-فاي) المطابق لـ sendPrivateMessage. كلاهما يعمل على «حزمة ملف بيتشات» (BitchatFilePacket)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "cancelFileTransfer",
+"lines": "132-136",
+"summary": "تحاول إلغاء النقل على كلا النقلين (البلوتوث والواي-فاي) عبر معرّف النقل وتُعيد صحيحاً إذا نجح أيٌّ منهما. تجمع نتيجتين من النقلين بعملية «أو»، نمط يتكرّر في دوال الدمج."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "sendBroadcastAnnounce / sendAnnouncementToPeer",
+"lines": "138-150",
+"summary": "«إرسال إعلان بثّ» يرسل عبر البلوتوث إن مُفعَّل ثم عبر الواي-فاي (كلاهما إن أمكن). «إرسال إعلان إلى نِدّ» يختار البلوتوث عند اتصاله أو عند تفعيله وعدم اتصال الواي-فاي، وإلا الواي-فاي. إعلانات الحضور على الشبكة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "getPeerNicknames / getPeerRSSI",
+"lines": "152-164",
+"summary": "دالّتا دمج تبنيان خريطة مرتبطة (merged) من نتائج الواي-فاي أولاً ثم البلوتوث (فيغلب البلوتوث عند التعارض): الأولى لألقاب الأنداد والثانية لقوة الإشارة RSSI. تغذّيان الواجهة وتُستهلكان داخلياً (مثلاً getPeerNicknames في sendFavoriteNotification وmergedPeerIDs)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "getActivePeerCount",
+"lines": "166-168",
+"summary": "تُعيد عدد الأنداد النشطين بحساب «معرّفات الأنداد المدمَجة» (mergedPeerIDs) بعد استبعاد معرّف الذات وإزالة التكرار. مستهلِكة لـ mergedPeerIDs."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "hasEstablishedSession",
+"lines": "170-172",
+"summary": "تُعيد صحيحاً إذا كان البلوتوث جاهزاً أو الواي-فاي جاهزاً للنِّدّ (isBleReady أو isWifiReady). دالة محورية يعتمد عليها shouldShowEncryptionIcon وgetEncryptedPeers وsendFavoriteNotification."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "getSessionState",
+"lines": "174-186",
+"summary": "تجلب حالة جلسة نويز من النقلين وتدمجهما بأولوية: المؤسَّسة (Established) ثم قيد المصافحة (Handshaking) ثم أي حالة غير غير-مُهيّأة، مفضّلةً البلوتوث في كل مستوى، وإلا حالة الواي-فاي إن وُجدت وإلا حالة البلوتوث. تُرجع أفضل حالة جلسة متاحة بين النقلين."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "initiateNoiseHandshake",
+"lines": "188-195",
+"summary": "تبدأ مصافحة نويز على النقل المتّصل: البلوتوث إن كان متّصلاً، وإلا الواي-فاي إن كان متّصلاً، وإلا البلوتوث إن كان مُفعَّلاً، وإلا الواي-فاي. تطبّق التراجع إلى مصافحة نقل متصل المذكور في توثيق الصنف."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "getPeerFingerprint",
+"lines": "197-200",
+"summary": "تُعيد بصمة النِّدّ من البلوتوث، وإن كانت عدماً فمن الواي-فاي، عبر معامل الدمج العدمي وكتل محاولة. نمط تفضيل البلوتوث ثم الواي-فاي."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "getPeerInfo",
+"lines": "202-212",
+"summary": "تجلب «معلومات النِّدّ» (PeerInfo) من النقلين وتختار بأولوية: المتّصل ذو الجلسة المؤسَّسة (بلوتوث ثم واي-فاي)، ثم المتّصل فقط، وإلا أيٌّ غير عدم. مصدر أساسي تعتمد عليه دوال الاتصال والجاهزية الخاصة (isBleConnected وisWifiConnected وisBleReady وisWifiReady)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "updatePeerInfo",
+"lines": "214-232",
+"summary": "تحدّث معلومات النِّدّ (لقب، مفتاح نويز عام، مفتاح توقيع عام، حالة التحقّق) على النقلين وتُعيد صحيحاً إذا نجح أيٌّ منهما. نمط الدمج بعملية «أو» نفسه الموجود في cancelFileTransfer."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "getIdentityFingerprint / getStaticNoisePublicKey",
+"lines": "234-238",
+"summary": "«جلب بصمة الهوية» تفوَّض كلياً إلى البلوتوث. «جلب مفتاح نويز العام الثابت» يُعيد مفتاح البلوتوث وإلا مفتاح الواي-فاي عبر معامل الدمج العدمي. مصدرا الهوية التشفيرية الثابتة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "shouldShowEncryptionIcon / getEncryptedPeers",
+"lines": "240-250",
+"summary": "«هل يُظهَر أيقونة التشفير» يُفوَّض إلى hasEstablishedSession. «جلب الأنداد المشفّرين» يجمع أنداد البلوتوث والواي-فاي المشفّرين ثم يضيف كل نِدّ من mergedPeerIDs له جلسة مؤسَّسة، ويُعيد القائمة. مستهلكان لمنطق الجلسة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "getDeviceAddressForPeer / getDeviceAddressToPeerMapping",
+"lines": "252-262",
+"summary": "الأولى تُعيد عنوان جهاز النِّدّ من البلوتوث وإلا الواي-فاي (دمج عدمي). الثانية تدمج خريطة ربط عناوين الأجهزة بالأنداد من الواي-فاي ثم البلوتوث (يغلب البلوتوث). دوال عنونة الأجهزة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "printDeviceAddressesForPeers / getDebugStatus",
+"lines": "264-286",
+"summary": "دالّتا تنقيح نصّيتان تبنيان نصاً عبر buildString يجمع مخرجات البلوتوث ثم الواي-فاي (إن وُجد). getDebugStatus يضيف ترويسة وحالة معرّف الذات والأنداد المدمَجة. مخرجات تشخيصية للمطوّر."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "clearAllInternalData / clearAllEncryptionData",
+"lines": "288-296",
+"summary": "دالّتا مسح تُمرّران أمر المسح (البيانات الداخلية، وبيانات التشفير) إلى كلا النقلين ضمن كتل محاولة تبتلع الاستثناءات. عمليات تنظيف موزَّعة على النقلين."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "دوال المندوب الراجعة (didReceive*)",
+"lines": "298-328",
+"summary": "مجموعة دوال «مندوب شبكة البلوتوث» التي تُستدعى عند ورود أحداث من النقل (رسالة، تحديث قائمة الأنداد، مغادرة قناة، إقرار تسليم، إيصال قراءة، تحدّي/ردّ تحقّق، فكّ تشفير رسالة قناة). معظمها يعيد توجيه الحدث إلى «المندوب» (delegate) الخارجي عبر استدعاء آمن؛ وdidUpdatePeerList يستبدل قائمة الأنداد بـ mergedPeerIDs (أو المتمايزة إن فرغت). هذه هي بوابة الأحداث الواردة نحو بقية التطبيق."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "getNickname / isFavorite",
+"lines": "330-332",
+"summary": "دالّتا مندوب تستعلمان من «المندوب» الخارجي: «جلب اللقب» يُعيد لقب المستخدم، و«هل مُفضَّل» يُعيد حالة التفضيل وإلا false. تمرّران بيانات سياقية من التطبيق إلى طبقة النقل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "mergedPeerIDs",
+"lines": "334-340",
+"summary": "دالة خاصة تبني مجموعة مرتبطة من معرّفات الأنداد بدمج «مخزن حالة التطبيق» (AppStateStore.peers) ومفاتيح ألقاب البلوتوث ومفاتيح ألقاب الواي-فاي. تُعدّ المصدر الموحّد لقائمة الأنداد الذي تستهلكه getActivePeerCount وgetEncryptedPeers وgetDebugStatus وdidUpdatePeerList."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "wifiService",
+"lines": "342-352",
+"summary": "دالة خاصة تجلب خدمة الواي-فاي من «متحكّم واي-فاي أوير» (WifiAwareController.getService)، وتضمن ربط مندوبها بهذا الكائن إن لزم. هي البوّابة المركزية لكل وصول إلى نقل الواي-فاي في الملف؛ تُنادى من معظم الدوال."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "isBleEnabled",
+"lines": "354-360",
+"summary": "دالة خاصة تُعيد ما إذا كان البلوتوث مُفعَّلاً من «مدير إعدادات التنقيح» (DebugSettingsManager)، مع تراجع إلى «مدير تفضيلات التنقيح» (DebugPreferenceManager) عند الفشل (افتراضياً true). تتحكّم في كل قرارات تفضيل البلوتوث في دوال الإرسال."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "isBleConnected / isWifiConnected",
+"lines": "362-368",
+"summary": "دالّتان خاصّتان تفحصان اتصال النِّدّ عبر isConnected في «معلومات النِّدّ» المجلوبة من البلوتوث أو الواي-فاي. لبنات أساسية يستعملها منطق الاختيار في دوال الإرسال ودوال الجاهزية."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "isBleReady / isWifiReady",
+"lines": "370-381",
+"summary": "دالّتان خاصّتان تعرّفان «الجاهزية» بأنها اتصال النِّدّ مع وجود جلسة مؤسَّسة على ذلك النقل (للبلوتوث عبر hasEstablishedSessionOnBluetooth، وللواي-فاي عبر hasEstablishedSession الخاص بخدمته). تغذّيان hasEstablishedSession وكل دوال الإرسال المعنونة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/mesh/UnifiedMeshService.kt",
+"name": "hasEstablishedSessionOnBluetooth",
+"lines": "383-385",
+"summary": "دالة خاصة تُعيد ما إذا كانت هناك جلسة مؤسَّسة على البلوتوث للنِّدّ، ضمن كتلة محاولة. تستعملها isBleReady وgetPeerInfo لتمييز جاهزية البلوتوث عن مجرّد اتصاله."
+}
 ]
 }
