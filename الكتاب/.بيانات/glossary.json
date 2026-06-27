@@ -1,0 +1,2662 @@
+{
+"MessageType": {
+"term": "نوع الرسالة",
+"kind": "enum",
+"pkg": "protocol"
+},
+"ANNOUNCE": {
+"term": "إعلان",
+"kind": "enum-entry",
+"pkg": "protocol"
+},
+"MESSAGE": {
+"term": "رسالة",
+"kind": "enum-entry",
+"pkg": "protocol"
+},
+"LEAVE": {
+"term": "مغادرة",
+"kind": "enum-entry",
+"pkg": "protocol"
+},
+"NOISE_HANDSHAKE": {
+"term": "مصافحة Noise",
+"kind": "enum-entry",
+"pkg": "protocol"
+},
+"NOISE_ENCRYPTED": {
+"term": "مشفّر Noise",
+"kind": "enum-entry",
+"pkg": "protocol"
+},
+"FRAGMENT": {
+"term": "شظية",
+"kind": "enum-entry",
+"pkg": "protocol"
+},
+"REQUEST_SYNC": {
+"term": "طلب مزامنة",
+"kind": "enum-entry",
+"pkg": "protocol"
+},
+"FILE_TRANSFER": {
+"term": "نقل ملف",
+"kind": "enum-entry",
+"pkg": "protocol"
+},
+"fromValue": {
+"term": "من قيمة",
+"kind": "function",
+"pkg": "protocol"
+},
+"SpecialRecipients": {
+"term": "المستلِمون الخاصون",
+"kind": "object",
+"pkg": "protocol"
+},
+"BROADCAST": {
+"term": "البثّ",
+"kind": "constant",
+"pkg": "protocol"
+},
+"BitchatPacket": {
+"term": "حزمة بِتشات",
+"kind": "data-class",
+"pkg": "protocol"
+},
+"version": {
+"term": "الإصدار",
+"kind": "property",
+"pkg": "protocol"
+},
+"type": {
+"term": "النوع",
+"kind": "property",
+"pkg": "protocol"
+},
+"senderID": {
+"term": "معرّف المُرسِل",
+"kind": "property",
+"pkg": "protocol"
+},
+"recipientID": {
+"term": "معرّف المستلِم",
+"kind": "property",
+"pkg": "protocol"
+},
+"timestamp": {
+"term": "الطابع الزمني",
+"kind": "property",
+"pkg": "protocol"
+},
+"payload": {
+"term": "الحمولة",
+"kind": "property",
+"pkg": "protocol"
+},
+"signature": {
+"term": "التوقيع",
+"kind": "property",
+"pkg": "protocol"
+},
+"ttl": {
+"term": "مدة البقاء",
+"kind": "property",
+"pkg": "protocol"
+},
+"route": {
+"term": "المسار",
+"kind": "property",
+"pkg": "protocol"
+},
+"toBinaryData": {
+"term": "إلى بيانات ثنائية",
+"kind": "function",
+"pkg": "protocol"
+},
+"toBinaryDataForSigning": {
+"term": "إلى بيانات ثنائية للتوقيع",
+"kind": "function",
+"pkg": "protocol"
+},
+"fromBinaryData": {
+"term": "من بيانات ثنائية",
+"kind": "function",
+"pkg": "protocol"
+},
+"hexStringToByteArray": {
+"term": "نص ست عشري إلى مصفوفة بايتات",
+"kind": "function",
+"pkg": "protocol"
+},
+"equals": {
+"term": "يساوي",
+"kind": "function",
+"pkg": "protocol"
+},
+"hashCode": {
+"term": "الرمز التجزيئي",
+"kind": "function",
+"pkg": "protocol"
+},
+"BinaryProtocol": {
+"term": "البروتوكول الثنائي",
+"kind": "object",
+"pkg": "protocol"
+},
+"HEADER_SIZE_V1": {
+"term": "حجم ترويسة الإصدار الأول",
+"kind": "constant",
+"pkg": "protocol"
+},
+"HEADER_SIZE_V2": {
+"term": "حجم ترويسة الإصدار الثاني",
+"kind": "constant",
+"pkg": "protocol"
+},
+"SENDER_ID_SIZE": {
+"term": "حجم معرّف المُرسِل",
+"kind": "constant",
+"pkg": "protocol"
+},
+"RECIPIENT_ID_SIZE": {
+"term": "حجم معرّف المستلِم",
+"kind": "constant",
+"pkg": "protocol"
+},
+"SIGNATURE_SIZE": {
+"term": "حجم التوقيع",
+"kind": "constant",
+"pkg": "protocol"
+},
+"Flags": {
+"term": "الأعلام",
+"kind": "object",
+"pkg": "protocol"
+},
+"HAS_RECIPIENT": {
+"term": "يوجد مستلِم",
+"kind": "constant",
+"pkg": "protocol"
+},
+"HAS_SIGNATURE": {
+"term": "يوجد توقيع",
+"kind": "constant",
+"pkg": "protocol"
+},
+"IS_COMPRESSED": {
+"term": "مضغوط",
+"kind": "constant",
+"pkg": "protocol"
+},
+"HAS_ROUTE": {
+"term": "يوجد مسار",
+"kind": "constant",
+"pkg": "protocol"
+},
+"getHeaderSize": {
+"term": "احصل على حجم الترويسة",
+"kind": "function",
+"pkg": "protocol"
+},
+"encode": {
+"term": "الترميز",
+"kind": "function",
+"pkg": "protocol"
+},
+"decode": {
+"term": "فكّ الترميز",
+"kind": "function",
+"pkg": "protocol"
+},
+"decodeCore": {
+"term": "فكّ الترميز الجوهري",
+"kind": "function",
+"pkg": "protocol"
+},
+"CompressionUtil": {
+"term": "أداة الضغط",
+"kind": "object",
+"pkg": "protocol"
+},
+"COMPRESSION_THRESHOLD": {
+"term": "عتبة الضغط",
+"kind": "constant",
+"pkg": "protocol"
+},
+"shouldCompress": {
+"term": "هل ينبغي الضغط",
+"kind": "function",
+"pkg": "protocol"
+},
+"compress": {
+"term": "الضغط",
+"kind": "function",
+"pkg": "protocol"
+},
+"decompress": {
+"term": "فكّ الضغط",
+"kind": "function",
+"pkg": "protocol"
+},
+"testCompression": {
+"term": "اختبار الضغط",
+"kind": "function",
+"pkg": "protocol"
+},
+"Deflater": {
+"term": "الضاغط",
+"kind": "type",
+"pkg": "protocol"
+},
+"Inflater": {
+"term": "فاكّ الضغط",
+"kind": "type",
+"pkg": "protocol"
+},
+"MessagePadding": {
+"term": "حاشية الرسالة",
+"kind": "object",
+"pkg": "protocol"
+},
+"blockSizes": {
+"term": "أحجام الكتل",
+"kind": "property",
+"pkg": "protocol"
+},
+"optimalBlockSize": {
+"term": "حجم الكتلة الأمثل",
+"kind": "function",
+"pkg": "protocol"
+},
+"pad": {
+"term": "الحشو",
+"kind": "function",
+"pkg": "protocol"
+},
+"unpad": {
+"term": "إزالة الحشو",
+"kind": "function",
+"pkg": "protocol"
+},
+"ByteBuffer": {
+"term": "المخزن المؤقت",
+"kind": "type",
+"pkg": "protocol"
+},
+"ByteOrder": {
+"term": "ترتيب البايت",
+"kind": "type",
+"pkg": "protocol"
+},
+"MAX_PAYLOAD_LENGTH": {
+"term": "أقصى طول للحمولة",
+"kind": "constant",
+"pkg": "protocol"
+},
+"SYNC_TTL_HOPS": {
+"term": "قفزات مدة بقاء المزامنة",
+"kind": "constant",
+"pkg": "protocol"
+},
+"CloseButton": {
+"term": "زرّ الإغلاق",
+"kind": "دالة قابلة للتركيب (Composable)",
+"pkg": "core"
+},
+"onClick": {
+"term": "معالِج النقر",
+"kind": "معامل (دالة رد نداء)",
+"pkg": "core"
+},
+"modifier": {
+"term": "المُعدِّل",
+"kind": "معامل",
+"pkg": "core"
+},
+"Modifier": {
+"term": "المُعدِّل",
+"kind": "نوع/صنف",
+"pkg": "core"
+},
+"IconButton": {
+"term": "زرّ الأيقونة",
+"kind": "مكوِّن قابل للتركيب",
+"pkg": "core"
+},
+"IconButtonDefaults": {
+"term": "افتراضيات زرّ الأيقونة",
+"kind": "كائن",
+"pkg": "core"
+},
+"Icon": {
+"term": "الأيقونة",
+"kind": "مكوِّن قابل للتركيب",
+"pkg": "core"
+},
+"MaterialTheme": {
+"term": "سمة ماتيريال",
+"kind": "كائن",
+"pkg": "core"
+},
+"BitchatBottomSheet": {
+"term": "ورقة بِتشات السفلية",
+"kind": "دالة قابلة للتركيب (Composable)",
+"pkg": "core"
+},
+"ModalBottomSheet": {
+"term": "الورقة السفلية الحوارية",
+"kind": "مكوِّن قابل للتركيب",
+"pkg": "core"
+},
+"SheetState": {
+"term": "حالة الورقة",
+"kind": "نوع",
+"pkg": "core"
+},
+"rememberModalBottomSheetState": {
+"term": "تذكُّر حالة الورقة السفلية",
+"kind": "دالة",
+"pkg": "core"
+},
+"sheetState": {
+"term": "حالة الورقة",
+"kind": "معامل",
+"pkg": "core"
+},
+"onDismissRequest": {
+"term": "طلب الإغلاق",
+"kind": "معامل (دالة رد نداء)",
+"pkg": "core"
+},
+"content": {
+"term": "المحتوى",
+"kind": "معامل (دالة قابلة للتركيب)",
+"pkg": "core"
+},
+"RoundedCornerShape": {
+"term": "شكل الزوايا المدوّرة",
+"kind": "نوع/دالة",
+"pkg": "core"
+},
+"BitchatSheetTopBar": {
+"term": "شريط الورقة العلوي",
+"kind": "دالة قابلة للتركيب (Composable)",
+"pkg": "core"
+},
+"BitchatSheetCenterTopBar": {
+"term": "شريط الورقة العلوي المحاذى للوسط",
+"kind": "دالة قابلة للتركيب (Composable)",
+"pkg": "core"
+},
+"BitchatSheetTitle": {
+"term": "عنوان الورقة",
+"kind": "دالة قابلة للتركيب (Composable)",
+"pkg": "core"
+},
+"TopAppBar": {
+"term": "الشريط العلوي",
+"kind": "مكوِّن قابل للتركيب",
+"pkg": "core"
+},
+"CenterAlignedTopAppBar": {
+"term": "الشريط العلوي المحاذى للوسط",
+"kind": "مكوِّن قابل للتركيب",
+"pkg": "core"
+},
+"TopAppBarDefaults": {
+"term": "افتراضيات الشريط العلوي",
+"kind": "كائن",
+"pkg": "core"
+},
+"onClose": {
+"term": "معالِج الإغلاق",
+"kind": "معامل (دالة رد نداء)",
+"pkg": "core"
+},
+"backgroundAlpha": {
+"term": "شفافية الخلفية",
+"kind": "معامل",
+"pkg": "core"
+},
+"title": {
+"term": "العنوان",
+"kind": "معامل (دالة قابلة للتركيب)",
+"pkg": "core"
+},
+"navigationIcon": {
+"term": "أيقونة التنقّل",
+"kind": "معامل (دالة قابلة للتركيب اختيارية)",
+"pkg": "core"
+},
+"actions": {
+"term": "الإجراءات",
+"kind": "معامل (دالة قابلة للتركيب)",
+"pkg": "core"
+},
+"RowScope": {
+"term": "نطاق الصف",
+"kind": "نوع",
+"pkg": "core"
+},
+"ColumnScope": {
+"term": "نطاق العمود",
+"kind": "نوع",
+"pkg": "core"
+},
+"Text": {
+"term": "النص",
+"kind": "مكوِّن قابل للتركيب",
+"pkg": "core"
+},
+"FontWeight": {
+"term": "وزن الخط",
+"kind": "نوع",
+"pkg": "core"
+},
+"FontFamily": {
+"term": "عائلة الخط",
+"kind": "نوع",
+"pkg": "core"
+},
+"singleOrTripleClickable": {
+"term": "النقر الفردي أو الثلاثي",
+"kind": "دالة امتداد على المُعدِّل",
+"pkg": "core"
+},
+"onSingleClick": {
+"term": "معالِج النقر الفردي",
+"kind": "معامل (دالة رد نداء)",
+"pkg": "core"
+},
+"onTripleClick": {
+"term": "معالِج النقر الثلاثي",
+"kind": "معامل (دالة رد نداء)",
+"pkg": "core"
+},
+"clickTimeThreshold": {
+"term": "عتبة زمن النقر",
+"kind": "معامل (Long)",
+"pkg": "core"
+},
+"tapCount": {
+"term": "عدّاد النقرات",
+"kind": "متغيّر حالة",
+"pkg": "core"
+},
+"lastTapTime": {
+"term": "زمن آخر نقرة",
+"kind": "متغيّر حالة",
+"pkg": "core"
+},
+"singleClickJob": {
+"term": "مهمّة النقر الفردي",
+"kind": "متغيّر حالة (Job)",
+"pkg": "core"
+},
+"coroutineScope": {
+"term": "نطاق الكوروتين",
+"kind": "قيمة ثابتة",
+"pkg": "core"
+},
+"composed": {
+"term": "المُركَّب",
+"kind": "دالة",
+"pkg": "core"
+},
+"clickable": {
+"term": "القابلية للنقر",
+"kind": "دالة مُعدِّل",
+"pkg": "core"
+},
+"delay": {
+"term": "التأخير",
+"kind": "دالة كوروتين",
+"pkg": "core"
+},
+"launch": {
+"term": "الإطلاق",
+"kind": "دالة كوروتين",
+"pkg": "core"
+},
+"AppConstants": {
+"term": "ثوابت التطبيق",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"MESSAGE_TTL_HOPS": {
+"term": "قفزات بقاء الرسالة",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"Mesh": {
+"term": "الشبكة المتشابكة",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"STALE_PEER_TIMEOUT_MS": {
+"term": "مهلة انتهاء صلاحية النظير",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"PEER_CLEANUP_INTERVAL_MS": {
+"term": "فترة تنظيف النظراء",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"CONNECTION_RETRY_DELAY_MS": {
+"term": "مهلة إعادة محاولة الاتصال",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"MAX_CONNECTION_ATTEMPTS": {
+"term": "أقصى محاولات الاتصال",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"RSSI_UPDATE_INTERVAL_MS": {
+"term": "فترة تحديث قوة الإشارة",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"Gatt": {
+"term": "جات",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"SERVICE_UUID": {
+"term": "معرّف الخدمة",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"CHARACTERISTIC_UUID": {
+"term": "معرّف الخاصية",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"DESCRIPTOR_UUID": {
+"term": "معرّف الواصف",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"Sync": {
+"term": "المزامنة",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"Fragmentation": {
+"term": "التجزئة",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"FRAGMENT_SIZE_THRESHOLD": {
+"term": "عتبة حجم التجزئة",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"MAX_FRAGMENT_SIZE": {
+"term": "أقصى حجم جزء",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"Security": {
+"term": "الأمان",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"Noise": {
+"term": "نويز",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"REKEY_TIME_LIMIT_MS": {
+"term": "حدّ زمن إعادة التمفتح",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"MAX_PAYLOAD_SIZE_BYTES": {
+"term": "أقصى حجم حمولة بالبايت",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"Verification": {
+"term": "التحقّق",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"Protocol": {
+"term": "البروتوكول",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"COMPRESSION_THRESHOLD_BYTES": {
+"term": "عتبة الضغط بالبايت",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"StoreForward": {
+"term": "التخزين والتمرير",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"Power": {
+"term": "الطاقة",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"Nostr": {
+"term": "نوستر",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"BACKOFF_MULTIPLIER": {
+"term": "مضاعِف التراجع",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"Tor": {
+"term": "تور",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"DEFAULT_SOCKS_PORT": {
+"term": "منفذ SOCKS الافتراضي",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"UI": {
+"term": "واجهة المستخدم",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"MAX_NICKNAME_LENGTH": {
+"term": "أقصى طول للاسم المستعار",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"Media": {
+"term": "الوسائط",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"Services": {
+"term": "الخدمات",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"hexEncodedString": {
+"term": "الترميز السداسي للنص",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"dataFromHexString": {
+"term": "التحويل من نص سداسي",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"toHexString": {
+"term": "التحويل إلى نص سداسي",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"BinaryDataBuilder": {
+"term": "باني البيانات الثنائية",
+"kind": "class",
+"pkg": "com.bitchat.android.util"
+},
+"buffer": {
+"term": "المخزن المؤقت",
+"kind": "property",
+"pkg": "com.bitchat.android.util"
+},
+"appendUInt8": {
+"term": "إلحاق ثماني-بِت",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"appendUInt16": {
+"term": "إلحاق ستة-عشر-بِت",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"appendUInt32": {
+"term": "إلحاق اثنان-وثلاثون-بِت",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"appendUInt64": {
+"term": "إلحاق أربعة-وستون-بِت",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"appendString": {
+"term": "إلحاق سلسلة",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"appendData": {
+"term": "إلحاق بيانات",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"appendDate": {
+"term": "إلحاق تاريخ",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"appendUUID": {
+"term": "إلحاق معرّف فريد",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"toByteArray": {
+"term": "التحويل إلى مصفوفة بايتات",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"BinaryDataReader": {
+"term": "قارئ البيانات الثنائية",
+"kind": "class",
+"pkg": "com.bitchat.android.util"
+},
+"offset": {
+"term": "الإزاحة",
+"kind": "variable",
+"pkg": "com.bitchat.android.util"
+},
+"readUInt8": {
+"term": "قراءة ثماني-بِت",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"readUInt16": {
+"term": "قراءة ستة-عشر-بِت",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"readUInt32": {
+"term": "قراءة اثنان-وثلاثون-بِت",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"readUInt64": {
+"term": "قراءة أربعة-وستون-بِت",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"readString": {
+"term": "قراءة سلسلة",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"readData": {
+"term": "قراءة بيانات",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"readDate": {
+"term": "قراءة تاريخ",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"readUUID": {
+"term": "قراءة معرّف فريد",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"readFixedBytes": {
+"term": "قراءة بايتات ثابتة",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"currentOffset": {
+"term": "الإزاحة الحالية",
+"kind": "property",
+"pkg": "com.bitchat.android.util"
+},
+"BinaryEncodable": {
+"term": "القابل للترميز الثنائي",
+"kind": "interface",
+"pkg": "com.bitchat.android.util"
+},
+"BinaryMessageType": {
+"term": "نوع الرسالة الثنائية",
+"kind": "enum",
+"pkg": "com.bitchat.android.util"
+},
+"DELIVERY_ACK": {
+"term": "إقرار التسليم",
+"kind": "enum-const",
+"pkg": "com.bitchat.android.util"
+},
+"READ_RECEIPT": {
+"term": "إيصال القراءة",
+"kind": "enum-const",
+"pkg": "com.bitchat.android.util"
+},
+"NOISE_MESSAGE": {
+"term": "رسالة نويز",
+"kind": "enum-const",
+"pkg": "com.bitchat.android.util"
+},
+"ByteArrayWrapper": {
+"term": "غلاف مصفوفة البايتات",
+"kind": "class",
+"pkg": "com.bitchat.android.util"
+},
+"NotificationIntervalManager": {
+"term": "مدير فترة الإشعار",
+"kind": "class",
+"pkg": "com.bitchat.android.util"
+},
+"lastNetworkNotificationTime": {
+"term": "وقت آخر إشعار شبكة",
+"kind": "property",
+"pkg": "com.bitchat.android.util"
+},
+"recentlySeenPeers": {
+"term": "النظائر المرئية حديثاً",
+"kind": "property",
+"pkg": "com.bitchat.android.util"
+},
+"setLastNetworkNotificationTime": {
+"term": "ضبط وقت آخر إشعار شبكة",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"DeviceUtils": {
+"term": "أدوات الجهاز",
+"kind": "object (كائن مفرد)",
+"pkg": "com.bitchat.android.utils"
+},
+"isTablet": {
+"term": "هل-لوحي",
+"kind": "دالة",
+"pkg": "com.bitchat.android.utils"
+},
+"Context": {
+"term": "السياق",
+"kind": "نوع (صنف مستورد)",
+"pkg": "com.bitchat.android.utils"
+},
+"Configuration": {
+"term": "الإعداد",
+"kind": "نوع (صنف مستورد)",
+"pkg": "com.bitchat.android.utils"
+},
+"DisplayMetrics": {
+"term": "مقاييس العرض",
+"kind": "نوع (صنف مستورد)",
+"pkg": "com.bitchat.android.utils"
+},
+"WindowManager": {
+"term": "مدير النافذة",
+"kind": "نوع (صنف مستورد)",
+"pkg": "com.bitchat.android.utils"
+},
+"getSystemService": {
+"term": "جلب-خدمة-النظام",
+"kind": "دالة موسِّعة مستوردة",
+"pkg": "com.bitchat.android.utils"
+},
+"sqrt": {
+"term": "الجذر-التربيعي",
+"kind": "دالة مستوردة",
+"pkg": "com.bitchat.android.utils"
+},
+"windowManager": {
+"term": "مدير النافذة",
+"kind": "متغيّر ثابت",
+"pkg": "com.bitchat.android.utils"
+},
+"displayMetrics": {
+"term": "مقاييس العرض",
+"kind": "متغيّر ثابت",
+"pkg": "com.bitchat.android.utils"
+},
+"widthInches": {
+"term": "العرض-بالبوصة",
+"kind": "متغيّر ثابت",
+"pkg": "com.bitchat.android.utils"
+},
+"heightInches": {
+"term": "الارتفاع-بالبوصة",
+"kind": "متغيّر ثابت",
+"pkg": "com.bitchat.android.utils"
+},
+"diagonalInches": {
+"term": "القطر-بالبوصة",
+"kind": "متغيّر ثابت",
+"pkg": "com.bitchat.android.utils"
+},
+"configuration": {
+"term": "الإعداد",
+"kind": "متغيّر ثابت",
+"pkg": "com.bitchat.android.utils"
+},
+"isLargeScreen": {
+"term": "شاشة-كبيرة",
+"kind": "متغيّر ثابت",
+"pkg": "com.bitchat.android.utils"
+},
+"isXLargeScreen": {
+"term": "شاشة-كبيرة-جداً",
+"kind": "متغيّر ثابت",
+"pkg": "com.bitchat.android.utils"
+},
+"smallestWidthDp": {
+"term": "أصغر-عرض-dp",
+"kind": "متغيّر ثابت",
+"pkg": "com.bitchat.android.utils"
+},
+"SCREENLAYOUT_SIZE_MASK": {
+"term": "قناع-حجم-تخطيط-الشاشة",
+"kind": "ثابت",
+"pkg": "com.bitchat.android.utils"
+},
+"SCREENLAYOUT_SIZE_LARGE": {
+"term": "حجم-تخطيط-كبير",
+"kind": "ثابت",
+"pkg": "com.bitchat.android.utils"
+},
+"SCREENLAYOUT_SIZE_XLARGE": {
+"term": "حجم-تخطيط-كبير-جداً",
+"kind": "ثابت",
+"pkg": "com.bitchat.android.utils"
+},
+"com.bitchat.android.model": {
+"term": "حزمة النماذج",
+"kind": "package",
+"pkg": "model"
+},
+"BitchatFilePacket": {
+"term": "حزمة ملف بِتشات",
+"kind": "class",
+"pkg": "model"
+},
+"BitchatMessage": {
+"term": "رسالة بِتشات",
+"kind": "class",
+"pkg": "model"
+},
+"BitchatMessageType": {
+"term": "نوع رسالة بِتشات",
+"kind": "enum",
+"pkg": "model"
+},
+"DeliveryStatus": {
+"term": "حالة التسليم",
+"kind": "sealed class",
+"pkg": "model"
+},
+"FragmentPayload": {
+"term": "حمولة الشظية",
+"kind": "class",
+"pkg": "model"
+},
+"IdentityAnnouncement": {
+"term": "إعلان الهوية",
+"kind": "class",
+"pkg": "model"
+},
+"NoisePayloadType": {
+"term": "نوع حمولة نويز",
+"kind": "enum",
+"pkg": "model"
+},
+"NoisePayload": {
+"term": "حمولة نويز",
+"kind": "class",
+"pkg": "model"
+},
+"PrivateMessagePacket": {
+"term": "حزمة الرسالة الخاصة",
+"kind": "class",
+"pkg": "model"
+},
+"ReadReceipt": {
+"term": "إيصال القراءة",
+"kind": "class",
+"pkg": "model"
+},
+"RequestSyncPacket": {
+"term": "حزمة طلب المزامنة",
+"kind": "class",
+"pkg": "model"
+},
+"RoutedPacket": {
+"term": "الحزمة الموجَّهة",
+"kind": "class",
+"pkg": "model"
+},
+"FileSharingManager": {
+"term": "مدير مشاركة الملفات",
+"kind": "object",
+"pkg": "model"
+},
+"ReceivedFileInfo": {
+"term": "معلومات الملف المُستلَم",
+"kind": "class",
+"pkg": "model"
+},
+"TLVType": {
+"term": "نوع حقل الطول والقيمة (TLV)",
+"kind": "enum",
+"pkg": "model"
+},
+"toBinaryPayload": {
+"term": "التحويل إلى حمولة ثنائية",
+"kind": "function",
+"pkg": "model"
+},
+"fromBinaryPayload": {
+"term": "البناء من حمولة ثنائية",
+"kind": "function",
+"pkg": "model"
+},
+"from": {
+"term": "البحث بالقيمة",
+"kind": "function",
+"pkg": "model"
+},
+"generateFragmentID": {
+"term": "توليد معرّف الشظية",
+"kind": "function",
+"pkg": "model"
+},
+"isValid": {
+"term": "التحقّق من الصلاحية",
+"kind": "function",
+"pkg": "model"
+},
+"getFragmentIDString": {
+"term": "نص معرّف الشظية",
+"kind": "function",
+"pkg": "model"
+},
+"getDisplayText": {
+"term": "نص العرض",
+"kind": "function",
+"pkg": "model"
+},
+"createFilePacketFromUri": {
+"term": "إنشاء حزمة ملف من المعرّف الموحّد",
+"kind": "function",
+"pkg": "model"
+},
+"getFileNameFromUri": {
+"term": "الحصول على اسم الملف من المعرّف الموحّد",
+"kind": "function",
+"pkg": "model"
+},
+"processReceivedFile": {
+"term": "معالجة الملف المُستلَم",
+"kind": "function",
+"pkg": "model"
+},
+"putTLV": {
+"term": "وضع حقل TLV",
+"kind": "function",
+"pkg": "model"
+},
+"fileName": {
+"term": "اسم الملف",
+"kind": "property",
+"pkg": "model"
+},
+"fileSize": {
+"term": "حجم الملف",
+"kind": "property",
+"pkg": "model"
+},
+"mimeType": {
+"term": "نوع المايم",
+"kind": "property",
+"pkg": "model"
+},
+"fragmentID": {
+"term": "معرّف الشظية",
+"kind": "property",
+"pkg": "model"
+},
+"index": {
+"term": "الفهرس",
+"kind": "property",
+"pkg": "model"
+},
+"total": {
+"term": "الإجمالي",
+"kind": "property",
+"pkg": "model"
+},
+"originalType": {
+"term": "النوع الأصلي",
+"kind": "property",
+"pkg": "model"
+},
+"data": {
+"term": "البيانات",
+"kind": "property",
+"pkg": "model"
+},
+"HEADER_SIZE": {
+"term": "حجم الترويسة",
+"kind": "constant",
+"pkg": "model"
+},
+"FRAGMENT_ID_SIZE": {
+"term": "حجم معرّف الشظية",
+"kind": "constant",
+"pkg": "model"
+},
+"nickname": {
+"term": "اللقب",
+"kind": "property",
+"pkg": "model"
+},
+"noisePublicKey": {
+"term": "مفتاح نويز العام",
+"kind": "property",
+"pkg": "model"
+},
+"signingPublicKey": {
+"term": "مفتاح التوقيع العام",
+"kind": "property",
+"pkg": "model"
+},
+"flags": {
+"term": "الأعلام",
+"kind": "variable",
+"pkg": "model"
+},
+"sender": {
+"term": "المرسِل",
+"kind": "property",
+"pkg": "model"
+},
+"id": {
+"term": "المعرّف",
+"kind": "property",
+"pkg": "model"
+},
+"isRelay": {
+"term": "هل مُمرَّرة",
+"kind": "property",
+"pkg": "model"
+},
+"isPrivate": {
+"term": "هل خاصة",
+"kind": "property",
+"pkg": "model"
+},
+"isEncrypted": {
+"term": "هل مشفّرة",
+"kind": "property",
+"pkg": "model"
+},
+"encryptedContent": {
+"term": "المحتوى المشفّر",
+"kind": "property",
+"pkg": "model"
+},
+"originalSender": {
+"term": "المرسِل الأصلي",
+"kind": "property",
+"pkg": "model"
+},
+"recipientNickname": {
+"term": "لقب المستلِم",
+"kind": "property",
+"pkg": "model"
+},
+"senderPeerID": {
+"term": "معرّف ندّ المرسِل",
+"kind": "property",
+"pkg": "model"
+},
+"mentions": {
+"term": "الإشارات",
+"kind": "property",
+"pkg": "model"
+},
+"channel": {
+"term": "القناة",
+"kind": "property",
+"pkg": "model"
+},
+"deliveryStatus": {
+"term": "حالة التسليم",
+"kind": "property",
+"pkg": "model"
+},
+"powDifficulty": {
+"term": "صعوبة إثبات العمل",
+"kind": "property",
+"pkg": "model"
+},
+"messageID": {
+"term": "معرّف الرسالة",
+"kind": "property",
+"pkg": "model"
+},
+"originalMessageID": {
+"term": "معرّف الرسالة الأصلية",
+"kind": "property",
+"pkg": "model"
+},
+"readerPeerID": {
+"term": "معرّف القارئ الندّ",
+"kind": "property",
+"pkg": "model"
+},
+"p": {
+"term": "المعامل P",
+"kind": "property",
+"pkg": "model"
+},
+"m": {
+"term": "المدى M",
+"kind": "property",
+"pkg": "model"
+},
+"MAX_ACCEPT_FILTER_BYTES": {
+"term": "أقصى بايتات مصفاة مقبولة",
+"kind": "constant",
+"pkg": "model"
+},
+"packet": {
+"term": "الحزمة",
+"kind": "property",
+"pkg": "model"
+},
+"peerID": {
+"term": "معرّف القرين",
+"kind": "property",
+"pkg": "model"
+},
+"relayAddress": {
+"term": "عنوان التمرير",
+"kind": "property",
+"pkg": "model"
+},
+"transferId": {
+"term": "معرّف النقل",
+"kind": "property",
+"pkg": "model"
+},
+"SyncDefaults": {
+"term": "الإعدادات الافتراضية للمزامنة",
+"kind": "type",
+"pkg": "model"
+},
+"Parcelable": {
+"term": "القابل للحزم",
+"kind": "interface",
+"pkg": "model"
+},
+"EncryptionService": {
+"term": "خدمة التشفير",
+"kind": "class",
+"pkg": "crypto"
+},
+"NoiseEncryptionService": {
+"term": "خدمة تشفير Noise",
+"kind": "class",
+"pkg": "crypto"
+},
+"noiseService": {
+"term": "خدمة Noise",
+"kind": "property",
+"pkg": "crypto"
+},
+"context": {
+"term": "السياق",
+"kind": "property",
+"pkg": "crypto"
+},
+"prefs": {
+"term": "المفضّلات",
+"kind": "property",
+"pkg": "crypto"
+},
+"establishedSessions": {
+"term": "الجلسات المؤسَّسة",
+"kind": "property",
+"pkg": "crypto"
+},
+"ed25519PrivateKey": {
+"term": "المفتاح الخاص Ed25519",
+"kind": "property",
+"pkg": "crypto"
+},
+"ed25519PublicKey": {
+"term": "المفتاح العام Ed25519",
+"kind": "property",
+"pkg": "crypto"
+},
+"onSessionEstablished": {
+"term": "عند تأسيس الجلسة",
+"kind": "property",
+"pkg": "crypto"
+},
+"onSessionLost": {
+"term": "عند فقدان الجلسة",
+"kind": "property",
+"pkg": "crypto"
+},
+"onHandshakeRequired": {
+"term": "عند لزوم المصافحة",
+"kind": "property",
+"pkg": "crypto"
+},
+"onPeerAuthenticated": {
+"term": "عند مصادقة النِّد",
+"kind": "property",
+"pkg": "crypto"
+},
+"TAG": {
+"term": "الوسم",
+"kind": "const",
+"pkg": "crypto"
+},
+"ED25519_PRIVATE_KEY_PREF": {
+"term": "مفتاح تفضيل المفتاح الخاص Ed25519",
+"kind": "const",
+"pkg": "crypto"
+},
+"OLD_PREFS_NAME": {
+"term": "اسم المفضّلات القديم",
+"kind": "const",
+"pkg": "crypto"
+},
+"SECURE_PREFS_NAME": {
+"term": "اسم المفضّلات الآمن",
+"kind": "const",
+"pkg": "crypto"
+},
+"initialize": {
+"term": "التهيئة",
+"kind": "function",
+"pkg": "crypto"
+},
+"setUpEncryptedPrefs": {
+"term": "إعداد المفضّلات المشفّرة",
+"kind": "function",
+"pkg": "crypto"
+},
+"getCombinedPublicKeyData": {
+"term": "الحصول على بيانات المفتاح العام المدمج",
+"kind": "function",
+"pkg": "crypto"
+},
+"getStaticPublicKey": {
+"term": "الحصول على المفتاح العام الثابت",
+"kind": "function",
+"pkg": "crypto"
+},
+"getSigningPublicKey": {
+"term": "الحصول على مفتاح التوقيع العام",
+"kind": "function",
+"pkg": "crypto"
+},
+"signData": {
+"term": "توقيع البيانات",
+"kind": "function",
+"pkg": "crypto"
+},
+"addPeerPublicKey": {
+"term": "إضافة المفتاح العام للنِّد",
+"kind": "function",
+"pkg": "crypto"
+},
+"getPeerIdentityKey": {
+"term": "الحصول على مفتاح هوية النِّد",
+"kind": "function",
+"pkg": "crypto"
+},
+"clearPersistentIdentity": {
+"term": "مسح الهوية الدائمة",
+"kind": "function",
+"pkg": "crypto"
+},
+"encrypt": {
+"term": "التشفير",
+"kind": "function",
+"pkg": "crypto"
+},
+"decrypt": {
+"term": "فك التشفير",
+"kind": "function",
+"pkg": "crypto"
+},
+"sign": {
+"term": "التوقيع",
+"kind": "function",
+"pkg": "crypto"
+},
+"verify": {
+"term": "التحقّق",
+"kind": "function",
+"pkg": "crypto"
+},
+"hasEstablishedSession": {
+"term": "وجود جلسة مؤسَّسة",
+"kind": "function",
+"pkg": "crypto"
+},
+"getSessionState": {
+"term": "الحصول على حالة الجلسة",
+"kind": "function",
+"pkg": "crypto"
+},
+"shouldShowEncryptionIcon": {
+"term": "هل تُعرض أيقونة التشفير",
+"kind": "function",
+"pkg": "crypto"
+},
+"getPeerFingerprint": {
+"term": "الحصول على بصمة النِّد",
+"kind": "function",
+"pkg": "crypto"
+},
+"getCurrentPeerID": {
+"term": "الحصول على معرّف النِّد الحالي",
+"kind": "function",
+"pkg": "crypto"
+},
+"initiateHandshake": {
+"term": "بدء المصافحة",
+"kind": "function",
+"pkg": "crypto"
+},
+"processHandshakeMessage": {
+"term": "معالجة رسالة المصافحة",
+"kind": "function",
+"pkg": "crypto"
+},
+"removePeer": {
+"term": "إزالة النِّد",
+"kind": "function",
+"pkg": "crypto"
+},
+"updatePeerIDMapping": {
+"term": "تحديث ربط معرّف النِّد",
+"kind": "function",
+"pkg": "crypto"
+},
+"setChannelPassword": {
+"term": "ضبط كلمة مرور القناة",
+"kind": "function",
+"pkg": "crypto"
+},
+"encryptChannelMessage": {
+"term": "تشفير رسالة القناة",
+"kind": "function",
+"pkg": "crypto"
+},
+"decryptChannelMessage": {
+"term": "فك تشفير رسالة القناة",
+"kind": "function",
+"pkg": "crypto"
+},
+"removeChannelPassword": {
+"term": "إزالة كلمة مرور القناة",
+"kind": "function",
+"pkg": "crypto"
+},
+"getEstablishedPeers": {
+"term": "الحصول على الأنداد المؤسَّسة جلساتهم",
+"kind": "function",
+"pkg": "crypto"
+},
+"getSessionsNeedingRekey": {
+"term": "الحصول على الجلسات المحتاجة لإعادة المفتاح",
+"kind": "function",
+"pkg": "crypto"
+},
+"initiateRekey": {
+"term": "بدء إعادة المفتاح",
+"kind": "function",
+"pkg": "crypto"
+},
+"getIdentityFingerprint": {
+"term": "الحصول على بصمة الهوية",
+"kind": "function",
+"pkg": "crypto"
+},
+"getDebugInfo": {
+"term": "الحصول على معلومات التصحيح",
+"kind": "function",
+"pkg": "crypto"
+},
+"shutdown": {
+"term": "الإيقاف",
+"kind": "function",
+"pkg": "crypto"
+},
+"verifyEd25519Signature": {
+"term": "التحقّق من توقيع Ed25519",
+"kind": "function",
+"pkg": "crypto"
+},
+"loadOrCreateEd25519KeyPair": {
+"term": "تحميل أو إنشاء زوج مفاتيح Ed25519",
+"kind": "function",
+"pkg": "crypto"
+},
+"generateAndSaveEd25519KeyPair": {
+"term": "توليد وحفظ زوج مفاتيح Ed25519",
+"kind": "function",
+"pkg": "crypto"
+},
+"migrateOldEd25519KeyIfNeeded": {
+"term": "ترحيل مفتاح Ed25519 القديم عند الحاجة",
+"kind": "function",
+"pkg": "crypto"
+},
+"MasterKey": {
+"term": "المفتاح الرئيس",
+"kind": "type",
+"pkg": "crypto"
+},
+"EncryptedSharedPreferences": {
+"term": "المفضّلات المشتركة المشفّرة",
+"kind": "type",
+"pkg": "crypto"
+},
+"SharedPreferences": {
+"term": "المفضّلات المشتركة",
+"kind": "type",
+"pkg": "crypto"
+},
+"Ed25519Signer": {
+"term": "موقّع Ed25519",
+"kind": "type",
+"pkg": "crypto"
+},
+"Ed25519KeyPairGenerator": {
+"term": "مولّد زوج مفاتيح Ed25519",
+"kind": "type",
+"pkg": "crypto"
+},
+"Ed25519KeyGenerationParameters": {
+"term": "معاملات توليد مفاتيح Ed25519",
+"kind": "type",
+"pkg": "crypto"
+},
+"Ed25519PrivateKeyParameters": {
+"term": "معاملات المفتاح الخاص Ed25519",
+"kind": "type",
+"pkg": "crypto"
+},
+"Ed25519PublicKeyParameters": {
+"term": "معاملات المفتاح العام Ed25519",
+"kind": "type",
+"pkg": "crypto"
+},
+"AsymmetricCipherKeyPair": {
+"term": "زوج مفاتيح غير متماثل",
+"kind": "type",
+"pkg": "crypto"
+},
+"SecureRandom": {
+"term": "المولّد العشوائي الآمن",
+"kind": "type",
+"pkg": "crypto"
+},
+"Base64": {
+"term": "الترميز Base64",
+"kind": "type",
+"pkg": "crypto"
+},
+"ConcurrentHashMap": {
+"term": "خريطة التجزئة المتزامنة",
+"kind": "type",
+"pkg": "crypto"
+},
+"NoiseSessionState": {
+"term": "حالة جلسة Noise",
+"kind": "type",
+"pkg": "crypto"
+},
+"fingerprint": {
+"term": "البصمة",
+"kind": "variable",
+"pkg": "crypto"
+},
+"keyPair": {
+"term": "زوج المفاتيح",
+"kind": "variable",
+"pkg": "crypto"
+},
+"masterKey": {
+"term": "المفتاح الرئيس",
+"kind": "variable",
+"pkg": "crypto"
+},
+"SecureIdentityStateManager": {
+"term": "مدير حالة الهوية الآمنة",
+"kind": "class",
+"pkg": "identity"
+},
+"lock": {
+"term": "القفل",
+"kind": "variable",
+"pkg": "identity"
+},
+"PREFS_NAME": {
+"term": "اسم التفضيلات",
+"kind": "constant",
+"pkg": "identity"
+},
+"KEY_STATIC_PRIVATE_KEY": {
+"term": "مفتاح المفتاح الخاص الثابت",
+"kind": "constant",
+"pkg": "identity"
+},
+"KEY_STATIC_PUBLIC_KEY": {
+"term": "مفتاح المفتاح العام الثابت",
+"kind": "constant",
+"pkg": "identity"
+},
+"KEY_SIGNING_PRIVATE_KEY": {
+"term": "مفتاح مفتاح التوقيع الخاص",
+"kind": "constant",
+"pkg": "identity"
+},
+"KEY_SIGNING_PUBLIC_KEY": {
+"term": "مفتاح مفتاح التوقيع العام",
+"kind": "constant",
+"pkg": "identity"
+},
+"KEY_VERIFIED_FINGERPRINTS": {
+"term": "مفتاح البصمات الموثّقة",
+"kind": "constant",
+"pkg": "identity"
+},
+"KEY_CACHED_PEER_FINGERPRINTS": {
+"term": "مفتاح بصمات النِّد المخزّنة",
+"kind": "constant",
+"pkg": "identity"
+},
+"KEY_CACHED_PEER_NOISE_KEYS": {
+"term": "مفتاح مفاتيح Noise للنِّد المخزّنة",
+"kind": "constant",
+"pkg": "identity"
+},
+"KEY_CACHED_NOISE_FINGERPRINTS": {
+"term": "مفتاح بصمات Noise المخزّنة",
+"kind": "constant",
+"pkg": "identity"
+},
+"KEY_CACHED_FINGERPRINT_NICKNAMES": {
+"term": "مفتاح ألقاب البصمات المخزّنة",
+"kind": "constant",
+"pkg": "identity"
+},
+"MessageDigest": {
+"term": "هاضِم الرسالة",
+"kind": "type",
+"pkg": "identity"
+},
+"loadStaticKey": {
+"term": "تحميل المفتاح الثابت",
+"kind": "function",
+"pkg": "identity"
+},
+"saveStaticKey": {
+"term": "حفظ المفتاح الثابت",
+"kind": "function",
+"pkg": "identity"
+},
+"loadSigningKey": {
+"term": "تحميل مفتاح التوقيع",
+"kind": "function",
+"pkg": "identity"
+},
+"saveSigningKey": {
+"term": "حفظ مفتاح التوقيع",
+"kind": "function",
+"pkg": "identity"
+},
+"generateFingerprint": {
+"term": "توليد البصمة",
+"kind": "function",
+"pkg": "identity"
+},
+"isValidFingerprint": {
+"term": "فحص صلاحية البصمة",
+"kind": "function",
+"pkg": "identity"
+},
+"getVerifiedFingerprints": {
+"term": "جلب البصمات الموثّقة",
+"kind": "function",
+"pkg": "identity"
+},
+"isVerifiedFingerprint": {
+"term": "فحص توثيق البصمة",
+"kind": "function",
+"pkg": "identity"
+},
+"setVerifiedFingerprint": {
+"term": "تعيين توثيق البصمة",
+"kind": "function",
+"pkg": "identity"
+},
+"getCachedPeerFingerprint": {
+"term": "جلب بصمة النِّد المخزّنة",
+"kind": "function",
+"pkg": "identity"
+},
+"cachePeerFingerprint": {
+"term": "تخزين بصمة النِّد",
+"kind": "function",
+"pkg": "identity"
+},
+"getCachedNoiseKey": {
+"term": "جلب مفتاح Noise المخزّن",
+"kind": "function",
+"pkg": "identity"
+},
+"cachePeerNoiseKey": {
+"term": "تخزين مفتاح Noise للنِّد",
+"kind": "function",
+"pkg": "identity"
+},
+"getCachedNoiseFingerprint": {
+"term": "جلب بصمة Noise المخزّنة",
+"kind": "function",
+"pkg": "identity"
+},
+"cacheNoiseFingerprint": {
+"term": "تخزين بصمة Noise",
+"kind": "function",
+"pkg": "identity"
+},
+"getCachedFingerprintNickname": {
+"term": "جلب لقب البصمة المخزّن",
+"kind": "function",
+"pkg": "identity"
+},
+"cacheFingerprintNickname": {
+"term": "تخزين لقب البصمة",
+"kind": "function",
+"pkg": "identity"
+},
+"validatePublicKey": {
+"term": "التحقق من المفتاح العام",
+"kind": "function",
+"pkg": "identity"
+},
+"validatePrivateKey": {
+"term": "التحقق من المفتاح الخاص",
+"kind": "function",
+"pkg": "identity"
+},
+"clearIdentityData": {
+"term": "مسح بيانات الهوية",
+"kind": "function",
+"pkg": "identity"
+},
+"hasIdentityData": {
+"term": "فحص وجود بيانات الهوية",
+"kind": "function",
+"pkg": "identity"
+},
+"storeSecureValue": {
+"term": "تخزين قيمة آمنة",
+"kind": "function",
+"pkg": "identity"
+},
+"getSecureValue": {
+"term": "جلب قيمة آمنة",
+"kind": "function",
+"pkg": "identity"
+},
+"removeSecureValue": {
+"term": "إزالة قيمة آمنة",
+"kind": "function",
+"pkg": "identity"
+},
+"hasSecureValue": {
+"term": "فحص وجود قيمة آمنة",
+"kind": "function",
+"pkg": "identity"
+},
+"clearSecureValues": {
+"term": "مسح قيم آمنة محدّدة",
+"kind": "function",
+"pkg": "identity"
+},
+"noiseKeyHex": {
+"term": "مفتاح Noise ستّ عشري",
+"kind": "variable",
+"pkg": "identity"
+},
+"clampedKey": {
+"term": "المفتاح المثبَّت",
+"kind": "variable",
+"pkg": "identity"
+},
+"invalidPoints": {
+"term": "النقاط غير الصالحة",
+"kind": "variable",
+"pkg": "identity"
+},
+"NoiseSessionManager": {
+"term": "مدير جلسات نويز",
+"kind": "class",
+"pkg": "com.bitchat.android.noise"
+},
+"NoiseSession": {
+"term": "جلسة نويز",
+"kind": "class",
+"pkg": "com.bitchat.android.noise"
+},
+"NoiseChannelEncryption": {
+"term": "تعمية قناة نويز",
+"kind": "class",
+"pkg": "com.bitchat.android.noise"
+},
+"NoiseEncryptionError": {
+"term": "خطأ تعمية نويز",
+"kind": "sealed class",
+"pkg": "com.bitchat.android.noise"
+},
+"NoiseSessionError": {
+"term": "خطأ جلسة نويز",
+"kind": "sealed class",
+"pkg": "com.bitchat.android.noise"
+},
+"SessionError": {
+"term": "خطأ الجلسة",
+"kind": "sealed class",
+"pkg": "com.bitchat.android.noise"
+},
+"HandshakeState": {
+"term": "حالة المصافحة",
+"kind": "type (library)",
+"pkg": "com.bitchat.android.noise"
+},
+"CipherState": {
+"term": "حالة المُعمّي",
+"kind": "type (library)",
+"pkg": "com.bitchat.android.noise"
+},
+"sessions": {
+"term": "خريطة الجلسات",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"sessionManager": {
+"term": "مدير الجلسات",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"channelEncryption": {
+"term": "كائن تعمية القناة",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"identityStateManager": {
+"term": "مدير حالة الهوية",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"fingerprintManager": {
+"term": "مدير البصمات",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"staticIdentityPrivateKey": {
+"term": "المفتاح الخاص للهوية الثابتة",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"staticIdentityPublicKey": {
+"term": "المفتاح العام للهوية الثابتة",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"signingPrivateKey": {
+"term": "مفتاح التوقيع الخاص",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"localStaticPrivateKey": {
+"term": "المفتاح الخاص الثابت المحلي",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"localStaticPublicKey": {
+"term": "المفتاح العام الثابت المحلي",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"localPeerID": {
+"term": "معرّف القرين المحلي",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"isInitiator": {
+"term": "هل هو البادئ",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"remoteStaticPublicKey": {
+"term": "المفتاح العام الثابت البعيد",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"handshakeHash": {
+"term": "بصمة المصافحة",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"handshakeState": {
+"term": "حالة المصافحة",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"sendCipher": {
+"term": "مُعمّي الإرسال",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"receiveCipher": {
+"term": "مُعمّي الاستقبال",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"state": {
+"term": "الحالة",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"messagesSent": {
+"term": "عدّاد الرسائل المرسَلة",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"messagesReceived": {
+"term": "عدّاد الرسائل المستلَمة",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"highestReceivedNonce": {
+"term": "أعلى لاعدد مستلَم",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"replayWindow": {
+"term": "نافذة إعادة الإرسال",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"cipherLock": {
+"term": "قفل التعمية",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"channelKeys": {
+"term": "مفاتيح القنوات",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"channelPasswords": {
+"term": "كلمات مرور القنوات",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"onSessionFailed": {
+"term": "ردّ فشل الجلسة",
+"kind": "callback",
+"pkg": "com.bitchat.android.noise"
+},
+"loadOrGenerateKeys": {
+"term": "تحميل أو توليد المفاتيح",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"initializeSessionManager": {
+"term": "تهيئة مدير الجلسات",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"generateKeyPair": {
+"term": "توليد زوج مفاتيح كيرف",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"generateEd25519KeyPair": {
+"term": "توليد زوج مفاتيح Ed25519",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"calculateFingerprint": {
+"term": "حساب البصمة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"getStaticPublicKeyData": {
+"term": "جلب بيانات المفتاح العام الثابت",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"getSigningPublicKeyData": {
+"term": "جلب بيانات مفتاح التوقيع العام",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"getPeerPublicKeyData": {
+"term": "جلب المفتاح العام للقرين",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"handleSessionEstablished": {
+"term": "معالجة تأسيس الجلسة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"getPeerID": {
+"term": "جلب معرّف القرين",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"signPacket": {
+"term": "توقيع الرزمة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"verifyPacketSignature": {
+"term": "التحقق من توقيع الرزمة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"verifySignature": {
+"term": "التحقق من التوقيع",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"signWithEd25519": {
+"term": "التوقيع بـEd25519",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"verifyWithEd25519": {
+"term": "التحقق بـEd25519",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"addSession": {
+"term": "إضافة جلسة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"getSession": {
+"term": "جلب الجلسة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"removeSession": {
+"term": "إزالة الجلسة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"isHandshakeStale": {
+"term": "هل المصافحة قديمة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"getRemoteStaticKey": {
+"term": "جلب المفتاح الثابت البعيد",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"getHandshakeHash": {
+"term": "جلب بصمة المصافحة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"startHandshake": {
+"term": "بدء المصافحة (الجلسة)",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"completeHandshake": {
+"term": "إكمال المصافحة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"initializeNoiseHandshake": {
+"term": "تهيئة مصافحة نويز",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"validateStaticKeys": {
+"term": "التحقق من المفاتيح الثابتة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"isEstablished": {
+"term": "هل مؤسَّسة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"isHandshaking": {
+"term": "هل قيد المصافحة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"isInitiatorRole": {
+"term": "هل الدور بادئ",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"getState": {
+"term": "جلب الحالة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"needsRekey": {
+"term": "هل تحتاج إعادة مفتاح",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"getRemoteStaticPublicKey": {
+"term": "جلب المفتاح العام الثابت البعيد",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"getSessionStats": {
+"term": "جلب إحصاءات الجلسة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"reset": {
+"term": "إعادة الضبط",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"destroy": {
+"term": "التدمير",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"isValidNonce": {
+"term": "هل اللاعدد صالح",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"markNonceAsSeen": {
+"term": "تعليم اللاعدد كمُشاهَد",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"extractNonceFromCiphertextPayload": {
+"term": "استخراج اللاعدد من الحمولة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"nonceToBytes": {
+"term": "تحويل اللاعدد إلى بايتات",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"hasChannelKey": {
+"term": "هل توجد مفتاح للقناة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"getChannelPassword": {
+"term": "جلب كلمة مرور القناة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"deriveChannelKey": {
+"term": "اشتقاق مفتاح القناة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"calculateKeyCommitment": {
+"term": "حساب التزام المفتاح",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"verifyKeyCommitment": {
+"term": "التحقق من التزام المفتاح",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"createChannelKeyPacket": {
+"term": "إنشاء حزمة مفتاح القناة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"processChannelKeyPacket": {
+"term": "معالجة حزمة مفتاح القناة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"getActiveChannels": {
+"term": "جلب القنوات النشطة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"clear": {
+"term": "المسح",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"PROTOCOL_NAME": {
+"term": "اسم البروتوكول",
+"kind": "const",
+"pkg": "com.bitchat.android.noise"
+},
+"PBKDF2_ITERATIONS": {
+"term": "عدد تكرارات PBKDF2",
+"kind": "const",
+"pkg": "com.bitchat.android.noise"
+},
+"KEY_LENGTH": {
+"term": "طول المفتاح",
+"kind": "const",
+"pkg": "com.bitchat.android.noise"
+},
+"REKEY_TIME_LIMIT": {
+"term": "حدّ زمن إعادة المفتاح",
+"kind": "const",
+"pkg": "com.bitchat.android.noise"
+},
+"REKEY_MESSAGE_LIMIT": {
+"term": "حدّ رسائل إعادة المفتاح",
+"kind": "const",
+"pkg": "com.bitchat.android.noise"
+},
+"HANDSHAKE_TIMEOUT_MS": {
+"term": "مهلة المصافحة",
+"kind": "const",
+"pkg": "com.bitchat.android.noise"
+},
+"HANDSHAKE_MESSAGE_1_SIZE": {
+"term": "حجم رسالة المصافحة الأولى",
+"kind": "const",
+"pkg": "com.bitchat.android.noise"
+},
+"NONCE_SIZE_BYTES": {
+"term": "حجم اللاعدد بالبايتات",
+"kind": "const",
+"pkg": "com.bitchat.android.noise"
+},
+"REPLAY_WINDOW_SIZE": {
+"term": "حجم نافذة إعادة الإرسال",
+"kind": "const",
+"pkg": "com.bitchat.android.noise"
+},
+"REPLAY_WINDOW_BYTES": {
+"term": "بايتات نافذة إعادة الإرسال",
+"kind": "const",
+"pkg": "com.bitchat.android.noise"
+},
+"XX_MESSAGE_1_SIZE": {
+"term": "حجم رسالة XX الأولى",
+"kind": "const",
+"pkg": "com.bitchat.android.noise"
+},
+"XX_MESSAGE_2_SIZE": {
+"term": "حجم رسالة XX الثانية",
+"kind": "const",
+"pkg": "com.bitchat.android.noise"
+},
+"XX_MESSAGE_3_SIZE": {
+"term": "حجم رسالة XX الثالثة",
+"kind": "const",
+"pkg": "com.bitchat.android.noise"
+},
+"NOISE_XX_PATTERN_LENGTH": {
+"term": "طول نمط XX",
+"kind": "const",
+"pkg": "com.bitchat.android.noise"
+},
+"currentPattern": {
+"term": "عدّاد النمط الحالي",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"ArtiTorManager": {
+"term": "مدير تور آرتي",
+"kind": "class",
+"pkg": "net"
+},
+"TorState": {
+"term": "حالة تور",
+"kind": "enum",
+"pkg": "net"
+},
+"TorStatus": {
+"term": "بيان حالة تور",
+"kind": "data class",
+"pkg": "net"
+},
+"TorMode": {
+"term": "وضع تور",
+"kind": "enum",
+"pkg": "net"
+},
+"LifecycleState": {
+"term": "حالة دورة الحياة",
+"kind": "enum",
+"pkg": "net"
+},
+"ArtiProxy": {
+"term": "وكيل آرتي",
+"kind": "class",
+"pkg": "net"
+},
+"ArtiLogListener": {
+"term": "مستمع سجلّ آرتي",
+"kind": "class",
+"pkg": "net"
+},
+"OkHttpProvider": {
+"term": "مزوّد أوك‌إتش‌تي‌تي‌بي",
+"kind": "object",
+"pkg": "net"
+},
+"TorPreferenceManager": {
+"term": "مدير تفضيلات تور",
+"kind": "object",
+"pkg": "net"
+},
+"getInstance": {
+"term": "إحضار المثيل",
+"kind": "function",
+"pkg": "net"
+},
+"INSTANCE": {
+"term": "المثيل المفرد",
+"kind": "variable",
+"pkg": "net"
+},
+"init": {
+"term": "التهيئة",
+"kind": "function",
+"pkg": "net"
+},
+"initialized": {
+"term": "عَلَم التهيئة",
+"kind": "variable",
+"pkg": "net"
+},
+"applyMode": {
+"term": "تطبيق الوضع",
+"kind": "function",
+"pkg": "net"
+},
+"desiredMode": {
+"term": "الوضع المرغوب",
+"kind": "variable",
+"pkg": "net"
+},
+"lastMode": {
+"term": "آخر وضع",
+"kind": "variable",
+"pkg": "net"
+},
+"applyMutex": {
+"term": "قفل التطبيق",
+"kind": "variable",
+"pkg": "net"
+},
+"appScope": {
+"term": "نطاق التطبيق",
+"kind": "variable",
+"pkg": "net"
+},
+"startArti": {
+"term": "بدء آرتي",
+"kind": "function",
+"pkg": "net"
+},
+"stopArti": {
+"term": "إيقاف آرتي",
+"kind": "function",
+"pkg": "net"
+},
+"stopArtiInternal": {
+"term": "إيقاف آرتي الداخلي",
+"kind": "function",
+"pkg": "net"
+},
+"stopArtiAndWait": {
+"term": "إيقاف آرتي والانتظار",
+"kind": "function",
+"pkg": "net"
+},
+"restartArti": {
+"term": "إعادة تشغيل آرتي",
+"kind": "function",
+"pkg": "net"
+},
+"scheduleRetry": {
+"term": "جدولة إعادة المحاولة",
+"kind": "function",
+"pkg": "net"
+},
+"isBindError": {
+"term": "فحص خطأ الربط",
+"kind": "function",
+"pkg": "net"
+},
+"resetNetworkConnections": {
+"term": "إعادة ضبط اتصالات الشبكة",
+"kind": "function",
+"pkg": "net"
+},
+"startInactivityMonitoring": {
+"term": "بدء مراقبة الخمول",
+"kind": "function",
+"pkg": "net"
+},
+"stopInactivityMonitoring": {
+"term": "إيقاف مراقبة الخمول",
+"kind": "function",
+"pkg": "net"
+},
+"stopRetryMonitoring": {
+"term": "إيقاف مراقبة الإعادة",
+"kind": "function",
+"pkg": "net"
+},
+"waitUntilBootstrapped": {
+"term": "الانتظار حتى الإقلاع",
+"kind": "function",
+"pkg": "net"
+},
+"handleArtiLogLine": {
+"term": "معالجة سطر سجلّ آرتي",
+"kind": "function",
+"pkg": "net"
+},
+"completeWaitersIf": {
+"term": "إكمال المنتظِرين",
+"kind": "function",
+"pkg": "net"
+},
+"waitForStateTransition": {
+"term": "انتظار انتقال الحالة",
+"kind": "function",
+"pkg": "net"
+},
+"isProxyEnabled": {
+"term": "فحص تفعيل الوكيل",
+"kind": "function",
+"pkg": "net"
+},
+"isTorAvailable": {
+"term": "فحص توفّر تور",
+"kind": "function",
+"pkg": "net"
+},
+"currentSocksAddress": {
+"term": "عنوان سوكس الحالي",
+"kind": "function",
+"pkg": "net"
+},
+"socksAddr": {
+"term": "عنوان سوكس",
+"kind": "variable",
+"pkg": "net"
+},
+"currentSocksPort": {
+"term": "منفذ سوكس الحالي",
+"kind": "variable",
+"pkg": "net"
+},
+"artiProxy": {
+"term": "حقل وكيل آرتي",
+"kind": "variable",
+"pkg": "net"
+},
+"lifecycleState": {
+"term": "حقل حالة دورة الحياة",
+"kind": "variable",
+"pkg": "net"
+},
+"lastLogTime": {
+"term": "وقت آخر سجلّ",
+"kind": "variable",
+"pkg": "net"
+},
+"retryAttempts": {
+"term": "محاولات الإعادة",
+"kind": "variable",
+"pkg": "net"
+},
+"bindRetryAttempts": {
+"term": "محاولات إعادة الربط",
+"kind": "variable",
+"pkg": "net"
+},
+"MAX_RETRY_ATTEMPTS": {
+"term": "أقصى عدد محاولات",
+"kind": "const",
+"pkg": "net"
+},
+"RESTART_DELAY_MS": {
+"term": "تأخير إعادة التشغيل",
+"kind": "const",
+"pkg": "net"
+},
+"INACTIVITY_TIMEOUT_MS": {
+"term": "مهلة الخمول",
+"kind": "const",
+"pkg": "net"
+},
+"STOP_TIMEOUT_MS": {
+"term": "مهلة التوقّف",
+"kind": "const",
+"pkg": "net"
+},
+"inactivityJob": {
+"term": "مهمة الخمول",
+"kind": "variable",
+"pkg": "net"
+},
+"retryJob": {
+"term": "مهمة الإعادة",
+"kind": "variable",
+"pkg": "net"
+},
+"_statusFlow": {
+"term": "تدفّق الحالة الداخلي",
+"kind": "variable",
+"pkg": "net"
+},
+"statusFlow": {
+"term": "تدفّق الحالة",
+"kind": "variable",
+"pkg": "net"
+},
+"stateChangeDeferred": {
+"term": "مؤجَّل تغيّر الحالة",
+"kind": "variable",
+"pkg": "net"
+},
+"currentApplication": {
+"term": "التطبيق الحالي",
+"kind": "variable",
+"pkg": "net"
+},
+"bootstrapPercent": {
+"term": "نسبة الإقلاع",
+"kind": "variable",
+"pkg": "net"
+},
+"httpClient": {
+"term": "عميل إتش‌تي‌تي‌بي",
+"kind": "function",
+"pkg": "net"
+},
+"webSocketClient": {
+"term": "عميل ويب‌سوكِت",
+"kind": "function",
+"pkg": "net"
+},
+"baseBuilderForCurrentProxy": {
+"term": "الباني الأساسي للوكيل الحالي",
+"kind": "function",
+"pkg": "net"
+},
+"httpClientRef": {
+"term": "مرجع عميل إتش‌تي‌تي‌بي",
+"kind": "variable",
+"pkg": "net"
+},
+"wsClientRef": {
+"term": "مرجع عميل ويب‌سوكِت",
+"kind": "variable",
+"pkg": "net"
+},
+"OkHttpClient": {
+"term": "عميل أوك‌إتش‌تي‌تي‌بي",
+"kind": "class",
+"pkg": "net"
+},
+"Proxy": {
+"term": "وسيط جافا",
+"kind": "class",
+"pkg": "net"
+},
+"modeFlow": {
+"term": "تدفّق الوضع",
+"kind": "variable",
+"pkg": "net"
+},
+"_modeFlow": {
+"term": "تدفّق الوضع الداخلي",
+"kind": "variable",
+"pkg": "net"
+},
+"set": {
+"term": "حفظ الوضع",
+"kind": "function",
+"pkg": "net"
+},
+"get": {
+"term": "قراءة الوضع",
+"kind": "function",
+"pkg": "net"
+},
+"KEY_TOR_MODE": {
+"term": "مفتاح وضع تور",
+"kind": "const",
+"pkg": "net"
+},
+"NostrRelayManager": {
+"term": "مدير مرحّلات نوستر",
+"kind": "class",
+"pkg": "net"
+}
+}

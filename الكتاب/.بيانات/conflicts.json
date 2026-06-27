@@ -1,0 +1,236 @@
+[
+[
+"SYNC_TTL_HOPS",
+"قفزات مدة بقاء المزامنة",
+"قفزات بقاء المزامنة",
+"com.bitchat.android.util"
+],
+[
+"toBinaryData",
+"إلى بيانات ثنائية",
+"التحويل إلى بيانات ثنائية",
+"com.bitchat.android.util"
+],
+[
+"fromValue",
+"من قيمة",
+"الاشتقاق من القيمة",
+"com.bitchat.android.util"
+],
+[
+"equals",
+"يساوي",
+"التساوي",
+"com.bitchat.android.util"
+],
+[
+"hashCode",
+"الرمز التجزيئي",
+"رمز التجزئة",
+"com.bitchat.android.util"
+],
+[
+"fromValue",
+"من قيمة",
+"البحث بالقيمة",
+"model"
+],
+[
+"BitchatPacket",
+"حزمة بِتشات",
+"حزمة بِتشات الخارجية",
+"model"
+],
+[
+"MessageType",
+"نوع الرسالة",
+"نوع الرسالة (البروتوكول)",
+"model"
+],
+[
+"ByteBuffer",
+"المخزن المؤقت",
+"مخزن البايتات",
+"model"
+],
+[
+"ByteOrder",
+"ترتيب البايت",
+"ترتيب البايتات",
+"model"
+],
+[
+"peerID",
+"معرّف القرين",
+"معرّف النِّد",
+"crypto"
+],
+[
+"prefs",
+"المفضّلات",
+"التفضيلات",
+"identity"
+],
+[
+"masterKey",
+"المفتاح الرئيس",
+"المفتاح الرئيسي",
+"identity"
+],
+[
+"EncryptedSharedPreferences",
+"المفضّلات المشتركة المشفّرة",
+"التفضيلات المشتركة المشفّرة",
+"identity"
+],
+[
+"MasterKey",
+"المفتاح الرئيس",
+"المفتاح الرئيسي",
+"identity"
+],
+[
+"SharedPreferences",
+"المفضّلات المشتركة",
+"التفضيلات المشتركة",
+"identity"
+],
+[
+"Base64",
+"الترميز Base64",
+"ترميز أساس ٦٤",
+"identity"
+],
+[
+"hexEncodedString",
+"الترميز السداسي للنص",
+"السلسلة المرمّزة ستّ عشرياً",
+"identity"
+],
+[
+"getDebugInfo",
+"الحصول على معلومات التصحيح",
+"جلب معلومات التصحيح",
+"identity"
+],
+[
+"peerID",
+"معرّف القرين",
+"معرّف النِّد",
+"identity"
+],
+[
+"NoiseEncryptionService",
+"خدمة تشفير Noise",
+"خدمة تعمية نويز",
+"com.bitchat.android.noise"
+],
+[
+"NoiseSessionState",
+"حالة جلسة Noise",
+"حالة جلسة نويز",
+"com.bitchat.android.noise"
+],
+[
+"onPeerAuthenticated",
+"عند مصادقة النِّد",
+"ردّ مصادقة القرين",
+"com.bitchat.android.noise"
+],
+[
+"onHandshakeRequired",
+"عند لزوم المصافحة",
+"ردّ الحاجة للمصافحة",
+"com.bitchat.android.noise"
+],
+[
+"onSessionEstablished",
+"عند تأسيس الجلسة",
+"ردّ تأسيس الجلسة",
+"com.bitchat.android.noise"
+],
+[
+"getIdentityFingerprint",
+"الحصول على بصمة الهوية",
+"جلب بصمة الهوية",
+"com.bitchat.android.noise"
+],
+[
+"hasEstablishedSession",
+"وجود جلسة مؤسَّسة",
+"هل توجد جلسة مؤسَّسة",
+"com.bitchat.android.noise"
+],
+[
+"getSessionState",
+"الحصول على حالة الجلسة",
+"جلب حالة الجلسة",
+"com.bitchat.android.noise"
+],
+[
+"encrypt",
+"التشفير",
+"التعمية",
+"com.bitchat.android.noise"
+],
+[
+"decrypt",
+"فك التشفير",
+"فكّ التعمية",
+"com.bitchat.android.noise"
+],
+[
+"getPeerFingerprint",
+"الحصول على بصمة النِّد",
+"جلب بصمة القرين",
+"com.bitchat.android.noise"
+],
+[
+"removePeer",
+"إزالة النِّد",
+"إزالة القرين",
+"com.bitchat.android.noise"
+],
+[
+"updatePeerIDMapping",
+"تحديث ربط معرّف النِّد",
+"تحديث ربط معرّف القرين",
+"com.bitchat.android.noise"
+],
+[
+"getSessionsNeedingRekey",
+"الحصول على الجلسات المحتاجة لإعادة المفتاح",
+"جلب الجلسات المحتاجة لإعادة المفتاح",
+"com.bitchat.android.noise"
+],
+[
+"getDebugInfo",
+"الحصول على معلومات التصحيح",
+"جلب معلومات التصحيح",
+"com.bitchat.android.noise"
+],
+[
+"encryptChannelMessage",
+"تشفير رسالة القناة",
+"تعمية رسالة القناة",
+"com.bitchat.android.noise"
+],
+[
+"decryptChannelMessage",
+"فك تشفير رسالة القناة",
+"فكّ تعمية رسالة القناة",
+"com.bitchat.android.noise"
+],
+[
+"DEFAULT_SOCKS_PORT",
+"منفذ SOCKS الافتراضي",
+"منفذ سوكس الافتراضي",
+"net"
+],
+[
+"PREFS_NAME",
+"اسم التفضيلات",
+"اسم ملف التفضيلات",
+"net"
+]
+]
