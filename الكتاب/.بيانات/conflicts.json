@@ -1,0 +1,3764 @@
+[
+[
+"SYNC_TTL_HOPS",
+"قفزات مدة بقاء المزامنة",
+"قفزات بقاء المزامنة",
+"com.bitchat.android.util"
+],
+[
+"toBinaryData",
+"إلى بيانات ثنائية",
+"التحويل إلى بيانات ثنائية",
+"com.bitchat.android.util"
+],
+[
+"fromValue",
+"من قيمة",
+"الاشتقاق من القيمة",
+"com.bitchat.android.util"
+],
+[
+"equals",
+"يساوي",
+"التساوي",
+"com.bitchat.android.util"
+],
+[
+"hashCode",
+"الرمز التجزيئي",
+"رمز التجزئة",
+"com.bitchat.android.util"
+],
+[
+"fromValue",
+"من قيمة",
+"البحث بالقيمة",
+"model"
+],
+[
+"BitchatPacket",
+"حزمة بِتشات",
+"حزمة بِتشات الخارجية",
+"model"
+],
+[
+"MessageType",
+"نوع الرسالة",
+"نوع الرسالة (البروتوكول)",
+"model"
+],
+[
+"ByteBuffer",
+"المخزن المؤقت",
+"مخزن البايتات",
+"model"
+],
+[
+"ByteOrder",
+"ترتيب البايت",
+"ترتيب البايتات",
+"model"
+],
+[
+"peerID",
+"معرّف القرين",
+"معرّف النِّد",
+"crypto"
+],
+[
+"prefs",
+"المفضّلات",
+"التفضيلات",
+"identity"
+],
+[
+"masterKey",
+"المفتاح الرئيس",
+"المفتاح الرئيسي",
+"identity"
+],
+[
+"EncryptedSharedPreferences",
+"المفضّلات المشتركة المشفّرة",
+"التفضيلات المشتركة المشفّرة",
+"identity"
+],
+[
+"MasterKey",
+"المفتاح الرئيس",
+"المفتاح الرئيسي",
+"identity"
+],
+[
+"SharedPreferences",
+"المفضّلات المشتركة",
+"التفضيلات المشتركة",
+"identity"
+],
+[
+"Base64",
+"الترميز Base64",
+"ترميز أساس ٦٤",
+"identity"
+],
+[
+"hexEncodedString",
+"الترميز السداسي للنص",
+"السلسلة المرمّزة ستّ عشرياً",
+"identity"
+],
+[
+"getDebugInfo",
+"الحصول على معلومات التصحيح",
+"جلب معلومات التصحيح",
+"identity"
+],
+[
+"peerID",
+"معرّف القرين",
+"معرّف النِّد",
+"identity"
+],
+[
+"NoiseEncryptionService",
+"خدمة تشفير Noise",
+"خدمة تعمية نويز",
+"com.bitchat.android.noise"
+],
+[
+"NoiseSessionState",
+"حالة جلسة Noise",
+"حالة جلسة نويز",
+"com.bitchat.android.noise"
+],
+[
+"onPeerAuthenticated",
+"عند مصادقة النِّد",
+"ردّ مصادقة القرين",
+"com.bitchat.android.noise"
+],
+[
+"onHandshakeRequired",
+"عند لزوم المصافحة",
+"ردّ الحاجة للمصافحة",
+"com.bitchat.android.noise"
+],
+[
+"onSessionEstablished",
+"عند تأسيس الجلسة",
+"ردّ تأسيس الجلسة",
+"com.bitchat.android.noise"
+],
+[
+"getIdentityFingerprint",
+"الحصول على بصمة الهوية",
+"جلب بصمة الهوية",
+"com.bitchat.android.noise"
+],
+[
+"hasEstablishedSession",
+"وجود جلسة مؤسَّسة",
+"هل توجد جلسة مؤسَّسة",
+"com.bitchat.android.noise"
+],
+[
+"getSessionState",
+"الحصول على حالة الجلسة",
+"جلب حالة الجلسة",
+"com.bitchat.android.noise"
+],
+[
+"encrypt",
+"التشفير",
+"التعمية",
+"com.bitchat.android.noise"
+],
+[
+"decrypt",
+"فك التشفير",
+"فكّ التعمية",
+"com.bitchat.android.noise"
+],
+[
+"getPeerFingerprint",
+"الحصول على بصمة النِّد",
+"جلب بصمة القرين",
+"com.bitchat.android.noise"
+],
+[
+"removePeer",
+"إزالة النِّد",
+"إزالة القرين",
+"com.bitchat.android.noise"
+],
+[
+"updatePeerIDMapping",
+"تحديث ربط معرّف النِّد",
+"تحديث ربط معرّف القرين",
+"com.bitchat.android.noise"
+],
+[
+"getSessionsNeedingRekey",
+"الحصول على الجلسات المحتاجة لإعادة المفتاح",
+"جلب الجلسات المحتاجة لإعادة المفتاح",
+"com.bitchat.android.noise"
+],
+[
+"getDebugInfo",
+"الحصول على معلومات التصحيح",
+"جلب معلومات التصحيح",
+"com.bitchat.android.noise"
+],
+[
+"encryptChannelMessage",
+"تشفير رسالة القناة",
+"تعمية رسالة القناة",
+"com.bitchat.android.noise"
+],
+[
+"decryptChannelMessage",
+"فك تشفير رسالة القناة",
+"فكّ تعمية رسالة القناة",
+"com.bitchat.android.noise"
+],
+[
+"DEFAULT_SOCKS_PORT",
+"منفذ SOCKS الافتراضي",
+"منفذ سوكس الافتراضي",
+"net"
+],
+[
+"PREFS_NAME",
+"اسم التفضيلات",
+"اسم ملف التفضيلات",
+"net"
+],
+[
+"type",
+"النوع",
+"نوع الرسالة (type)",
+"mesh"
+],
+[
+"MessageType",
+"نوع الرسالة",
+"نوع الرسالة (MessageType)",
+"mesh"
+],
+[
+"RoutedPacket",
+"الحزمة الموجَّهة",
+"الرزمة المُوجَّهة",
+"mesh"
+],
+[
+"BitchatPacket",
+"حزمة بِتشات",
+"رزمة بِت‑شات",
+"mesh"
+],
+[
+"getDebugInfo",
+"الحصول على معلومات التصحيح",
+"الحصول على معلومات التنقيح",
+"mesh"
+],
+[
+"powerManager",
+"مدير الطاقة (حقل)",
+"مدير الطاقة",
+"mesh"
+],
+[
+"TAG",
+"الوسم",
+"وسم التسجيل",
+"mesh"
+],
+[
+"addressPeerMap",
+"خريطة العنوان‑الندّ",
+"خريطة العنوان إلى النِّد",
+"mesh"
+],
+[
+"peerID",
+"معرّف القرين",
+"معرّف النِّد",
+"mesh"
+],
+[
+"getConnectedDeviceCount",
+"عدد الأجهزة المتصلة",
+"جلب عدد الأجهزة المتصلة",
+"mesh"
+],
+[
+"getConnectionsToEvict",
+"الاتصالات الواجب طردها",
+"جلب الاتصالات الواجب طردها",
+"mesh"
+],
+[
+"getDebugInfo",
+"الحصول على معلومات التصحيح",
+"جلب معلومات التصحيح",
+"mesh"
+],
+[
+"BluetoothGattClientManager",
+"مدير عميل جات للبلوتوث",
+"مدير عميل GATT للبلوتوث",
+"mesh"
+],
+[
+"powerManager",
+"مدير الطاقة (حقل)",
+"مدير الطاقة",
+"mesh"
+],
+[
+"isActive",
+"نشط",
+"هل نشط",
+"mesh"
+],
+[
+"peerID",
+"معرّف القرين",
+"معرّف النِدّ",
+"mesh"
+],
+[
+"connectionTracker",
+"متتبّع الاتصال",
+"متعقّب الاتصال",
+"mesh"
+],
+[
+"powerManager",
+"مدير الطاقة (حقل)",
+"مدير الطاقة",
+"mesh"
+],
+[
+"myPeerID",
+"معرّف ندّي الخاص",
+"معرّف قريني",
+"mesh"
+],
+[
+"bluetoothAdapter",
+"مهايئ البلوتوث",
+"محوّل البلوتوث",
+"mesh"
+],
+[
+"characteristic",
+"الخاصية",
+"الخاصية الوصفية",
+"mesh"
+],
+[
+"isActive",
+"نشط",
+"هل هو نشط",
+"mesh"
+],
+[
+"disconnectDevice",
+"قطع اتصال جهاز",
+"قطع اتصال الجهاز",
+"mesh"
+],
+[
+"start",
+"بدء",
+"البدء",
+"mesh"
+],
+[
+"stop",
+"إيقاف",
+"الإيقاف",
+"mesh"
+],
+[
+"BitchatPacket",
+"حزمة بِتشات",
+"رزمة بِتشات",
+"mesh"
+],
+[
+"onPacketReceived",
+"عند استلام رزمة",
+"عند استلام الرزمة",
+"mesh"
+],
+[
+"onDeviceConnected",
+"عند اتصال جهاز",
+"عند اتصال الجهاز",
+"mesh"
+],
+[
+"onDeviceDisconnected",
+"عند قطع اتصال جهاز",
+"عند قطع اتصال الجهاز",
+"mesh"
+],
+[
+"myPeerID",
+"معرّف ندّي الخاص",
+"مُعرّف نظيري",
+"mesh"
+],
+[
+"fragmentManager",
+"مدير التجزئة",
+"مدير الأجزاء",
+"mesh"
+],
+[
+"delegate",
+"المفوَّض",
+"المُفوَّض",
+"mesh"
+],
+[
+"sendToPeer",
+"الإرسال إلى الندّ",
+"إرسال إلى نظير",
+"mesh"
+],
+[
+"isBleTransportEnabled",
+"هل نقل BLE مُفعَّل",
+"هل نقل BLE مُفعّل",
+"mesh"
+],
+[
+"isReusable",
+"قابل لإعادة الاستخدام",
+"قابلة لإعادة الاستخدام",
+"mesh"
+],
+[
+"hexStringToByteArray",
+"نص ست عشري إلى مصفوفة بايتات",
+"تحويل النص الست-عشري إلى مصفوفة بايتات",
+"mesh"
+],
+[
+"hasEstablishedSession",
+"وجود جلسة مؤسَّسة",
+"لديه جلسة مُؤسَّسة",
+"mesh"
+],
+[
+"getSessionState",
+"الحصول على حالة الجلسة",
+"جلب حالة الجلسة",
+"mesh"
+],
+[
+"RoutedPacket",
+"الحزمة الموجَّهة",
+"الحزمة الموجّهة",
+"mesh"
+],
+[
+"SpecialRecipients",
+"المستلِمون الخاصون",
+"المستلِمون الخاصّون",
+"mesh"
+],
+[
+"addressPeerMap",
+"خريطة العنوان‑الندّ",
+"خريطة عنوان-نظير",
+"mesh"
+],
+[
+"BluetoothPacketBroadcaster",
+"باثّ رزم البلوتوث",
+"باثّ حزم البلوتوث",
+"mesh"
+],
+[
+"connectionTracker",
+"متتبّع الاتصال",
+"مُتتبِّع الاتصال",
+"mesh"
+],
+[
+"myPeerID",
+"معرّف ندّي الخاص",
+"معرّف نِدّي الخاص",
+"mesh"
+],
+[
+"setNicknameResolver",
+"ضبط مُحلّل الاسم المستعار",
+"ضبط محلّل الاسم المستعار",
+"mesh"
+],
+[
+"broadcastPacket",
+"بثّ الرزمة",
+"بثّ الحزمة",
+"mesh"
+],
+[
+"sendPacketToPeer",
+"إرسال الرزمة إلى الندّ",
+"إرسال الحزمة إلى نِدّ",
+"mesh"
+],
+[
+"sendToPeer",
+"الإرسال إلى الندّ",
+"إرسال إلى نِدّ",
+"mesh"
+],
+[
+"getDebugInfo",
+"الحصول على معلومات التصحيح",
+"الحصول على معلومات التنقيح",
+"mesh"
+],
+[
+"RoutedPacket",
+"الحزمة الموجَّهة",
+"الحزمة المُوجَّهة",
+"mesh"
+],
+[
+"addressPeerMap",
+"خريطة العنوان‑الندّ",
+"خريطة العنوان إلى النِّدّ",
+"mesh"
+],
+[
+"getSubscribedDevices",
+"جلب الأجهزة المشتركة",
+"الأجهزة المشتركة",
+"mesh"
+],
+[
+"getConnectedDevices",
+"جلب الأجهزة المتصلة",
+"الأجهزة المتصلة",
+"mesh"
+],
+[
+"relayAddress",
+"عنوان التمرير",
+"عنوان المُرحِّل",
+"mesh"
+],
+[
+"BluetoothPermissionManager",
+"مدير أذونات البلوتوث",
+"مدير أذونات البلوتوث (BluetoothPermissionManager)",
+"mesh"
+],
+[
+"context",
+"السياق",
+"سياق التطبيق (context)",
+"mesh"
+],
+[
+"BitchatPacket",
+"حزمة بِتشات",
+"حزمة بِت‑تشات",
+"mesh"
+],
+[
+"MessagePadding",
+"حاشية الرسالة",
+"حشو الرسالة",
+"mesh"
+],
+[
+"getDebugInfo",
+"الحصول على معلومات التصحيح",
+"معلومات التصحيح",
+"mesh"
+],
+[
+"shutdown",
+"الإيقاف",
+"إيقاف المدير",
+"mesh"
+],
+[
+"delegate",
+"المفوَّض",
+"المفوّض",
+"mesh"
+],
+[
+"FRAGMENT_SIZE_THRESHOLD",
+"عتبة حجم التجزئة",
+"عتبة حجم الشظية",
+"mesh"
+],
+[
+"MAX_FRAGMENT_SIZE",
+"أقصى حجم جزء",
+"أقصى حجم شظية",
+"mesh"
+],
+[
+"send",
+"إرسال",
+"أرسِل",
+"mesh"
+],
+[
+"cancelTransfer",
+"إلغاء النقل",
+"ألغِ النقل",
+"mesh"
+],
+[
+"sha256Hex",
+"بصمة سها-256 الست-عشرية",
+"سها٢٥٦ ست عشري",
+"mesh"
+],
+[
+"BitchatPacket",
+"حزمة بِتشات",
+"حزمة بِت‌شات",
+"mesh"
+],
+[
+"transferId",
+"معرّف النقل",
+"مُعرّف النقل",
+"mesh"
+],
+[
+"createFragments",
+"إنشاء الشظايا",
+"أنشئ الأجزاء",
+"mesh"
+],
+[
+"MessageDigest",
+"هاضِم الرسالة",
+"هاضم الرسالة",
+"mesh"
+],
+[
+"MeshConnectionTracker",
+"متتبّع اتصال الشبكة المتشابكة",
+"متعقّب اتصالات الشبكة المتشابكة",
+"mesh"
+],
+[
+"scope",
+"النطاق (نطاق الكوروتين)",
+"نطاق الكوروتين",
+"mesh"
+],
+[
+"MAX_CONNECTION_ATTEMPTS",
+"أقصى محاولات الاتصال",
+"الحد الأقصى لمحاولات الاتصال",
+"mesh"
+],
+[
+"isActive",
+"نشط",
+"هل نشط",
+"mesh"
+],
+[
+"start",
+"بدء",
+"ابدأ",
+"mesh"
+],
+[
+"stop",
+"إيقاف",
+"أوقف",
+"mesh"
+],
+[
+"removePendingConnection",
+"إزالة الاتصال المعلّق",
+"أزِل اتصالاً معلّقاً",
+"mesh"
+],
+[
+"isConnected",
+"أمُتّصل",
+"هل متّصل",
+"mesh"
+],
+[
+"disconnect",
+"قطع الاتصال",
+"اقطع الاتصال",
+"mesh"
+],
+[
+"getConnectionCount",
+"جلب عدد الاتصالات",
+"احصل على عدد الاتصالات",
+"mesh"
+],
+[
+"myPeerID",
+"معرّف ندّي الخاص",
+"معرّف نِدّي",
+"mesh"
+],
+[
+"peerManager",
+"مدير النظراء",
+"مدير الأنداد",
+"mesh"
+],
+[
+"fragmentManager",
+"مدير التجزئة",
+"مدير الشظايا",
+"mesh"
+],
+[
+"storeForwardManager",
+"مدير التخزين والإرسال",
+"مدير التخزين وإعادة التوجيه",
+"mesh"
+],
+[
+"messageHandler",
+"معالج الرسائل",
+"معالِج الرسائل",
+"mesh"
+],
+[
+"packetProcessor",
+"معالج الحزم",
+"مُعالِج الحُزَم",
+"mesh"
+],
+[
+"isActive",
+"نشط",
+"هل هو فعّال",
+"mesh"
+],
+[
+"shutdown",
+"الإيقاف",
+"الإيقاف التامّ",
+"mesh"
+],
+[
+"setupDelegates",
+"تهيئة المُفوَّضين",
+"تهيئة المفوَّضين",
+"mesh"
+],
+[
+"sendMessage",
+"إرسال رسالة عامّة",
+"إرسال رسالة",
+"mesh"
+],
+[
+"sendFileBroadcast",
+"إرسال بثّ ملف",
+"بثّ ملفّ",
+"mesh"
+],
+[
+"sendFilePrivate",
+"إرسال ملف خاص",
+"إرسال ملفّ خاصّ",
+"mesh"
+],
+[
+"cancelFileTransfer",
+"إلغاء نقل الملف",
+"إلغاء نقل الملفّ",
+"mesh"
+],
+[
+"sendPrivateMessage",
+"إرسال رسالة خاصة",
+"إرسال رسالة خاصّة",
+"mesh"
+],
+[
+"sendNoisePayloadToPeer",
+"إرسال حمولة نويز إلى نظير",
+"إرسال حمولة نويز إلى نِدّ",
+"mesh"
+],
+[
+"sendAnnouncementToPeer",
+"إرسال الإعلان إلى نظير",
+"إرسال الإعلان إلى نِدّ",
+"mesh"
+],
+[
+"getDirectPeerIDsForGossip",
+"جلب مُعرّفات النظراء المباشرين للإشاعة",
+"جلب معرّفات الأنداد المباشرين للإشاعة",
+"mesh"
+],
+[
+"getDebugStatus",
+"جلب حالة التنقيح",
+"جلب حالة التصحيح",
+"mesh"
+],
+[
+"clearAllInternalData",
+"مسح كل البيانات الداخلية",
+"مسح كلّ البيانات الداخلية",
+"mesh"
+],
+[
+"clearAllEncryptionData",
+"مسح كل بيانات التشفير",
+"مسح كلّ بيانات التشفير",
+"mesh"
+],
+[
+"BitchatPacket",
+"حزمة بِتشات",
+"حُزمة بِتشات",
+"mesh"
+],
+[
+"RoutedPacket",
+"الحزمة الموجَّهة",
+"الحُزمة الموجَّهة",
+"mesh"
+],
+[
+"IdentityAnnouncement",
+"إعلان الهوية",
+"إعلان الهويّة",
+"mesh"
+],
+[
+"SpecialRecipients",
+"المستلِمون الخاصون",
+"المستلِمون الخاصّون",
+"mesh"
+],
+[
+"BitchatMessage",
+"رسالة بِتشات",
+"رسالة بِت‌شات (BitchatMessage)",
+"mesh"
+],
+[
+"decryptChannelMessage",
+"فك تشفير رسالة القناة",
+"فُكّ تشفير رسالة قناة (decryptChannelMessage)",
+"mesh"
+],
+[
+"peerID",
+"معرّف القرين",
+"معرّف النظير (peerID)",
+"mesh"
+],
+[
+"messageID",
+"معرّف الرسالة",
+"معرّف الرسالة (messageID)",
+"mesh"
+],
+[
+"payload",
+"الحمولة",
+"الحمولة (payload)",
+"mesh"
+],
+[
+"encryptedContent",
+"المحتوى المشفّر",
+"المحتوى المُشفَّر (encryptedContent)",
+"mesh"
+],
+[
+"channel",
+"القناة",
+"القناة (channel)",
+"mesh"
+],
+[
+"MeshPacketUtils",
+"أدوات حُزمة الشبكة",
+"أدوات رزم الشبكة المتشابكة",
+"mesh"
+],
+[
+"hexStringToByteArray",
+"نص ست عشري إلى مصفوفة بايتات",
+"دالة التحويل من نص ست عشري إلى مصفوفة بايتات",
+"mesh"
+],
+[
+"sha256Hex",
+"بصمة سها-256 الست-عشرية",
+"دالة الجَزء بصيغة ست عشرية",
+"mesh"
+],
+[
+"MessageDigest",
+"هاضِم الرسالة",
+"هاضم الرسالة (مكتبة جافا)",
+"mesh"
+],
+[
+"ByteArray",
+"مصفوفة بايتات (ByteArray)",
+"مصفوفة بايتات",
+"mesh"
+],
+[
+"MeshDelegate",
+"مفوِّض الشبكة المتشابكة (MeshDelegate)",
+"مُفوَّض الشبكة المتشابكة",
+"mesh"
+],
+[
+"myPeerID",
+"معرّف ندّي الخاص",
+"معرّف الندّ الخاص بي",
+"mesh"
+],
+[
+"delegate",
+"المفوَّض",
+"المُفوَّض",
+"mesh"
+],
+[
+"sendMessage",
+"إرسال رسالة عامّة",
+"إرسال رسالة",
+"mesh"
+],
+[
+"sendReadReceipt",
+"إرسال إيصال القراءة",
+"إرسال إيصال قراءة",
+"mesh"
+],
+[
+"sendVerifyChallenge",
+"إرسال تحدّي التحقّق",
+"إرسال تحدّي تحقّق",
+"mesh"
+],
+[
+"sendVerifyResponse",
+"إرسال ردّ التحقّق",
+"إرسال ردّ تحقّق",
+"mesh"
+],
+[
+"sendFileBroadcast",
+"إرسال بثّ ملف",
+"بثّ ملف للجميع",
+"mesh"
+],
+[
+"sendFilePrivate",
+"إرسال ملف خاص",
+"إرسال ملف بشكل خاص",
+"mesh"
+],
+[
+"cancelFileTransfer",
+"إلغاء نقل الملف",
+"إلغاء نقل ملف",
+"mesh"
+],
+[
+"sendBroadcastAnnounce",
+"إرسال إعلان البثّ",
+"بثّ إعلان للجميع",
+"mesh"
+],
+[
+"sendAnnouncementToPeer",
+"إرسال الإعلان إلى نظير",
+"إرسال إعلان إلى ندّ",
+"mesh"
+],
+[
+"hasEstablishedSession",
+"وجود جلسة مؤسَّسة",
+"هل توجد جلسة مُنشأة",
+"mesh"
+],
+[
+"getSessionState",
+"الحصول على حالة الجلسة",
+"جلب حالة الجلسة",
+"mesh"
+],
+[
+"initiateNoiseHandshake",
+"بدء مصافحة نويز",
+"بدء مصافحة Noise",
+"mesh"
+],
+[
+"getPeerFingerprint",
+"الحصول على بصمة النِّد",
+"جلب بصمة الندّ",
+"mesh"
+],
+[
+"noisePublicKey",
+"مفتاح نويز العام",
+"المفتاح العامّ لـ Noise",
+"mesh"
+],
+[
+"signingPublicKey",
+"مفتاح التوقيع العام",
+"المفتاح العامّ للتوقيع",
+"mesh"
+],
+[
+"getIdentityFingerprint",
+"الحصول على بصمة الهوية",
+"جلب بصمة الهوية",
+"mesh"
+],
+[
+"shouldShowEncryptionIcon",
+"هل تُعرض أيقونة التشفير",
+"هل يُعرَض رمز التشفير",
+"mesh"
+],
+[
+"getDeviceAddressForPeer",
+"جلب عنوان جهاز النظير",
+"جلب عنوان الجهاز لندّ",
+"mesh"
+],
+[
+"RoutedPacket",
+"الحزمة الموجَّهة",
+"الرزمة الموجَّهة",
+"mesh"
+],
+[
+"BitchatPacket",
+"حزمة بِتشات",
+"رزمة بِت‑شات",
+"mesh"
+],
+[
+"sendPacketToPeer",
+"إرسال الرزمة إلى الندّ",
+"إرسال الرزمة إلى النظير",
+"mesh"
+],
+[
+"getDeviceAddressForPeer",
+"جلب عنوان جهاز النظير",
+"جلب عنوان الجهاز للنظير",
+"mesh"
+],
+[
+"getDeviceAddressToPeerMapping",
+"جلب خريطة عناوين الأجهزة إلى الأنداد",
+"جلب خريطة عنوان الجهاز إلى النظير",
+"mesh"
+],
+[
+"peerID",
+"معرّف القرين",
+"معرّف النظير",
+"mesh"
+],
+[
+"myPeerID",
+"معرّف ندّي الخاص",
+"معرّف نظيري الخاص",
+"mesh"
+],
+[
+"delegate",
+"المفوَّض",
+"المُفوَّض",
+"mesh"
+],
+[
+"packetProcessor",
+"معالج الحزم",
+"معالِج الحِزَم",
+"mesh"
+],
+[
+"sendDeliveryAck",
+"إرسال إقرار تسليم",
+"إرسال إقرار التسليم",
+"mesh"
+],
+[
+"hexStringToByteArray",
+"نص ست عشري إلى مصفوفة بايتات",
+"تحويل النص السداسي إلى بايتات",
+"mesh"
+],
+[
+"getDebugInfo",
+"الحصول على معلومات التصحيح",
+"جلب معلومات التتبُّع",
+"mesh"
+],
+[
+"shutdown",
+"الإيقاف",
+"إيقاف المعالِج",
+"mesh"
+],
+[
+"RoutedPacket",
+"الحزمة الموجَّهة",
+"حزمة موجَّهة",
+"mesh"
+],
+[
+"BitchatPacket",
+"حزمة بِتشات",
+"حزمة بِت‌شات",
+"mesh"
+],
+[
+"BitchatMessage",
+"رسالة بِتشات",
+"رسالة بِت‌شات",
+"mesh"
+],
+[
+"BitchatFilePacket",
+"حزمة ملف بِتشات",
+"حزمة ملفّ بِت‌شات",
+"mesh"
+],
+[
+"NoisePayload",
+"حمولة نويز",
+"حمولة Noise",
+"mesh"
+],
+[
+"NoisePayloadType",
+"نوع حمولة نويز",
+"نوع حمولة Noise",
+"mesh"
+],
+[
+"PrivateMessagePacket",
+"حزمة الرسالة الخاصة",
+"حزمة الرسالة الخاصّة",
+"mesh"
+],
+[
+"IdentityAnnouncement",
+"إعلان الهوية",
+"إعلان الهويّة",
+"mesh"
+],
+[
+"MeshGraphService",
+"خدمة رسم الشبكة المتشابكة",
+"خدمة رسم الشبكة",
+"mesh"
+],
+[
+"GossipTLV",
+"ترميز الإشاعة بصيغة TLV",
+"ترميز القيل والقال",
+"mesh"
+],
+[
+"PeerInfo",
+"معلومات الندّ",
+"معلومات القرين",
+"mesh"
+],
+[
+"noisePublicKey",
+"مفتاح نويز العام",
+"مفتاح Noise العام",
+"mesh"
+],
+[
+"verifyEd25519Signature",
+"التحقّق من توقيع Ed25519",
+"التحقق من توقيع Ed25519",
+"mesh"
+],
+[
+"updatePeerInfo",
+"تحديث معلومات الندّ",
+"تحديث معلومات القرين",
+"mesh"
+],
+[
+"myPeerID",
+"معرّف ندّي الخاص",
+"معرّف نظيري",
+"mesh"
+],
+[
+"delegate",
+"المفوَّض",
+"المُفوَّض إليه",
+"mesh"
+],
+[
+"handleNoiseHandshake",
+"التعامل مع مصافحة Noise",
+"معالجة مصافحة Noise",
+"mesh"
+],
+[
+"handleNoiseEncrypted",
+"التعامل مع المُعمّى بـ Noise",
+"معالجة المُشفَّر بـ Noise",
+"mesh"
+],
+[
+"handleAnnounce",
+"التعامل مع الإعلان",
+"معالجة الإعلان",
+"mesh"
+],
+[
+"handleMessage",
+"التعامل مع الرسالة",
+"معالجة الرسالة",
+"mesh"
+],
+[
+"handleLeave",
+"التعامل مع المغادرة",
+"معالجة المغادرة",
+"mesh"
+],
+[
+"handleFragment",
+"معالجة الشظية",
+"معالجة الشظيّة",
+"mesh"
+],
+[
+"getDebugInfo",
+"الحصول على معلومات التصحيح",
+"الحصول على معلومات التنقيح",
+"mesh"
+],
+[
+"sendAnnouncementToPeer",
+"إرسال الإعلان إلى نظير",
+"إرسال الإعلان إلى النظير",
+"mesh"
+],
+[
+"sendToPeer",
+"الإرسال إلى الندّ",
+"الإرسال إلى النظير",
+"mesh"
+],
+[
+"RoutedPacket",
+"الحزمة الموجَّهة",
+"الحزمة المُوجَّهة",
+"mesh"
+],
+[
+"BitchatPacket",
+"حزمة بِتشات",
+"حزمة بِت-شات",
+"mesh"
+],
+[
+"myPeerID",
+"معرّف ندّي الخاص",
+"معرّف النِّد الخاص بي",
+"mesh"
+],
+[
+"TAG",
+"الوسم",
+"وسم التسجيل",
+"mesh"
+],
+[
+"peerID",
+"معرّف القرين",
+"معرّف النِّد",
+"mesh"
+],
+[
+"relayPacket",
+"ترحيل الحزمة",
+"حزمة الترحيل",
+"mesh"
+],
+[
+"toHexString",
+"التحويل إلى نص سداسي",
+"التحويل إلى نص ست عشري",
+"mesh"
+],
+[
+"sendToPeer",
+"الإرسال إلى الندّ",
+"الإرسال إلى النِّد",
+"mesh"
+],
+[
+"getBroadcastRecipient",
+"الحصول على مُستلِم البثّ",
+"الحصول على مستلِم البث",
+"mesh"
+],
+[
+"relayPacket",
+"ترحيل الحزمة",
+"بثّ حزمة الترحيل",
+"mesh"
+],
+[
+"broadcastPacket",
+"بثّ الرزمة",
+"بثّ الحزمة",
+"mesh"
+],
+[
+"getDebugInfo",
+"الحصول على معلومات التصحيح",
+"الحصول على معلومات التنقيح",
+"mesh"
+],
+[
+"getInstance",
+"إحضار المثيل",
+"الحصول على النسخة الوحيدة (getInstance)",
+"mesh"
+],
+[
+"INSTANCE",
+"المثيل المفرد",
+"النسخة الوحيدة (INSTANCE)",
+"mesh"
+],
+[
+"updatePeerIDMapping",
+"تحديث ربط معرّف النِّد",
+"تحديث ربط معرّف النِّد (updatePeerIDMapping)",
+"mesh"
+],
+[
+"removePeer",
+"إزالة النِّد",
+"إزالة النِّد (removePeer)",
+"mesh"
+],
+[
+"calculateFingerprint",
+"حساب البصمة",
+"حساب البصمة (calculateFingerprint)",
+"mesh"
+],
+[
+"getDebugInfo",
+"الحصول على معلومات التصحيح",
+"جلب معلومات التنقيح (getDebugInfo)",
+"mesh"
+],
+[
+"MessageDigest",
+"هاضِم الرسالة",
+"ملخّص الرسالة (MessageDigest)",
+"mesh"
+],
+[
+"ConcurrentHashMap",
+"خريطة التجزئة المتزامنة",
+"الخريطة المتزامنة (ConcurrentHashMap)",
+"mesh"
+],
+[
+"TAG",
+"الوسم",
+"وسم التسجيل (TAG)",
+"mesh"
+],
+[
+"fingerprint",
+"البصمة",
+"البصمة (fingerprint)",
+"mesh"
+],
+[
+"peerID",
+"معرّف القرين",
+"معرّف النِّد (peerID)",
+"mesh"
+],
+[
+"PeerInfo",
+"معلومات الندّ",
+"معلومات-النِّدّ",
+"mesh"
+],
+[
+"PeerFingerprintManager",
+"مدير بصمة النِّد (PeerFingerprintManager)",
+"مدير-بصمات-الأنداد",
+"mesh"
+],
+[
+"nickname",
+"اللقب",
+"الاسم-المستعار",
+"mesh"
+],
+[
+"isConnected",
+"أمُتّصل",
+"هل-متّصل",
+"mesh"
+],
+[
+"noisePublicKey",
+"مفتاح نويز العام",
+"مفتاح-نويز-العام",
+"mesh"
+],
+[
+"signingPublicKey",
+"مفتاح التوقيع العام",
+"مفتاح-التوقيع-العام",
+"mesh"
+],
+[
+"fingerprintManager",
+"مدير البصمات",
+"مدير-البصمات",
+"mesh"
+],
+[
+"delegate",
+"المفوَّض",
+"المُفوَّض",
+"mesh"
+],
+[
+"managerScope",
+"نطاق المدير",
+"نطاق-المدير",
+"mesh"
+],
+[
+"updatePeerInfo",
+"تحديث معلومات الندّ",
+"تحديث-معلومات-الند",
+"mesh"
+],
+[
+"getPeerInfo",
+"جلب معلومات الندّ",
+"الحصول-على-معلومات-الند",
+"mesh"
+],
+[
+"updatePeerLastSeen",
+"تحديث آخر ظهور للنظير",
+"تحديث-آخر-ظهور-للند",
+"mesh"
+],
+[
+"removePeer",
+"إزالة النِّد",
+"إزالة-الند",
+"mesh"
+],
+[
+"getPeerNickname",
+"الحصول على كنية النظير",
+"جلب-اسم-الند-المستعار",
+"mesh"
+],
+[
+"getActivePeerCount",
+"جلب عدد الأنداد النشِطين",
+"جلب-عدد-الأنداد-النشطين",
+"mesh"
+],
+[
+"getDebugInfo",
+"الحصول على معلومات التصحيح",
+"جلب-معلومات-التصحيح",
+"mesh"
+],
+[
+"startPeriodicCleanup",
+"بدء التنظيف الدوري",
+"بدء-التنظيف-الدوري",
+"mesh"
+],
+[
+"storeFingerprintForPeer",
+"تخزين بصمة النِّد (storeFingerprintForPeer)",
+"تخزين-بصمة-الند",
+"mesh"
+],
+[
+"updatePeerIDMapping",
+"تحديث ربط معرّف النِّد",
+"تحديث-ربط-معرّف-الند",
+"mesh"
+],
+[
+"getFingerprintForPeer",
+"جلب بصمة النِّد (getFingerprintForPeer)",
+"جلب-بصمة-الند",
+"mesh"
+],
+[
+"getPeerIDForFingerprint",
+"جلب معرّف النِّد من البصمة (getPeerIDForFingerprint)",
+"جلب-معرّف-الند-للبصمة",
+"mesh"
+],
+[
+"hasFingerprintForPeer",
+"هل توجد بصمة للنِّد (hasFingerprintForPeer)",
+"هل-للند-بصمة",
+"mesh"
+],
+[
+"getAllPeerFingerprints",
+"جلب كل بصمات النِّد (getAllPeerFingerprints)",
+"جلب-كل-بصمات-الأنداد",
+"mesh"
+],
+[
+"clearAllFingerprints",
+"مسح كل البصمات (clearAllFingerprints)",
+"مسح-كل-البصمات",
+"mesh"
+],
+[
+"shutdown",
+"الإيقاف",
+"إيقاف-المدير",
+"mesh"
+],
+[
+"RSSI",
+"قوة الإشارة المستقبَلة",
+"قوة-الإشارة",
+"mesh"
+],
+[
+"start",
+"بدء",
+"ابدأ",
+"mesh"
+],
+[
+"stop",
+"إيقاف",
+"أوقِف",
+"mesh"
+],
+[
+"shouldUseDutyCycle",
+"هل ينبغي استخدام دورة العمل",
+"هل تُستخدم دورة التشغيل",
+"mesh"
+],
+[
+"myPeerID",
+"معرّف ندّي الخاص",
+"معرّف نِدّي الخاص",
+"mesh"
+],
+[
+"handleNoiseHandshake",
+"التعامل مع مصافحة Noise",
+"معالجة مصافحة Noise",
+"mesh"
+],
+[
+"encryptForPeer",
+"التعمية للقرين",
+"التشفير لنِدّ",
+"mesh"
+],
+[
+"decryptFromPeer",
+"فكّ التعمية من القرين",
+"فكّ التشفير من نِدّ",
+"mesh"
+],
+[
+"getCombinedPublicKeyData",
+"الحصول على بيانات المفتاح العام المدمج",
+"بيانات المفتاح العام المجمَّعة",
+"mesh"
+],
+[
+"getDebugInfo",
+"الحصول على معلومات التصحيح",
+"معلومات التنقيح",
+"mesh"
+],
+[
+"getPeerInfo",
+"جلب معلومات الندّ",
+"الحصول على معلومات النِّد",
+"mesh"
+],
+[
+"BitchatPacket",
+"حزمة بِتشات",
+"رزمة Bitchat",
+"mesh"
+],
+[
+"RoutedPacket",
+"الحزمة الموجَّهة",
+"الرزمة الموجَّهة",
+"mesh"
+],
+[
+"PeerInfo",
+"معلومات الندّ",
+"معلومات النِّد",
+"mesh"
+],
+[
+"MessageType.FRAGMENT",
+"نوع الجزء",
+"رسالة الشظية",
+"mesh"
+],
+[
+"MessageType.FILE_TRANSFER",
+"نوع نقل الملف",
+"رسالة نقل الملف",
+"mesh"
+],
+[
+"verifyEd25519Signature",
+"التحقّق من توقيع Ed25519",
+"التحقق من توقيع Ed25519",
+"mesh"
+],
+[
+"toBinaryDataForSigning",
+"إلى بيانات ثنائية للتوقيع",
+"تحويل إلى بيانات ثنائية للتوقيع",
+"mesh"
+],
+[
+"managerScope",
+"نطاق المدير",
+"نطاق كوروتينات المدير",
+"mesh"
+],
+[
+"sendCachedMessages",
+"إرسال الرسائل المخزَّنة",
+"أرسل الرسائل المخزَّنة",
+"mesh"
+],
+[
+"getDebugInfo",
+"الحصول على معلومات التصحيح",
+"احصل على معلومات التنقيح",
+"mesh"
+],
+[
+"startPeriodicCleanup",
+"بدء التنظيف الدوري",
+"ابدأ التنظيف الدوري",
+"mesh"
+],
+[
+"shutdown",
+"الإيقاف",
+"أوقف المدير",
+"mesh"
+],
+[
+"isFavorite",
+"هل هو مفضَّل (isFavorite)",
+"هل هو مفضَّل",
+"mesh"
+],
+[
+"sendPacket",
+"إرسال الرزمة",
+"أرسل الحزمة",
+"mesh"
+],
+[
+"BitchatPacket",
+"حزمة بِتشات",
+"حزمة بِت‌شات",
+"mesh"
+],
+[
+"SpecialRecipients",
+"المستلِمون الخاصون",
+"المستلِمون الخاصّون",
+"mesh"
+],
+[
+"transferId",
+"معرّف النقل",
+"معرّف النقل (transferId)",
+"mesh"
+],
+[
+"total",
+"الإجمالي",
+"الإجمالي (total)",
+"mesh"
+],
+[
+"TransferProgressManager",
+"مدير تقدّم النقل",
+"مدير تقدّم النقل (TransferProgressManager)",
+"mesh"
+],
+[
+"scope",
+"النطاق (نطاق الكوروتين)",
+"النطاق (scope)",
+"mesh"
+],
+[
+"start",
+"بدء",
+"بدء النقل (start)",
+"mesh"
+],
+[
+"launch",
+"الإطلاق",
+"إطلاق (launch)",
+"mesh"
+],
+[
+"MeshService",
+"خدمة الشبكة المتشابكة",
+"واجهة خدمة الشبكة المتشابكة",
+"mesh"
+],
+[
+"BluetoothMeshDelegate",
+"مُفوَّض شبكة بلوتوث",
+"مندوب شبكة البلوتوث المتشابكة",
+"mesh"
+],
+[
+"BluetoothMeshService",
+"خدمة شبكة بلوتوث المتشابكة",
+"خدمة شبكة البلوتوث المتشابكة",
+"mesh"
+],
+[
+"MeshDelegate",
+"مفوِّض الشبكة المتشابكة (MeshDelegate)",
+"مندوب الشبكة",
+"mesh"
+],
+[
+"myPeerID",
+"معرّف ندّي الخاص",
+"معرّف النِّدّ الخاص بي",
+"mesh"
+],
+[
+"delegate",
+"المفوَّض",
+"المندوب",
+"mesh"
+],
+[
+"sendMessage",
+"إرسال رسالة عامّة",
+"إرسال رسالة",
+"mesh"
+],
+[
+"sendReadReceipt",
+"إرسال إيصال القراءة",
+"إرسال إيصال قراءة",
+"mesh"
+],
+[
+"sendVerifyChallenge",
+"إرسال تحدّي التحقّق",
+"إرسال تحدّي تحقّق",
+"mesh"
+],
+[
+"sendVerifyResponse",
+"إرسال ردّ التحقّق",
+"إرسال ردّ تحقّق",
+"mesh"
+],
+[
+"cancelFileTransfer",
+"إلغاء نقل الملف",
+"إلغاء نقل ملف",
+"mesh"
+],
+[
+"sendBroadcastAnnounce",
+"إرسال إعلان البثّ",
+"إرسال إعلان بثّ",
+"mesh"
+],
+[
+"sendAnnouncementToPeer",
+"إرسال الإعلان إلى نظير",
+"إرسال إعلان إلى نِدّ",
+"mesh"
+],
+[
+"getPeerNicknames",
+"جلب الأسماء المستعارة للأنداد",
+"جلب ألقاب الأنداد",
+"mesh"
+],
+[
+"getPeerRSSI",
+"جلب قوّة إشارة الأنداد",
+"جلب قوة إشارة الأنداد",
+"mesh"
+],
+[
+"getActivePeerCount",
+"جلب عدد الأنداد النشِطين",
+"جلب عدد الأنداد النشطين",
+"mesh"
+],
+[
+"hasEstablishedSession",
+"وجود جلسة مؤسَّسة",
+"هل توجد جلسة مؤسَّسة",
+"mesh"
+],
+[
+"getSessionState",
+"الحصول على حالة الجلسة",
+"جلب حالة الجلسة",
+"mesh"
+],
+[
+"NoiseSession.NoiseSessionState",
+"حالة جلسة Noise",
+"حالة جلسة نويز",
+"mesh"
+],
+[
+"getPeerFingerprint",
+"الحصول على بصمة النِّد",
+"جلب بصمة النِّدّ",
+"mesh"
+],
+[
+"getPeerInfo",
+"جلب معلومات الندّ",
+"جلب معلومات النِّدّ",
+"mesh"
+],
+[
+"PeerInfo",
+"معلومات الندّ",
+"معلومات النِّدّ",
+"mesh"
+],
+[
+"updatePeerInfo",
+"تحديث معلومات الندّ",
+"تحديث معلومات النِّدّ",
+"mesh"
+],
+[
+"getIdentityFingerprint",
+"الحصول على بصمة الهوية",
+"جلب بصمة الهوية",
+"mesh"
+],
+[
+"getStaticNoisePublicKey",
+"جلب مفتاح Noise العامّ الثابت",
+"جلب مفتاح نويز العام الثابت",
+"mesh"
+],
+[
+"shouldShowEncryptionIcon",
+"هل تُعرض أيقونة التشفير",
+"هل يُظهَر أيقونة التشفير",
+"mesh"
+],
+[
+"getEncryptedPeers",
+"جلب الأنداد المُشفَّرين",
+"جلب الأنداد المشفّرين",
+"mesh"
+],
+[
+"getDeviceAddressForPeer",
+"جلب عنوان جهاز النظير",
+"جلب عنوان الجهاز للنِّدّ",
+"mesh"
+],
+[
+"getDeviceAddressToPeerMapping",
+"جلب خريطة عناوين الأجهزة إلى الأنداد",
+"جلب ربط عنوان الجهاز بالنِّدّ",
+"mesh"
+],
+[
+"printDeviceAddressesForPeers",
+"طباعة عناوين الأجهزة للأنداد",
+"طباعة عناوين أجهزة الأنداد",
+"mesh"
+],
+[
+"didReceiveMessage",
+"استلمَ رسالة (didReceiveMessage)",
+"استُلِمت رسالة",
+"mesh"
+],
+[
+"didUpdatePeerList",
+"حدَّثَ قائمة النظائر (didUpdatePeerList)",
+"حُدِّثت قائمة الأنداد",
+"mesh"
+],
+[
+"didReceiveChannelLeave",
+"استلمَ مغادرة قناة (didReceiveChannelLeave)",
+"استُلِم مغادرة قناة",
+"mesh"
+],
+[
+"didReceiveDeliveryAck",
+"استلمَ إقرار تسليم (didReceiveDeliveryAck)",
+"استُلِم إقرار تسليم",
+"mesh"
+],
+[
+"didReceiveReadReceipt",
+"استلمَ إيصال قراءة (didReceiveReadReceipt)",
+"استُلِم إيصال قراءة",
+"mesh"
+],
+[
+"didReceiveVerifyChallenge",
+"استلمَ تحدِّي تحقُّق (didReceiveVerifyChallenge)",
+"استُلِم تحدّي تحقّق",
+"mesh"
+],
+[
+"didReceiveVerifyResponse",
+"استلمَ ردّ تحقُّق (didReceiveVerifyResponse)",
+"استُلِم ردّ تحقّق",
+"mesh"
+],
+[
+"decryptChannelMessage",
+"فك تشفير رسالة القناة",
+"فكّ تشفير رسالة القناة",
+"mesh"
+],
+[
+"getNickname",
+"احصل على الاسم المستعار (getNickname)",
+"جلب اللقب",
+"mesh"
+],
+[
+"isFavorite",
+"هل هو مفضَّل (isFavorite)",
+"هل مُفضَّل",
+"mesh"
+],
+[
+"BitchatFilePacket",
+"حزمة ملف بِتشات",
+"حزمة ملف بيتشات",
+"mesh"
+],
+[
+"BitchatMessage",
+"رسالة بِتشات",
+"رسالة بيتشات",
+"mesh"
+],
+[
+"encode",
+"الترميز",
+"دالة الترميز (encode)",
+"nostr"
+],
+[
+"decode",
+"فكّ الترميز",
+"دالة فكّ الترميز (decode)",
+"nostr"
+],
+[
+"data",
+"البيانات",
+"البيانات (data)",
+"nostr"
+],
+[
+"PREFS_NAME",
+"اسم التفضيلات",
+"اسم ملف التفضيلات (PREFS_NAME)",
+"nostr"
+],
+[
+"prefs",
+"المفضّلات",
+"التفضيلات المشتركة (prefs)",
+"nostr"
+],
+[
+"initialize",
+"التهيئة",
+"التهيئة (initialize)",
+"nostr"
+],
+[
+"get",
+"قراءة الوضع",
+"الجلب (get)",
+"nostr"
+],
+[
+"clear",
+"المسح",
+"المسح (clear)",
+"nostr"
+],
+[
+"context",
+"السياق",
+"السياق (context)",
+"nostr"
+],
+[
+"ConcurrentHashMap",
+"خريطة التجزئة المتزامنة",
+"خريطة التجزئة المتزامنة (ConcurrentHashMap)",
+"nostr"
+],
+[
+"SharedPreferences",
+"المفضّلات المشتركة",
+"التفضيلات المشتركة (SharedPreferences)",
+"nostr"
+],
+[
+"PREFS_NAME",
+"اسم التفضيلات",
+"اسم ملف التفضيلات (PREFS_NAME)",
+"nostr"
+],
+[
+"prefs",
+"المفضّلات",
+"التفضيلات المشتركة (prefs)",
+"nostr"
+],
+[
+"initialize",
+"التهيئة",
+"التهيئة (initialize)",
+"nostr"
+],
+[
+"set",
+"حفظ الوضع",
+"الضبط (set)",
+"nostr"
+],
+[
+"get",
+"قراءة الوضع",
+"الجلب (get)",
+"nostr"
+],
+[
+"clear",
+"المسح",
+"المسح (clear)",
+"nostr"
+],
+[
+"ConcurrentHashMap",
+"خريطة التجزئة المتزامنة",
+"خريطة التجزئة المتزامنة (ConcurrentHashMap)",
+"nostr"
+],
+[
+"SharedPreferences",
+"المفضّلات المشتركة",
+"التفضيلات المشتركة (SharedPreferences)",
+"nostr"
+],
+[
+"Context",
+"السياق",
+"السياق (Context)",
+"nostr"
+],
+[
+"CoroutineScope",
+"نطاق المتعاونات (CoroutineScope)",
+"نطاق الكوروتين",
+"nostr"
+],
+[
+"NostrIdentityBridge",
+"جسر هويّة نوستر",
+"جسر هوية نوستر",
+"nostr"
+],
+[
+"GeohashAliasRegistry",
+"سجلّ أسماء الجيوهاش المستعارة (GeohashAliasRegistry)",
+"سجل أسماء الجيوهاش البديلة",
+"nostr"
+],
+[
+"GeohashRepository",
+"مستودع الجيوهاش",
+"مستودع الموقع الجغرافي",
+"nostr"
+],
+[
+"NostrIdentityBridge",
+"جسر هويّة نوستر",
+"جسر هوية نوستر",
+"nostr"
+],
+[
+"pubkeyHex",
+"المفتاح العام بالنظام الست عشري (pubkeyHex)",
+"المفتاح العام الست عشري",
+"nostr"
+],
+[
+"NostrRelayManager",
+"مدير مرحّلات نوستر",
+"مدير مُرحّلات نوستر",
+"nostr"
+],
+[
+"NostrIdentityBridge",
+"جسر هويّة نوستر",
+"جسر هوية نوستر",
+"nostr"
+],
+[
+"initialize",
+"التهيئة",
+"دالة التهيئة",
+"nostr"
+],
+[
+"TAG",
+"الوسم",
+"وسم السجل",
+"nostr"
+],
+[
+"context",
+"السياق",
+"سياق التطبيق",
+"nostr"
+],
+[
+"deriveIdentity",
+"اشتقاق الهوية",
+"دالة اشتقاق الهوية",
+"nostr"
+],
+[
+"id",
+"المعرّف",
+"مُعرّف الاشتراك",
+"nostr"
+],
+[
+"getInstance",
+"إحضار المثيل",
+"جالب النسخة المفردة",
+"nostr"
+],
+[
+"getInstance",
+"إحضار المثيل",
+"جالب النسخة الوحيدة",
+"nostr"
+],
+[
+"INSTANCE",
+"المثيل المفرد",
+"النسخة الوحيدة",
+"nostr"
+],
+[
+"nickname",
+"اللقب",
+"الاسم المستعار",
+"nostr"
+],
+[
+"geohash",
+"الجيوهاش (geohash)",
+"الجيوهاش",
+"nostr"
+],
+[
+"scope",
+"النطاق (نطاق الكوروتين)",
+"نطاق الإجراءات المتزامنة",
+"nostr"
+],
+[
+"initialize",
+"التهيئة",
+"تهيئة التبعيات",
+"nostr"
+],
+[
+"send",
+"إرسال",
+"إرسال ملاحظة",
+"nostr"
+],
+[
+"NostrRelayManager",
+"مدير مرحّلات نوستر",
+"مدير مُرحِّلات نوستر",
+"nostr"
+],
+[
+"getInstance",
+"إحضار المثيل",
+"جلب النسخة الوحيدة",
+"nostr"
+],
+[
+"INSTANCE",
+"المثيل المفرد",
+"النسخة الوحيدة",
+"nostr"
+],
+[
+"relayManager",
+"مزوّد مدير المُرحّلات",
+"مدير المُرحِّلات",
+"nostr"
+],
+[
+"NostrRelayManager",
+"مدير مرحّلات نوستر",
+"مدير مُرحِّلات نوستر",
+"nostr"
+],
+[
+"npub",
+"مفتاح نوستر العام",
+"المفتاح العام بصيغة npub",
+"nostr"
+],
+[
+"scope",
+"النطاق (نطاق الكوروتين)",
+"نطاق الإجراءات المتزامنة",
+"nostr"
+],
+[
+"NostrIdentityBridge",
+"جسر هويّة نوستر",
+"جسر هوية نوستر",
+"nostr"
+],
+[
+"Bech32",
+"كائن بيك٣٢ (Bech32)",
+"ترميز Bech32",
+"nostr"
+],
+[
+"sendEvent",
+"دالة إرسال الحدث",
+"إرسال حدث",
+"nostr"
+],
+[
+"subscribe",
+"دالة الاشتراك",
+"الاشتراك",
+"nostr"
+],
+[
+"geohash",
+"الجيوهاش (geohash)",
+"المنطقة الجغرافية المختصرة",
+"nostr"
+],
+[
+"deriveIdentity",
+"اشتقاق الهوية",
+"اشتقاق هوية",
+"nostr"
+],
+[
+"unsubscribe",
+"دالة إلغاء الاشتراك",
+"إلغاء الاشتراك",
+"nostr"
+],
+[
+"handlePrivateMessage",
+"التعامل مع الرسالة الخاصّة",
+"معالجة الرسالة الخاصة",
+"nostr"
+],
+[
+"NostrProofOfWork",
+"إثبات العمل لنوستر",
+"إثبات عمل نوستر",
+"nostr"
+],
+[
+"generateKeyPair",
+"توليد زوج مفاتيح كيرف",
+"توليدُ زوجِ المفاتيح (generateKeyPair)",
+"nostr"
+],
+[
+"dedupe",
+"دالة إزالة التكرار",
+"إزالة التكرار",
+"nostr"
+],
+[
+"geohash",
+"الجيوهاش (geohash)",
+"الجيوهاش (التشفير الجغرافي)",
+"nostr"
+],
+[
+"NostrIdentity",
+"هوية نوستر",
+"هويّة نوستر",
+"nostr"
+],
+[
+"BitchatMessage",
+"رسالة بِتشات",
+"رسالة بِت‑شات",
+"nostr"
+],
+[
+"BitchatFilePacket",
+"حزمة ملف بِتشات",
+"حزمة ملف بِت‑شات",
+"nostr"
+],
+[
+"BitchatPacket",
+"حزمة بِتشات",
+"حزمة بِت‑شات",
+"nostr"
+],
+[
+"ChatState",
+"حالة المحادثة",
+"حالة الدردشة",
+"nostr"
+],
+[
+"GeohashAliasRegistry",
+"سجلّ أسماء الجيوهاش المستعارة (GeohashAliasRegistry)",
+"سجلّ أسماء الجيوهاش المستعارة",
+"nostr"
+],
+[
+"GeohashConversationRegistry",
+"سجل محادثات الجيوهاش (GeohashConversationRegistry)",
+"سجلّ محادثات الجيوهاش",
+"nostr"
+],
+[
+"convKey",
+"مفتاح المحادثة (convKey)",
+"مفتاح المحادثة",
+"nostr"
+],
+[
+"FileUtils",
+"أداة الملفّات",
+"أدوات الملفات",
+"nostr"
+],
+[
+"didReceiveDeliveryAck",
+"استلمَ إقرار تسليم (didReceiveDeliveryAck)",
+"عند استلام إقرار التسليم",
+"nostr"
+],
+[
+"didReceiveReadReceipt",
+"استلمَ إيصال قراءة (didReceiveReadReceipt)",
+"عند استلام إيصال القراءة",
+"nostr"
+],
+[
+"hexStringToByteArray",
+"نص ست عشري إلى مصفوفة بايتات",
+"تحويل النص الست‑عشري إلى مصفوفة بايتات",
+"nostr"
+],
+[
+"PrivateMessagePacket",
+"حزمة الرسالة الخاصة",
+"رزمة الرسالة الخاصة",
+"nostr"
+],
+[
+"BitchatPacket",
+"حزمة بِتشات",
+"رزمة بِت‑تشات",
+"nostr"
+],
+[
+"recipientPeerID",
+"معرّف النظير المستلِم (recipientPeerID)",
+"معرّف نِدّ المستقبِل",
+"nostr"
+],
+[
+"senderPeerID",
+"معرّف ندّ المرسِل",
+"معرّف نِدّ المرسِل",
+"nostr"
+],
+[
+"TAG",
+"الوسم",
+"وسم السجلّ",
+"nostr"
+],
+[
+"MESSAGE_TTL_HOPS",
+"قفزات بقاء الرسالة",
+"عدد قفزات بقاء الرسالة",
+"nostr"
+],
+[
+"NOISE_ENCRYPTED",
+"مشفّر Noise",
+"مُعمّى بنويز",
+"nostr"
+],
+[
+"READ_RECEIPT",
+"إيصال القراءة",
+"إشعار القراءة",
+"nostr"
+],
+[
+"isValid",
+"التحقّق من الصلاحية",
+"الصلاحية",
+"nostr"
+],
+[
+"toHexString",
+"التحويل إلى نص سداسي",
+"إلى نص ست عشري",
+"nostr"
+],
+[
+"NostrCrypto",
+"أدواتُ تشفيرِ نوستر (NostrCrypto)",
+"تعمية نوستر",
+"nostr"
+],
+[
+"schnorrSign",
+"توقيعُ شنور (schnorrSign)",
+"توقيع شنور",
+"nostr"
+],
+[
+"schnorrVerify",
+"التحقّقُ من توقيعِ شنور (schnorrVerify)",
+"تحقق شنور",
+"nostr"
+],
+[
+"isValidPublicKey",
+"صلاحيةُ المفتاحِ العام (isValidPublicKey)",
+"صحة المفتاح العام",
+"nostr"
+],
+[
+"TAG",
+"الوسم",
+"وسم السجل",
+"nostr"
+],
+[
+"INSTANCE",
+"المثيل المفرد",
+"النسخة المفردة",
+"nostr"
+],
+[
+"getInstance",
+"إحضار المثيل",
+"احصل على النسخة المفردة",
+"nostr"
+],
+[
+"clear",
+"المسح",
+"امسح",
+"nostr"
+],
+[
+"contains",
+"الفحص بالاحتواء (contains)",
+"يحتوي",
+"nostr"
+],
+[
+"ConcurrentHashMap",
+"خريطة التجزئة المتزامنة",
+"خريطة تجزئة متزامنة",
+"nostr"
+],
+[
+"NostrFilter",
+"مُرشِّح نوستر",
+"مُرشّح أحداث نوستر (NostrFilter)",
+"nostr"
+],
+[
+"giftWrapsFor",
+"أغلفة الهدية للمفتاح",
+"أغلفة الهدايا لِـ (giftWrapsFor)",
+"nostr"
+],
+[
+"geohashEphemeral",
+"مُرشِّح المنطقة العابر",
+"الأحداث العابرة بنطاق جغرافي (geohashEphemeral)",
+"nostr"
+],
+[
+"tag",
+"الوسم",
+"وسم (tag)",
+"nostr"
+],
+[
+"getGeohash",
+"جالب تجزئة الموقع",
+"احصل على الترميز الجغرافي (getGeohash)",
+"nostr"
+],
+[
+"NostrEvent",
+"حدث نوستر",
+"حدث نوستر (NostrEvent)",
+"nostr"
+],
+[
+"NostrKind",
+"أنواع حدث نوستر",
+"نوع نوستر (NostrKind)",
+"nostr"
+],
+[
+"GIFT_WRAP",
+"غلاف الهدية",
+"غلاف الهدية (GIFT_WRAP)",
+"nostr"
+],
+[
+"EPHEMERAL_EVENT",
+"الحدث العابر",
+"الحدث العابر (EPHEMERAL_EVENT)",
+"nostr"
+],
+[
+"GEOHASH_PRESENCE",
+"حضور التجزئة الجغرافية",
+"حضور النطاق الجغرافي (GEOHASH_PRESENCE)",
+"nostr"
+],
+[
+"TEXT_NOTE",
+"الملاحظة النصية",
+"الملاحظة النصّية (TEXT_NOTE)",
+"nostr"
+],
+[
+"geohash",
+"الجيوهاش (geohash)",
+"الترميز الجغرافي (geohash)",
+"nostr"
+],
+[
+"pubkey",
+"المفتاح العام",
+"المفتاح العام (pubkey)",
+"nostr"
+],
+[
+"npub",
+"مفتاح نوستر العام",
+"المعرّف العام",
+"nostr"
+],
+[
+"NostrIdentityBridge",
+"جسر هويّة نوستر",
+"جسر هوية نوستر",
+"nostr"
+],
+[
+"SecureIdentityStateManager",
+"مدير حالة الهوية الآمنة",
+"مدير حالة الهوية الآمن",
+"nostr"
+],
+[
+"NostrCrypto",
+"أدواتُ تشفيرِ نوستر (NostrCrypto)",
+"تعمية نوستر",
+"nostr"
+],
+[
+"Bech32",
+"كائن بيك٣٢ (Bech32)",
+"ترميز بيك32",
+"nostr"
+],
+[
+"NostrProofOfWork",
+"إثبات العمل لنوستر",
+"إثبات عمل نوستر",
+"nostr"
+],
+[
+"TAG",
+"الوسم",
+"وسم السجلّ",
+"nostr"
+],
+[
+"validateDifficulty",
+"تصديق الصعوبة",
+"تحقّق من الصعوبة",
+"nostr"
+],
+[
+"computeEventIdHex",
+"حساب معرّف الحدث الست عشري",
+"احسب معرّف الحدث الست عشري",
+"nostr"
+],
+[
+"decryptPrivateMessage",
+"فكّ تشفير الرسالة الخاصة",
+"فكّ تعمية رسالة خاصة",
+"nostr"
+],
+[
+"NostrKind",
+"أنواع حدث نوستر",
+"نوع نوستر",
+"nostr"
+],
+[
+"NostrCrypto",
+"أدواتُ تشفيرِ نوستر (NostrCrypto)",
+"تعمية نوستر",
+"nostr"
+],
+[
+"NostrProofOfWork",
+"إثبات العمل لنوستر",
+"إثبات العمل في نوستر",
+"nostr"
+],
+[
+"giftWrap",
+"الغلاف الهديّة",
+"غلاف الهدية",
+"nostr"
+],
+[
+"geohash",
+"الجيوهاش (geohash)",
+"الترميز الجغرافي",
+"nostr"
+],
+[
+"nickname",
+"اللقب",
+"الاسم المستعار",
+"nostr"
+],
+[
+"encryptNIP44",
+"تشفيرُ NIP-44 (encryptNIP44)",
+"تعمية وفق NIP44",
+"nostr"
+],
+[
+"decryptNIP44",
+"فكُّ تشفيرِ NIP-44 (decryptNIP44)",
+"فكّ التعمية وفق NIP44",
+"nostr"
+],
+[
+"randomizeTimestampUpToPast",
+"عشوَأةُ الطابعِ الزمني نحو الماضي (randomizeTimestampUpToPast)",
+"تعشية الطابع الزمني إلى الماضي",
+"nostr"
+],
+[
+"generateKeyPair",
+"توليد زوج مفاتيح كيرف",
+"توليد زوج المفاتيح",
+"nostr"
+],
+[
+"mineEvent",
+"عدّن الحدث",
+"تعدين الحدث",
+"nostr"
+],
+[
+"calculateDifficulty",
+"احسب الصعوبة",
+"حساب الصعوبة",
+"nostr"
+],
+[
+"NostrRelayManager",
+"مدير مرحّلات نوستر",
+"مدير مُرحّلات نوسْتر",
+"nostr"
+],
+[
+"getInstance",
+"إحضار المثيل",
+"احصل على النسخة",
+"nostr"
+],
+[
+"BACKOFF_MULTIPLIER",
+"مضاعِف التراجع",
+"مُضاعِف التراجع",
+"nostr"
+],
+[
+"registerPendingGiftWrap",
+"تسجيل غلاف هدية معلّق",
+"سجّل غلاف هدية معلّق",
+"nostr"
+],
+[
+"isConnected",
+"أمُتّصل",
+"متصل",
+"nostr"
+],
+[
+"scope",
+"النطاق (نطاق الكوروتين)",
+"نطاق الكوروتين",
+"nostr"
+],
+[
+"httpClient",
+"عميل إتش‌تي‌تي‌بي",
+"عميل http",
+"nostr"
+],
+[
+"gson",
+"محوّل جيسون",
+"محوّل JSON",
+"nostr"
+],
+[
+"subscribeForGeohash",
+"الاشتراك بتجزئة الموقع",
+"اشترك لجيوهاش",
+"nostr"
+],
+[
+"disconnect",
+"قطع الاتصال",
+"اقطع الاتصال",
+"nostr"
+],
+[
+"sendEvent",
+"دالة إرسال الحدث",
+"أرسل حدثاً",
+"nostr"
+],
+[
+"subscribe",
+"دالة الاشتراك",
+"اشترك",
+"nostr"
+],
+[
+"unsubscribe",
+"دالة إلغاء الاشتراك",
+"ألغِ الاشتراك",
+"nostr"
+],
+[
+"handleMessage",
+"التعامل مع الرسالة",
+"عالِج الرسالة",
+"nostr"
+],
+[
+"NostrEvent",
+"حدث نوستر",
+"حدث نوسْتر",
+"nostr"
+],
+[
+"NostrFilter",
+"مُرشِّح نوستر",
+"مُرشّح نوسْتر",
+"nostr"
+],
+[
+"NostrRequest",
+"طلب نوسْتر",
+"طلب Nostr",
+"nostr"
+],
+[
+"serialize",
+"السَّلسَلة (serialize)",
+"دالة التسلسل",
+"nostr"
+],
+[
+"NostrResponse",
+"استجابة نوسْتر",
+"استجابة Nostr",
+"nostr"
+],
+[
+"parseTagsFromJson",
+"تحليل الوسوم من جيسون",
+"تحليل الوسوم من JSON",
+"nostr"
+],
+[
+"NostrEvent",
+"حدث نوستر",
+"حدث Nostr",
+"nostr"
+],
+[
+"NostrFilter",
+"مُرشِّح نوستر",
+"مرشّح Nostr",
+"nostr"
+],
+[
+"scope",
+"النطاق (نطاق الكوروتين)",
+"النطاق",
+"nostr"
+],
+[
+"relayManager",
+"مزوّد مدير المُرحّلات",
+"مدير المُرحِّلات",
+"nostr"
+],
+[
+"connect",
+"اتصل",
+"الاتصال",
+"nostr"
+],
+[
+"unsubscribe",
+"دالة إلغاء الاشتراك",
+"إلغاء الاشتراك",
+"nostr"
+],
+[
+"NostrRelayManager",
+"مدير مرحّلات نوستر",
+"مدير مُرحِّلات نوستر",
+"nostr"
+],
+[
+"handler",
+"المُعالِج",
+"المعالِج",
+"nostr"
+],
+[
+"geohash",
+"الجيوهاش (geohash)",
+"التجزئة الجغرافية",
+"nostr"
+],
+[
+"nRelays",
+"عدد المُرحّلات",
+"عدد المُرحِّلات",
+"nostr"
+],
+[
+"getDebugInfo",
+"الحصول على معلومات التصحيح",
+"جلب معلومات التصحيح",
+"nostr"
+],
+[
+"isInitialized",
+"حالة التهيئة",
+"هل تمت التهيئة",
+"nostr"
+],
+[
+"getCurrentIdentity",
+"الحصول على الهوية الحالية",
+"جلب الهوية الحالية",
+"nostr"
+],
+[
+"npub",
+"مفتاح نوستر العام",
+"المفتاح العام المُرمَّز (npub)",
+"nostr"
+],
+[
+"getShortNpub",
+"المعرّف العام المختصر",
+"جلب npub المختصر",
+"nostr"
+],
+[
+"publicKeyHex",
+"المفتاح العام الست عشري",
+"المفتاح العام السّت‌عشري",
+"nostr"
+],
+[
+"privateKeyHex",
+"المفتاح الخاص الست عشري",
+"المفتاح الخاص السّت‌عشري",
+"nostr"
+],
+[
+"relayInfo",
+"معلومات المُرحِّل",
+"معلومات المُرحّلات",
+"nostr"
+],
+[
+"relayConnectionStatus",
+"حالة اتصال المُرحِّل",
+"حالة اتصال المُرحّل",
+"nostr"
+],
+[
+"hrp",
+"الجزء المقروء بشرياً (hrp)",
+"بادئة القراءة البشرية (HRP)",
+"nostr"
+],
+[
+"subscribeToGeohash",
+"الاشتراك في المنطقة الجغرافية",
+"الاشتراك في الجيوهاش",
+"nostr"
+],
+[
+"sendGeohashMessage",
+"إرسال رسالة المنطقة الجغرافية",
+"إرسال رسالة جيوهاش",
+"nostr"
+],
+[
+"geohash",
+"الجيوهاش (geohash)",
+"مُعرّف الموقع المُجزّأ (geohash)",
+"nostr"
+],
+[
+"NostrTransport",
+"ناقل نوستر",
+"ناقِل نوستر",
+"nostr"
+],
+[
+"senderPeerID",
+"معرّف ندّ المرسِل",
+"معرّف القرين المرسِل",
+"nostr"
+],
+[
+"getInstance",
+"إحضار المثيل",
+"احصل على النسخة",
+"nostr"
+],
+[
+"INSTANCE",
+"المثيل المفرد",
+"النسخة الوحيدة",
+"nostr"
+],
+[
+"myPeerID",
+"معرّف ندّي الخاص",
+"معرّف قريني",
+"nostr"
+],
+[
+"sendPrivateMessage",
+"إرسال رسالة خاصة",
+"أرسِل رسالة خاصة",
+"nostr"
+],
+[
+"sendReadReceipt",
+"إرسال إيصال القراءة",
+"أرسِل إيصال القراءة",
+"nostr"
+],
+[
+"sendFavoriteNotification",
+"إرسال إشعار تفضيل",
+"أرسِل إشعار التفضيل",
+"nostr"
+],
+[
+"sendDeliveryAck",
+"إرسال إقرار تسليم",
+"أرسِل إقرار التسليم",
+"nostr"
+],
+[
+"sendDeliveryAckGeohash",
+"إرسال إقرار التسليم للجيوهاش",
+"أرسِل إقرار التسليم بالتجزئة الجغرافية",
+"nostr"
+],
+[
+"sendReadReceiptGeohash",
+"إرسال إيصال القراءة للجيوهاش",
+"أرسِل إيصال القراءة بالتجزئة الجغرافية",
+"nostr"
+],
+[
+"hexStringToByteArray",
+"نص ست عشري إلى مصفوفة بايتات",
+"حوّل النص الست عشري إلى مصفوفة بايتات",
+"nostr"
+],
+[
+"senderIdentity",
+"هوية المُرسِل",
+"هوية المرسِل",
+"nostr"
+],
+[
+"geohash",
+"الجيوهاش (geohash)",
+"التجزئة الجغرافية",
+"nostr"
+],
+[
+"Bech32.decode",
+"فك ترميز Bech32",
+"فكّ ترميز بيك٣٢",
+"nostr"
+],
+[
+"NostrRelayManager",
+"مدير مرحّلات نوستر",
+"مدير مُرحِّلات نوستر",
+"nostr"
+],
+[
+"NostrIdentityBridge.deriveIdentity",
+"اشتقاق الهوية",
+"جسر هوية نوستر: اشتقاق الهوية",
+"nostr"
+],
+[
+"FavoritesPersistenceService",
+"خدمة تخزين المفضّلات",
+"خدمة استمرار المُفضَّلات",
+"nostr"
+],
+[
+"PREFS_NAME",
+"اسم التفضيلات",
+"اسم ملف التفضيلات",
+"nostr"
+],
+[
+"isInitialized",
+"حالة التهيئة",
+"علامة اكتمال التهيئة",
+"nostr"
+],
+[
+"init",
+"التهيئة",
+"دالّة التهيئة",
+"nostr"
+],
+[
+"RelayDirectory",
+"دليل المُرحّلات",
+"دليل المُرحِّلات",
+"nostr"
+],
+[
+"relays",
+"المُرحّلات",
+"قائمة المُرحِّلات",
+"nostr"
+],
+[
+"httpClient",
+"عميل إتش‌تي‌تي‌بي",
+"عميل HTTP",
+"nostr"
+],
+[
+"initialized",
+"عَلَم التهيئة",
+"مُهيّأ",
+"nostr"
+],
+[
+"TAG",
+"الوسم",
+"وسم السجل",
+"nostr"
+],
+[
+"nRelays",
+"عدد المُرحّلات",
+"عدد المُرحِّلات المطلوب",
+"nostr"
+],
+[
+"p",
+"المعامل P",
+"مَعلَمة غولومب-رايس (p)",
+"sync"
+],
+[
+"m",
+"المدى M",
+"المدى (m)",
+"sync"
+],
+[
+"data",
+"البيانات",
+"بيانات تيار البتات المُرمَّز (data)",
+"sync"
+],
+[
+"ids",
+"المُعرّفات (ids)",
+"معرّفات الرزم (ids)",
+"sync"
+],
+[
+"acc",
+"المُجمِّع (acc)",
+"المُراكِم (acc)",
+"sync"
+],
+[
+"contains",
+"الفحص بالاحتواء (contains)",
+"الاحتواء بالبحث الثنائي (contains)",
+"sync"
+],
+[
+"MessageDigest",
+"هاضِم الرسالة",
+"مُلخِّص الرسالة (MessageDigest)",
+"sync"
+],
+[
+"encode",
+"الترميز",
+"الترميز (encode)",
+"sync"
+],
+[
+"toByteArray",
+"التحويل إلى مصفوفة بايتات",
+"التحويل إلى مصفوفة بايتات (toByteArray)",
+"sync"
+],
+[
+"sendPacket",
+"إرسال الرزمة",
+"إرسال الحزمة",
+"sync"
+],
+[
+"sendPacketToPeer",
+"إرسال الرزمة إلى الندّ",
+"إرسال الحزمة إلى نظير",
+"sync"
+],
+[
+"myPeerID",
+"معرّف ندّي الخاص",
+"معرّفي النظيري",
+"sync"
+],
+[
+"scope",
+"النطاق (نطاق الكوروتين)",
+"نطاق الكوروتينات",
+"sync"
+],
+[
+"delegate",
+"المفوَّض",
+"المفوّض",
+"sync"
+],
+[
+"hexStringToByteArray",
+"نص ست عشري إلى مصفوفة بايتات",
+"تحويل نص ست‑عشري إلى بايتات (8)",
+"sync"
+],
+[
+"BitchatPacket",
+"حزمة بِتشات",
+"حزمة بِت‑شات",
+"sync"
+],
+[
+"SpecialRecipients.BROADCAST",
+"مستلِم البثّ",
+"مستلِم البثّ الخاص",
+"sync"
+],
+[
+"GCSFilter",
+"مرشّح المجموعة المرمّزة بغولومب (GCSFilter)",
+"مرشّح GCS",
+"sync"
+],
+[
+"STALE_PEER_TIMEOUT_MS",
+"مهلة انتهاء صلاحية النظير",
+"مهلة النظير البائت",
+"sync"
+],
+[
+"SYNC_TTL_HOPS",
+"قفزات مدة بقاء المزامنة",
+"قفزات حياة المزامنة",
+"sync"
+],
+[
+"TAG",
+"الوسم",
+"وسم السجل",
+"sync"
+],
+[
+"PacketIdUtil",
+"أداة معرّف الحزمة",
+"أداة معرّف الحُزمة (PacketIdUtil)",
+"sync"
+],
+[
+"BitchatPacket",
+"حزمة بِتشات",
+"حُزمة بِت‑شات (BitchatPacket)",
+"sync"
+],
+[
+"MessageDigest",
+"هاضِم الرسالة",
+"خلاصة الرسالة (MessageDigest)",
+"sync"
+],
+[
+"SyncDefaults",
+"الإعدادات الافتراضية للمزامنة",
+"افتراضات المزامنة",
+"sync"
+],
+[
+"MAX_ACCEPT_FILTER_BYTES",
+"أقصى بايتات مصفاة مقبولة",
+"أقصى بايتات مرشّح مقبولة",
+"sync"
+],
+[
+"RequestSyncPacket",
+"حزمة طلب المزامنة",
+"رزمة طلب المزامنة",
+"sync"
+],
+[
+"TAG",
+"الوسم",
+"الوسم (TAG)",
+"geohash"
+],
+[
+"errorMessage",
+"رسالة الخطأ",
+"رسالة الخطأ (errorMessage)",
+"geohash"
+],
+[
+"Build.VERSION.SDK_INT",
+"رقم إصدار النظام (SDK_INT)",
+"رقم مستوى واجهة النظام (Build.VERSION.SDK_INT)",
+"geohash"
+],
+[
+"Context",
+"السياق",
+"السياق (Context)",
+"geohash"
+],
+[
+"cancel",
+"الإلغاء",
+"ألغِ",
+"geohash"
+],
+[
+"get",
+"قراءة الوضع",
+"دالة الجلب (get)",
+"geohash"
+],
+[
+"GeocoderProvider",
+"واجهة مزوّد المُرَمِّز الجغرافي (GeocoderProvider)",
+"مزوِّد المُرمِّز الجغرافي (GeocoderProvider)",
+"geohash"
+],
+[
+"AndroidGeocoderProvider",
+"مزوّد المُرَمِّز الجغرافي لأندرويد (AndroidGeocoderProvider)",
+"مزوِّد مُرمِّز أندرويد (AndroidGeocoderProvider)",
+"geohash"
+],
+[
+"Context",
+"السياق",
+"السياق (Context)",
+"geohash"
+],
+[
+"Geocoder",
+"المُرَمِّز الجغرافي (Geocoder)",
+"المُرمِّز الجغرافي (Geocoder)",
+"geohash"
+],
+[
+"GeocoderProvider",
+"واجهة مزوّد المُرَمِّز الجغرافي (GeocoderProvider)",
+"مزوّد الترميز الجغرافي (GeocoderProvider)",
+"geohash"
+],
+[
+"getFromLocation",
+"الجلب من الموقع (getFromLocation)",
+"الحصول من الموقع (getFromLocation)",
+"geohash"
+],
+[
+"maxResults",
+"الحد الأقصى للنتائج (maxResults)",
+"أقصى عدد للنتائج (maxResults)",
+"geohash"
+],
+[
+"encode",
+"الترميز",
+"الترميز (encode)",
+"geohash"
+],
+[
+"getInstance",
+"إحضار المثيل",
+"جالب النسخة الوحيدة",
+"geohash"
+],
+[
+"INSTANCE",
+"المثيل المفرد",
+"النسخة الوحيدة",
+"geohash"
+],
+[
+"TAG",
+"الوسم",
+"وسم السجل",
+"geohash"
+],
+[
+"gson",
+"محوّل جيسون",
+"محوّل الجيسون",
+"geohash"
+],
+[
+"prefs",
+"المفضّلات",
+"التفضيلات المحفوظة",
+"geohash"
+],
+[
+"GeocoderFactory",
+"مصنع المُرمِّز الجغرافي (GeocoderFactory)",
+"مصنع المُرمِّز الجغرافي",
+"geohash"
+],
+[
+"precision",
+"الدقّة (precision)",
+"الدقّة",
+"geohash"
+],
+[
+"displayName",
+"اسم العرض",
+"الاسم المعروض",
+"geohash"
+],
+[
+"geohash",
+"الجيوهاش (geohash)",
+"الجيوهاش",
+"geohash"
+],
+[
+"Mesh",
+"الشبكة المتشابكة",
+"الشبكة",
+"geohash"
+],
+[
+"hashCode",
+"الرمز التجزيئي",
+"رمز التجزئة",
+"geohash"
+],
+[
+"LocationChannelManager",
+"مدير قناة الموقع",
+"مدير قنوات الموقع",
+"geohash"
+],
+[
+"getInstance",
+"إحضار المثيل",
+"جالب النسخة الوحيدة",
+"geohash"
+],
+[
+"INSTANCE",
+"المثيل المفرد",
+"النسخة الوحيدة",
+"geohash"
+],
+[
+"scope",
+"النطاق (نطاق الكوروتين)",
+"نطاق الكوروتينات",
+"geohash"
+],
+[
+"teleported",
+"مُنتقَل آنياً",
+"حالة الانتقال الآني",
+"geohash"
+],
+[
+"cleanup",
+"التنظيف",
+"تنظيف الموارد",
+"geohash"
+],
+[
+"ChannelID.Location",
+"قناة موقع",
+"قناة الموقع",
+"geohash"
+],
+[
+"GeohashChannel",
+"قناة الجيوهاش",
+"قناة التجزئة الجغرافية",
+"geohash"
+],
+[
+"GeohashChannelLevel",
+"مستوى قناة الجيوهاش",
+"مستوى قناة التجزئة الجغرافية",
+"geohash"
+],
+[
+"FusedLocationProvider",
+"مزوّد الموقع المدمج",
+"مزوّد الموقع المدمج (جوجل)",
+"geohash"
+],
+[
+"LocationProvider",
+"واجهة مزوّد الموقع",
+"مزوِّد الموقع",
+"geohash"
+],
+[
+"requestFreshLocation",
+"اطلب موقعاً جديداً",
+"اطلب موقعاً طازجاً",
+"geohash"
+],
+[
+"cancel",
+"الإلغاء",
+"ألغِ",
+"geohash"
+],
+[
+"callback",
+"دالة الاستدعاء الراجعة",
+"دالة الاستدعاء الراجع",
+"geohash"
+],
+[
+"intervalMs",
+"الفترة بالميلّي ثانية",
+"الفترة بالميلي ثانية",
+"geohash"
+],
+[
+"OpenStreetMapGeocoderProvider",
+"مزوِّد مُرمِّز OpenStreetMap (OpenStreetMapGeocoderProvider)",
+"مزوّد الترميز الجغرافي بخرائط الشارع المفتوحة (OpenStreetMapGeocoderProvider)",
+"geohash"
+],
+[
+"GeocoderProvider",
+"واجهة مزوّد المُرَمِّز الجغرافي (GeocoderProvider)",
+"واجهة مزوّد الترميز الجغرافي (GeocoderProvider)",
+"geohash"
+],
+[
+"getFromLocation",
+"الجلب من الموقع (getFromLocation)",
+"دالة الحصول على العنوان من الموقع (getFromLocation)",
+"geohash"
+],
+[
+"OkHttpProvider",
+"مزوّد أوك‌إتش‌تي‌تي‌بي",
+"مزوّد عميل HTTP (OkHttpProvider)",
+"geohash"
+],
+[
+"httpClient",
+"عميل إتش‌تي‌تي‌بي",
+"دالة عميل الشبكة (httpClient)",
+"geohash"
+],
+[
+"Gson",
+"محرّك Gson",
+"محوّل JSON (Gson)",
+"geohash"
+],
+[
+"Address",
+"العنوان (Address)",
+"صنف العنوان (Address)",
+"geohash"
+],
+[
+"Dispatchers.IO",
+"موزّع الإدخال/الإخراج (Dispatchers.IO)",
+"موزّع عمليات الدخل/الخرج (Dispatchers.IO)",
+"geohash"
+],
+[
+"Locale",
+"المحلّيّة (Locale)",
+"المحلّية (Locale)",
+"geohash"
+],
+[
+"TAG",
+"الوسم",
+"وسم السجل (TAG)",
+"geohash"
+],
+[
+"hasLocationPermission",
+"هل يملك إذن الموقع",
+"يملك إذن الموقع",
+"geohash"
+],
+[
+"getLastKnownLocation",
+"احصل على آخر موقع معروف",
+"جلب آخر موقع معروف",
+"geohash"
+],
+[
+"requestFreshLocation",
+"اطلب موقعاً جديداً",
+"طلب موقع طازج",
+"geohash"
+],
+[
+"requestLocationUpdates",
+"اطلب تحديثات الموقع",
+"طلب تحديثات الموقع",
+"geohash"
+],
+[
+"removeLocationUpdates",
+"أزِل تحديثات الموقع",
+"إزالة تحديثات الموقع",
+"geohash"
+],
+[
+"callback",
+"دالة الاستدعاء الراجعة",
+"ردّ النداء",
+"geohash"
+],
+[
+"intervalMs",
+"الفترة بالميلّي ثانية",
+"الفترة بالملّي ثانية",
+"geohash"
+],
+[
+"isFavorite",
+"هل هو مفضَّل (isFavorite)",
+"هو مفضّل",
+"favorites"
+],
+[
+"FavoritesPersistenceService",
+"خدمة تخزين المفضّلات",
+"خدمة حفظ المفضّلات",
+"favorites"
+],
+[
+"initialize",
+"التهيئة",
+"تهيئة",
+"favorites"
+],
+[
+"INSTANCE",
+"المثيل المفرد",
+"النسخة المفردة",
+"favorites"
+],
+[
+"gson",
+"محوّل جيسون",
+"محوّل Gson",
+"favorites"
+],
+[
+"getFavoriteStatus",
+"احصل على حالة التفضيل",
+"جلب حالة التفضيل",
+"favorites"
+],
+[
+"findNostrPubkeyForPeerID",
+"ابحث عن مفتاح نوستر لمعرّف القرين",
+"إيجاد مفتاح Nostr لمعرّف نِدّ",
+"favorites"
+],
+[
+"findPeerIDForNostrPubkey",
+"ابحث عن معرّف القرين لمفتاح نوستر",
+"إيجاد معرّف نِدّ لمفتاح Nostr",
+"favorites"
+],
+[
+"Bech32.decode",
+"فك ترميز Bech32",
+"فكّ ترميز Bech32",
+"favorites"
+]
+]

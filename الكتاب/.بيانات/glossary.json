@@ -1,0 +1,9312 @@
+{
+"MessageType": {
+"term": "نوع الرسالة",
+"kind": "enum",
+"pkg": "protocol"
+},
+"ANNOUNCE": {
+"term": "إعلان",
+"kind": "enum-entry",
+"pkg": "protocol"
+},
+"MESSAGE": {
+"term": "رسالة",
+"kind": "enum-entry",
+"pkg": "protocol"
+},
+"LEAVE": {
+"term": "مغادرة",
+"kind": "enum-entry",
+"pkg": "protocol"
+},
+"NOISE_HANDSHAKE": {
+"term": "مصافحة Noise",
+"kind": "enum-entry",
+"pkg": "protocol"
+},
+"NOISE_ENCRYPTED": {
+"term": "مشفّر Noise",
+"kind": "enum-entry",
+"pkg": "protocol"
+},
+"FRAGMENT": {
+"term": "شظية",
+"kind": "enum-entry",
+"pkg": "protocol"
+},
+"REQUEST_SYNC": {
+"term": "طلب مزامنة",
+"kind": "enum-entry",
+"pkg": "protocol"
+},
+"FILE_TRANSFER": {
+"term": "نقل ملف",
+"kind": "enum-entry",
+"pkg": "protocol"
+},
+"fromValue": {
+"term": "من قيمة",
+"kind": "function",
+"pkg": "protocol"
+},
+"SpecialRecipients": {
+"term": "المستلِمون الخاصون",
+"kind": "object",
+"pkg": "protocol"
+},
+"BROADCAST": {
+"term": "البثّ",
+"kind": "constant",
+"pkg": "protocol"
+},
+"BitchatPacket": {
+"term": "حزمة بِتشات",
+"kind": "data-class",
+"pkg": "protocol"
+},
+"version": {
+"term": "الإصدار",
+"kind": "property",
+"pkg": "protocol"
+},
+"type": {
+"term": "النوع",
+"kind": "property",
+"pkg": "protocol"
+},
+"senderID": {
+"term": "معرّف المُرسِل",
+"kind": "property",
+"pkg": "protocol"
+},
+"recipientID": {
+"term": "معرّف المستلِم",
+"kind": "property",
+"pkg": "protocol"
+},
+"timestamp": {
+"term": "الطابع الزمني",
+"kind": "property",
+"pkg": "protocol"
+},
+"payload": {
+"term": "الحمولة",
+"kind": "property",
+"pkg": "protocol"
+},
+"signature": {
+"term": "التوقيع",
+"kind": "property",
+"pkg": "protocol"
+},
+"ttl": {
+"term": "مدة البقاء",
+"kind": "property",
+"pkg": "protocol"
+},
+"route": {
+"term": "المسار",
+"kind": "property",
+"pkg": "protocol"
+},
+"toBinaryData": {
+"term": "إلى بيانات ثنائية",
+"kind": "function",
+"pkg": "protocol"
+},
+"toBinaryDataForSigning": {
+"term": "إلى بيانات ثنائية للتوقيع",
+"kind": "function",
+"pkg": "protocol"
+},
+"fromBinaryData": {
+"term": "من بيانات ثنائية",
+"kind": "function",
+"pkg": "protocol"
+},
+"hexStringToByteArray": {
+"term": "نص ست عشري إلى مصفوفة بايتات",
+"kind": "function",
+"pkg": "protocol"
+},
+"equals": {
+"term": "يساوي",
+"kind": "function",
+"pkg": "protocol"
+},
+"hashCode": {
+"term": "الرمز التجزيئي",
+"kind": "function",
+"pkg": "protocol"
+},
+"BinaryProtocol": {
+"term": "البروتوكول الثنائي",
+"kind": "object",
+"pkg": "protocol"
+},
+"HEADER_SIZE_V1": {
+"term": "حجم ترويسة الإصدار الأول",
+"kind": "constant",
+"pkg": "protocol"
+},
+"HEADER_SIZE_V2": {
+"term": "حجم ترويسة الإصدار الثاني",
+"kind": "constant",
+"pkg": "protocol"
+},
+"SENDER_ID_SIZE": {
+"term": "حجم معرّف المُرسِل",
+"kind": "constant",
+"pkg": "protocol"
+},
+"RECIPIENT_ID_SIZE": {
+"term": "حجم معرّف المستلِم",
+"kind": "constant",
+"pkg": "protocol"
+},
+"SIGNATURE_SIZE": {
+"term": "حجم التوقيع",
+"kind": "constant",
+"pkg": "protocol"
+},
+"Flags": {
+"term": "الأعلام",
+"kind": "object",
+"pkg": "protocol"
+},
+"HAS_RECIPIENT": {
+"term": "يوجد مستلِم",
+"kind": "constant",
+"pkg": "protocol"
+},
+"HAS_SIGNATURE": {
+"term": "يوجد توقيع",
+"kind": "constant",
+"pkg": "protocol"
+},
+"IS_COMPRESSED": {
+"term": "مضغوط",
+"kind": "constant",
+"pkg": "protocol"
+},
+"HAS_ROUTE": {
+"term": "يوجد مسار",
+"kind": "constant",
+"pkg": "protocol"
+},
+"getHeaderSize": {
+"term": "احصل على حجم الترويسة",
+"kind": "function",
+"pkg": "protocol"
+},
+"encode": {
+"term": "الترميز",
+"kind": "function",
+"pkg": "protocol"
+},
+"decode": {
+"term": "فكّ الترميز",
+"kind": "function",
+"pkg": "protocol"
+},
+"decodeCore": {
+"term": "فكّ الترميز الجوهري",
+"kind": "function",
+"pkg": "protocol"
+},
+"CompressionUtil": {
+"term": "أداة الضغط",
+"kind": "object",
+"pkg": "protocol"
+},
+"COMPRESSION_THRESHOLD": {
+"term": "عتبة الضغط",
+"kind": "constant",
+"pkg": "protocol"
+},
+"shouldCompress": {
+"term": "هل ينبغي الضغط",
+"kind": "function",
+"pkg": "protocol"
+},
+"compress": {
+"term": "الضغط",
+"kind": "function",
+"pkg": "protocol"
+},
+"decompress": {
+"term": "فكّ الضغط",
+"kind": "function",
+"pkg": "protocol"
+},
+"testCompression": {
+"term": "اختبار الضغط",
+"kind": "function",
+"pkg": "protocol"
+},
+"Deflater": {
+"term": "الضاغط",
+"kind": "type",
+"pkg": "protocol"
+},
+"Inflater": {
+"term": "فاكّ الضغط",
+"kind": "type",
+"pkg": "protocol"
+},
+"MessagePadding": {
+"term": "حاشية الرسالة",
+"kind": "object",
+"pkg": "protocol"
+},
+"blockSizes": {
+"term": "أحجام الكتل",
+"kind": "property",
+"pkg": "protocol"
+},
+"optimalBlockSize": {
+"term": "حجم الكتلة الأمثل",
+"kind": "function",
+"pkg": "protocol"
+},
+"pad": {
+"term": "الحشو",
+"kind": "function",
+"pkg": "protocol"
+},
+"unpad": {
+"term": "إزالة الحشو",
+"kind": "function",
+"pkg": "protocol"
+},
+"ByteBuffer": {
+"term": "المخزن المؤقت",
+"kind": "type",
+"pkg": "protocol"
+},
+"ByteOrder": {
+"term": "ترتيب البايت",
+"kind": "type",
+"pkg": "protocol"
+},
+"MAX_PAYLOAD_LENGTH": {
+"term": "أقصى طول للحمولة",
+"kind": "constant",
+"pkg": "protocol"
+},
+"SYNC_TTL_HOPS": {
+"term": "قفزات مدة بقاء المزامنة",
+"kind": "constant",
+"pkg": "protocol"
+},
+"CloseButton": {
+"term": "زرّ الإغلاق",
+"kind": "دالة قابلة للتركيب (Composable)",
+"pkg": "core"
+},
+"onClick": {
+"term": "معالِج النقر",
+"kind": "معامل (دالة رد نداء)",
+"pkg": "core"
+},
+"modifier": {
+"term": "المُعدِّل",
+"kind": "معامل",
+"pkg": "core"
+},
+"Modifier": {
+"term": "المُعدِّل",
+"kind": "نوع/صنف",
+"pkg": "core"
+},
+"IconButton": {
+"term": "زرّ الأيقونة",
+"kind": "مكوِّن قابل للتركيب",
+"pkg": "core"
+},
+"IconButtonDefaults": {
+"term": "افتراضيات زرّ الأيقونة",
+"kind": "كائن",
+"pkg": "core"
+},
+"Icon": {
+"term": "الأيقونة",
+"kind": "مكوِّن قابل للتركيب",
+"pkg": "core"
+},
+"MaterialTheme": {
+"term": "سمة ماتيريال",
+"kind": "كائن",
+"pkg": "core"
+},
+"BitchatBottomSheet": {
+"term": "ورقة بِتشات السفلية",
+"kind": "دالة قابلة للتركيب (Composable)",
+"pkg": "core"
+},
+"ModalBottomSheet": {
+"term": "الورقة السفلية الحوارية",
+"kind": "مكوِّن قابل للتركيب",
+"pkg": "core"
+},
+"SheetState": {
+"term": "حالة الورقة",
+"kind": "نوع",
+"pkg": "core"
+},
+"rememberModalBottomSheetState": {
+"term": "تذكُّر حالة الورقة السفلية",
+"kind": "دالة",
+"pkg": "core"
+},
+"sheetState": {
+"term": "حالة الورقة",
+"kind": "معامل",
+"pkg": "core"
+},
+"onDismissRequest": {
+"term": "طلب الإغلاق",
+"kind": "معامل (دالة رد نداء)",
+"pkg": "core"
+},
+"content": {
+"term": "المحتوى",
+"kind": "معامل (دالة قابلة للتركيب)",
+"pkg": "core"
+},
+"RoundedCornerShape": {
+"term": "شكل الزوايا المدوّرة",
+"kind": "نوع/دالة",
+"pkg": "core"
+},
+"BitchatSheetTopBar": {
+"term": "شريط الورقة العلوي",
+"kind": "دالة قابلة للتركيب (Composable)",
+"pkg": "core"
+},
+"BitchatSheetCenterTopBar": {
+"term": "شريط الورقة العلوي المحاذى للوسط",
+"kind": "دالة قابلة للتركيب (Composable)",
+"pkg": "core"
+},
+"BitchatSheetTitle": {
+"term": "عنوان الورقة",
+"kind": "دالة قابلة للتركيب (Composable)",
+"pkg": "core"
+},
+"TopAppBar": {
+"term": "الشريط العلوي",
+"kind": "مكوِّن قابل للتركيب",
+"pkg": "core"
+},
+"CenterAlignedTopAppBar": {
+"term": "الشريط العلوي المحاذى للوسط",
+"kind": "مكوِّن قابل للتركيب",
+"pkg": "core"
+},
+"TopAppBarDefaults": {
+"term": "افتراضيات الشريط العلوي",
+"kind": "كائن",
+"pkg": "core"
+},
+"onClose": {
+"term": "معالِج الإغلاق",
+"kind": "معامل (دالة رد نداء)",
+"pkg": "core"
+},
+"backgroundAlpha": {
+"term": "شفافية الخلفية",
+"kind": "معامل",
+"pkg": "core"
+},
+"title": {
+"term": "العنوان",
+"kind": "معامل (دالة قابلة للتركيب)",
+"pkg": "core"
+},
+"navigationIcon": {
+"term": "أيقونة التنقّل",
+"kind": "معامل (دالة قابلة للتركيب اختيارية)",
+"pkg": "core"
+},
+"actions": {
+"term": "الإجراءات",
+"kind": "معامل (دالة قابلة للتركيب)",
+"pkg": "core"
+},
+"RowScope": {
+"term": "نطاق الصف",
+"kind": "نوع",
+"pkg": "core"
+},
+"ColumnScope": {
+"term": "نطاق العمود",
+"kind": "نوع",
+"pkg": "core"
+},
+"Text": {
+"term": "النص",
+"kind": "مكوِّن قابل للتركيب",
+"pkg": "core"
+},
+"FontWeight": {
+"term": "وزن الخط",
+"kind": "نوع",
+"pkg": "core"
+},
+"FontFamily": {
+"term": "عائلة الخط",
+"kind": "نوع",
+"pkg": "core"
+},
+"singleOrTripleClickable": {
+"term": "النقر الفردي أو الثلاثي",
+"kind": "دالة امتداد على المُعدِّل",
+"pkg": "core"
+},
+"onSingleClick": {
+"term": "معالِج النقر الفردي",
+"kind": "معامل (دالة رد نداء)",
+"pkg": "core"
+},
+"onTripleClick": {
+"term": "معالِج النقر الثلاثي",
+"kind": "معامل (دالة رد نداء)",
+"pkg": "core"
+},
+"clickTimeThreshold": {
+"term": "عتبة زمن النقر",
+"kind": "معامل (Long)",
+"pkg": "core"
+},
+"tapCount": {
+"term": "عدّاد النقرات",
+"kind": "متغيّر حالة",
+"pkg": "core"
+},
+"lastTapTime": {
+"term": "زمن آخر نقرة",
+"kind": "متغيّر حالة",
+"pkg": "core"
+},
+"singleClickJob": {
+"term": "مهمّة النقر الفردي",
+"kind": "متغيّر حالة (Job)",
+"pkg": "core"
+},
+"coroutineScope": {
+"term": "نطاق الكوروتين",
+"kind": "قيمة ثابتة",
+"pkg": "core"
+},
+"composed": {
+"term": "المُركَّب",
+"kind": "دالة",
+"pkg": "core"
+},
+"clickable": {
+"term": "القابلية للنقر",
+"kind": "دالة مُعدِّل",
+"pkg": "core"
+},
+"delay": {
+"term": "التأخير",
+"kind": "دالة كوروتين",
+"pkg": "core"
+},
+"launch": {
+"term": "الإطلاق",
+"kind": "دالة كوروتين",
+"pkg": "core"
+},
+"AppConstants": {
+"term": "ثوابت التطبيق",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"MESSAGE_TTL_HOPS": {
+"term": "قفزات بقاء الرسالة",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"Mesh": {
+"term": "الشبكة المتشابكة",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"STALE_PEER_TIMEOUT_MS": {
+"term": "مهلة انتهاء صلاحية النظير",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"PEER_CLEANUP_INTERVAL_MS": {
+"term": "فترة تنظيف النظراء",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"CONNECTION_RETRY_DELAY_MS": {
+"term": "مهلة إعادة محاولة الاتصال",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"MAX_CONNECTION_ATTEMPTS": {
+"term": "أقصى محاولات الاتصال",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"RSSI_UPDATE_INTERVAL_MS": {
+"term": "فترة تحديث قوة الإشارة",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"Gatt": {
+"term": "جات",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"SERVICE_UUID": {
+"term": "معرّف الخدمة",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"CHARACTERISTIC_UUID": {
+"term": "معرّف الخاصية",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"DESCRIPTOR_UUID": {
+"term": "معرّف الواصف",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"Sync": {
+"term": "المزامنة",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"Fragmentation": {
+"term": "التجزئة",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"FRAGMENT_SIZE_THRESHOLD": {
+"term": "عتبة حجم التجزئة",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"MAX_FRAGMENT_SIZE": {
+"term": "أقصى حجم جزء",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"Security": {
+"term": "الأمان",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"Noise": {
+"term": "نويز",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"REKEY_TIME_LIMIT_MS": {
+"term": "حدّ زمن إعادة التمفتح",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"MAX_PAYLOAD_SIZE_BYTES": {
+"term": "أقصى حجم حمولة بالبايت",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"Verification": {
+"term": "التحقّق",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"Protocol": {
+"term": "البروتوكول",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"COMPRESSION_THRESHOLD_BYTES": {
+"term": "عتبة الضغط بالبايت",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"StoreForward": {
+"term": "التخزين والتمرير",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"Power": {
+"term": "الطاقة",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"Nostr": {
+"term": "نوستر",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"BACKOFF_MULTIPLIER": {
+"term": "مضاعِف التراجع",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"Tor": {
+"term": "تور",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"DEFAULT_SOCKS_PORT": {
+"term": "منفذ SOCKS الافتراضي",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"UI": {
+"term": "واجهة المستخدم",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"MAX_NICKNAME_LENGTH": {
+"term": "أقصى طول للاسم المستعار",
+"kind": "const",
+"pkg": "com.bitchat.android.util"
+},
+"Media": {
+"term": "الوسائط",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"Services": {
+"term": "الخدمات",
+"kind": "object",
+"pkg": "com.bitchat.android.util"
+},
+"hexEncodedString": {
+"term": "الترميز السداسي للنص",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"dataFromHexString": {
+"term": "التحويل من نص سداسي",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"toHexString": {
+"term": "التحويل إلى نص سداسي",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"BinaryDataBuilder": {
+"term": "باني البيانات الثنائية",
+"kind": "class",
+"pkg": "com.bitchat.android.util"
+},
+"buffer": {
+"term": "المخزن المؤقت",
+"kind": "property",
+"pkg": "com.bitchat.android.util"
+},
+"appendUInt8": {
+"term": "إلحاق ثماني-بِت",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"appendUInt16": {
+"term": "إلحاق ستة-عشر-بِت",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"appendUInt32": {
+"term": "إلحاق اثنان-وثلاثون-بِت",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"appendUInt64": {
+"term": "إلحاق أربعة-وستون-بِت",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"appendString": {
+"term": "إلحاق سلسلة",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"appendData": {
+"term": "إلحاق بيانات",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"appendDate": {
+"term": "إلحاق تاريخ",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"appendUUID": {
+"term": "إلحاق معرّف فريد",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"toByteArray": {
+"term": "التحويل إلى مصفوفة بايتات",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"BinaryDataReader": {
+"term": "قارئ البيانات الثنائية",
+"kind": "class",
+"pkg": "com.bitchat.android.util"
+},
+"offset": {
+"term": "الإزاحة",
+"kind": "variable",
+"pkg": "com.bitchat.android.util"
+},
+"readUInt8": {
+"term": "قراءة ثماني-بِت",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"readUInt16": {
+"term": "قراءة ستة-عشر-بِت",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"readUInt32": {
+"term": "قراءة اثنان-وثلاثون-بِت",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"readUInt64": {
+"term": "قراءة أربعة-وستون-بِت",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"readString": {
+"term": "قراءة سلسلة",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"readData": {
+"term": "قراءة بيانات",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"readDate": {
+"term": "قراءة تاريخ",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"readUUID": {
+"term": "قراءة معرّف فريد",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"readFixedBytes": {
+"term": "قراءة بايتات ثابتة",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"currentOffset": {
+"term": "الإزاحة الحالية",
+"kind": "property",
+"pkg": "com.bitchat.android.util"
+},
+"BinaryEncodable": {
+"term": "القابل للترميز الثنائي",
+"kind": "interface",
+"pkg": "com.bitchat.android.util"
+},
+"BinaryMessageType": {
+"term": "نوع الرسالة الثنائية",
+"kind": "enum",
+"pkg": "com.bitchat.android.util"
+},
+"DELIVERY_ACK": {
+"term": "إقرار التسليم",
+"kind": "enum-const",
+"pkg": "com.bitchat.android.util"
+},
+"READ_RECEIPT": {
+"term": "إيصال القراءة",
+"kind": "enum-const",
+"pkg": "com.bitchat.android.util"
+},
+"NOISE_MESSAGE": {
+"term": "رسالة نويز",
+"kind": "enum-const",
+"pkg": "com.bitchat.android.util"
+},
+"ByteArrayWrapper": {
+"term": "غلاف مصفوفة البايتات",
+"kind": "class",
+"pkg": "com.bitchat.android.util"
+},
+"NotificationIntervalManager": {
+"term": "مدير فترة الإشعار",
+"kind": "class",
+"pkg": "com.bitchat.android.util"
+},
+"lastNetworkNotificationTime": {
+"term": "وقت آخر إشعار شبكة",
+"kind": "property",
+"pkg": "com.bitchat.android.util"
+},
+"recentlySeenPeers": {
+"term": "النظائر المرئية حديثاً",
+"kind": "property",
+"pkg": "com.bitchat.android.util"
+},
+"setLastNetworkNotificationTime": {
+"term": "ضبط وقت آخر إشعار شبكة",
+"kind": "function",
+"pkg": "com.bitchat.android.util"
+},
+"DeviceUtils": {
+"term": "أدوات الجهاز",
+"kind": "object (كائن مفرد)",
+"pkg": "com.bitchat.android.utils"
+},
+"isTablet": {
+"term": "هل-لوحي",
+"kind": "دالة",
+"pkg": "com.bitchat.android.utils"
+},
+"Context": {
+"term": "السياق",
+"kind": "نوع (صنف مستورد)",
+"pkg": "com.bitchat.android.utils"
+},
+"Configuration": {
+"term": "الإعداد",
+"kind": "نوع (صنف مستورد)",
+"pkg": "com.bitchat.android.utils"
+},
+"DisplayMetrics": {
+"term": "مقاييس العرض",
+"kind": "نوع (صنف مستورد)",
+"pkg": "com.bitchat.android.utils"
+},
+"WindowManager": {
+"term": "مدير النافذة",
+"kind": "نوع (صنف مستورد)",
+"pkg": "com.bitchat.android.utils"
+},
+"getSystemService": {
+"term": "جلب-خدمة-النظام",
+"kind": "دالة موسِّعة مستوردة",
+"pkg": "com.bitchat.android.utils"
+},
+"sqrt": {
+"term": "الجذر-التربيعي",
+"kind": "دالة مستوردة",
+"pkg": "com.bitchat.android.utils"
+},
+"windowManager": {
+"term": "مدير النافذة",
+"kind": "متغيّر ثابت",
+"pkg": "com.bitchat.android.utils"
+},
+"displayMetrics": {
+"term": "مقاييس العرض",
+"kind": "متغيّر ثابت",
+"pkg": "com.bitchat.android.utils"
+},
+"widthInches": {
+"term": "العرض-بالبوصة",
+"kind": "متغيّر ثابت",
+"pkg": "com.bitchat.android.utils"
+},
+"heightInches": {
+"term": "الارتفاع-بالبوصة",
+"kind": "متغيّر ثابت",
+"pkg": "com.bitchat.android.utils"
+},
+"diagonalInches": {
+"term": "القطر-بالبوصة",
+"kind": "متغيّر ثابت",
+"pkg": "com.bitchat.android.utils"
+},
+"configuration": {
+"term": "الإعداد",
+"kind": "متغيّر ثابت",
+"pkg": "com.bitchat.android.utils"
+},
+"isLargeScreen": {
+"term": "شاشة-كبيرة",
+"kind": "متغيّر ثابت",
+"pkg": "com.bitchat.android.utils"
+},
+"isXLargeScreen": {
+"term": "شاشة-كبيرة-جداً",
+"kind": "متغيّر ثابت",
+"pkg": "com.bitchat.android.utils"
+},
+"smallestWidthDp": {
+"term": "أصغر-عرض-dp",
+"kind": "متغيّر ثابت",
+"pkg": "com.bitchat.android.utils"
+},
+"SCREENLAYOUT_SIZE_MASK": {
+"term": "قناع-حجم-تخطيط-الشاشة",
+"kind": "ثابت",
+"pkg": "com.bitchat.android.utils"
+},
+"SCREENLAYOUT_SIZE_LARGE": {
+"term": "حجم-تخطيط-كبير",
+"kind": "ثابت",
+"pkg": "com.bitchat.android.utils"
+},
+"SCREENLAYOUT_SIZE_XLARGE": {
+"term": "حجم-تخطيط-كبير-جداً",
+"kind": "ثابت",
+"pkg": "com.bitchat.android.utils"
+},
+"com.bitchat.android.model": {
+"term": "حزمة النماذج",
+"kind": "package",
+"pkg": "model"
+},
+"BitchatFilePacket": {
+"term": "حزمة ملف بِتشات",
+"kind": "class",
+"pkg": "model"
+},
+"BitchatMessage": {
+"term": "رسالة بِتشات",
+"kind": "class",
+"pkg": "model"
+},
+"BitchatMessageType": {
+"term": "نوع رسالة بِتشات",
+"kind": "enum",
+"pkg": "model"
+},
+"DeliveryStatus": {
+"term": "حالة التسليم",
+"kind": "sealed class",
+"pkg": "model"
+},
+"FragmentPayload": {
+"term": "حمولة الشظية",
+"kind": "class",
+"pkg": "model"
+},
+"IdentityAnnouncement": {
+"term": "إعلان الهوية",
+"kind": "class",
+"pkg": "model"
+},
+"NoisePayloadType": {
+"term": "نوع حمولة نويز",
+"kind": "enum",
+"pkg": "model"
+},
+"NoisePayload": {
+"term": "حمولة نويز",
+"kind": "class",
+"pkg": "model"
+},
+"PrivateMessagePacket": {
+"term": "حزمة الرسالة الخاصة",
+"kind": "class",
+"pkg": "model"
+},
+"ReadReceipt": {
+"term": "إيصال القراءة",
+"kind": "class",
+"pkg": "model"
+},
+"RequestSyncPacket": {
+"term": "حزمة طلب المزامنة",
+"kind": "class",
+"pkg": "model"
+},
+"RoutedPacket": {
+"term": "الحزمة الموجَّهة",
+"kind": "class",
+"pkg": "model"
+},
+"FileSharingManager": {
+"term": "مدير مشاركة الملفات",
+"kind": "object",
+"pkg": "model"
+},
+"ReceivedFileInfo": {
+"term": "معلومات الملف المُستلَم",
+"kind": "class",
+"pkg": "model"
+},
+"TLVType": {
+"term": "نوع حقل الطول والقيمة (TLV)",
+"kind": "enum",
+"pkg": "model"
+},
+"toBinaryPayload": {
+"term": "التحويل إلى حمولة ثنائية",
+"kind": "function",
+"pkg": "model"
+},
+"fromBinaryPayload": {
+"term": "البناء من حمولة ثنائية",
+"kind": "function",
+"pkg": "model"
+},
+"from": {
+"term": "البحث بالقيمة",
+"kind": "function",
+"pkg": "model"
+},
+"generateFragmentID": {
+"term": "توليد معرّف الشظية",
+"kind": "function",
+"pkg": "model"
+},
+"isValid": {
+"term": "التحقّق من الصلاحية",
+"kind": "function",
+"pkg": "model"
+},
+"getFragmentIDString": {
+"term": "نص معرّف الشظية",
+"kind": "function",
+"pkg": "model"
+},
+"getDisplayText": {
+"term": "نص العرض",
+"kind": "function",
+"pkg": "model"
+},
+"createFilePacketFromUri": {
+"term": "إنشاء حزمة ملف من المعرّف الموحّد",
+"kind": "function",
+"pkg": "model"
+},
+"getFileNameFromUri": {
+"term": "الحصول على اسم الملف من المعرّف الموحّد",
+"kind": "function",
+"pkg": "model"
+},
+"processReceivedFile": {
+"term": "معالجة الملف المُستلَم",
+"kind": "function",
+"pkg": "model"
+},
+"putTLV": {
+"term": "وضع حقل TLV",
+"kind": "function",
+"pkg": "model"
+},
+"fileName": {
+"term": "اسم الملف",
+"kind": "property",
+"pkg": "model"
+},
+"fileSize": {
+"term": "حجم الملف",
+"kind": "property",
+"pkg": "model"
+},
+"mimeType": {
+"term": "نوع المايم",
+"kind": "property",
+"pkg": "model"
+},
+"fragmentID": {
+"term": "معرّف الشظية",
+"kind": "property",
+"pkg": "model"
+},
+"index": {
+"term": "الفهرس",
+"kind": "property",
+"pkg": "model"
+},
+"total": {
+"term": "الإجمالي",
+"kind": "property",
+"pkg": "model"
+},
+"originalType": {
+"term": "النوع الأصلي",
+"kind": "property",
+"pkg": "model"
+},
+"data": {
+"term": "البيانات",
+"kind": "property",
+"pkg": "model"
+},
+"HEADER_SIZE": {
+"term": "حجم الترويسة",
+"kind": "constant",
+"pkg": "model"
+},
+"FRAGMENT_ID_SIZE": {
+"term": "حجم معرّف الشظية",
+"kind": "constant",
+"pkg": "model"
+},
+"nickname": {
+"term": "اللقب",
+"kind": "property",
+"pkg": "model"
+},
+"noisePublicKey": {
+"term": "مفتاح نويز العام",
+"kind": "property",
+"pkg": "model"
+},
+"signingPublicKey": {
+"term": "مفتاح التوقيع العام",
+"kind": "property",
+"pkg": "model"
+},
+"flags": {
+"term": "الأعلام",
+"kind": "variable",
+"pkg": "model"
+},
+"sender": {
+"term": "المرسِل",
+"kind": "property",
+"pkg": "model"
+},
+"id": {
+"term": "المعرّف",
+"kind": "property",
+"pkg": "model"
+},
+"isRelay": {
+"term": "هل مُمرَّرة",
+"kind": "property",
+"pkg": "model"
+},
+"isPrivate": {
+"term": "هل خاصة",
+"kind": "property",
+"pkg": "model"
+},
+"isEncrypted": {
+"term": "هل مشفّرة",
+"kind": "property",
+"pkg": "model"
+},
+"encryptedContent": {
+"term": "المحتوى المشفّر",
+"kind": "property",
+"pkg": "model"
+},
+"originalSender": {
+"term": "المرسِل الأصلي",
+"kind": "property",
+"pkg": "model"
+},
+"recipientNickname": {
+"term": "لقب المستلِم",
+"kind": "property",
+"pkg": "model"
+},
+"senderPeerID": {
+"term": "معرّف ندّ المرسِل",
+"kind": "property",
+"pkg": "model"
+},
+"mentions": {
+"term": "الإشارات",
+"kind": "property",
+"pkg": "model"
+},
+"channel": {
+"term": "القناة",
+"kind": "property",
+"pkg": "model"
+},
+"deliveryStatus": {
+"term": "حالة التسليم",
+"kind": "property",
+"pkg": "model"
+},
+"powDifficulty": {
+"term": "صعوبة إثبات العمل",
+"kind": "property",
+"pkg": "model"
+},
+"messageID": {
+"term": "معرّف الرسالة",
+"kind": "property",
+"pkg": "model"
+},
+"originalMessageID": {
+"term": "معرّف الرسالة الأصلية",
+"kind": "property",
+"pkg": "model"
+},
+"readerPeerID": {
+"term": "معرّف القارئ الندّ",
+"kind": "property",
+"pkg": "model"
+},
+"p": {
+"term": "المعامل P",
+"kind": "property",
+"pkg": "model"
+},
+"m": {
+"term": "المدى M",
+"kind": "property",
+"pkg": "model"
+},
+"MAX_ACCEPT_FILTER_BYTES": {
+"term": "أقصى بايتات مصفاة مقبولة",
+"kind": "constant",
+"pkg": "model"
+},
+"packet": {
+"term": "الحزمة",
+"kind": "property",
+"pkg": "model"
+},
+"peerID": {
+"term": "معرّف القرين",
+"kind": "property",
+"pkg": "model"
+},
+"relayAddress": {
+"term": "عنوان التمرير",
+"kind": "property",
+"pkg": "model"
+},
+"transferId": {
+"term": "معرّف النقل",
+"kind": "property",
+"pkg": "model"
+},
+"SyncDefaults": {
+"term": "الإعدادات الافتراضية للمزامنة",
+"kind": "type",
+"pkg": "model"
+},
+"Parcelable": {
+"term": "القابل للحزم",
+"kind": "interface",
+"pkg": "model"
+},
+"EncryptionService": {
+"term": "خدمة التشفير",
+"kind": "class",
+"pkg": "crypto"
+},
+"NoiseEncryptionService": {
+"term": "خدمة تشفير Noise",
+"kind": "class",
+"pkg": "crypto"
+},
+"noiseService": {
+"term": "خدمة Noise",
+"kind": "property",
+"pkg": "crypto"
+},
+"context": {
+"term": "السياق",
+"kind": "property",
+"pkg": "crypto"
+},
+"prefs": {
+"term": "المفضّلات",
+"kind": "property",
+"pkg": "crypto"
+},
+"establishedSessions": {
+"term": "الجلسات المؤسَّسة",
+"kind": "property",
+"pkg": "crypto"
+},
+"ed25519PrivateKey": {
+"term": "المفتاح الخاص Ed25519",
+"kind": "property",
+"pkg": "crypto"
+},
+"ed25519PublicKey": {
+"term": "المفتاح العام Ed25519",
+"kind": "property",
+"pkg": "crypto"
+},
+"onSessionEstablished": {
+"term": "عند تأسيس الجلسة",
+"kind": "property",
+"pkg": "crypto"
+},
+"onSessionLost": {
+"term": "عند فقدان الجلسة",
+"kind": "property",
+"pkg": "crypto"
+},
+"onHandshakeRequired": {
+"term": "عند لزوم المصافحة",
+"kind": "property",
+"pkg": "crypto"
+},
+"onPeerAuthenticated": {
+"term": "عند مصادقة النِّد",
+"kind": "property",
+"pkg": "crypto"
+},
+"TAG": {
+"term": "الوسم",
+"kind": "const",
+"pkg": "crypto"
+},
+"ED25519_PRIVATE_KEY_PREF": {
+"term": "مفتاح تفضيل المفتاح الخاص Ed25519",
+"kind": "const",
+"pkg": "crypto"
+},
+"OLD_PREFS_NAME": {
+"term": "اسم المفضّلات القديم",
+"kind": "const",
+"pkg": "crypto"
+},
+"SECURE_PREFS_NAME": {
+"term": "اسم المفضّلات الآمن",
+"kind": "const",
+"pkg": "crypto"
+},
+"initialize": {
+"term": "التهيئة",
+"kind": "function",
+"pkg": "crypto"
+},
+"setUpEncryptedPrefs": {
+"term": "إعداد المفضّلات المشفّرة",
+"kind": "function",
+"pkg": "crypto"
+},
+"getCombinedPublicKeyData": {
+"term": "الحصول على بيانات المفتاح العام المدمج",
+"kind": "function",
+"pkg": "crypto"
+},
+"getStaticPublicKey": {
+"term": "الحصول على المفتاح العام الثابت",
+"kind": "function",
+"pkg": "crypto"
+},
+"getSigningPublicKey": {
+"term": "الحصول على مفتاح التوقيع العام",
+"kind": "function",
+"pkg": "crypto"
+},
+"signData": {
+"term": "توقيع البيانات",
+"kind": "function",
+"pkg": "crypto"
+},
+"addPeerPublicKey": {
+"term": "إضافة المفتاح العام للنِّد",
+"kind": "function",
+"pkg": "crypto"
+},
+"getPeerIdentityKey": {
+"term": "الحصول على مفتاح هوية النِّد",
+"kind": "function",
+"pkg": "crypto"
+},
+"clearPersistentIdentity": {
+"term": "مسح الهوية الدائمة",
+"kind": "function",
+"pkg": "crypto"
+},
+"encrypt": {
+"term": "التشفير",
+"kind": "function",
+"pkg": "crypto"
+},
+"decrypt": {
+"term": "فك التشفير",
+"kind": "function",
+"pkg": "crypto"
+},
+"sign": {
+"term": "التوقيع",
+"kind": "function",
+"pkg": "crypto"
+},
+"verify": {
+"term": "التحقّق",
+"kind": "function",
+"pkg": "crypto"
+},
+"hasEstablishedSession": {
+"term": "وجود جلسة مؤسَّسة",
+"kind": "function",
+"pkg": "crypto"
+},
+"getSessionState": {
+"term": "الحصول على حالة الجلسة",
+"kind": "function",
+"pkg": "crypto"
+},
+"shouldShowEncryptionIcon": {
+"term": "هل تُعرض أيقونة التشفير",
+"kind": "function",
+"pkg": "crypto"
+},
+"getPeerFingerprint": {
+"term": "الحصول على بصمة النِّد",
+"kind": "function",
+"pkg": "crypto"
+},
+"getCurrentPeerID": {
+"term": "الحصول على معرّف النِّد الحالي",
+"kind": "function",
+"pkg": "crypto"
+},
+"initiateHandshake": {
+"term": "بدء المصافحة",
+"kind": "function",
+"pkg": "crypto"
+},
+"processHandshakeMessage": {
+"term": "معالجة رسالة المصافحة",
+"kind": "function",
+"pkg": "crypto"
+},
+"removePeer": {
+"term": "إزالة النِّد",
+"kind": "function",
+"pkg": "crypto"
+},
+"updatePeerIDMapping": {
+"term": "تحديث ربط معرّف النِّد",
+"kind": "function",
+"pkg": "crypto"
+},
+"setChannelPassword": {
+"term": "ضبط كلمة مرور القناة",
+"kind": "function",
+"pkg": "crypto"
+},
+"encryptChannelMessage": {
+"term": "تشفير رسالة القناة",
+"kind": "function",
+"pkg": "crypto"
+},
+"decryptChannelMessage": {
+"term": "فك تشفير رسالة القناة",
+"kind": "function",
+"pkg": "crypto"
+},
+"removeChannelPassword": {
+"term": "إزالة كلمة مرور القناة",
+"kind": "function",
+"pkg": "crypto"
+},
+"getEstablishedPeers": {
+"term": "الحصول على الأنداد المؤسَّسة جلساتهم",
+"kind": "function",
+"pkg": "crypto"
+},
+"getSessionsNeedingRekey": {
+"term": "الحصول على الجلسات المحتاجة لإعادة المفتاح",
+"kind": "function",
+"pkg": "crypto"
+},
+"initiateRekey": {
+"term": "بدء إعادة المفتاح",
+"kind": "function",
+"pkg": "crypto"
+},
+"getIdentityFingerprint": {
+"term": "الحصول على بصمة الهوية",
+"kind": "function",
+"pkg": "crypto"
+},
+"getDebugInfo": {
+"term": "الحصول على معلومات التصحيح",
+"kind": "function",
+"pkg": "crypto"
+},
+"shutdown": {
+"term": "الإيقاف",
+"kind": "function",
+"pkg": "crypto"
+},
+"verifyEd25519Signature": {
+"term": "التحقّق من توقيع Ed25519",
+"kind": "function",
+"pkg": "crypto"
+},
+"loadOrCreateEd25519KeyPair": {
+"term": "تحميل أو إنشاء زوج مفاتيح Ed25519",
+"kind": "function",
+"pkg": "crypto"
+},
+"generateAndSaveEd25519KeyPair": {
+"term": "توليد وحفظ زوج مفاتيح Ed25519",
+"kind": "function",
+"pkg": "crypto"
+},
+"migrateOldEd25519KeyIfNeeded": {
+"term": "ترحيل مفتاح Ed25519 القديم عند الحاجة",
+"kind": "function",
+"pkg": "crypto"
+},
+"MasterKey": {
+"term": "المفتاح الرئيس",
+"kind": "type",
+"pkg": "crypto"
+},
+"EncryptedSharedPreferences": {
+"term": "المفضّلات المشتركة المشفّرة",
+"kind": "type",
+"pkg": "crypto"
+},
+"SharedPreferences": {
+"term": "المفضّلات المشتركة",
+"kind": "type",
+"pkg": "crypto"
+},
+"Ed25519Signer": {
+"term": "موقّع Ed25519",
+"kind": "type",
+"pkg": "crypto"
+},
+"Ed25519KeyPairGenerator": {
+"term": "مولّد زوج مفاتيح Ed25519",
+"kind": "type",
+"pkg": "crypto"
+},
+"Ed25519KeyGenerationParameters": {
+"term": "معاملات توليد مفاتيح Ed25519",
+"kind": "type",
+"pkg": "crypto"
+},
+"Ed25519PrivateKeyParameters": {
+"term": "معاملات المفتاح الخاص Ed25519",
+"kind": "type",
+"pkg": "crypto"
+},
+"Ed25519PublicKeyParameters": {
+"term": "معاملات المفتاح العام Ed25519",
+"kind": "type",
+"pkg": "crypto"
+},
+"AsymmetricCipherKeyPair": {
+"term": "زوج مفاتيح غير متماثل",
+"kind": "type",
+"pkg": "crypto"
+},
+"SecureRandom": {
+"term": "المولّد العشوائي الآمن",
+"kind": "type",
+"pkg": "crypto"
+},
+"Base64": {
+"term": "الترميز Base64",
+"kind": "type",
+"pkg": "crypto"
+},
+"ConcurrentHashMap": {
+"term": "خريطة التجزئة المتزامنة",
+"kind": "type",
+"pkg": "crypto"
+},
+"NoiseSessionState": {
+"term": "حالة جلسة Noise",
+"kind": "type",
+"pkg": "crypto"
+},
+"fingerprint": {
+"term": "البصمة",
+"kind": "variable",
+"pkg": "crypto"
+},
+"keyPair": {
+"term": "زوج المفاتيح",
+"kind": "variable",
+"pkg": "crypto"
+},
+"masterKey": {
+"term": "المفتاح الرئيس",
+"kind": "variable",
+"pkg": "crypto"
+},
+"SecureIdentityStateManager": {
+"term": "مدير حالة الهوية الآمنة",
+"kind": "class",
+"pkg": "identity"
+},
+"lock": {
+"term": "القفل",
+"kind": "variable",
+"pkg": "identity"
+},
+"PREFS_NAME": {
+"term": "اسم التفضيلات",
+"kind": "constant",
+"pkg": "identity"
+},
+"KEY_STATIC_PRIVATE_KEY": {
+"term": "مفتاح المفتاح الخاص الثابت",
+"kind": "constant",
+"pkg": "identity"
+},
+"KEY_STATIC_PUBLIC_KEY": {
+"term": "مفتاح المفتاح العام الثابت",
+"kind": "constant",
+"pkg": "identity"
+},
+"KEY_SIGNING_PRIVATE_KEY": {
+"term": "مفتاح مفتاح التوقيع الخاص",
+"kind": "constant",
+"pkg": "identity"
+},
+"KEY_SIGNING_PUBLIC_KEY": {
+"term": "مفتاح مفتاح التوقيع العام",
+"kind": "constant",
+"pkg": "identity"
+},
+"KEY_VERIFIED_FINGERPRINTS": {
+"term": "مفتاح البصمات الموثّقة",
+"kind": "constant",
+"pkg": "identity"
+},
+"KEY_CACHED_PEER_FINGERPRINTS": {
+"term": "مفتاح بصمات النِّد المخزّنة",
+"kind": "constant",
+"pkg": "identity"
+},
+"KEY_CACHED_PEER_NOISE_KEYS": {
+"term": "مفتاح مفاتيح Noise للنِّد المخزّنة",
+"kind": "constant",
+"pkg": "identity"
+},
+"KEY_CACHED_NOISE_FINGERPRINTS": {
+"term": "مفتاح بصمات Noise المخزّنة",
+"kind": "constant",
+"pkg": "identity"
+},
+"KEY_CACHED_FINGERPRINT_NICKNAMES": {
+"term": "مفتاح ألقاب البصمات المخزّنة",
+"kind": "constant",
+"pkg": "identity"
+},
+"MessageDigest": {
+"term": "هاضِم الرسالة",
+"kind": "type",
+"pkg": "identity"
+},
+"loadStaticKey": {
+"term": "تحميل المفتاح الثابت",
+"kind": "function",
+"pkg": "identity"
+},
+"saveStaticKey": {
+"term": "حفظ المفتاح الثابت",
+"kind": "function",
+"pkg": "identity"
+},
+"loadSigningKey": {
+"term": "تحميل مفتاح التوقيع",
+"kind": "function",
+"pkg": "identity"
+},
+"saveSigningKey": {
+"term": "حفظ مفتاح التوقيع",
+"kind": "function",
+"pkg": "identity"
+},
+"generateFingerprint": {
+"term": "توليد البصمة",
+"kind": "function",
+"pkg": "identity"
+},
+"isValidFingerprint": {
+"term": "فحص صلاحية البصمة",
+"kind": "function",
+"pkg": "identity"
+},
+"getVerifiedFingerprints": {
+"term": "جلب البصمات الموثّقة",
+"kind": "function",
+"pkg": "identity"
+},
+"isVerifiedFingerprint": {
+"term": "فحص توثيق البصمة",
+"kind": "function",
+"pkg": "identity"
+},
+"setVerifiedFingerprint": {
+"term": "تعيين توثيق البصمة",
+"kind": "function",
+"pkg": "identity"
+},
+"getCachedPeerFingerprint": {
+"term": "جلب بصمة النِّد المخزّنة",
+"kind": "function",
+"pkg": "identity"
+},
+"cachePeerFingerprint": {
+"term": "تخزين بصمة النِّد",
+"kind": "function",
+"pkg": "identity"
+},
+"getCachedNoiseKey": {
+"term": "جلب مفتاح Noise المخزّن",
+"kind": "function",
+"pkg": "identity"
+},
+"cachePeerNoiseKey": {
+"term": "تخزين مفتاح Noise للنِّد",
+"kind": "function",
+"pkg": "identity"
+},
+"getCachedNoiseFingerprint": {
+"term": "جلب بصمة Noise المخزّنة",
+"kind": "function",
+"pkg": "identity"
+},
+"cacheNoiseFingerprint": {
+"term": "تخزين بصمة Noise",
+"kind": "function",
+"pkg": "identity"
+},
+"getCachedFingerprintNickname": {
+"term": "جلب لقب البصمة المخزّن",
+"kind": "function",
+"pkg": "identity"
+},
+"cacheFingerprintNickname": {
+"term": "تخزين لقب البصمة",
+"kind": "function",
+"pkg": "identity"
+},
+"validatePublicKey": {
+"term": "التحقق من المفتاح العام",
+"kind": "function",
+"pkg": "identity"
+},
+"validatePrivateKey": {
+"term": "التحقق من المفتاح الخاص",
+"kind": "function",
+"pkg": "identity"
+},
+"clearIdentityData": {
+"term": "مسح بيانات الهوية",
+"kind": "function",
+"pkg": "identity"
+},
+"hasIdentityData": {
+"term": "فحص وجود بيانات الهوية",
+"kind": "function",
+"pkg": "identity"
+},
+"storeSecureValue": {
+"term": "تخزين قيمة آمنة",
+"kind": "function",
+"pkg": "identity"
+},
+"getSecureValue": {
+"term": "جلب قيمة آمنة",
+"kind": "function",
+"pkg": "identity"
+},
+"removeSecureValue": {
+"term": "إزالة قيمة آمنة",
+"kind": "function",
+"pkg": "identity"
+},
+"hasSecureValue": {
+"term": "فحص وجود قيمة آمنة",
+"kind": "function",
+"pkg": "identity"
+},
+"clearSecureValues": {
+"term": "مسح قيم آمنة محدّدة",
+"kind": "function",
+"pkg": "identity"
+},
+"noiseKeyHex": {
+"term": "مفتاح Noise ستّ عشري",
+"kind": "variable",
+"pkg": "identity"
+},
+"clampedKey": {
+"term": "المفتاح المثبَّت",
+"kind": "variable",
+"pkg": "identity"
+},
+"invalidPoints": {
+"term": "النقاط غير الصالحة",
+"kind": "variable",
+"pkg": "identity"
+},
+"NoiseSessionManager": {
+"term": "مدير جلسات نويز",
+"kind": "class",
+"pkg": "com.bitchat.android.noise"
+},
+"NoiseSession": {
+"term": "جلسة نويز",
+"kind": "class",
+"pkg": "com.bitchat.android.noise"
+},
+"NoiseChannelEncryption": {
+"term": "تعمية قناة نويز",
+"kind": "class",
+"pkg": "com.bitchat.android.noise"
+},
+"NoiseEncryptionError": {
+"term": "خطأ تعمية نويز",
+"kind": "sealed class",
+"pkg": "com.bitchat.android.noise"
+},
+"NoiseSessionError": {
+"term": "خطأ جلسة نويز",
+"kind": "sealed class",
+"pkg": "com.bitchat.android.noise"
+},
+"SessionError": {
+"term": "خطأ الجلسة",
+"kind": "sealed class",
+"pkg": "com.bitchat.android.noise"
+},
+"HandshakeState": {
+"term": "حالة المصافحة",
+"kind": "type (library)",
+"pkg": "com.bitchat.android.noise"
+},
+"CipherState": {
+"term": "حالة المُعمّي",
+"kind": "type (library)",
+"pkg": "com.bitchat.android.noise"
+},
+"sessions": {
+"term": "خريطة الجلسات",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"sessionManager": {
+"term": "مدير الجلسات",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"channelEncryption": {
+"term": "كائن تعمية القناة",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"identityStateManager": {
+"term": "مدير حالة الهوية",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"fingerprintManager": {
+"term": "مدير البصمات",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"staticIdentityPrivateKey": {
+"term": "المفتاح الخاص للهوية الثابتة",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"staticIdentityPublicKey": {
+"term": "المفتاح العام للهوية الثابتة",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"signingPrivateKey": {
+"term": "مفتاح التوقيع الخاص",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"localStaticPrivateKey": {
+"term": "المفتاح الخاص الثابت المحلي",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"localStaticPublicKey": {
+"term": "المفتاح العام الثابت المحلي",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"localPeerID": {
+"term": "معرّف القرين المحلي",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"isInitiator": {
+"term": "هل هو البادئ",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"remoteStaticPublicKey": {
+"term": "المفتاح العام الثابت البعيد",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"handshakeHash": {
+"term": "بصمة المصافحة",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"handshakeState": {
+"term": "حالة المصافحة",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"sendCipher": {
+"term": "مُعمّي الإرسال",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"receiveCipher": {
+"term": "مُعمّي الاستقبال",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"state": {
+"term": "الحالة",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"messagesSent": {
+"term": "عدّاد الرسائل المرسَلة",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"messagesReceived": {
+"term": "عدّاد الرسائل المستلَمة",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"highestReceivedNonce": {
+"term": "أعلى لاعدد مستلَم",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"replayWindow": {
+"term": "نافذة إعادة الإرسال",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"cipherLock": {
+"term": "قفل التعمية",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"channelKeys": {
+"term": "مفاتيح القنوات",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"channelPasswords": {
+"term": "كلمات مرور القنوات",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"onSessionFailed": {
+"term": "ردّ فشل الجلسة",
+"kind": "callback",
+"pkg": "com.bitchat.android.noise"
+},
+"loadOrGenerateKeys": {
+"term": "تحميل أو توليد المفاتيح",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"initializeSessionManager": {
+"term": "تهيئة مدير الجلسات",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"generateKeyPair": {
+"term": "توليد زوج مفاتيح كيرف",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"generateEd25519KeyPair": {
+"term": "توليد زوج مفاتيح Ed25519",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"calculateFingerprint": {
+"term": "حساب البصمة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"getStaticPublicKeyData": {
+"term": "جلب بيانات المفتاح العام الثابت",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"getSigningPublicKeyData": {
+"term": "جلب بيانات مفتاح التوقيع العام",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"getPeerPublicKeyData": {
+"term": "جلب المفتاح العام للقرين",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"handleSessionEstablished": {
+"term": "معالجة تأسيس الجلسة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"getPeerID": {
+"term": "جلب معرّف القرين",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"signPacket": {
+"term": "توقيع الرزمة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"verifyPacketSignature": {
+"term": "التحقق من توقيع الرزمة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"verifySignature": {
+"term": "التحقق من التوقيع",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"signWithEd25519": {
+"term": "التوقيع بـEd25519",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"verifyWithEd25519": {
+"term": "التحقق بـEd25519",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"addSession": {
+"term": "إضافة جلسة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"getSession": {
+"term": "جلب الجلسة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"removeSession": {
+"term": "إزالة الجلسة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"isHandshakeStale": {
+"term": "هل المصافحة قديمة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"getRemoteStaticKey": {
+"term": "جلب المفتاح الثابت البعيد",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"getHandshakeHash": {
+"term": "جلب بصمة المصافحة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"startHandshake": {
+"term": "بدء المصافحة (الجلسة)",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"completeHandshake": {
+"term": "إكمال المصافحة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"initializeNoiseHandshake": {
+"term": "تهيئة مصافحة نويز",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"validateStaticKeys": {
+"term": "التحقق من المفاتيح الثابتة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"isEstablished": {
+"term": "هل مؤسَّسة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"isHandshaking": {
+"term": "هل قيد المصافحة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"isInitiatorRole": {
+"term": "هل الدور بادئ",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"getState": {
+"term": "جلب الحالة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"needsRekey": {
+"term": "هل تحتاج إعادة مفتاح",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"getRemoteStaticPublicKey": {
+"term": "جلب المفتاح العام الثابت البعيد",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"getSessionStats": {
+"term": "جلب إحصاءات الجلسة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"reset": {
+"term": "إعادة الضبط",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"destroy": {
+"term": "التدمير",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"isValidNonce": {
+"term": "هل اللاعدد صالح",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"markNonceAsSeen": {
+"term": "تعليم اللاعدد كمُشاهَد",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"extractNonceFromCiphertextPayload": {
+"term": "استخراج اللاعدد من الحمولة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"nonceToBytes": {
+"term": "تحويل اللاعدد إلى بايتات",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"hasChannelKey": {
+"term": "هل توجد مفتاح للقناة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"getChannelPassword": {
+"term": "جلب كلمة مرور القناة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"deriveChannelKey": {
+"term": "اشتقاق مفتاح القناة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"calculateKeyCommitment": {
+"term": "حساب التزام المفتاح",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"verifyKeyCommitment": {
+"term": "التحقق من التزام المفتاح",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"createChannelKeyPacket": {
+"term": "إنشاء حزمة مفتاح القناة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"processChannelKeyPacket": {
+"term": "معالجة حزمة مفتاح القناة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"getActiveChannels": {
+"term": "جلب القنوات النشطة",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"clear": {
+"term": "المسح",
+"kind": "function",
+"pkg": "com.bitchat.android.noise"
+},
+"PROTOCOL_NAME": {
+"term": "اسم البروتوكول",
+"kind": "const",
+"pkg": "com.bitchat.android.noise"
+},
+"PBKDF2_ITERATIONS": {
+"term": "عدد تكرارات PBKDF2",
+"kind": "const",
+"pkg": "com.bitchat.android.noise"
+},
+"KEY_LENGTH": {
+"term": "طول المفتاح",
+"kind": "const",
+"pkg": "com.bitchat.android.noise"
+},
+"REKEY_TIME_LIMIT": {
+"term": "حدّ زمن إعادة المفتاح",
+"kind": "const",
+"pkg": "com.bitchat.android.noise"
+},
+"REKEY_MESSAGE_LIMIT": {
+"term": "حدّ رسائل إعادة المفتاح",
+"kind": "const",
+"pkg": "com.bitchat.android.noise"
+},
+"HANDSHAKE_TIMEOUT_MS": {
+"term": "مهلة المصافحة",
+"kind": "const",
+"pkg": "com.bitchat.android.noise"
+},
+"HANDSHAKE_MESSAGE_1_SIZE": {
+"term": "حجم رسالة المصافحة الأولى",
+"kind": "const",
+"pkg": "com.bitchat.android.noise"
+},
+"NONCE_SIZE_BYTES": {
+"term": "حجم اللاعدد بالبايتات",
+"kind": "const",
+"pkg": "com.bitchat.android.noise"
+},
+"REPLAY_WINDOW_SIZE": {
+"term": "حجم نافذة إعادة الإرسال",
+"kind": "const",
+"pkg": "com.bitchat.android.noise"
+},
+"REPLAY_WINDOW_BYTES": {
+"term": "بايتات نافذة إعادة الإرسال",
+"kind": "const",
+"pkg": "com.bitchat.android.noise"
+},
+"XX_MESSAGE_1_SIZE": {
+"term": "حجم رسالة XX الأولى",
+"kind": "const",
+"pkg": "com.bitchat.android.noise"
+},
+"XX_MESSAGE_2_SIZE": {
+"term": "حجم رسالة XX الثانية",
+"kind": "const",
+"pkg": "com.bitchat.android.noise"
+},
+"XX_MESSAGE_3_SIZE": {
+"term": "حجم رسالة XX الثالثة",
+"kind": "const",
+"pkg": "com.bitchat.android.noise"
+},
+"NOISE_XX_PATTERN_LENGTH": {
+"term": "طول نمط XX",
+"kind": "const",
+"pkg": "com.bitchat.android.noise"
+},
+"currentPattern": {
+"term": "عدّاد النمط الحالي",
+"kind": "field",
+"pkg": "com.bitchat.android.noise"
+},
+"ArtiTorManager": {
+"term": "مدير تور آرتي",
+"kind": "class",
+"pkg": "net"
+},
+"TorState": {
+"term": "حالة تور",
+"kind": "enum",
+"pkg": "net"
+},
+"TorStatus": {
+"term": "بيان حالة تور",
+"kind": "data class",
+"pkg": "net"
+},
+"TorMode": {
+"term": "وضع تور",
+"kind": "enum",
+"pkg": "net"
+},
+"LifecycleState": {
+"term": "حالة دورة الحياة",
+"kind": "enum",
+"pkg": "net"
+},
+"ArtiProxy": {
+"term": "وكيل آرتي",
+"kind": "class",
+"pkg": "net"
+},
+"ArtiLogListener": {
+"term": "مستمع سجلّ آرتي",
+"kind": "class",
+"pkg": "net"
+},
+"OkHttpProvider": {
+"term": "مزوّد أوك‌إتش‌تي‌تي‌بي",
+"kind": "object",
+"pkg": "net"
+},
+"TorPreferenceManager": {
+"term": "مدير تفضيلات تور",
+"kind": "object",
+"pkg": "net"
+},
+"getInstance": {
+"term": "إحضار المثيل",
+"kind": "function",
+"pkg": "net"
+},
+"INSTANCE": {
+"term": "المثيل المفرد",
+"kind": "variable",
+"pkg": "net"
+},
+"init": {
+"term": "التهيئة",
+"kind": "function",
+"pkg": "net"
+},
+"initialized": {
+"term": "عَلَم التهيئة",
+"kind": "variable",
+"pkg": "net"
+},
+"applyMode": {
+"term": "تطبيق الوضع",
+"kind": "function",
+"pkg": "net"
+},
+"desiredMode": {
+"term": "الوضع المرغوب",
+"kind": "variable",
+"pkg": "net"
+},
+"lastMode": {
+"term": "آخر وضع",
+"kind": "variable",
+"pkg": "net"
+},
+"applyMutex": {
+"term": "قفل التطبيق",
+"kind": "variable",
+"pkg": "net"
+},
+"appScope": {
+"term": "نطاق التطبيق",
+"kind": "variable",
+"pkg": "net"
+},
+"startArti": {
+"term": "بدء آرتي",
+"kind": "function",
+"pkg": "net"
+},
+"stopArti": {
+"term": "إيقاف آرتي",
+"kind": "function",
+"pkg": "net"
+},
+"stopArtiInternal": {
+"term": "إيقاف آرتي الداخلي",
+"kind": "function",
+"pkg": "net"
+},
+"stopArtiAndWait": {
+"term": "إيقاف آرتي والانتظار",
+"kind": "function",
+"pkg": "net"
+},
+"restartArti": {
+"term": "إعادة تشغيل آرتي",
+"kind": "function",
+"pkg": "net"
+},
+"scheduleRetry": {
+"term": "جدولة إعادة المحاولة",
+"kind": "function",
+"pkg": "net"
+},
+"isBindError": {
+"term": "فحص خطأ الربط",
+"kind": "function",
+"pkg": "net"
+},
+"resetNetworkConnections": {
+"term": "إعادة ضبط اتصالات الشبكة",
+"kind": "function",
+"pkg": "net"
+},
+"startInactivityMonitoring": {
+"term": "بدء مراقبة الخمول",
+"kind": "function",
+"pkg": "net"
+},
+"stopInactivityMonitoring": {
+"term": "إيقاف مراقبة الخمول",
+"kind": "function",
+"pkg": "net"
+},
+"stopRetryMonitoring": {
+"term": "إيقاف مراقبة الإعادة",
+"kind": "function",
+"pkg": "net"
+},
+"waitUntilBootstrapped": {
+"term": "الانتظار حتى الإقلاع",
+"kind": "function",
+"pkg": "net"
+},
+"handleArtiLogLine": {
+"term": "معالجة سطر سجلّ آرتي",
+"kind": "function",
+"pkg": "net"
+},
+"completeWaitersIf": {
+"term": "إكمال المنتظِرين",
+"kind": "function",
+"pkg": "net"
+},
+"waitForStateTransition": {
+"term": "انتظار انتقال الحالة",
+"kind": "function",
+"pkg": "net"
+},
+"isProxyEnabled": {
+"term": "فحص تفعيل الوكيل",
+"kind": "function",
+"pkg": "net"
+},
+"isTorAvailable": {
+"term": "فحص توفّر تور",
+"kind": "function",
+"pkg": "net"
+},
+"currentSocksAddress": {
+"term": "عنوان سوكس الحالي",
+"kind": "function",
+"pkg": "net"
+},
+"socksAddr": {
+"term": "عنوان سوكس",
+"kind": "variable",
+"pkg": "net"
+},
+"currentSocksPort": {
+"term": "منفذ سوكس الحالي",
+"kind": "variable",
+"pkg": "net"
+},
+"artiProxy": {
+"term": "حقل وكيل آرتي",
+"kind": "variable",
+"pkg": "net"
+},
+"lifecycleState": {
+"term": "حقل حالة دورة الحياة",
+"kind": "variable",
+"pkg": "net"
+},
+"lastLogTime": {
+"term": "وقت آخر سجلّ",
+"kind": "variable",
+"pkg": "net"
+},
+"retryAttempts": {
+"term": "محاولات الإعادة",
+"kind": "variable",
+"pkg": "net"
+},
+"bindRetryAttempts": {
+"term": "محاولات إعادة الربط",
+"kind": "variable",
+"pkg": "net"
+},
+"MAX_RETRY_ATTEMPTS": {
+"term": "أقصى عدد محاولات",
+"kind": "const",
+"pkg": "net"
+},
+"RESTART_DELAY_MS": {
+"term": "تأخير إعادة التشغيل",
+"kind": "const",
+"pkg": "net"
+},
+"INACTIVITY_TIMEOUT_MS": {
+"term": "مهلة الخمول",
+"kind": "const",
+"pkg": "net"
+},
+"STOP_TIMEOUT_MS": {
+"term": "مهلة التوقّف",
+"kind": "const",
+"pkg": "net"
+},
+"inactivityJob": {
+"term": "مهمة الخمول",
+"kind": "variable",
+"pkg": "net"
+},
+"retryJob": {
+"term": "مهمة الإعادة",
+"kind": "variable",
+"pkg": "net"
+},
+"_statusFlow": {
+"term": "تدفّق الحالة الداخلي",
+"kind": "variable",
+"pkg": "net"
+},
+"statusFlow": {
+"term": "تدفّق الحالة",
+"kind": "variable",
+"pkg": "net"
+},
+"stateChangeDeferred": {
+"term": "مؤجَّل تغيّر الحالة",
+"kind": "variable",
+"pkg": "net"
+},
+"currentApplication": {
+"term": "التطبيق الحالي",
+"kind": "variable",
+"pkg": "net"
+},
+"bootstrapPercent": {
+"term": "نسبة الإقلاع",
+"kind": "variable",
+"pkg": "net"
+},
+"httpClient": {
+"term": "عميل إتش‌تي‌تي‌بي",
+"kind": "function",
+"pkg": "net"
+},
+"webSocketClient": {
+"term": "عميل ويب‌سوكِت",
+"kind": "function",
+"pkg": "net"
+},
+"baseBuilderForCurrentProxy": {
+"term": "الباني الأساسي للوكيل الحالي",
+"kind": "function",
+"pkg": "net"
+},
+"httpClientRef": {
+"term": "مرجع عميل إتش‌تي‌تي‌بي",
+"kind": "variable",
+"pkg": "net"
+},
+"wsClientRef": {
+"term": "مرجع عميل ويب‌سوكِت",
+"kind": "variable",
+"pkg": "net"
+},
+"OkHttpClient": {
+"term": "عميل أوك‌إتش‌تي‌تي‌بي",
+"kind": "class",
+"pkg": "net"
+},
+"Proxy": {
+"term": "وسيط جافا",
+"kind": "class",
+"pkg": "net"
+},
+"modeFlow": {
+"term": "تدفّق الوضع",
+"kind": "variable",
+"pkg": "net"
+},
+"_modeFlow": {
+"term": "تدفّق الوضع الداخلي",
+"kind": "variable",
+"pkg": "net"
+},
+"set": {
+"term": "حفظ الوضع",
+"kind": "function",
+"pkg": "net"
+},
+"get": {
+"term": "قراءة الوضع",
+"kind": "function",
+"pkg": "net"
+},
+"KEY_TOR_MODE": {
+"term": "مفتاح وضع تور",
+"kind": "const",
+"pkg": "net"
+},
+"NostrRelayManager": {
+"term": "مدير مرحّلات نوستر",
+"kind": "class",
+"pkg": "net"
+},
+"BLEPacketPaddingPolicy": {
+"term": "سياسة حشو رزمة BLE (BLEPacketPaddingPolicy)",
+"kind": "object",
+"pkg": "mesh"
+},
+"shouldPadForBLE": {
+"term": "هل يجب الحشو لأجل BLE (shouldPadForBLE)",
+"kind": "function",
+"pkg": "mesh"
+},
+"UByte": {
+"term": "بايت غير مُوقَّع (UByte)",
+"kind": "type",
+"pkg": "mesh"
+},
+"Boolean": {
+"term": "قيمة منطقية (Boolean)",
+"kind": "type",
+"pkg": "mesh"
+},
+"MessageType.fromValue": {
+"term": "تحويل القيمة إلى نوع رسالة (fromValue)",
+"kind": "function",
+"pkg": "mesh"
+},
+"MessageType.NOISE_ENCRYPTED": {
+"term": "نويز مُشفَّر (NOISE_ENCRYPTED)",
+"kind": "enum-constant",
+"pkg": "mesh"
+},
+"MessageType.NOISE_HANDSHAKE": {
+"term": "مصافحة نويز (NOISE_HANDSHAKE)",
+"kind": "enum-constant",
+"pkg": "mesh"
+},
+"BluetoothConnectionManager": {
+"term": "مدير اتصال البلوتوث",
+"kind": "class",
+"pkg": "mesh"
+},
+"BluetoothConnectionManagerDelegate": {
+"term": "مفوَّض مدير اتصال البلوتوث",
+"kind": "interface",
+"pkg": "mesh"
+},
+"PowerManagerDelegate": {
+"term": "مفوَّض مدير الطاقة",
+"kind": "interface",
+"pkg": "mesh"
+},
+"PowerManager": {
+"term": "مدير الطاقة",
+"kind": "class",
+"pkg": "mesh"
+},
+"PowerManager.PowerMode": {
+"term": "وضع الطاقة",
+"kind": "type",
+"pkg": "mesh"
+},
+"BluetoothConnectionTracker": {
+"term": "متتبّع اتصال البلوتوث",
+"kind": "class",
+"pkg": "mesh"
+},
+"BluetoothPacketBroadcaster": {
+"term": "باثّ رزم البلوتوث",
+"kind": "class",
+"pkg": "mesh"
+},
+"BluetoothPermissionManager": {
+"term": "مدير أذونات البلوتوث",
+"kind": "class",
+"pkg": "mesh"
+},
+"BluetoothGattServerManager": {
+"term": "مدير خادم جات للبلوتوث",
+"kind": "class",
+"pkg": "mesh"
+},
+"BluetoothGattClientManager": {
+"term": "مدير عميل جات للبلوتوث",
+"kind": "class",
+"pkg": "mesh"
+},
+"DebugSettingsManager": {
+"term": "مدير إعدادات التنقيح",
+"kind": "class",
+"pkg": "mesh"
+},
+"DebugPreferenceManager": {
+"term": "مدير تفضيلات التنقيح",
+"kind": "class",
+"pkg": "mesh"
+},
+"BluetoothManager": {
+"term": "مدير البلوتوث (نظامي)",
+"kind": "type",
+"pkg": "mesh"
+},
+"BluetoothAdapter": {
+"term": "محوّل البلوتوث",
+"kind": "type",
+"pkg": "mesh"
+},
+"BluetoothDevice": {
+"term": "جهاز البلوتوث",
+"kind": "type",
+"pkg": "mesh"
+},
+"myPeerID": {
+"term": "معرّف ندّي الخاص",
+"kind": "field",
+"pkg": "mesh"
+},
+"fragmentManager": {
+"term": "مدير التجزئة",
+"kind": "field",
+"pkg": "mesh"
+},
+"connectionScope": {
+"term": "نطاق الاتصال",
+"kind": "field",
+"pkg": "mesh"
+},
+"connectionTracker": {
+"term": "متتبّع الاتصال",
+"kind": "field",
+"pkg": "mesh"
+},
+"packetBroadcaster": {
+"term": "باثّ الرزم",
+"kind": "field",
+"pkg": "mesh"
+},
+"permissionManager": {
+"term": "مدير الأذونات",
+"kind": "field",
+"pkg": "mesh"
+},
+"powerManager": {
+"term": "مدير الطاقة (حقل)",
+"kind": "field",
+"pkg": "mesh"
+},
+"serverManager": {
+"term": "مدير الخادم",
+"kind": "field",
+"pkg": "mesh"
+},
+"clientManager": {
+"term": "مدير العميل",
+"kind": "field",
+"pkg": "mesh"
+},
+"componentDelegate": {
+"term": "مفوَّض المكوّن",
+"kind": "field",
+"pkg": "mesh"
+},
+"delegate": {
+"term": "المفوَّض",
+"kind": "field",
+"pkg": "mesh"
+},
+"isActive": {
+"term": "نشط",
+"kind": "field",
+"pkg": "mesh"
+},
+"addressPeerMap": {
+"term": "خريطة العنوان‑الندّ",
+"kind": "property",
+"pkg": "mesh"
+},
+"isBleTransportEnabled": {
+"term": "هل نقل BLE مُفعَّل",
+"kind": "function",
+"pkg": "mesh"
+},
+"isGattServerEnabled": {
+"term": "هل خادم جات مُفعَّل",
+"kind": "function",
+"pkg": "mesh"
+},
+"isGattClientEnabled": {
+"term": "هل عميل جات مُفعَّل",
+"kind": "function",
+"pkg": "mesh"
+},
+"enforceStrictLimits": {
+"term": "فرض الحدود الصارمة",
+"kind": "function",
+"pkg": "mesh"
+},
+"startServices": {
+"term": "بدء الخدمات",
+"kind": "function",
+"pkg": "mesh"
+},
+"disableTransport": {
+"term": "تعطيل النقل",
+"kind": "function",
+"pkg": "mesh"
+},
+"stopServices": {
+"term": "إيقاف الخدمات",
+"kind": "function",
+"pkg": "mesh"
+},
+"isReusable": {
+"term": "قابل لإعادة الاستخدام",
+"kind": "function",
+"pkg": "mesh"
+},
+"broadcastPacket": {
+"term": "بثّ الرزمة",
+"kind": "function",
+"pkg": "mesh"
+},
+"sendToPeer": {
+"term": "الإرسال إلى الندّ",
+"kind": "function",
+"pkg": "mesh"
+},
+"cancelTransfer": {
+"term": "إلغاء النقل",
+"kind": "function",
+"pkg": "mesh"
+},
+"sendPacketToPeer": {
+"term": "إرسال الرزمة إلى الندّ",
+"kind": "function",
+"pkg": "mesh"
+},
+"startServer": {
+"term": "بدء الخادم",
+"kind": "function",
+"pkg": "mesh"
+},
+"stopServer": {
+"term": "إيقاف الخادم",
+"kind": "function",
+"pkg": "mesh"
+},
+"startClient": {
+"term": "بدء العميل",
+"kind": "function",
+"pkg": "mesh"
+},
+"stopClient": {
+"term": "إيقاف العميل",
+"kind": "function",
+"pkg": "mesh"
+},
+"setNicknameResolver": {
+"term": "ضبط مُحلّل الاسم المستعار",
+"kind": "function",
+"pkg": "mesh"
+},
+"getConnectedDeviceEntries": {
+"term": "الحصول على مدخلات الأجهزة المتصلة",
+"kind": "function",
+"pkg": "mesh"
+},
+"getLocalAdapterAddress": {
+"term": "الحصول على عنوان المحوّل المحلّي",
+"kind": "function",
+"pkg": "mesh"
+},
+"isClientConnection": {
+"term": "هل الاتصال عميل",
+"kind": "function",
+"pkg": "mesh"
+},
+"connectToAddress": {
+"term": "الاتصال بعنوان",
+"kind": "function",
+"pkg": "mesh"
+},
+"disconnectAddress": {
+"term": "قطع اتصال عنوان",
+"kind": "function",
+"pkg": "mesh"
+},
+"disconnectAll": {
+"term": "قطع كل الاتصالات",
+"kind": "function",
+"pkg": "mesh"
+},
+"getConnectedDeviceCount": {
+"term": "عدد الأجهزة المتصلة",
+"kind": "function",
+"pkg": "mesh"
+},
+"onPowerModeChanged": {
+"term": "عند تغيّر وضع الطاقة",
+"kind": "function",
+"pkg": "mesh"
+},
+"onScanStateChanged": {
+"term": "عند تغيّر حالة المسح",
+"kind": "function",
+"pkg": "mesh"
+},
+"onPacketReceived": {
+"term": "عند استلام رزمة",
+"kind": "function",
+"pkg": "mesh"
+},
+"onDeviceConnected": {
+"term": "عند اتصال جهاز",
+"kind": "function",
+"pkg": "mesh"
+},
+"onDeviceDisconnected": {
+"term": "عند قطع اتصال جهاز",
+"kind": "function",
+"pkg": "mesh"
+},
+"onRSSIUpdated": {
+"term": "عند تحديث قوة الإشارة",
+"kind": "function",
+"pkg": "mesh"
+},
+"getConnectionsToEvict": {
+"term": "الاتصالات الواجب طردها",
+"kind": "function",
+"pkg": "mesh"
+},
+"shouldUseDutyCycle": {
+"term": "هل ينبغي استخدام دورة العمل",
+"kind": "function",
+"pkg": "mesh"
+},
+"restartAdvertising": {
+"term": "إعادة تشغيل الإعلان",
+"kind": "function",
+"pkg": "mesh"
+},
+"restartScanning": {
+"term": "إعادة تشغيل المسح",
+"kind": "function",
+"pkg": "mesh"
+},
+"RSSI": {
+"term": "قوة الإشارة المستقبَلة",
+"kind": "concept",
+"pkg": "mesh"
+},
+"GATT": {
+"term": "بروتوكول جات",
+"kind": "concept",
+"pkg": "mesh"
+},
+"BLE": {
+"term": "البلوتوث منخفض الطاقة",
+"kind": "concept",
+"pkg": "mesh"
+},
+"MTU": {
+"term": "الحد الأقصى لوحدة النقل",
+"kind": "concept",
+"pkg": "mesh"
+},
+"MeshConnectionTracker": {
+"term": "متتبّع اتصال الشبكة المتشابكة",
+"kind": "صنف أب",
+"pkg": "mesh"
+},
+"CLEANUP_DELAY": {
+"term": "تأخير التنظيف",
+"kind": "ثابت",
+"pkg": "mesh"
+},
+"connectedDevices": {
+"term": "الأجهزة المتصلة",
+"kind": "حقل (خريطة)",
+"pkg": "mesh"
+},
+"subscribedDevices": {
+"term": "الأجهزة المشتركة",
+"kind": "حقل (قائمة)",
+"pkg": "mesh"
+},
+"firstAnnounceSeen": {
+"term": "رؤية أول إعلان",
+"kind": "حقل (خريطة)",
+"pkg": "mesh"
+},
+"scanRSSI": {
+"term": "شدة إشارة المسح",
+"kind": "حقل (خريطة)",
+"pkg": "mesh"
+},
+"DeviceConnection": {
+"term": "اتصال الجهاز",
+"kind": "صنف بيانات",
+"pkg": "mesh"
+},
+"device": {
+"term": "الجهاز",
+"kind": "خاصية",
+"pkg": "mesh"
+},
+"gatt": {
+"term": "كائن جات",
+"kind": "خاصية",
+"pkg": "mesh"
+},
+"characteristic": {
+"term": "الخاصية",
+"kind": "خاصية",
+"pkg": "mesh"
+},
+"rssi": {
+"term": "شدة الإشارة",
+"kind": "خاصية",
+"pkg": "mesh"
+},
+"isClient": {
+"term": "أهو عميل",
+"kind": "خاصية",
+"pkg": "mesh"
+},
+"connectedAt": {
+"term": "وقت الاتصال",
+"kind": "خاصية",
+"pkg": "mesh"
+},
+"start": {
+"term": "بدء",
+"kind": "دالة",
+"pkg": "mesh"
+},
+"stop": {
+"term": "إيقاف",
+"kind": "دالة",
+"pkg": "mesh"
+},
+"isConnected": {
+"term": "أمُتّصل",
+"kind": "دالة",
+"pkg": "mesh"
+},
+"disconnect": {
+"term": "قطع الاتصال",
+"kind": "دالة",
+"pkg": "mesh"
+},
+"getConnectionCount": {
+"term": "جلب عدد الاتصالات",
+"kind": "دالة",
+"pkg": "mesh"
+},
+"addDeviceConnection": {
+"term": "إضافة اتصال جهاز",
+"kind": "دالة",
+"pkg": "mesh"
+},
+"updateDeviceConnection": {
+"term": "تحديث اتصال جهاز",
+"kind": "دالة",
+"pkg": "mesh"
+},
+"getDeviceConnection": {
+"term": "جلب اتصال جهاز",
+"kind": "دالة",
+"pkg": "mesh"
+},
+"getConnectedDevices": {
+"term": "جلب الأجهزة المتصلة",
+"kind": "دالة",
+"pkg": "mesh"
+},
+"getSubscribedDevices": {
+"term": "جلب الأجهزة المشتركة",
+"kind": "دالة",
+"pkg": "mesh"
+},
+"getDeviceRSSI": {
+"term": "جلب شدة إشارة الجهاز",
+"kind": "دالة",
+"pkg": "mesh"
+},
+"updateScanRSSI": {
+"term": "تحديث شدة إشارة المسح",
+"kind": "دالة",
+"pkg": "mesh"
+},
+"getBestRSSI": {
+"term": "جلب أفضل شدة إشارة",
+"kind": "دالة",
+"pkg": "mesh"
+},
+"addSubscribedDevice": {
+"term": "إضافة جهاز مشترك",
+"kind": "دالة",
+"pkg": "mesh"
+},
+"removeSubscribedDevice": {
+"term": "إزالة جهاز مشترك",
+"kind": "دالة",
+"pkg": "mesh"
+},
+"isDeviceConnected": {
+"term": "أمُتّصل الجهاز",
+"kind": "دالة",
+"pkg": "mesh"
+},
+"isPeerConnected": {
+"term": "أمُتّصل النِّد",
+"kind": "دالة",
+"pkg": "mesh"
+},
+"disconnectDevice": {
+"term": "قطع اتصال جهاز",
+"kind": "دالة",
+"pkg": "mesh"
+},
+"canConnectAsClient": {
+"term": "أيمكن الاتصال كعميل",
+"kind": "دالة",
+"pkg": "mesh"
+},
+"cleanupDeviceConnection": {
+"term": "تنظيف اتصال الجهاز",
+"kind": "دالة",
+"pkg": "mesh"
+},
+"cleanupAllConnections": {
+"term": "تنظيف كل الاتصالات",
+"kind": "دالة خاصة",
+"pkg": "mesh"
+},
+"clearAllConnections": {
+"term": "مسح كل الاتصالات",
+"kind": "دالة خاصة",
+"pkg": "mesh"
+},
+"noteAnnounceReceived": {
+"term": "تسجيل استقبال الإعلان",
+"kind": "دالة",
+"pkg": "mesh"
+},
+"hasSeenFirstAnnounce": {
+"term": "هل رُئي أول إعلان",
+"kind": "دالة",
+"pkg": "mesh"
+},
+"removePendingConnection": {
+"term": "إزالة الاتصال المعلّق",
+"kind": "دالة موروثة",
+"pkg": "mesh"
+},
+"pendingConnections": {
+"term": "الاتصالات المعلّقة",
+"kind": "حقل موروث (خريطة)",
+"pkg": "mesh"
+},
+"maxOverall": {
+"term": "الحدّ الكلي",
+"kind": "معامل",
+"pkg": "mesh"
+},
+"maxClient": {
+"term": "حدّ العملاء",
+"kind": "معامل",
+"pkg": "mesh"
+},
+"maxServer": {
+"term": "حدّ الخوادم",
+"kind": "معامل",
+"pkg": "mesh"
+},
+"bluetoothManager": {
+"term": "مدير البلوتوث",
+"kind": "property",
+"pkg": "mesh"
+},
+"bluetoothAdapter": {
+"term": "مهايئ البلوتوث",
+"kind": "property",
+"pkg": "mesh"
+},
+"bleScanner": {
+"term": "ماسح BLE",
+"kind": "property",
+"pkg": "mesh"
+},
+"scanCallback": {
+"term": "ردّ نداء المسح",
+"kind": "property",
+"pkg": "mesh"
+},
+"isCurrentlyScanning": {
+"term": "هل يجري المسح حالياً",
+"kind": "property",
+"pkg": "mesh"
+},
+"scanRateLimit": {
+"term": "حدّ معدّل المسح",
+"kind": "property",
+"pkg": "mesh"
+},
+"scanningDesired": {
+"term": "المسح مرغوب",
+"kind": "property",
+"pkg": "mesh"
+},
+"lastScanResultTime": {
+"term": "زمن آخر نتيجة مسح",
+"kind": "property",
+"pkg": "mesh"
+},
+"scanRetryCount": {
+"term": "عدّاد إعادة محاولة المسح",
+"kind": "property",
+"pkg": "mesh"
+},
+"scanWatchdogJob": {
+"term": "مهمّة كلب حراسة المسح",
+"kind": "property",
+"pkg": "mesh"
+},
+"rssiMonitoringJob": {
+"term": "مهمّة مراقبة قوّة الإشارة",
+"kind": "property",
+"pkg": "mesh"
+},
+"SCAN_RETRY_BASE_MS": {
+"term": "زمن التراجع الأساس للمسح",
+"kind": "constant",
+"pkg": "mesh"
+},
+"SCAN_MAX_RETRY_DELAY_MS": {
+"term": "أقصى تأخير إعادة محاولة المسح",
+"kind": "constant",
+"pkg": "mesh"
+},
+"SCAN_WATCHDOG_INTERVAL_MS": {
+"term": "فترة كلب حراسة المسح",
+"kind": "constant",
+"pkg": "mesh"
+},
+"SCAN_STALE_RESULT_MS": {
+"term": "زمن النتيجة القديمة للمسح",
+"kind": "constant",
+"pkg": "mesh"
+},
+"isClientRoleEnabled": {
+"term": "هل دور العميل مُفعَّل",
+"kind": "function",
+"pkg": "mesh"
+},
+"startRSSIMonitoring": {
+"term": "بدء مراقبة قوّة الإشارة",
+"kind": "function",
+"pkg": "mesh"
+},
+"stopRSSIMonitoring": {
+"term": "إيقاف مراقبة قوّة الإشارة",
+"kind": "function",
+"pkg": "mesh"
+},
+"startScanning": {
+"term": "بدء المسح",
+"kind": "function",
+"pkg": "mesh"
+},
+"stopScanning": {
+"term": "إيقاف المسح",
+"kind": "function",
+"pkg": "mesh"
+},
+"scheduleScanRestart": {
+"term": "جدولة إعادة بدء المسح",
+"kind": "function",
+"pkg": "mesh"
+},
+"startScanWatchdog": {
+"term": "بدء كلب حراسة المسح",
+"kind": "function",
+"pkg": "mesh"
+},
+"stopScanWatchdog": {
+"term": "إيقاف كلب حراسة المسح",
+"kind": "function",
+"pkg": "mesh"
+},
+"forceRestartScan": {
+"term": "فرض إعادة تشغيل المسح",
+"kind": "function",
+"pkg": "mesh"
+},
+"handleScanResult": {
+"term": "معالجة نتيجة المسح",
+"kind": "function",
+"pkg": "mesh"
+},
+"connectToDevice": {
+"term": "الاتصال بالجهاز",
+"kind": "function",
+"pkg": "mesh"
+},
+"onConnectionStateChange": {
+"term": "عند تغيّر حالة الاتصال",
+"kind": "callback",
+"pkg": "mesh"
+},
+"onMtuChanged": {
+"term": "عند تغيّر وحدة الإرسال القصوى",
+"kind": "callback",
+"pkg": "mesh"
+},
+"onServicesDiscovered": {
+"term": "عند اكتشاف الخدمات",
+"kind": "callback",
+"pkg": "mesh"
+},
+"onCharacteristicChanged": {
+"term": "عند تغيّر الخاصية",
+"kind": "callback",
+"pkg": "mesh"
+},
+"onReadRemoteRssi": {
+"term": "عند قراءة قوّة الإشارة البعيدة",
+"kind": "callback",
+"pkg": "mesh"
+},
+"DebugScanResult": {
+"term": "نتيجة مسح التنقيح",
+"kind": "class",
+"pkg": "mesh"
+},
+"ADVERTISE_RETRY_BASE_MS": {
+"term": "أساس مهلة إعادة محاولة الإعلان",
+"kind": "const",
+"pkg": "mesh"
+},
+"ADVERTISE_MAX_RETRY_DELAY_MS": {
+"term": "أقصى تأخير لإعادة محاولة الإعلان",
+"kind": "const",
+"pkg": "mesh"
+},
+"bleAdvertiser": {
+"term": "المُعلِن منخفض الطاقة",
+"kind": "property",
+"pkg": "mesh"
+},
+"gattServer": {
+"term": "خادم جات",
+"kind": "property",
+"pkg": "mesh"
+},
+"advertiseCallback": {
+"term": "رد نداء الإعلان",
+"kind": "property",
+"pkg": "mesh"
+},
+"advertiseRetryCount": {
+"term": "عدّاد إعادة محاولة الإعلان",
+"kind": "property",
+"pkg": "mesh"
+},
+"isServerRoleEnabled": {
+"term": "هل دور الخادم مُفعَّل",
+"kind": "function",
+"pkg": "mesh"
+},
+"getGattServer": {
+"term": "جلب خادم جات",
+"kind": "function",
+"pkg": "mesh"
+},
+"getCharacteristic": {
+"term": "جلب الخاصية الوصفية",
+"kind": "function",
+"pkg": "mesh"
+},
+"setupGattServer": {
+"term": "إعداد خادم جات",
+"kind": "function",
+"pkg": "mesh"
+},
+"serverCallback": {
+"term": "رد نداء الخادم",
+"kind": "variable",
+"pkg": "mesh"
+},
+"onServiceAdded": {
+"term": "عند إضافة الخدمة",
+"kind": "function",
+"pkg": "mesh"
+},
+"onCharacteristicWriteRequest": {
+"term": "عند طلب الكتابة على الخاصية",
+"kind": "function",
+"pkg": "mesh"
+},
+"onDescriptorWriteRequest": {
+"term": "عند طلب الكتابة على الواصِف",
+"kind": "function",
+"pkg": "mesh"
+},
+"startAdvertising": {
+"term": "بدء الإعلان",
+"kind": "function",
+"pkg": "mesh"
+},
+"onStartSuccess": {
+"term": "عند نجاح بدء الإعلان",
+"kind": "function",
+"pkg": "mesh"
+},
+"onStartFailure": {
+"term": "عند فشل بدء الإعلان",
+"kind": "function",
+"pkg": "mesh"
+},
+"stopAdvertising": {
+"term": "إيقاف الإعلان",
+"kind": "function",
+"pkg": "mesh"
+},
+"scheduleAdvertiseRestart": {
+"term": "جدولة إعادة تشغيل الإعلان",
+"kind": "function",
+"pkg": "mesh"
+},
+"AppConstants.Mesh.Gatt.SERVICE_UUID": {
+"term": "معرّف الخدمة",
+"kind": "const",
+"pkg": "mesh"
+},
+"AppConstants.Mesh.Gatt.CHARACTERISTIC_UUID": {
+"term": "معرّف الخاصية الوصفية",
+"kind": "const",
+"pkg": "mesh"
+},
+"AppConstants.Mesh.Gatt.DESCRIPTOR_UUID": {
+"term": "معرّف الواصِف",
+"kind": "const",
+"pkg": "mesh"
+},
+"BluetoothMeshService": {
+"term": "خدمة شبكة بلوتوث المتشابكة",
+"kind": "class",
+"pkg": "mesh"
+},
+"BluetoothMeshDelegate": {
+"term": "مُفوَّض شبكة بلوتوث",
+"kind": "interface",
+"pkg": "mesh"
+},
+"encryptionService": {
+"term": "خدمة التشفير",
+"kind": "property",
+"pkg": "mesh"
+},
+"peerManager": {
+"term": "مدير النظراء",
+"kind": "property",
+"pkg": "mesh"
+},
+"securityManager": {
+"term": "مدير الأمان",
+"kind": "property",
+"pkg": "mesh"
+},
+"storeForwardManager": {
+"term": "مدير التخزين والإرسال",
+"kind": "property",
+"pkg": "mesh"
+},
+"messageHandler": {
+"term": "معالج الرسائل",
+"kind": "property",
+"pkg": "mesh"
+},
+"connectionManager": {
+"term": "مدير الاتصال",
+"kind": "property",
+"pkg": "mesh"
+},
+"packetProcessor": {
+"term": "معالج الحزم",
+"kind": "property",
+"pkg": "mesh"
+},
+"gossipSyncManager": {
+"term": "مدير مزامنة الإشاعة",
+"kind": "property",
+"pkg": "mesh"
+},
+"serviceNotificationManager": {
+"term": "مدير إشعارات الخدمة",
+"kind": "property",
+"pkg": "mesh"
+},
+"serviceScope": {
+"term": "نطاق الخدمة",
+"kind": "property",
+"pkg": "mesh"
+},
+"announceJob": {
+"term": "مهمّة الإعلان",
+"kind": "property",
+"pkg": "mesh"
+},
+"terminated": {
+"term": "مُنهَى",
+"kind": "property",
+"pkg": "mesh"
+},
+"MAX_TTL": {
+"term": "أقصى مدّة بقاء",
+"kind": "constant",
+"pkg": "mesh"
+},
+"send": {
+"term": "إرسال",
+"kind": "function",
+"pkg": "mesh"
+},
+"broadcastRoutedPacket": {
+"term": "بثّ الحزمة الموجّهة",
+"kind": "function",
+"pkg": "mesh"
+},
+"setupDelegates": {
+"term": "تهيئة المُفوَّضين",
+"kind": "function",
+"pkg": "mesh"
+},
+"setBleTransportEnabled": {
+"term": "ضبط تفعيل نقل BLE",
+"kind": "function",
+"pkg": "mesh"
+},
+"pauseServicesForTransportDisable": {
+"term": "إيقاف الخدمات مؤقتاً لتعطيل النقل",
+"kind": "function",
+"pkg": "mesh"
+},
+"sendMessage": {
+"term": "إرسال رسالة عامّة",
+"kind": "function",
+"pkg": "mesh"
+},
+"sendFileBroadcast": {
+"term": "إرسال بثّ ملف",
+"kind": "function",
+"pkg": "mesh"
+},
+"sendFilePrivate": {
+"term": "إرسال ملف خاص",
+"kind": "function",
+"pkg": "mesh"
+},
+"cancelFileTransfer": {
+"term": "إلغاء نقل الملف",
+"kind": "function",
+"pkg": "mesh"
+},
+"sha256Hex": {
+"term": "بصمة سها-256 الست-عشرية",
+"kind": "function",
+"pkg": "mesh"
+},
+"sendPrivateMessage": {
+"term": "إرسال رسالة خاصة",
+"kind": "function",
+"pkg": "mesh"
+},
+"sendReadReceipt": {
+"term": "إرسال إيصال القراءة",
+"kind": "function",
+"pkg": "mesh"
+},
+"sendVerifyChallenge": {
+"term": "إرسال تحدّي التحقّق",
+"kind": "function",
+"pkg": "mesh"
+},
+"sendVerifyResponse": {
+"term": "إرسال ردّ التحقّق",
+"kind": "function",
+"pkg": "mesh"
+},
+"sendNoisePayloadToPeer": {
+"term": "إرسال حمولة نويز إلى نظير",
+"kind": "function",
+"pkg": "mesh"
+},
+"sendBroadcastAnnounce": {
+"term": "إرسال إعلان البثّ",
+"kind": "function",
+"pkg": "mesh"
+},
+"sendPeriodicBroadcastAnnounce": {
+"term": "إرسال إعلان البثّ الدوري",
+"kind": "function",
+"pkg": "mesh"
+},
+"sendAnnouncementToPeer": {
+"term": "إرسال الإعلان إلى نظير",
+"kind": "function",
+"pkg": "mesh"
+},
+"getDirectPeerIDsForGossip": {
+"term": "جلب مُعرّفات النظراء المباشرين للإشاعة",
+"kind": "function",
+"pkg": "mesh"
+},
+"sendLeaveAnnouncement": {
+"term": "إرسال إعلان المغادرة",
+"kind": "function",
+"pkg": "mesh"
+},
+"signPacketBeforeBroadcast": {
+"term": "توقيع الحزمة قبل البثّ",
+"kind": "function",
+"pkg": "mesh"
+},
+"getDebugStatus": {
+"term": "جلب حالة التنقيح",
+"kind": "function",
+"pkg": "mesh"
+},
+"clearAllInternalData": {
+"term": "مسح كل البيانات الداخلية",
+"kind": "function",
+"pkg": "mesh"
+},
+"clearAllEncryptionData": {
+"term": "مسح كل بيانات التشفير",
+"kind": "function",
+"pkg": "mesh"
+},
+"initiateNoiseHandshake": {
+"term": "بدء مصافحة نويز",
+"kind": "function",
+"pkg": "mesh"
+},
+"getDeviceAddressForPeer": {
+"term": "جلب عنوان جهاز النظير",
+"kind": "function",
+"pkg": "mesh"
+},
+"TransportBridgeService": {
+"term": "خدمة جسر النقل",
+"kind": "type",
+"pkg": "mesh"
+},
+"nicknameResolver": {
+"term": "محلّل الاسم المستعار",
+"kind": "property",
+"pkg": "mesh"
+},
+"logPacketRelay": {
+"term": "تسجيل تمرير الحزمة",
+"kind": "function",
+"pkg": "mesh"
+},
+"BroadcastRequest": {
+"term": "طلب البثّ",
+"kind": "data class",
+"pkg": "mesh"
+},
+"broadcasterScope": {
+"term": "نطاق الباثّ",
+"kind": "property",
+"pkg": "mesh"
+},
+"fragmentingSender": {
+"term": "مُرسِل التجزئة",
+"kind": "property",
+"pkg": "mesh"
+},
+"broadcasterActor": {
+"term": "مُمثِّل الباثّ",
+"kind": "property",
+"pkg": "mesh"
+},
+"sendSinglePacketToPeer": {
+"term": "إرسال حزمة مفردة إلى نِدّ",
+"kind": "function",
+"pkg": "mesh"
+},
+"broadcastSinglePacket": {
+"term": "بثّ حزمة مفردة",
+"kind": "function",
+"pkg": "mesh"
+},
+"hasPeerConnection": {
+"term": "وجود اتصال بالنِّدّ",
+"kind": "function",
+"pkg": "mesh"
+},
+"broadcastSinglePacketInternal": {
+"term": "بثّ حزمة مفردة داخلي",
+"kind": "function",
+"pkg": "mesh"
+},
+"notifyDevice": {
+"term": "إخطار الجهاز",
+"kind": "function",
+"pkg": "mesh"
+},
+"writeToDeviceConn": {
+"term": "الكتابة إلى اتصال الجهاز",
+"kind": "function",
+"pkg": "mesh"
+},
+"SpecialRecipients.BROADCAST": {
+"term": "مستلِم البثّ",
+"kind": "const",
+"pkg": "mesh"
+},
+"BLEPacketPaddingPolicy.shouldPadForBLE": {
+"term": "هل يجب الحشو لـ BLE",
+"kind": "function",
+"pkg": "mesh"
+},
+"firstHop": {
+"term": "القفزة الأولى",
+"kind": "variable",
+"pkg": "mesh"
+},
+"hasBluetoothPermissions": {
+"term": "لديه أذونات البلوتوث (hasBluetoothPermissions)",
+"kind": "function",
+"pkg": "mesh"
+},
+"permissions": {
+"term": "قائمة الأذونات (permissions)",
+"kind": "variable",
+"pkg": "mesh"
+},
+"Manifest.permission.BLUETOOTH_ADVERTISE": {
+"term": "إذن الإعلان عبر البلوتوث (BLUETOOTH_ADVERTISE)",
+"kind": "constant",
+"pkg": "mesh"
+},
+"Manifest.permission.BLUETOOTH_CONNECT": {
+"term": "إذن الاتصال عبر البلوتوث (BLUETOOTH_CONNECT)",
+"kind": "constant",
+"pkg": "mesh"
+},
+"Manifest.permission.BLUETOOTH_SCAN": {
+"term": "إذن المسح عبر البلوتوث (BLUETOOTH_SCAN)",
+"kind": "constant",
+"pkg": "mesh"
+},
+"Manifest.permission.BLUETOOTH": {
+"term": "إذن البلوتوث (BLUETOOTH)",
+"kind": "constant",
+"pkg": "mesh"
+},
+"Manifest.permission.BLUETOOTH_ADMIN": {
+"term": "إذن إدارة البلوتوث (BLUETOOTH_ADMIN)",
+"kind": "constant",
+"pkg": "mesh"
+},
+"Manifest.permission.ACCESS_COARSE_LOCATION": {
+"term": "إذن الموقع التقريبي (ACCESS_COARSE_LOCATION)",
+"kind": "constant",
+"pkg": "mesh"
+},
+"Manifest.permission.ACCESS_FINE_LOCATION": {
+"term": "إذن الموقع الدقيق (ACCESS_FINE_LOCATION)",
+"kind": "constant",
+"pkg": "mesh"
+},
+"Build.VERSION.SDK_INT": {
+"term": "رقم إصدار النظام (SDK_INT)",
+"kind": "constant",
+"pkg": "mesh"
+},
+"Build.VERSION_CODES.S": {
+"term": "رمز إصدار أندرويد S (VERSION_CODES.S)",
+"kind": "constant",
+"pkg": "mesh"
+},
+"ActivityCompat.checkSelfPermission": {
+"term": "فحص الإذن الذاتي (checkSelfPermission)",
+"kind": "function",
+"pkg": "mesh"
+},
+"PackageManager.PERMISSION_GRANTED": {
+"term": "حالة الإذن ممنوح (PERMISSION_GRANTED)",
+"kind": "constant",
+"pkg": "mesh"
+},
+"FragmentManager": {
+"term": "مدير الشظايا",
+"kind": "class",
+"pkg": "mesh"
+},
+"FragmentManagerDelegate": {
+"term": "مفوّض مدير الشظايا",
+"kind": "interface",
+"pkg": "mesh"
+},
+"onPacketReassembled": {
+"term": "عند إعادة تجميع الحزمة",
+"kind": "method",
+"pkg": "mesh"
+},
+"createFragments": {
+"term": "إنشاء الشظايا",
+"kind": "method",
+"pkg": "mesh"
+},
+"handleFragment": {
+"term": "معالجة الشظية",
+"kind": "method",
+"pkg": "mesh"
+},
+"removeFragmentSetLocked": {
+"term": "إزالة مجموعة الشظايا تحت القفل",
+"kind": "method",
+"pkg": "mesh"
+},
+"stride": {
+"term": "الخطو",
+"kind": "method",
+"pkg": "mesh"
+},
+"cleanupOldFragments": {
+"term": "تنظيف الشظايا القديمة",
+"kind": "method",
+"pkg": "mesh"
+},
+"startPeriodicCleanup": {
+"term": "بدء التنظيف الدوري",
+"kind": "method",
+"pkg": "mesh"
+},
+"clearAllFragments": {
+"term": "مسح كل الشظايا",
+"kind": "method",
+"pkg": "mesh"
+},
+"incomingFragments": {
+"term": "الشظايا الواردة",
+"kind": "field",
+"pkg": "mesh"
+},
+"fragmentMetadata": {
+"term": "بيانات وصف الشظية",
+"kind": "field",
+"pkg": "mesh"
+},
+"fragmentCumulativeSize": {
+"term": "الحجم التراكمي للشظايا",
+"kind": "field",
+"pkg": "mesh"
+},
+"fragmentStateLock": {
+"term": "قفل حالة الشظايا",
+"kind": "field",
+"pkg": "mesh"
+},
+"globalBufferedBytes": {
+"term": "البايتات المخزّنة عالمياً",
+"kind": "field",
+"pkg": "mesh"
+},
+"managerScope": {
+"term": "نطاق المدير",
+"kind": "field",
+"pkg": "mesh"
+},
+"FRAGMENT_TIMEOUT": {
+"term": "مهلة الشظية",
+"kind": "const",
+"pkg": "mesh"
+},
+"CLEANUP_INTERVAL": {
+"term": "فترة التنظيف",
+"kind": "const",
+"pkg": "mesh"
+},
+"maxDataSize": {
+"term": "أقصى حجم بيانات",
+"kind": "variable",
+"pkg": "mesh"
+},
+"packetOverhead": {
+"term": "عبء الحزمة",
+"kind": "variable",
+"pkg": "mesh"
+},
+"reassembledData": {
+"term": "البيانات المعاد تجميعها",
+"kind": "variable",
+"pkg": "mesh"
+},
+"suppressedTtlPacket": {
+"term": "الحزمة مكبوتة العمر",
+"kind": "variable",
+"pkg": "mesh"
+},
+"FragmentingPacketSender": {
+"term": "مُرسِل الحزم المُجزِّئ",
+"kind": "class",
+"pkg": "mesh"
+},
+"scope": {
+"term": "النطاق (نطاق الكوروتين)",
+"kind": "property",
+"pkg": "mesh"
+},
+"logTag": {
+"term": "وسم السجلّ",
+"kind": "property",
+"pkg": "mesh"
+},
+"interFragmentDelayMs": {
+"term": "التأخير بين الأجزاء بالمللي ثانية",
+"kind": "property",
+"pkg": "mesh"
+},
+"transferJobs": {
+"term": "مهمّات النقل",
+"kind": "property",
+"pkg": "mesh"
+},
+"packetsForTransport": {
+"term": "حزم النقل",
+"kind": "function",
+"pkg": "mesh"
+},
+"transferIdFor": {
+"term": "مُعرّف النقل لِـ",
+"kind": "function",
+"pkg": "mesh"
+},
+"TransferProgressManager": {
+"term": "مدير تقدّم النقل",
+"kind": "object",
+"pkg": "mesh"
+},
+"sendSingle": {
+"term": "أرسِل واحدة",
+"kind": "parameter",
+"pkg": "mesh"
+},
+"MessageType.FRAGMENT": {
+"term": "نوع الجزء",
+"kind": "enum",
+"pkg": "mesh"
+},
+"MessageType.FILE_TRANSFER": {
+"term": "نوع نقل الملف",
+"kind": "enum",
+"pkg": "mesh"
+},
+"Job": {
+"term": "المهمّة",
+"kind": "type",
+"pkg": "mesh"
+},
+"CoroutineStart.LAZY": {
+"term": "البدء الكسول",
+"kind": "enum",
+"pkg": "mesh"
+},
+"tag": {
+"term": "الوسم",
+"kind": "property",
+"pkg": "mesh"
+},
+"CONNECTION_RETRY_DELAY": {
+"term": "تأخير إعادة محاولة الاتصال",
+"kind": "const",
+"pkg": "mesh"
+},
+"ConnectionAttempt": {
+"term": "محاولة الاتصال",
+"kind": "data class",
+"pkg": "mesh"
+},
+"attempts": {
+"term": "عدد المحاولات",
+"kind": "property",
+"pkg": "mesh"
+},
+"lastAttempt": {
+"term": "آخر محاولة",
+"kind": "property",
+"pkg": "mesh"
+},
+"isExpired": {
+"term": "هل انتهت الصلاحية",
+"kind": "function",
+"pkg": "mesh"
+},
+"shouldRetry": {
+"term": "هل يجب إعادة المحاولة",
+"kind": "function",
+"pkg": "mesh"
+},
+"isConnectionAttemptAllowed": {
+"term": "هل محاولة الاتصال مسموحة",
+"kind": "function",
+"pkg": "mesh"
+},
+"addPendingConnection": {
+"term": "أضف اتصالاً معلّقاً",
+"kind": "function",
+"pkg": "mesh"
+},
+"MeshCore": {
+"term": "نواة الشبكة المتشابكة",
+"kind": "class",
+"pkg": "mesh"
+},
+"Hooks": {
+"term": "صنف الخطّافات",
+"kind": "data class",
+"pkg": "mesh"
+},
+"transport": {
+"term": "ناقل النقل",
+"kind": "property",
+"pkg": "mesh"
+},
+"maxTtl": {
+"term": "أقصى مدّة بقاء",
+"kind": "property",
+"pkg": "mesh"
+},
+"directPeers": {
+"term": "الأنداد المباشرون",
+"kind": "property",
+"pkg": "mesh"
+},
+"startCore": {
+"term": "تشغيل النواة",
+"kind": "function",
+"pkg": "mesh"
+},
+"stopCore": {
+"term": "إيقاف النواة",
+"kind": "function",
+"pkg": "mesh"
+},
+"processIncoming": {
+"term": "معالجة الوارد",
+"kind": "function",
+"pkg": "mesh"
+},
+"sendFromBridge": {
+"term": "الإرسال من الجسر",
+"kind": "function",
+"pkg": "mesh"
+},
+"dispatchGlobal": {
+"term": "التوزيع العامّ",
+"kind": "function",
+"pkg": "mesh"
+},
+"startPeriodicBroadcastAnnounce": {
+"term": "بدء الإعلان الدوري بالبثّ",
+"kind": "function",
+"pkg": "mesh"
+},
+"buildAnnouncementPayload": {
+"term": "بناء حمولة الإعلان",
+"kind": "function",
+"pkg": "mesh"
+},
+"MeshPacketUtils": {
+"term": "أدوات حُزمة الشبكة",
+"kind": "object",
+"pkg": "mesh"
+},
+"RoutePlanner": {
+"term": "مخطّط المسار",
+"kind": "object",
+"pkg": "mesh"
+},
+"MeshGraphService": {
+"term": "خدمة رسم الشبكة المتشابكة",
+"kind": "object",
+"pkg": "mesh"
+},
+"AppStateStore": {
+"term": "مخزن حالة التطبيق",
+"kind": "object",
+"pkg": "mesh"
+},
+"VerificationService": {
+"term": "خدمة التحقّق",
+"kind": "object",
+"pkg": "mesh"
+},
+"GossipTLV": {
+"term": "ترميز الإشاعة بصيغة TLV",
+"kind": "object",
+"pkg": "mesh"
+},
+"MeshDelegate": {
+"term": "مفوِّض الشبكة المتشابكة (MeshDelegate)",
+"kind": "interface",
+"pkg": "mesh"
+},
+"didReceiveMessage": {
+"term": "استلمَ رسالة (didReceiveMessage)",
+"kind": "function",
+"pkg": "mesh"
+},
+"didUpdatePeerList": {
+"term": "حدَّثَ قائمة النظائر (didUpdatePeerList)",
+"kind": "function",
+"pkg": "mesh"
+},
+"didReceiveChannelLeave": {
+"term": "استلمَ مغادرة قناة (didReceiveChannelLeave)",
+"kind": "function",
+"pkg": "mesh"
+},
+"didReceiveDeliveryAck": {
+"term": "استلمَ إقرار تسليم (didReceiveDeliveryAck)",
+"kind": "function",
+"pkg": "mesh"
+},
+"didReceiveReadReceipt": {
+"term": "استلمَ إيصال قراءة (didReceiveReadReceipt)",
+"kind": "function",
+"pkg": "mesh"
+},
+"didReceiveVerifyChallenge": {
+"term": "استلمَ تحدِّي تحقُّق (didReceiveVerifyChallenge)",
+"kind": "function",
+"pkg": "mesh"
+},
+"didReceiveVerifyResponse": {
+"term": "استلمَ ردّ تحقُّق (didReceiveVerifyResponse)",
+"kind": "function",
+"pkg": "mesh"
+},
+"getNickname": {
+"term": "احصل على الاسم المستعار (getNickname)",
+"kind": "function",
+"pkg": "mesh"
+},
+"isFavorite": {
+"term": "هل هو مفضَّل (isFavorite)",
+"kind": "function",
+"pkg": "mesh"
+},
+"recipientPeerID": {
+"term": "معرّف النظير المستلِم (recipientPeerID)",
+"kind": "parameter",
+"pkg": "mesh"
+},
+"ByteArray": {
+"term": "مصفوفة بايتات (ByteArray)",
+"kind": "type",
+"pkg": "mesh"
+},
+"hexString": {
+"term": "النص الست عشري",
+"kind": "parameter",
+"pkg": "mesh"
+},
+"result": {
+"term": "النتيجة",
+"kind": "variable",
+"pkg": "mesh"
+},
+"tempID": {
+"term": "المعرّف المؤقت",
+"kind": "variable",
+"pkg": "mesh"
+},
+"hexByte": {
+"term": "البايت الست عشري",
+"kind": "variable",
+"pkg": "mesh"
+},
+"byte": {
+"term": "البايت",
+"kind": "variable",
+"pkg": "mesh"
+},
+"bytes": {
+"term": "البايتات",
+"kind": "parameter",
+"pkg": "mesh"
+},
+"md": {
+"term": "هاضم الرسالة",
+"kind": "variable",
+"pkg": "mesh"
+},
+"MeshService": {
+"term": "خدمة الشبكة المتشابكة",
+"kind": "interface",
+"pkg": "mesh"
+},
+"sendDeliveryAck": {
+"term": "إرسال إقرار تسليم",
+"kind": "function",
+"pkg": "mesh"
+},
+"sendFavoriteNotification": {
+"term": "إرسال إشعار تفضيل",
+"kind": "function",
+"pkg": "mesh"
+},
+"getPeerNicknames": {
+"term": "جلب الأسماء المستعارة للأنداد",
+"kind": "function",
+"pkg": "mesh"
+},
+"getPeerRSSI": {
+"term": "جلب قوّة إشارة الأنداد",
+"kind": "function",
+"pkg": "mesh"
+},
+"getActivePeerCount": {
+"term": "جلب عدد الأنداد النشِطين",
+"kind": "function",
+"pkg": "mesh"
+},
+"NoiseSession.NoiseSessionState": {
+"term": "حالة جلسة Noise",
+"kind": "type",
+"pkg": "mesh"
+},
+"getPeerInfo": {
+"term": "جلب معلومات الندّ",
+"kind": "function",
+"pkg": "mesh"
+},
+"PeerInfo": {
+"term": "معلومات الندّ",
+"kind": "type",
+"pkg": "mesh"
+},
+"updatePeerInfo": {
+"term": "تحديث معلومات الندّ",
+"kind": "function",
+"pkg": "mesh"
+},
+"isVerified": {
+"term": "هل مُتحقَّق منه",
+"kind": "parameter",
+"pkg": "mesh"
+},
+"getStaticNoisePublicKey": {
+"term": "جلب مفتاح Noise العامّ الثابت",
+"kind": "function",
+"pkg": "mesh"
+},
+"getEncryptedPeers": {
+"term": "جلب الأنداد المُشفَّرين",
+"kind": "function",
+"pkg": "mesh"
+},
+"getDeviceAddressToPeerMapping": {
+"term": "جلب خريطة عناوين الأجهزة إلى الأنداد",
+"kind": "function",
+"pkg": "mesh"
+},
+"printDeviceAddressesForPeers": {
+"term": "طباعة عناوين الأجهزة للأنداد",
+"kind": "function",
+"pkg": "mesh"
+},
+"MeshTransport": {
+"term": "ناقل الشبكة المتشابكة",
+"kind": "interface",
+"pkg": "mesh"
+},
+"getTransportDebugInfo": {
+"term": "جلب معلومات تنقيح النقل",
+"kind": "function",
+"pkg": "mesh"
+},
+"MessageHandler": {
+"term": "معالِج الرسائل",
+"kind": "class",
+"pkg": "mesh"
+},
+"MessageHandlerDelegate": {
+"term": "مُفوَّض معالِج الرسائل",
+"kind": "interface",
+"pkg": "mesh"
+},
+"appContext": {
+"term": "سياق التطبيق",
+"kind": "property",
+"pkg": "mesh"
+},
+"handlerScope": {
+"term": "نطاق المعالِج",
+"kind": "property",
+"pkg": "mesh"
+},
+"ANNOUNCE_CLOCK_SKEW_TOLERANCE_MS": {
+"term": "تسامح انحراف الساعة للإعلان",
+"kind": "const",
+"pkg": "mesh"
+},
+"handleNoiseEncrypted": {
+"term": "التعامل مع المُعمّى بـ Noise",
+"kind": "function",
+"pkg": "mesh"
+},
+"handleAnnounce": {
+"term": "التعامل مع الإعلان",
+"kind": "function",
+"pkg": "mesh"
+},
+"handleNoiseHandshake": {
+"term": "التعامل مع مصافحة Noise",
+"kind": "function",
+"pkg": "mesh"
+},
+"handleMessage": {
+"term": "التعامل مع الرسالة",
+"kind": "function",
+"pkg": "mesh"
+},
+"handleBroadcastMessage": {
+"term": "التعامل مع رسالة البثّ",
+"kind": "function",
+"pkg": "mesh"
+},
+"handlePrivateMessage": {
+"term": "التعامل مع الرسالة الخاصّة",
+"kind": "function",
+"pkg": "mesh"
+},
+"handleLeave": {
+"term": "التعامل مع المغادرة",
+"kind": "function",
+"pkg": "mesh"
+},
+"handleFavoriteNotificationFromMesh": {
+"term": "التعامل مع إشعار التفضيل من الشبكة",
+"kind": "function",
+"pkg": "mesh"
+},
+"PacketIdUtil": {
+"term": "أداة معرّف الحزمة",
+"kind": "object",
+"pkg": "mesh"
+},
+"FileUtils": {
+"term": "أداة الملفّات",
+"kind": "object",
+"pkg": "mesh"
+},
+"FavoritesPersistenceService": {
+"term": "خدمة تخزين المفضّلات",
+"kind": "object",
+"pkg": "mesh"
+},
+"decryptedData": {
+"term": "البيانات المفكوكة",
+"kind": "variable",
+"pkg": "mesh"
+},
+"privateMessage": {
+"term": "الرسالة الخاصّة",
+"kind": "variable",
+"pkg": "mesh"
+},
+"isFirstAnnounce": {
+"term": "هل هو أول إعلان",
+"kind": "variable",
+"pkg": "mesh"
+},
+"verified": {
+"term": "مُتحقَّق منه",
+"kind": "variable",
+"pkg": "mesh"
+},
+"clockSkewMs": {
+"term": "انحراف الساعة بالملّي‌ثانية",
+"kind": "variable",
+"pkg": "mesh"
+},
+"isFileTransfer": {
+"term": "هل هو نقل ملفّ",
+"kind": "variable",
+"pkg": "mesh"
+},
+"savedPath": {
+"term": "المسار المحفوظ",
+"kind": "variable",
+"pkg": "mesh"
+},
+"npub": {
+"term": "مفتاح نوستر العام",
+"kind": "variable",
+"pkg": "mesh"
+},
+"decryptFromPeer": {
+"term": "فكّ التعمية من القرين",
+"kind": "function",
+"pkg": "mesh"
+},
+"encryptForPeer": {
+"term": "التعمية للقرين",
+"kind": "function",
+"pkg": "mesh"
+},
+"processNoiseHandshakeMessage": {
+"term": "معالجة رسالة مصافحة Noise",
+"kind": "function",
+"pkg": "mesh"
+},
+"updatePeerIDBinding": {
+"term": "تحديث ربط معرّف القرين",
+"kind": "function",
+"pkg": "mesh"
+},
+"onMessageReceived": {
+"term": "عند استلام الرسالة",
+"kind": "function",
+"pkg": "mesh"
+},
+"sendPacket": {
+"term": "إرسال الرزمة",
+"kind": "function",
+"pkg": "mesh"
+},
+"PacketProcessor": {
+"term": "مُعالِج الحزم",
+"kind": "class",
+"pkg": "mesh"
+},
+"debugManager": {
+"term": "مدير التنقيح",
+"kind": "property",
+"pkg": "mesh"
+},
+"formatPeerForLog": {
+"term": "تنسيق النظير للتسجيل",
+"kind": "function",
+"pkg": "mesh"
+},
+"packetRelayManager": {
+"term": "مدير ترحيل الحزم",
+"kind": "property",
+"pkg": "mesh"
+},
+"processorScope": {
+"term": "نطاق المُعالِج",
+"kind": "property",
+"pkg": "mesh"
+},
+"peerActors": {
+"term": "مُمثِّلو النظراء",
+"kind": "property",
+"pkg": "mesh"
+},
+"getOrCreateActorForPeer": {
+"term": "جلب أو إنشاء مُمثِّل للنظير",
+"kind": "function",
+"pkg": "mesh"
+},
+"actors": {
+"term": "المُمثِّلون",
+"kind": "property",
+"pkg": "mesh"
+},
+"setupRelayManager": {
+"term": "ضبط مدير الترحيل",
+"kind": "function",
+"pkg": "mesh"
+},
+"processPacket": {
+"term": "معالجة الحزمة",
+"kind": "function",
+"pkg": "mesh"
+},
+"handleReceivedPacket": {
+"term": "معالجة الحزمة المُستلَمة",
+"kind": "function",
+"pkg": "mesh"
+},
+"handleRequestSync": {
+"term": "معالجة طلب المزامنة",
+"kind": "function",
+"pkg": "mesh"
+},
+"PacketProcessorDelegate": {
+"term": "مُفوَّض مُعالِج الحزم",
+"kind": "interface",
+"pkg": "mesh"
+},
+"validatePacketSecurity": {
+"term": "التحقق من أمان الحزمة",
+"kind": "function",
+"pkg": "mesh"
+},
+"updatePeerLastSeen": {
+"term": "تحديث آخر ظهور للنظير",
+"kind": "function",
+"pkg": "mesh"
+},
+"getPeerNickname": {
+"term": "الحصول على كنية النظير",
+"kind": "function",
+"pkg": "mesh"
+},
+"getNetworkSize": {
+"term": "الحصول على حجم الشبكة",
+"kind": "function",
+"pkg": "mesh"
+},
+"getBroadcastRecipient": {
+"term": "الحصول على مُستلِم البثّ",
+"kind": "function",
+"pkg": "mesh"
+},
+"sendCachedMessages": {
+"term": "إرسال الرسائل المخزَّنة",
+"kind": "function",
+"pkg": "mesh"
+},
+"relayPacket": {
+"term": "ترحيل الحزمة",
+"kind": "function",
+"pkg": "mesh"
+},
+"messageType": {
+"term": "نوع الرسالة",
+"kind": "variable",
+"pkg": "mesh"
+},
+"validPacket": {
+"term": "حزمة صالحة",
+"kind": "variable",
+"pkg": "mesh"
+},
+"reassembledPacket": {
+"term": "الحزمة المُعاد تجميعها",
+"kind": "variable",
+"pkg": "mesh"
+},
+"actor": {
+"term": "المُمثِّل",
+"kind": "type",
+"pkg": "mesh"
+},
+"Channel.UNLIMITED": {
+"term": "سعة القناة غير المحدودة",
+"kind": "const",
+"pkg": "mesh"
+},
+"PacketRelayManager": {
+"term": "مدير ترحيل الحزم",
+"kind": "class",
+"pkg": "mesh"
+},
+"isRelayEnabled": {
+"term": "هل الترحيل مفعَّل",
+"kind": "function",
+"pkg": "mesh"
+},
+"packetRelayEnabled": {
+"term": "تفعيل ترحيل الحزم",
+"kind": "property",
+"pkg": "mesh"
+},
+"PacketRelayManagerDelegate": {
+"term": "مفوَّض مدير ترحيل الحزم",
+"kind": "interface",
+"pkg": "mesh"
+},
+"relayScope": {
+"term": "نطاق الترحيل",
+"kind": "property",
+"pkg": "mesh"
+},
+"handlePacketRelay": {
+"term": "معالجة ترحيل الحزمة",
+"kind": "function",
+"pkg": "mesh"
+},
+"hexStringToPeerBytes": {
+"term": "تحويل النص الست عشري إلى بايتات النِّد",
+"kind": "function",
+"pkg": "mesh"
+},
+"myIdBytes": {
+"term": "بايتات معرّفي",
+"kind": "variable",
+"pkg": "mesh"
+},
+"nextHopIdHex": {
+"term": "معرّف القفزة التالية ست عشري",
+"kind": "variable",
+"pkg": "mesh"
+},
+"success": {
+"term": "النجاح",
+"kind": "variable",
+"pkg": "mesh"
+},
+"shouldRelay": {
+"term": "هل ينبغي الترحيل",
+"kind": "variable",
+"pkg": "mesh"
+},
+"shouldRelayPacket": {
+"term": "هل تُرحَّل الحزمة",
+"kind": "function",
+"pkg": "mesh"
+},
+"isPacketAddressedToMe": {
+"term": "هل الحزمة موجَّهة إليّ",
+"kind": "function",
+"pkg": "mesh"
+},
+"broadcastRecipient": {
+"term": "مستلِم البث",
+"kind": "variable",
+"pkg": "mesh"
+},
+"networkSize": {
+"term": "حجم الشبكة",
+"kind": "variable",
+"pkg": "mesh"
+},
+"relayProb": {
+"term": "احتمال الترحيل",
+"kind": "variable",
+"pkg": "mesh"
+},
+"PeerFingerprintManager": {
+"term": "مدير بصمة النِّد (PeerFingerprintManager)",
+"kind": "class",
+"pkg": "mesh"
+},
+"peerIDToFingerprint": {
+"term": "خريطة معرّف-النِّد-إلى-البصمة (peerIDToFingerprint)",
+"kind": "property",
+"pkg": "mesh"
+},
+"fingerprintToPeerID": {
+"term": "خريطة البصمة-إلى-معرّف-النِّد (fingerprintToPeerID)",
+"kind": "property",
+"pkg": "mesh"
+},
+"storeFingerprintForPeer": {
+"term": "تخزين بصمة النِّد (storeFingerprintForPeer)",
+"kind": "function",
+"pkg": "mesh"
+},
+"getFingerprintForPeer": {
+"term": "جلب بصمة النِّد (getFingerprintForPeer)",
+"kind": "function",
+"pkg": "mesh"
+},
+"getPeerIDForFingerprint": {
+"term": "جلب معرّف النِّد من البصمة (getPeerIDForFingerprint)",
+"kind": "function",
+"pkg": "mesh"
+},
+"hasFingerprintForPeer": {
+"term": "هل توجد بصمة للنِّد (hasFingerprintForPeer)",
+"kind": "function",
+"pkg": "mesh"
+},
+"getAllPeerFingerprints": {
+"term": "جلب كل بصمات النِّد (getAllPeerFingerprints)",
+"kind": "function",
+"pkg": "mesh"
+},
+"getAllFingerprintMappings": {
+"term": "جلب كل روابط البصمة (getAllFingerprintMappings)",
+"kind": "function",
+"pkg": "mesh"
+},
+"removeFingerprint": {
+"term": "إزالة البصمة (removeFingerprint)",
+"kind": "function",
+"pkg": "mesh"
+},
+"clearAllFingerprints": {
+"term": "مسح كل البصمات (clearAllFingerprints)",
+"kind": "function",
+"pkg": "mesh"
+},
+"Log": {
+"term": "المُسجِّل (Log)",
+"kind": "type",
+"pkg": "mesh"
+},
+"publicKey": {
+"term": "المفتاح العام (publicKey)",
+"kind": "variable",
+"pkg": "mesh"
+},
+"inconsistentMappings": {
+"term": "الروابط غير المتسقة (inconsistentMappings)",
+"kind": "variable",
+"pkg": "mesh"
+},
+"PeerManager": {
+"term": "مدير-الأنداد",
+"kind": "class",
+"pkg": "mesh"
+},
+"PeerManagerDelegate": {
+"term": "مُفوَّض-مدير-الأنداد",
+"kind": "interface",
+"pkg": "mesh"
+},
+"isDirectConnection": {
+"term": "هل-اتصال-مباشر",
+"kind": "property",
+"pkg": "mesh"
+},
+"isVerifiedNickname": {
+"term": "هل-الاسم-المستعار-موثّق",
+"kind": "property",
+"pkg": "mesh"
+},
+"lastSeen": {
+"term": "آخر-ظهور",
+"kind": "property",
+"pkg": "mesh"
+},
+"peers": {
+"term": "خريطة-الأنداد",
+"kind": "field (ConcurrentHashMap)",
+"pkg": "mesh"
+},
+"peerRSSI": {
+"term": "قوة-إشارة-الند",
+"kind": "field (ConcurrentHashMap)",
+"pkg": "mesh"
+},
+"announcedPeers": {
+"term": "الأنداد-المُعلَنون",
+"kind": "field (CopyOnWriteArrayList)",
+"pkg": "mesh"
+},
+"announcedToPeers": {
+"term": "المُعلَن-إليهم-من-الأنداد",
+"kind": "field (CopyOnWriteArrayList)",
+"pkg": "mesh"
+},
+"isPeerDirectlyConnected": {
+"term": "هل-الند-متّصل-مباشرة",
+"kind": "property (callback)",
+"pkg": "mesh"
+},
+"stalePeerTimeoutMs": {
+"term": "مهلة-الند-البائت",
+"kind": "field",
+"pkg": "mesh"
+},
+"keysMatch": {
+"term": "تطابق-المفاتيح",
+"kind": "local function",
+"pkg": "mesh"
+},
+"isPeerVerified": {
+"term": "هل-الند-موثّق",
+"kind": "function",
+"pkg": "mesh"
+},
+"getVerifiedPeers": {
+"term": "الحصول-على-الأنداد-الموثّقين",
+"kind": "function",
+"pkg": "mesh"
+},
+"addOrUpdatePeer": {
+"term": "إضافة-أو-تحديث-الند",
+"kind": "function",
+"pkg": "mesh"
+},
+"updatePeerRSSI": {
+"term": "تحديث-قوة-إشارة-الند",
+"kind": "function",
+"pkg": "mesh"
+},
+"hasAnnouncedToPeer": {
+"term": "هل-أُعلِن-إلى-الند",
+"kind": "function",
+"pkg": "mesh"
+},
+"markPeerAsAnnouncedTo": {
+"term": "وسم-الند-بأنه-أُعلِن-إليه",
+"kind": "function",
+"pkg": "mesh"
+},
+"isPeerActive": {
+"term": "هل-الند-نشط",
+"kind": "function",
+"pkg": "mesh"
+},
+"getAllPeerNicknames": {
+"term": "جلب-كل-أسماء-الأنداد-المستعارة",
+"kind": "function",
+"pkg": "mesh"
+},
+"getAllPeerRSSI": {
+"term": "جلب-كل-قوى-الإشارة",
+"kind": "function",
+"pkg": "mesh"
+},
+"getActivePeerIDs": {
+"term": "جلب-معرّفات-الأنداد-النشطين",
+"kind": "function",
+"pkg": "mesh"
+},
+"clearAllPeers": {
+"term": "مسح-كل-الأنداد",
+"kind": "function",
+"pkg": "mesh"
+},
+"getDebugInfoWithDeviceAddresses": {
+"term": "جلب-معلومات-التصحيح-مع-عناوين-الأجهزة",
+"kind": "function",
+"pkg": "mesh"
+},
+"notifyPeerListUpdate": {
+"term": "إشعار-تحديث-قائمة-الأنداد",
+"kind": "function (private)",
+"pkg": "mesh"
+},
+"refreshPeerList": {
+"term": "تحديث-قائمة-الأنداد",
+"kind": "function",
+"pkg": "mesh"
+},
+"cleanupStalePeers": {
+"term": "تنظيف-الأنداد-البائتين",
+"kind": "function (private)",
+"pkg": "mesh"
+},
+"getFingerprintDebugInfo": {
+"term": "جلب-معلومات-تصحيح-البصمات",
+"kind": "function",
+"pkg": "mesh"
+},
+"onPeerListUpdated": {
+"term": "عند-تحديث-قائمة-الأنداد",
+"kind": "interface method",
+"pkg": "mesh"
+},
+"onPeerRemoved": {
+"term": "عند-إزالة-الند",
+"kind": "interface method",
+"pkg": "mesh"
+},
+"PowerMode": {
+"term": "وضع الطاقة",
+"kind": "enum",
+"pkg": "mesh"
+},
+"PERFORMANCE": {
+"term": "وضع الأداء",
+"kind": "enum_value",
+"pkg": "mesh"
+},
+"BALANCED": {
+"term": "الوضع المتوازن",
+"kind": "enum_value",
+"pkg": "mesh"
+},
+"POWER_SAVER": {
+"term": "وضع موفّر الطاقة",
+"kind": "enum_value",
+"pkg": "mesh"
+},
+"ULTRA_LOW_POWER": {
+"term": "وضع الطاقة فائق الانخفاض",
+"kind": "enum_value",
+"pkg": "mesh"
+},
+"currentMode": {
+"term": "الوضع الحالي",
+"kind": "field",
+"pkg": "mesh"
+},
+"isCharging": {
+"term": "هل يشحن",
+"kind": "field",
+"pkg": "mesh"
+},
+"batteryLevel": {
+"term": "مستوى البطارية",
+"kind": "field",
+"pkg": "mesh"
+},
+"isAppInBackground": {
+"term": "هل التطبيق في الخلفية",
+"kind": "field",
+"pkg": "mesh"
+},
+"powerScope": {
+"term": "نطاق الطاقة",
+"kind": "field",
+"pkg": "mesh"
+},
+"dutyCycleJob": {
+"term": "مهمة دورة التشغيل",
+"kind": "field",
+"pkg": "mesh"
+},
+"batteryReceiver": {
+"term": "مستقبِل البطارية",
+"kind": "field",
+"pkg": "mesh"
+},
+"updatePowerMode": {
+"term": "تحديث وضع الطاقة",
+"kind": "function",
+"pkg": "mesh"
+},
+"onStateChanged": {
+"term": "عند تغيّر الحالة",
+"kind": "function",
+"pkg": "mesh"
+},
+"getScanSettings": {
+"term": "الحصول على إعدادات المسح",
+"kind": "function",
+"pkg": "mesh"
+},
+"getAdvertiseSettings": {
+"term": "الحصول على إعدادات الإعلان",
+"kind": "function",
+"pkg": "mesh"
+},
+"getMaxConnections": {
+"term": "الحصول على أقصى الاتصالات",
+"kind": "function",
+"pkg": "mesh"
+},
+"getRSSIThreshold": {
+"term": "الحصول على عتبة قوة الإشارة",
+"kind": "function",
+"pkg": "mesh"
+},
+"getPowerInfo": {
+"term": "الحصول على معلومات الطاقة",
+"kind": "function",
+"pkg": "mesh"
+},
+"startDutyCycle": {
+"term": "بدء دورة التشغيل",
+"kind": "function",
+"pkg": "mesh"
+},
+"stopDutyCycle": {
+"term": "إيقاف دورة التشغيل",
+"kind": "function",
+"pkg": "mesh"
+},
+"registerBatteryReceiver": {
+"term": "تسجيل مستقبِل البطارية",
+"kind": "function",
+"pkg": "mesh"
+},
+"unregisterBatteryReceiver": {
+"term": "إلغاء تسجيل مستقبِل البطارية",
+"kind": "function",
+"pkg": "mesh"
+},
+"CRITICAL_BATTERY": {
+"term": "البطارية الحرجة",
+"kind": "const",
+"pkg": "mesh"
+},
+"LOW_BATTERY": {
+"term": "البطارية المنخفضة",
+"kind": "const",
+"pkg": "mesh"
+},
+"MEDIUM_BATTERY": {
+"term": "البطارية المتوسطة",
+"kind": "const",
+"pkg": "mesh"
+},
+"SCAN_ON_DURATION_NORMAL": {
+"term": "مدة تشغيل المسح العادية",
+"kind": "const",
+"pkg": "mesh"
+},
+"SCAN_OFF_DURATION_NORMAL": {
+"term": "مدة إيقاف المسح العادية",
+"kind": "const",
+"pkg": "mesh"
+},
+"MAX_CONNECTIONS_NORMAL": {
+"term": "أقصى اتصالات الوضع العادي",
+"kind": "const",
+"pkg": "mesh"
+},
+"SecurityManager": {
+"term": "مدير الأمان",
+"kind": "class",
+"pkg": "mesh"
+},
+"SecurityManagerDelegate": {
+"term": "مفوَّض مدير الأمان",
+"kind": "interface",
+"pkg": "mesh"
+},
+"processedMessages": {
+"term": "الرسائل المعالَجة",
+"kind": "field",
+"pkg": "mesh"
+},
+"processedKeyExchanges": {
+"term": "تبادلات المفاتيح المعالَجة",
+"kind": "field",
+"pkg": "mesh"
+},
+"messageTimestamps": {
+"term": "طوابع زمن الرسائل",
+"kind": "field",
+"pkg": "mesh"
+},
+"MESSAGE_TIMEOUT": {
+"term": "مهلة الرسالة",
+"kind": "const",
+"pkg": "mesh"
+},
+"MAX_PROCESSED_MESSAGES": {
+"term": "الحدّ الأقصى للرسائل المعالَجة",
+"kind": "const",
+"pkg": "mesh"
+},
+"MAX_PROCESSED_KEY_EXCHANGES": {
+"term": "الحدّ الأقصى لتبادلات المفاتيح المعالَجة",
+"kind": "const",
+"pkg": "mesh"
+},
+"validatePacket": {
+"term": "التحقق من الرزمة",
+"kind": "function",
+"pkg": "mesh"
+},
+"generateMessageID": {
+"term": "توليد معرّف الرسالة",
+"kind": "function",
+"pkg": "mesh"
+},
+"hasKeysForPeer": {
+"term": "وجود مفاتيح للنِّد",
+"kind": "function",
+"pkg": "mesh"
+},
+"cleanupOldData": {
+"term": "تنظيف البيانات القديمة",
+"kind": "function",
+"pkg": "mesh"
+},
+"removeFromMessageTimestamps": {
+"term": "الحذف من طوابع زمن الرسائل",
+"kind": "function",
+"pkg": "mesh"
+},
+"clearAllData": {
+"term": "مسح كل البيانات",
+"kind": "function",
+"pkg": "mesh"
+},
+"onKeyExchangeCompleted": {
+"term": "عند اكتمال تبادل المفاتيح",
+"kind": "function",
+"pkg": "mesh"
+},
+"sendHandshakeResponse": {
+"term": "إرسال ردّ المصافحة",
+"kind": "function",
+"pkg": "mesh"
+},
+"isFreshAnnounce": {
+"term": "إعلان طازج",
+"kind": "variable",
+"pkg": "mesh"
+},
+"exchangeKey": {
+"term": "مفتاح التبادل",
+"kind": "variable",
+"pkg": "mesh"
+},
+"forcedRehandshake": {
+"term": "إعادة مصافحة مفروضة",
+"kind": "variable",
+"pkg": "mesh"
+},
+"MessageType.ANNOUNCE": {
+"term": "رسالة الإعلان",
+"kind": "enum",
+"pkg": "mesh"
+},
+"StoreForwardManager": {
+"term": "مدير التخزين والتمرير",
+"kind": "صنف",
+"pkg": "mesh"
+},
+"StoreForwardManagerDelegate": {
+"term": "واجهة مفوَّض مدير التخزين والتمرير",
+"kind": "واجهة",
+"pkg": "mesh"
+},
+"StoredMessage": {
+"term": "الرسالة المخزَّنة",
+"kind": "صنف بيانات خاص",
+"pkg": "mesh"
+},
+"messageCache": {
+"term": "مخزن الرسائل العادي",
+"kind": "خاصية",
+"pkg": "mesh"
+},
+"favoriteMessageQueue": {
+"term": "طابور رسائل المفضّلين",
+"kind": "خاصية",
+"pkg": "mesh"
+},
+"deliveredMessages": {
+"term": "مجموعة الرسائل المُسلَّمة",
+"kind": "خاصية",
+"pkg": "mesh"
+},
+"cachedMessagesSentToPeer": {
+"term": "تتبُّع الرسائل المخزَّنة المُرسَلة للقرين",
+"kind": "خاصية",
+"pkg": "mesh"
+},
+"cacheMessage": {
+"term": "خزّن الرسالة",
+"kind": "دالة",
+"pkg": "mesh"
+},
+"shouldCacheForPeer": {
+"term": "هل يُخزَّن للقرين",
+"kind": "دالة",
+"pkg": "mesh"
+},
+"markMessageAsDelivered": {
+"term": "علّم الرسالة كمُسلَّمة",
+"kind": "دالة",
+"pkg": "mesh"
+},
+"getCachedMessageCount": {
+"term": "احصل على عدد الرسائل المخزَّنة",
+"kind": "دالة",
+"pkg": "mesh"
+},
+"cleanupMessageCache": {
+"term": "نظّف مخزن الرسائل",
+"kind": "دالة خاصة",
+"pkg": "mesh"
+},
+"cleanupDeliveredMessages": {
+"term": "نظّف الرسائل المُسلَّمة",
+"kind": "دالة خاصة",
+"pkg": "mesh"
+},
+"clearAllCache": {
+"term": "امسح كل المخزن",
+"kind": "دالة",
+"pkg": "mesh"
+},
+"forceCleanup": {
+"term": "افرض التنظيف",
+"kind": "دالة",
+"pkg": "mesh"
+},
+"isPeerOnline": {
+"term": "هل القرين متّصل",
+"kind": "دالة مفوَّض",
+"pkg": "mesh"
+},
+"MAX_CACHED_MESSAGES": {
+"term": "الحد الأقصى للرسائل المخزَّنة",
+"kind": "ثابت",
+"pkg": "mesh"
+},
+"MAX_CACHED_MESSAGES_FAVORITES": {
+"term": "الحد الأقصى لرسائل المفضّلين",
+"kind": "ثابت",
+"pkg": "mesh"
+},
+"MESSAGE_CACHE_TIMEOUT": {
+"term": "مهلة مخزن الرسائل",
+"kind": "ثابت",
+"pkg": "mesh"
+},
+"TransferProgressEvent": {
+"term": "حدث تقدّم النقل (TransferProgressEvent)",
+"kind": "data class",
+"pkg": "mesh"
+},
+"sent": {
+"term": "المُرسَل (sent)",
+"kind": "property",
+"pkg": "mesh"
+},
+"completed": {
+"term": "مكتمل (completed)",
+"kind": "property",
+"pkg": "mesh"
+},
+"_events": {
+"term": "تدفّق الأحداث القابل للتعديل (_events)",
+"kind": "property",
+"pkg": "mesh"
+},
+"events": {
+"term": "تدفّق الأحداث (events)",
+"kind": "property",
+"pkg": "mesh"
+},
+"progress": {
+"term": "تقدّم النقل (progress)",
+"kind": "function",
+"pkg": "mesh"
+},
+"complete": {
+"term": "إتمام النقل (complete)",
+"kind": "function",
+"pkg": "mesh"
+},
+"emit": {
+"term": "البثّ (emit)",
+"kind": "function",
+"pkg": "mesh"
+},
+"CoroutineScope": {
+"term": "نطاق المتعاونات (CoroutineScope)",
+"kind": "class",
+"pkg": "mesh"
+},
+"Dispatchers.IO": {
+"term": "موزّع الإدخال/الإخراج (Dispatchers.IO)",
+"kind": "object",
+"pkg": "mesh"
+},
+"SupervisorJob": {
+"term": "مهمّة مشرفة (SupervisorJob)",
+"kind": "function",
+"pkg": "mesh"
+},
+"MutableSharedFlow": {
+"term": "تدفّق مشترك قابل للتعديل (MutableSharedFlow)",
+"kind": "class",
+"pkg": "mesh"
+},
+"SharedFlow": {
+"term": "تدفّق مشترك (SharedFlow)",
+"kind": "interface",
+"pkg": "mesh"
+},
+"UnifiedMeshService": {
+"term": "خدمة الشبكة المتشابكة الموحَّدة",
+"kind": "class",
+"pkg": "mesh"
+},
+"WifiAwareController": {
+"term": "متحكّم واي-فاي أوير",
+"kind": "class",
+"pkg": "mesh"
+},
+"bluetooth": {
+"term": "نقل البلوتوث",
+"kind": "property",
+"pkg": "mesh"
+},
+"refreshDelegates": {
+"term": "تحديث المندوبين",
+"kind": "function",
+"pkg": "mesh"
+},
+"mergedPeerIDs": {
+"term": "معرّفات الأنداد المدمَجة",
+"kind": "function",
+"pkg": "mesh"
+},
+"wifiService": {
+"term": "خدمة الواي-فاي",
+"kind": "function",
+"pkg": "mesh"
+},
+"isBleEnabled": {
+"term": "هل البلوتوث مُفعَّل",
+"kind": "function",
+"pkg": "mesh"
+},
+"isBleConnected": {
+"term": "هل البلوتوث متّصل",
+"kind": "function",
+"pkg": "mesh"
+},
+"isWifiConnected": {
+"term": "هل الواي-فاي متّصل",
+"kind": "function",
+"pkg": "mesh"
+},
+"isBleReady": {
+"term": "هل البلوتوث جاهز",
+"kind": "function",
+"pkg": "mesh"
+},
+"isWifiReady": {
+"term": "هل الواي-فاي جاهز",
+"kind": "function",
+"pkg": "mesh"
+},
+"hasEstablishedSessionOnBluetooth": {
+"term": "هل أُنشئت جلسة على البلوتوث",
+"kind": "function",
+"pkg": "mesh"
+},
+"AppStateStore.peers": {
+"term": "مخزن حالة التطبيق - الأنداد",
+"kind": "property",
+"pkg": "mesh"
+},
+"NostrIdentityBridge": {
+"term": "جسر هويّة نوستر",
+"kind": "class",
+"pkg": "mesh"
+},
+"Bech32": {
+"term": "كائن بيك٣٢ (Bech32)",
+"kind": "object",
+"pkg": "nostr"
+},
+"CHARSET": {
+"term": "مجموعة المحارف (CHARSET)",
+"kind": "const",
+"pkg": "nostr"
+},
+"GENERATOR": {
+"term": "مصفوفة التوليد (GENERATOR)",
+"kind": "val",
+"pkg": "nostr"
+},
+"convertBits": {
+"term": "دالة تحويل البِتّات (convertBits)",
+"kind": "fun",
+"pkg": "nostr"
+},
+"createChecksum": {
+"term": "دالة إنشاء المجموع الاختباري (createChecksum)",
+"kind": "fun",
+"pkg": "nostr"
+},
+"hrpExpand": {
+"term": "دالة توسيع الجزء المقروء (hrpExpand)",
+"kind": "fun",
+"pkg": "nostr"
+},
+"polymod": {
+"term": "دالة المتعدّد القياسي (polymod)",
+"kind": "fun",
+"pkg": "nostr"
+},
+"hrp": {
+"term": "الجزء المقروء بشرياً (hrp)",
+"kind": "param",
+"pkg": "nostr"
+},
+"checksum": {
+"term": "المجموع الاختباري (checksum)",
+"kind": "val",
+"pkg": "nostr"
+},
+"separatorIndex": {
+"term": "موضع الفاصل (separatorIndex)",
+"kind": "val",
+"pkg": "nostr"
+},
+"payloadValues": {
+"term": "قيم الحمولة (payloadValues)",
+"kind": "val",
+"pkg": "nostr"
+},
+"acc": {
+"term": "المُجمِّع (acc)",
+"kind": "var",
+"pkg": "nostr"
+},
+"maxv": {
+"term": "القيمة القصوى (maxv)",
+"kind": "val",
+"pkg": "nostr"
+},
+"chk": {
+"term": "قيمة الفحص (chk)",
+"kind": "var",
+"pkg": "nostr"
+},
+"GeohashAliasRegistry": {
+"term": "سجلّ أسماء الجيوهاش المستعارة (GeohashAliasRegistry)",
+"kind": "object",
+"pkg": "nostr"
+},
+"map": {
+"term": "الخريطة (map)",
+"kind": "property",
+"pkg": "nostr"
+},
+"loadFromPrefs": {
+"term": "التحميل من التفضيلات (loadFromPrefs)",
+"kind": "function",
+"pkg": "nostr"
+},
+"put": {
+"term": "الوضع/الإضافة (put)",
+"kind": "function",
+"pkg": "nostr"
+},
+"contains": {
+"term": "الفحص بالاحتواء (contains)",
+"kind": "function",
+"pkg": "nostr"
+},
+"snapshot": {
+"term": "اللقطة (snapshot)",
+"kind": "function",
+"pkg": "nostr"
+},
+"alias": {
+"term": "الاسم المستعار (alias)",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"pubkeyHex": {
+"term": "المفتاح العام بالنظام الست عشري (pubkeyHex)",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"GeohashConversationRegistry": {
+"term": "سجل محادثات الجيوهاش (GeohashConversationRegistry)",
+"kind": "object",
+"pkg": "nostr"
+},
+"convKey": {
+"term": "مفتاح المحادثة (convKey)",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"geohash": {
+"term": "الجيوهاش (geohash)",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"GeohashMessageHandler": {
+"term": "معالِج رسائل الجيوهاش",
+"kind": "class",
+"pkg": "nostr"
+},
+"onEvent": {
+"term": "دالة عند الحدث",
+"kind": "function",
+"pkg": "nostr"
+},
+"dedupe": {
+"term": "دالة إزالة التكرار",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrEvent": {
+"term": "حدث نوستر",
+"kind": "type",
+"pkg": "nostr"
+},
+"NostrKind.EPHEMERAL_EVENT": {
+"term": "نوع الحدث الزائل",
+"kind": "constant",
+"pkg": "nostr"
+},
+"NostrKind.GEOHASH_PRESENCE": {
+"term": "نوع حضور الجيوهاش",
+"kind": "constant",
+"pkg": "nostr"
+},
+"MessageManager": {
+"term": "مدير الرسائل",
+"kind": "type",
+"pkg": "nostr"
+},
+"ChatState": {
+"term": "حالة المحادثة",
+"kind": "type",
+"pkg": "nostr"
+},
+"GeohashRepository": {
+"term": "مستودع الجيوهاش",
+"kind": "type",
+"pkg": "nostr"
+},
+"DataManager": {
+"term": "مدير البيانات",
+"kind": "type",
+"pkg": "nostr"
+},
+"PoWPreferenceManager": {
+"term": "مدير تفضيلات إثبات العمل",
+"kind": "object",
+"pkg": "nostr"
+},
+"NostrProofOfWork": {
+"term": "إثبات العمل لنوستر",
+"kind": "object",
+"pkg": "nostr"
+},
+"processedIds": {
+"term": "المعرّفات المعالَجة",
+"kind": "field",
+"pkg": "nostr"
+},
+"seen": {
+"term": "المرئية",
+"kind": "field",
+"pkg": "nostr"
+},
+"pubkey": {
+"term": "المفتاح العام",
+"kind": "variable",
+"pkg": "nostr"
+},
+"subscribedGeohash": {
+"term": "الجيوهاش المُشترَك به",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"isTeleportPresence": {
+"term": "حضور الانتقال الآني",
+"kind": "variable",
+"pkg": "nostr"
+},
+"application": {
+"term": "التطبيق",
+"kind": "property",
+"pkg": "nostr"
+},
+"dataManager": {
+"term": "مدير البيانات",
+"kind": "property",
+"pkg": "nostr"
+},
+"geohashParticipants": {
+"term": "مشاركو الموقع الجغرافي",
+"kind": "property",
+"pkg": "nostr"
+},
+"geoNicknames": {
+"term": "الأسماء المستعارة الجغرافية",
+"kind": "property",
+"pkg": "nostr"
+},
+"conversationGeohash": {
+"term": "موقع المحادثة الجغرافي",
+"kind": "property",
+"pkg": "nostr"
+},
+"nostrKeyMapping": {
+"term": "تعيين مفاتيح نوستر",
+"kind": "property",
+"pkg": "nostr"
+},
+"currentGeohash": {
+"term": "الموقع الجغرافي الحالي",
+"kind": "property",
+"pkg": "nostr"
+},
+"setConversationGeohash": {
+"term": "تعيين موقع المحادثة الجغرافي",
+"kind": "function",
+"pkg": "nostr"
+},
+"getConversationGeohash": {
+"term": "جلب موقع المحادثة الجغرافي",
+"kind": "function",
+"pkg": "nostr"
+},
+"findPubkeyByNickname": {
+"term": "إيجاد المفتاح العام بالاسم المستعار",
+"kind": "function",
+"pkg": "nostr"
+},
+"findPubkeyByShortId": {
+"term": "إيجاد المفتاح العام بالمعرّف القصير",
+"kind": "function",
+"pkg": "nostr"
+},
+"setCurrentGeohash": {
+"term": "تعيين الموقع الجغرافي الحالي",
+"kind": "function",
+"pkg": "nostr"
+},
+"getCurrentGeohash": {
+"term": "جلب الموقع الجغرافي الحالي",
+"kind": "function",
+"pkg": "nostr"
+},
+"clearAll": {
+"term": "مسح الكل",
+"kind": "function",
+"pkg": "nostr"
+},
+"cacheNickname": {
+"term": "تخزين الاسم المستعار مؤقتاً",
+"kind": "function",
+"pkg": "nostr"
+},
+"getCachedNickname": {
+"term": "جلب الاسم المستعار المخزّن",
+"kind": "function",
+"pkg": "nostr"
+},
+"markTeleported": {
+"term": "وسم بالانتقال الآني",
+"kind": "function",
+"pkg": "nostr"
+},
+"isPersonTeleported": {
+"term": "هل الشخص منتقل آنياً",
+"kind": "function",
+"pkg": "nostr"
+},
+"updateParticipant": {
+"term": "تحديث مشارك",
+"kind": "function",
+"pkg": "nostr"
+},
+"geohashParticipantCount": {
+"term": "عدد مشاركي الموقع الجغرافي",
+"kind": "function",
+"pkg": "nostr"
+},
+"refreshGeohashPeople": {
+"term": "تحديث أشخاص الموقع الجغرافي",
+"kind": "function",
+"pkg": "nostr"
+},
+"updateReactiveParticipantCounts": {
+"term": "تحديث أعداد المشاركين التفاعلية",
+"kind": "function",
+"pkg": "nostr"
+},
+"putNostrKeyMapping": {
+"term": "وضع تعيين مفتاح نوستر",
+"kind": "function",
+"pkg": "nostr"
+},
+"getNostrKeyMapping": {
+"term": "جلب تعيين مفاتيح نوستر",
+"kind": "function",
+"pkg": "nostr"
+},
+"displayNameForNostrPubkey": {
+"term": "اسم العرض لمفتاح نوستر العام",
+"kind": "function",
+"pkg": "nostr"
+},
+"displayNameForNostrPubkeyUI": {
+"term": "اسم العرض لمفتاح نوستر العام للواجهة",
+"kind": "function",
+"pkg": "nostr"
+},
+"displayNameForGeohashConversation": {
+"term": "اسم العرض لمحادثة الموقع الجغرافي",
+"kind": "function",
+"pkg": "nostr"
+},
+"deriveIdentity": {
+"term": "اشتقاق الهوية",
+"kind": "function",
+"pkg": "nostr"
+},
+"publicKeyHex": {
+"term": "المفتاح العام الست عشري",
+"kind": "property",
+"pkg": "nostr"
+},
+"GeoPerson": {
+"term": "الشخص الجغرافي",
+"kind": "class",
+"pkg": "nostr"
+},
+"cutoff": {
+"term": "الحد القاطع",
+"kind": "variable",
+"pkg": "nostr"
+},
+"isGeohashUserBlocked": {
+"term": "هل مستخدم الموقع الجغرافي محظور",
+"kind": "function",
+"pkg": "nostr"
+},
+"getNicknameValue": {
+"term": "جلب قيمة الاسم المستعار",
+"kind": "function",
+"pkg": "nostr"
+},
+"setGeohashPeople": {
+"term": "تعيين أشخاص الموقع الجغرافي",
+"kind": "function",
+"pkg": "nostr"
+},
+"setGeohashParticipantCounts": {
+"term": "تعيين أعداد مشاركي الموقع الجغرافي",
+"kind": "function",
+"pkg": "nostr"
+},
+"LocationNotesInitializer": {
+"term": "مُهيّئ ملاحظات الموقع",
+"kind": "object",
+"pkg": "nostr"
+},
+"LocationNotesManager": {
+"term": "مدير ملاحظات الموقع",
+"kind": "class",
+"pkg": "nostr"
+},
+"relayManager": {
+"term": "مزوّد مدير المُرحّلات",
+"kind": "lambda-parameter",
+"pkg": "nostr"
+},
+"subscribe": {
+"term": "دالة الاشتراك",
+"kind": "lambda-parameter",
+"pkg": "nostr"
+},
+"unsubscribe": {
+"term": "دالة إلغاء الاشتراك",
+"kind": "lambda-parameter",
+"pkg": "nostr"
+},
+"sendEvent": {
+"term": "دالة إرسال الحدث",
+"kind": "lambda-parameter",
+"pkg": "nostr"
+},
+"filter": {
+"term": "المُرشِّح",
+"kind": "variable",
+"pkg": "nostr"
+},
+"getGeohash": {
+"term": "جالب تجزئة الموقع",
+"kind": "method",
+"pkg": "nostr"
+},
+"geohashFromFilter": {
+"term": "تجزئة الموقع من المُرشِّح",
+"kind": "variable",
+"pkg": "nostr"
+},
+"subscribeForGeohash": {
+"term": "الاشتراك بتجزئة الموقع",
+"kind": "method",
+"pkg": "nostr"
+},
+"includeDefaults": {
+"term": "تضمين الافتراضيات",
+"kind": "argument",
+"pkg": "nostr"
+},
+"nRelays": {
+"term": "عدد المُرحّلات",
+"kind": "argument",
+"pkg": "nostr"
+},
+"handler": {
+"term": "المُعالِج",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"relayUrls": {
+"term": "عناوين المُرحّلات",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"event": {
+"term": "الحدث",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"MAX_NOTES_IN_MEMORY": {
+"term": "الحد الأقصى للملاحظات في الذاكرة",
+"kind": "const",
+"pkg": "nostr"
+},
+"Note": {
+"term": "الملاحظة",
+"kind": "class",
+"pkg": "nostr"
+},
+"displayName": {
+"term": "اسم العرض",
+"kind": "property",
+"pkg": "nostr"
+},
+"createdAt": {
+"term": "وقت الإنشاء",
+"kind": "property",
+"pkg": "nostr"
+},
+"State": {
+"term": "الحالة",
+"kind": "enum",
+"pkg": "nostr"
+},
+"IDLE": {
+"term": "خامل",
+"kind": "enum-value",
+"pkg": "nostr"
+},
+"LOADING": {
+"term": "قيد التحميل",
+"kind": "enum-value",
+"pkg": "nostr"
+},
+"READY": {
+"term": "جاهز",
+"kind": "enum-value",
+"pkg": "nostr"
+},
+"NO_RELAYS": {
+"term": "لا مُرحِّلات",
+"kind": "enum-value",
+"pkg": "nostr"
+},
+"notes": {
+"term": "الملاحظات",
+"kind": "property",
+"pkg": "nostr"
+},
+"initialLoadComplete": {
+"term": "اكتمال التحميل الأولي",
+"kind": "property",
+"pkg": "nostr"
+},
+"errorMessage": {
+"term": "رسالة الخطأ",
+"kind": "property",
+"pkg": "nostr"
+},
+"subscriptionIDs": {
+"term": "معرّفات الاشتراكات",
+"kind": "field",
+"pkg": "nostr"
+},
+"noteIDs": {
+"term": "معرّفات الملاحظات",
+"kind": "field",
+"pkg": "nostr"
+},
+"subscribedGeohashes": {
+"term": "الجيوهاشات المشترَك بها",
+"kind": "field",
+"pkg": "nostr"
+},
+"relayLookup": {
+"term": "باحث المُرحِّل",
+"kind": "field",
+"pkg": "nostr"
+},
+"subscribeFunc": {
+"term": "دالة الاشتراك",
+"kind": "field",
+"pkg": "nostr"
+},
+"unsubscribeFunc": {
+"term": "دالة إلغاء الاشتراك",
+"kind": "field",
+"pkg": "nostr"
+},
+"sendEventFunc": {
+"term": "دالة إرسال الحدث",
+"kind": "field",
+"pkg": "nostr"
+},
+"deriveIdentityFunc": {
+"term": "دالة اشتقاق الهوية",
+"kind": "field",
+"pkg": "nostr"
+},
+"setGeohash": {
+"term": "ضبط الجيوهاش",
+"kind": "function",
+"pkg": "nostr"
+},
+"isValidBuildingGeohash": {
+"term": "التحقق من جيوهاش المبنى",
+"kind": "function",
+"pkg": "nostr"
+},
+"refresh": {
+"term": "تحديث الملاحظات",
+"kind": "function",
+"pkg": "nostr"
+},
+"subscribeAll": {
+"term": "الاشتراك في الكل",
+"kind": "function",
+"pkg": "nostr"
+},
+"handleEvent": {
+"term": "معالجة الحدث",
+"kind": "function",
+"pkg": "nostr"
+},
+"trimOldestNotes": {
+"term": "قصّ أقدم الملاحظات",
+"kind": "function",
+"pkg": "nostr"
+},
+"clearError": {
+"term": "مسح الخطأ",
+"kind": "function",
+"pkg": "nostr"
+},
+"cancel": {
+"term": "الإلغاء",
+"kind": "function",
+"pkg": "nostr"
+},
+"cleanup": {
+"term": "التنظيف",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrFilter": {
+"term": "مُرشِّح نوستر",
+"kind": "type",
+"pkg": "nostr"
+},
+"NostrIdentity": {
+"term": "هوية نوستر",
+"kind": "type",
+"pkg": "nostr"
+},
+"NostrProtocol.createGeohashTextNote": {
+"term": "إنشاء ملاحظة نصية بجيوهاش",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrFilter.geohashNotes": {
+"term": "مُرشِّح ملاحظات الجيوهاش",
+"kind": "function",
+"pkg": "nostr"
+},
+"RelayDirectory.closestRelaysForGeohash": {
+"term": "أقرب المُرحِّلات للجيوهاش",
+"kind": "function",
+"pkg": "nostr"
+},
+"Geohash.neighborsSamePrecision": {
+"term": "جيران بنفس الدقّة",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrKind.TEXT_NOTE": {
+"term": "نوع الملاحظة النصية",
+"kind": "const",
+"pkg": "nostr"
+},
+"NostrClient": {
+"term": "عميل نوستر",
+"kind": "class",
+"pkg": "nostr"
+},
+"currentIdentity": {
+"term": "الهوية الحالية",
+"kind": "property",
+"pkg": "nostr"
+},
+"isInitialized": {
+"term": "حالة التهيئة",
+"kind": "property",
+"pkg": "nostr"
+},
+"currentNpub": {
+"term": "المفتاح العام الحالي",
+"kind": "property",
+"pkg": "nostr"
+},
+"recipientNpub": {
+"term": "مفتاح المستلم العام",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"NostrProtocol": {
+"term": "بروتوكول نوستر",
+"kind": "type",
+"pkg": "nostr"
+},
+"createPrivateMessage": {
+"term": "إنشاء رسالة خاصة",
+"kind": "function",
+"pkg": "nostr"
+},
+"giftWraps": {
+"term": "أغلفة الهدية",
+"kind": "variable",
+"pkg": "nostr"
+},
+"registerPendingGiftWrap": {
+"term": "تسجيل غلاف هدية معلّق",
+"kind": "function",
+"pkg": "nostr"
+},
+"subscribeToPrivateMessages": {
+"term": "الاشتراك في الرسائل الخاصة",
+"kind": "function",
+"pkg": "nostr"
+},
+"giftWrapsFor": {
+"term": "أغلفة الهدية للمفتاح",
+"kind": "function",
+"pkg": "nostr"
+},
+"sendGeohashMessage": {
+"term": "إرسال رسالة المنطقة الجغرافية",
+"kind": "function",
+"pkg": "nostr"
+},
+"createEphemeralGeohashEvent": {
+"term": "إنشاء حدث جغرافي عابر",
+"kind": "function",
+"pkg": "nostr"
+},
+"subscribeToGeohash": {
+"term": "الاشتراك في المنطقة الجغرافية",
+"kind": "function",
+"pkg": "nostr"
+},
+"geohashEphemeral": {
+"term": "مُرشِّح المنطقة العابر",
+"kind": "function",
+"pkg": "nostr"
+},
+"unsubscribeFromGeohash": {
+"term": "إلغاء الاشتراك من المنطقة الجغرافية",
+"kind": "function",
+"pkg": "nostr"
+},
+"getCurrentIdentity": {
+"term": "الحصول على الهوية الحالية",
+"kind": "function",
+"pkg": "nostr"
+},
+"relayConnectionStatus": {
+"term": "حالة اتصال المُرحِّل",
+"kind": "property",
+"pkg": "nostr"
+},
+"relayInfo": {
+"term": "معلومات المُرحِّل",
+"kind": "property",
+"pkg": "nostr"
+},
+"decryptPrivateMessage": {
+"term": "فكّ تشفير الرسالة الخاصة",
+"kind": "function",
+"pkg": "nostr"
+},
+"handleGeohashMessage": {
+"term": "معالجة رسالة المنطقة الجغرافية",
+"kind": "function",
+"pkg": "nostr"
+},
+"validateDifficulty": {
+"term": "تصديق الصعوبة",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrCrypto": {
+"term": "أدواتُ تشفيرِ نوستر (NostrCrypto)",
+"kind": "كائن وحيد (object)",
+"pkg": "nostr"
+},
+"secureRandom": {
+"term": "المولّدُ العشوائيُّ الآمن (secureRandom)",
+"kind": "خاصّية",
+"pkg": "nostr"
+},
+"secp256k1Curve": {
+"term": "منحنى secp256k1 (secp256k1Curve)",
+"kind": "خاصّية",
+"pkg": "nostr"
+},
+"secp256k1Params": {
+"term": "معاملاتُ منحنى secp256k1 (secp256k1Params)",
+"kind": "خاصّية",
+"pkg": "nostr"
+},
+"derivePublicKey": {
+"term": "اشتقاقُ المفتاحِ العام (derivePublicKey)",
+"kind": "دالة",
+"pkg": "nostr"
+},
+"performECDH": {
+"term": "تنفيذُ اتفاقِ ECDH (performECDH)",
+"kind": "دالة",
+"pkg": "nostr"
+},
+"performECDHWithParity": {
+"term": "اتفاقُ ECDH باختيارِ الزوجية (performECDHWithParity)",
+"kind": "دالة خاصّة",
+"pkg": "nostr"
+},
+"recoverPublicKeyPoint": {
+"term": "استعادةُ نقطةِ المفتاحِ العام (recoverPublicKeyPoint)",
+"kind": "دالة خاصّة",
+"pkg": "nostr"
+},
+"recoverPublicKeyPointWithParity": {
+"term": "استعادةُ نقطةِ المفتاحِ بزوجيةٍ محدّدة (recoverPublicKeyPointWithParity)",
+"kind": "دالة خاصّة",
+"pkg": "nostr"
+},
+"computeSharedPointWithParity": {
+"term": "حسابُ النقطةِ المشتركةِ بزوجيةٍ محدّدة (computeSharedPointWithParity)",
+"kind": "دالة خاصّة",
+"pkg": "nostr"
+},
+"compressedPoint": {
+"term": "النقطةُ المضغوطة (compressedPoint)",
+"kind": "دالة خاصّة",
+"pkg": "nostr"
+},
+"deriveNIP44Key": {
+"term": "اشتقاقُ مفتاحِ NIP-44 (deriveNIP44Key)",
+"kind": "دالة",
+"pkg": "nostr"
+},
+"hkdfExtract": {
+"term": "استخلاصُ HKDF (hkdfExtract)",
+"kind": "دالة خاصّة",
+"pkg": "nostr"
+},
+"hkdfExpand": {
+"term": "توسيعُ HKDF (hkdfExpand)",
+"kind": "دالة خاصّة",
+"pkg": "nostr"
+},
+"encryptNIP44": {
+"term": "تشفيرُ NIP-44 (encryptNIP44)",
+"kind": "دالة",
+"pkg": "nostr"
+},
+"decryptNIP44": {
+"term": "فكُّ تشفيرِ NIP-44 (decryptNIP44)",
+"kind": "دالة",
+"pkg": "nostr"
+},
+"base64UrlNoPad": {
+"term": "ترميزُ base64url بلا حشو (base64UrlNoPad)",
+"kind": "دالة خاصّة",
+"pkg": "nostr"
+},
+"base64UrlDecode": {
+"term": "فكُّ ترميزِ base64url (base64UrlDecode)",
+"kind": "دالة خاصّة",
+"pkg": "nostr"
+},
+"randomizeTimestamp": {
+"term": "عشوَأةُ الطابعِ الزمني (randomizeTimestamp)",
+"kind": "دالة",
+"pkg": "nostr"
+},
+"randomizeTimestampUpToPast": {
+"term": "عشوَأةُ الطابعِ الزمني نحو الماضي (randomizeTimestampUpToPast)",
+"kind": "دالة",
+"pkg": "nostr"
+},
+"isValidPrivateKey": {
+"term": "صلاحيةُ المفتاحِ الخاص (isValidPrivateKey)",
+"kind": "دالة",
+"pkg": "nostr"
+},
+"isValidPublicKey": {
+"term": "صلاحيةُ المفتاحِ العام (isValidPublicKey)",
+"kind": "دالة",
+"pkg": "nostr"
+},
+"taggedHash": {
+"term": "التجزئةُ الموسومة (taggedHash)",
+"kind": "دالة خاصّة",
+"pkg": "nostr"
+},
+"hasEvenY": {
+"term": "الصاديةُ زوجية (hasEvenY)",
+"kind": "دالة خاصّة",
+"pkg": "nostr"
+},
+"liftX": {
+"term": "رفعُ السينية (liftX)",
+"kind": "دالة خاصّة",
+"pkg": "nostr"
+},
+"schnorrSign": {
+"term": "توقيعُ شنور (schnorrSign)",
+"kind": "دالة",
+"pkg": "nostr"
+},
+"schnorrVerify": {
+"term": "التحقّقُ من توقيعِ شنور (schnorrVerify)",
+"kind": "دالة",
+"pkg": "nostr"
+},
+"generateNonce": {
+"term": "توليدُ القيمةِ المؤقتة (generateNonce)",
+"kind": "دالة خاصّة",
+"pkg": "nostr"
+},
+"NostrDirectMessageHandler": {
+"term": "معالج رسائل نوستر المباشرة",
+"kind": "class",
+"pkg": "nostr"
+},
+"onGiftWrap": {
+"term": "عند وصول الغلاف الهديّة",
+"kind": "function",
+"pkg": "nostr"
+},
+"processNoisePayload": {
+"term": "معالجة حمولة نويز",
+"kind": "function",
+"pkg": "nostr"
+},
+"base64URLDecode": {
+"term": "فكّ ترميز base64URL",
+"kind": "function",
+"pkg": "nostr"
+},
+"giftWrap": {
+"term": "الغلاف الهديّة",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"identity": {
+"term": "الهويّة",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"NostrTransport": {
+"term": "ناقل نوستر",
+"kind": "class",
+"pkg": "nostr"
+},
+"SeenMessageStore": {
+"term": "مخزن الرسائل المرئية",
+"kind": "class",
+"pkg": "nostr"
+},
+"seenStore": {
+"term": "مخزن المرئية",
+"kind": "property",
+"pkg": "nostr"
+},
+"PrivateChatManager": {
+"term": "مدير الدردشة الخاصة",
+"kind": "type",
+"pkg": "nostr"
+},
+"MeshDelegateHandler": {
+"term": "معالج وكيل الشبكة",
+"kind": "type",
+"pkg": "nostr"
+},
+"senderPubkey": {
+"term": "المفتاح العام للمرسِل",
+"kind": "variable",
+"pkg": "nostr"
+},
+"messageAge": {
+"term": "عمر الرسالة",
+"kind": "variable",
+"pkg": "nostr"
+},
+"decryptResult": {
+"term": "نتيجة فكّ التشفير",
+"kind": "variable",
+"pkg": "nostr"
+},
+"handleIncomingPrivateMessage": {
+"term": "معالجة الرسالة الخاصة الواردة",
+"kind": "function",
+"pkg": "nostr"
+},
+"sendDeliveryAckGeohash": {
+"term": "إرسال إقرار التسليم للجيوهاش",
+"kind": "function",
+"pkg": "nostr"
+},
+"sendReadReceiptGeohash": {
+"term": "إرسال إيصال القراءة للجيوهاش",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrEmbeddedBitChat": {
+"term": "محوّل بِت‑تشات المضمّن في نوستر",
+"kind": "object",
+"pkg": "nostr"
+},
+"encodePMForNostr": {
+"term": "ترميز الرسالة الخاصة لنوستر",
+"kind": "function",
+"pkg": "nostr"
+},
+"encodeAckForNostr": {
+"term": "ترميز إشعار الاستلام لنوستر",
+"kind": "function",
+"pkg": "nostr"
+},
+"encodeAckForNostrNoRecipient": {
+"term": "ترميز إشعار الاستلام لنوستر بلا مستقبِل",
+"kind": "function",
+"pkg": "nostr"
+},
+"encodePMForNostrNoRecipient": {
+"term": "ترميز الرسالة الخاصة لنوستر بلا مستقبِل",
+"kind": "function",
+"pkg": "nostr"
+},
+"normalizeRecipientPeerID": {
+"term": "تطبيع معرّف نِدّ المستقبِل",
+"kind": "function",
+"pkg": "nostr"
+},
+"base64URLEncode": {
+"term": "ترميز قاعدة‑٦٤ على نمط الرابط",
+"kind": "function",
+"pkg": "nostr"
+},
+"recipientIDHex": {
+"term": "معرّف المستقبِل الست‑عشري",
+"kind": "variable",
+"pkg": "nostr"
+},
+"PRIVATE_MESSAGE": {
+"term": "رسالة خاصة",
+"kind": "enum-constant",
+"pkg": "nostr"
+},
+"DELIVERED": {
+"term": "تم التسليم",
+"kind": "enum-constant",
+"pkg": "nostr"
+},
+"kind": {
+"term": "النوع",
+"kind": "property",
+"pkg": "nostr"
+},
+"tags": {
+"term": "الوسوم",
+"kind": "property",
+"pkg": "nostr"
+},
+"sig": {
+"term": "التوقيع",
+"kind": "property",
+"pkg": "nostr"
+},
+"fromJson": {
+"term": "من قاموس JSON",
+"kind": "function",
+"pkg": "nostr"
+},
+"fromJsonString": {
+"term": "من نص JSON",
+"kind": "function",
+"pkg": "nostr"
+},
+"createTextNote": {
+"term": "إنشاء ملاحظة نصية",
+"kind": "function",
+"pkg": "nostr"
+},
+"createMetadata": {
+"term": "إنشاء بيانات وصفية",
+"kind": "function",
+"pkg": "nostr"
+},
+"computeEventIdHex": {
+"term": "حساب معرّف الحدث الست عشري",
+"kind": "function",
+"pkg": "nostr"
+},
+"calculateEventId": {
+"term": "حساب معرّف الحدث",
+"kind": "function",
+"pkg": "nostr"
+},
+"signHash": {
+"term": "توقيع التجزئة",
+"kind": "function",
+"pkg": "nostr"
+},
+"toJsonString": {
+"term": "التحويل إلى نص JSON",
+"kind": "function",
+"pkg": "nostr"
+},
+"isValidSignature": {
+"term": "صحة التوقيع",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrKind": {
+"term": "أنواع حدث نوستر",
+"kind": "object",
+"pkg": "nostr"
+},
+"METADATA": {
+"term": "البيانات الوصفية",
+"kind": "const",
+"pkg": "nostr"
+},
+"TEXT_NOTE": {
+"term": "الملاحظة النصية",
+"kind": "const",
+"pkg": "nostr"
+},
+"DIRECT_MESSAGE": {
+"term": "الرسالة المباشرة",
+"kind": "const",
+"pkg": "nostr"
+},
+"FILE_MESSAGE": {
+"term": "رسالة الملف",
+"kind": "const",
+"pkg": "nostr"
+},
+"SEAL": {
+"term": "الختم",
+"kind": "const",
+"pkg": "nostr"
+},
+"GIFT_WRAP": {
+"term": "غلاف الهدية",
+"kind": "const",
+"pkg": "nostr"
+},
+"EPHEMERAL_EVENT": {
+"term": "الحدث العابر",
+"kind": "const",
+"pkg": "nostr"
+},
+"GEOHASH_PRESENCE": {
+"term": "حضور التجزئة الجغرافية",
+"kind": "const",
+"pkg": "nostr"
+},
+"hexToByteArray": {
+"term": "الست عشري إلى مصفوفة بايت",
+"kind": "extension function",
+"pkg": "nostr"
+},
+"NostrEventDeduplicator": {
+"term": "مُزيل تكرار أحداث نوستر",
+"kind": "class",
+"pkg": "nostr"
+},
+"maxCapacity": {
+"term": "السعة القصوى",
+"kind": "property",
+"pkg": "nostr"
+},
+"DEFAULT_CAPACITY": {
+"term": "السعة الافتراضية",
+"kind": "const",
+"pkg": "nostr"
+},
+"LRUNode": {
+"term": "عقدة الأقل استخداماً مؤخراً",
+"kind": "class",
+"pkg": "nostr"
+},
+"eventId": {
+"term": "معرّف الحدث",
+"kind": "property",
+"pkg": "nostr"
+},
+"prev": {
+"term": "السابق",
+"kind": "property",
+"pkg": "nostr"
+},
+"next": {
+"term": "التالي",
+"kind": "property",
+"pkg": "nostr"
+},
+"nodeMap": {
+"term": "خريطة العقد",
+"kind": "property",
+"pkg": "nostr"
+},
+"head": {
+"term": "الرأس",
+"kind": "property",
+"pkg": "nostr"
+},
+"tail": {
+"term": "الذيل",
+"kind": "property",
+"pkg": "nostr"
+},
+"lruLock": {
+"term": "قفل الأقل استخداماً مؤخراً",
+"kind": "property",
+"pkg": "nostr"
+},
+"totalChecks": {
+"term": "إجمالي الفحوص",
+"kind": "property",
+"pkg": "nostr"
+},
+"duplicateCount": {
+"term": "عدّ المكرّرات",
+"kind": "property",
+"pkg": "nostr"
+},
+"evictionCount": {
+"term": "عدّ الطرد",
+"kind": "property",
+"pkg": "nostr"
+},
+"isDuplicate": {
+"term": "هل مكرّر",
+"kind": "function",
+"pkg": "nostr"
+},
+"processEvent": {
+"term": "عالِج الحدث",
+"kind": "function",
+"pkg": "nostr"
+},
+"getStats": {
+"term": "احصل على الإحصاءات",
+"kind": "function",
+"pkg": "nostr"
+},
+"size": {
+"term": "الحجم",
+"kind": "function",
+"pkg": "nostr"
+},
+"addToFront": {
+"term": "أضِف إلى المقدمة",
+"kind": "function",
+"pkg": "nostr"
+},
+"moveToFront": {
+"term": "انقل إلى المقدمة",
+"kind": "function",
+"pkg": "nostr"
+},
+"removeTail": {
+"term": "أزِل الذيل",
+"kind": "function",
+"pkg": "nostr"
+},
+"evictOldest": {
+"term": "اطرُد الأقدم",
+"kind": "function",
+"pkg": "nostr"
+},
+"DeduplicationStats": {
+"term": "إحصاءات إزالة التكرار",
+"kind": "class",
+"pkg": "nostr"
+},
+"capacity": {
+"term": "السعة",
+"kind": "property",
+"pkg": "nostr"
+},
+"currentSize": {
+"term": "الحجم الحالي",
+"kind": "property",
+"pkg": "nostr"
+},
+"hitRate": {
+"term": "معدّل الإصابة",
+"kind": "property",
+"pkg": "nostr"
+},
+"ids": {
+"term": "المُعرّفات (ids)",
+"kind": "property",
+"pkg": "nostr"
+},
+"authors": {
+"term": "المؤلِّفون (authors)",
+"kind": "property",
+"pkg": "nostr"
+},
+"kinds": {
+"term": "الأنواع (kinds)",
+"kind": "property",
+"pkg": "nostr"
+},
+"since": {
+"term": "منذ (since)",
+"kind": "property",
+"pkg": "nostr"
+},
+"until": {
+"term": "حتى (until)",
+"kind": "property",
+"pkg": "nostr"
+},
+"limit": {
+"term": "الحدّ (limit)",
+"kind": "property",
+"pkg": "nostr"
+},
+"tagFilters": {
+"term": "مُرشّحات الوسوم (tagFilters)",
+"kind": "property",
+"pkg": "nostr"
+},
+"geohashMessages": {
+"term": "رسائل النطاق الجغرافي (geohashMessages)",
+"kind": "function",
+"pkg": "nostr"
+},
+"geohashPresence": {
+"term": "حضور النطاق الجغرافي (geohashPresence)",
+"kind": "function",
+"pkg": "nostr"
+},
+"textNotesFrom": {
+"term": "الملاحظات النصّية من (textNotesFrom)",
+"kind": "function",
+"pkg": "nostr"
+},
+"geohashNotes": {
+"term": "ملاحظات النطاق الجغرافي (geohashNotes)",
+"kind": "function",
+"pkg": "nostr"
+},
+"forEvents": {
+"term": "لأحداث محدّدة (forEvents)",
+"kind": "function",
+"pkg": "nostr"
+},
+"FilterSerializer": {
+"term": "مُسلسِل المُرشّح (FilterSerializer)",
+"kind": "class",
+"pkg": "nostr"
+},
+"serialize": {
+"term": "السَّلسَلة (serialize)",
+"kind": "function",
+"pkg": "nostr"
+},
+"Builder": {
+"term": "الباني (Builder)",
+"kind": "class",
+"pkg": "nostr"
+},
+"build": {
+"term": "ابْنِ (build)",
+"kind": "function",
+"pkg": "nostr"
+},
+"tagP": {
+"term": "وسم الأشخاص (tagP)",
+"kind": "function",
+"pkg": "nostr"
+},
+"tagE": {
+"term": "وسم الأحداث (tagE)",
+"kind": "function",
+"pkg": "nostr"
+},
+"tagG": {
+"term": "وسم النطاق الجغرافي (tagG)",
+"kind": "function",
+"pkg": "nostr"
+},
+"matches": {
+"term": "يُطابِق (matches)",
+"kind": "function",
+"pkg": "nostr"
+},
+"getDebugDescription": {
+"term": "احصل على وصف التنقيح (getDebugDescription)",
+"kind": "function",
+"pkg": "nostr"
+},
+"privateKeyHex": {
+"term": "المفتاح الخاص الست عشري",
+"kind": "property",
+"pkg": "nostr"
+},
+"generate": {
+"term": "التوليد",
+"kind": "function",
+"pkg": "nostr"
+},
+"fromPrivateKey": {
+"term": "الإنشاء من المفتاح الخاص",
+"kind": "function",
+"pkg": "nostr"
+},
+"fromSeed": {
+"term": "الإنشاء من البذرة",
+"kind": "function",
+"pkg": "nostr"
+},
+"signEvent": {
+"term": "توقيع الحدث",
+"kind": "function",
+"pkg": "nostr"
+},
+"getShortNpub": {
+"term": "المعرّف العام المختصر",
+"kind": "function",
+"pkg": "nostr"
+},
+"NOSTR_PRIVATE_KEY": {
+"term": "مفتاح نوستر الخاص (ثابت التخزين)",
+"kind": "const",
+"pkg": "nostr"
+},
+"DEVICE_SEED_KEY": {
+"term": "مفتاح بذرة الجهاز (ثابت التخزين)",
+"kind": "const",
+"pkg": "nostr"
+},
+"geohashIdentityCache": {
+"term": "ذاكرة هويات الجيوهاش المؤقتة",
+"kind": "property",
+"pkg": "nostr"
+},
+"getCurrentNostrIdentity": {
+"term": "الحصول على الهوية الحالية",
+"kind": "function",
+"pkg": "nostr"
+},
+"candidateKey": {
+"term": "المفتاح المرشّح",
+"kind": "function",
+"pkg": "nostr"
+},
+"associateNostrIdentity": {
+"term": "ربط هوية نوستر",
+"kind": "function",
+"pkg": "nostr"
+},
+"getNostrPublicKey": {
+"term": "الحصول على مفتاح نوستر العام",
+"kind": "function",
+"pkg": "nostr"
+},
+"clearAllAssociations": {
+"term": "مسح كل الروابط",
+"kind": "function",
+"pkg": "nostr"
+},
+"loadNostrPrivateKey": {
+"term": "تحميل مفتاح نوستر الخاص",
+"kind": "function",
+"pkg": "nostr"
+},
+"saveNostrPrivateKey": {
+"term": "حفظ مفتاح نوستر الخاص",
+"kind": "function",
+"pkg": "nostr"
+},
+"getOrCreateDeviceSeed": {
+"term": "الحصول على بذرة الجهاز أو إنشاؤها",
+"kind": "function",
+"pkg": "nostr"
+},
+"hmacSha256": {
+"term": "دالة هماك-شا256",
+"kind": "function",
+"pkg": "nostr"
+},
+"hexToByteArrayLocal": {
+"term": "تحويل النص الست عشري إلى بايتات",
+"kind": "extension function",
+"pkg": "nostr"
+},
+"toHexStringLocal": {
+"term": "تحويل البايتات إلى نص ست عشري",
+"kind": "extension function",
+"pkg": "nostr"
+},
+"toLittleEndianBytes": {
+"term": "التحويل إلى بايتات بترتيب صغير-أولاً",
+"kind": "extension function",
+"pkg": "nostr"
+},
+"calculateDifficulty": {
+"term": "احسب الصعوبة",
+"kind": "function",
+"pkg": "nostr"
+},
+"mineEvent": {
+"term": "عدّن الحدث",
+"kind": "function",
+"pkg": "nostr"
+},
+"addNonceTag": {
+"term": "أضِف وسم القيمة العشوائية",
+"kind": "function",
+"pkg": "nostr"
+},
+"getCommittedDifficulty": {
+"term": "احصل على الصعوبة الملتزَم بها",
+"kind": "function",
+"pkg": "nostr"
+},
+"hasNonce": {
+"term": "لديه قيمة عشوائية",
+"kind": "function",
+"pkg": "nostr"
+},
+"getNonce": {
+"term": "احصل على القيمة العشوائية",
+"kind": "function",
+"pkg": "nostr"
+},
+"estimateWork": {
+"term": "قدّر العمل",
+"kind": "function",
+"pkg": "nostr"
+},
+"estimateMiningTime": {
+"term": "قدّر زمن التعدين",
+"kind": "function",
+"pkg": "nostr"
+},
+"nonce": {
+"term": "القيمة العشوائية",
+"kind": "variable",
+"pkg": "nostr"
+},
+"targetDifficulty": {
+"term": "الصعوبة المستهدفة",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"minimumDifficulty": {
+"term": "الصعوبة الدنيا",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"actualDifficulty": {
+"term": "الصعوبة الفعلية",
+"kind": "variable",
+"pkg": "nostr"
+},
+"committedDifficulty": {
+"term": "الصعوبة الملتزَم بها",
+"kind": "variable",
+"pkg": "nostr"
+},
+"maxIterations": {
+"term": "أقصى عدد للتكرارات",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"nibble": {
+"term": "النِّبل (نصف بايت)",
+"kind": "variable",
+"pkg": "nostr"
+},
+"hashesPerSecond": {
+"term": "التجزئات في الثانية",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"gson": {
+"term": "محوّل جيسون",
+"kind": "متغيّر خاص",
+"pkg": "nostr"
+},
+"createGeohashTextNote": {
+"term": "إنشاء ملاحظة نصية بترميز جغرافي",
+"kind": "دالة معلّقة",
+"pkg": "nostr"
+},
+"createGeohashPresenceEvent": {
+"term": "إنشاء حدث حضور بترميز جغرافي",
+"kind": "دالة معلّقة",
+"pkg": "nostr"
+},
+"createSeal": {
+"term": "إنشاء الختم",
+"kind": "دالة خاصة",
+"pkg": "nostr"
+},
+"createGiftWrap": {
+"term": "إنشاء غلاف الهدية",
+"kind": "دالة خاصة",
+"pkg": "nostr"
+},
+"unwrapGiftWrap": {
+"term": "فكّ غلاف الهدية",
+"kind": "دالة خاصة",
+"pkg": "nostr"
+},
+"openSeal": {
+"term": "فتح الختم",
+"kind": "دالة خاصة",
+"pkg": "nostr"
+},
+"parseTagsFromJson": {
+"term": "تحليل الوسوم من جيسون",
+"kind": "دالة خاصة",
+"pkg": "nostr"
+},
+"rumor": {
+"term": "الإشاعة",
+"kind": "متغيّر/مفهوم",
+"pkg": "nostr"
+},
+"seal": {
+"term": "الختم",
+"kind": "متغيّر/مفهوم",
+"pkg": "nostr"
+},
+"recipientPubkey": {
+"term": "المفتاح العام للمستلِم",
+"kind": "معامل",
+"pkg": "nostr"
+},
+"senderIdentity": {
+"term": "هوية المُرسِل",
+"kind": "معامل",
+"pkg": "nostr"
+},
+"teleported": {
+"term": "مُنتقَل آنياً",
+"kind": "معامل",
+"pkg": "nostr"
+},
+"shared": {
+"term": "النسخة المشتركة",
+"kind": "property",
+"pkg": "nostr"
+},
+"DEFAULT_RELAYS": {
+"term": "المُرحّلات الافتراضية",
+"kind": "property",
+"pkg": "nostr"
+},
+"INITIAL_BACKOFF_INTERVAL": {
+"term": "فترة التراجع الأولية",
+"kind": "constant",
+"pkg": "nostr"
+},
+"MAX_BACKOFF_INTERVAL": {
+"term": "الحد الأقصى لفترة التراجع",
+"kind": "constant",
+"pkg": "nostr"
+},
+"MAX_RECONNECT_ATTEMPTS": {
+"term": "أقصى محاولات إعادة الاتصال",
+"kind": "constant",
+"pkg": "nostr"
+},
+"pendingGiftWrapIDs": {
+"term": "معرّفات أغلفة الهدايا المعلّقة",
+"kind": "property",
+"pkg": "nostr"
+},
+"defaultRelays": {
+"term": "المُرحّلات الافتراضية",
+"kind": "function",
+"pkg": "nostr"
+},
+"Relay": {
+"term": "المُرحّل",
+"kind": "class",
+"pkg": "nostr"
+},
+"reconnectAttempts": {
+"term": "محاولات إعادة الاتصال",
+"kind": "property",
+"pkg": "nostr"
+},
+"nextReconnectTime": {
+"term": "وقت إعادة الاتصال التالي",
+"kind": "property",
+"pkg": "nostr"
+},
+"_relays": {
+"term": "حقل المُرحّلات الداخلي",
+"kind": "property",
+"pkg": "nostr"
+},
+"relays": {
+"term": "المُرحّلات",
+"kind": "property",
+"pkg": "nostr"
+},
+"_isConnected": {
+"term": "حقل الاتصال الداخلي",
+"kind": "property",
+"pkg": "nostr"
+},
+"relaysList": {
+"term": "قائمة المُرحّلات",
+"kind": "property",
+"pkg": "nostr"
+},
+"connections": {
+"term": "الاتصالات",
+"kind": "property",
+"pkg": "nostr"
+},
+"subscriptions": {
+"term": "الاشتراكات",
+"kind": "property",
+"pkg": "nostr"
+},
+"messageHandlers": {
+"term": "معالِجات الرسائل",
+"kind": "property",
+"pkg": "nostr"
+},
+"activeSubscriptions": {
+"term": "الاشتراكات النشطة",
+"kind": "property",
+"pkg": "nostr"
+},
+"SubscriptionInfo": {
+"term": "معلومات الاشتراك",
+"kind": "class",
+"pkg": "nostr"
+},
+"targetRelayUrls": {
+"term": "عناوين المُرحّلات المستهدفة",
+"kind": "property",
+"pkg": "nostr"
+},
+"originGeohash": {
+"term": "جيوهاش الأصل",
+"kind": "property",
+"pkg": "nostr"
+},
+"eventDeduplicator": {
+"term": "مُزيل تكرار الأحداث",
+"kind": "property",
+"pkg": "nostr"
+},
+"messageQueue": {
+"term": "طابور الرسائل",
+"kind": "property",
+"pkg": "nostr"
+},
+"messageQueueLock": {
+"term": "قفل طابور الرسائل",
+"kind": "property",
+"pkg": "nostr"
+},
+"subscriptionValidationJob": {
+"term": "مهمة التحقق من الاشتراكات",
+"kind": "property",
+"pkg": "nostr"
+},
+"SUBSCRIPTION_VALIDATION_INTERVAL": {
+"term": "فترة التحقق من الاشتراكات",
+"kind": "property",
+"pkg": "nostr"
+},
+"geohashToRelays": {
+"term": "خريطة الجيوهاش إلى المُرحّلات",
+"kind": "property",
+"pkg": "nostr"
+},
+"ensureGeohashRelaysConnected": {
+"term": "تأكيد اتصال مُرحّلات الجيوهاش",
+"kind": "function",
+"pkg": "nostr"
+},
+"getRelaysForGeohash": {
+"term": "احصل على مُرحّلات الجيوهاش",
+"kind": "function",
+"pkg": "nostr"
+},
+"sendEventToGeohash": {
+"term": "أرسل حدثاً لجيوهاش",
+"kind": "function",
+"pkg": "nostr"
+},
+"ensureConnectionsFor": {
+"term": "تأكيد الاتصالات لـ",
+"kind": "function",
+"pkg": "nostr"
+},
+"connect": {
+"term": "اتصل",
+"kind": "function",
+"pkg": "nostr"
+},
+"sendSubscriptionToRelays": {
+"term": "أرسل الاشتراك إلى المُرحّلات",
+"kind": "function",
+"pkg": "nostr"
+},
+"retryConnection": {
+"term": "أعد محاولة الاتصال",
+"kind": "function",
+"pkg": "nostr"
+},
+"resetAllConnections": {
+"term": "أعد تعيين كل الاتصالات",
+"kind": "function",
+"pkg": "nostr"
+},
+"reestablishAllSubscriptions": {
+"term": "أعد إنشاء كل الاشتراكات",
+"kind": "function",
+"pkg": "nostr"
+},
+"clearAllSubscriptions": {
+"term": "امسح كل الاشتراكات",
+"kind": "function",
+"pkg": "nostr"
+},
+"getRelayStatuses": {
+"term": "احصل على حالات المُرحّلات",
+"kind": "function",
+"pkg": "nostr"
+},
+"getDeduplicationStats": {
+"term": "احصل على إحصاءات إزالة التكرار",
+"kind": "function",
+"pkg": "nostr"
+},
+"clearDeduplicationCache": {
+"term": "امسح مخبأ إزالة التكرار",
+"kind": "function",
+"pkg": "nostr"
+},
+"getActiveSubscriptionCount": {
+"term": "احصل على عدد الاشتراكات النشطة",
+"kind": "function",
+"pkg": "nostr"
+},
+"getActiveSubscriptions": {
+"term": "احصل على الاشتراكات النشطة",
+"kind": "function",
+"pkg": "nostr"
+},
+"validateSubscriptionConsistency": {
+"term": "تحقّق من اتساق الاشتراكات",
+"kind": "function",
+"pkg": "nostr"
+},
+"SubscriptionConsistencyReport": {
+"term": "تقرير اتساق الاشتراكات",
+"kind": "class",
+"pkg": "nostr"
+},
+"startSubscriptionValidation": {
+"term": "ابدأ التحقق من الاشتراكات",
+"kind": "function",
+"pkg": "nostr"
+},
+"stopSubscriptionValidation": {
+"term": "أوقف التحقق من الاشتراكات",
+"kind": "function",
+"pkg": "nostr"
+},
+"connectToRelay": {
+"term": "اتصل بالمُرحّل",
+"kind": "function",
+"pkg": "nostr"
+},
+"sendToRelay": {
+"term": "أرسل إلى المُرحّل",
+"kind": "function",
+"pkg": "nostr"
+},
+"handleDisconnection": {
+"term": "عالِج قطع الاتصال",
+"kind": "function",
+"pkg": "nostr"
+},
+"updateRelayStatus": {
+"term": "حدّث حالة المُرحّل",
+"kind": "function",
+"pkg": "nostr"
+},
+"updateRelaysList": {
+"term": "حدّث قائمة المُرحّلات",
+"kind": "function",
+"pkg": "nostr"
+},
+"updateConnectionStatus": {
+"term": "حدّث حالة الاتصال",
+"kind": "function",
+"pkg": "nostr"
+},
+"generateSubscriptionId": {
+"term": "ولّد معرّف اشتراك",
+"kind": "function",
+"pkg": "nostr"
+},
+"restoreSubscriptionsForRelay": {
+"term": "استعد اشتراكات المُرحّل",
+"kind": "function",
+"pkg": "nostr"
+},
+"RelayWebSocketListener": {
+"term": "مُستمِع مقبس ويب المُرحّل",
+"kind": "class",
+"pkg": "nostr"
+},
+"onOpen": {
+"term": "عند الفتح",
+"kind": "function",
+"pkg": "nostr"
+},
+"onMessage": {
+"term": "عند الرسالة",
+"kind": "function",
+"pkg": "nostr"
+},
+"onClosing": {
+"term": "عند الإغلاق الجاري",
+"kind": "function",
+"pkg": "nostr"
+},
+"onClosed": {
+"term": "عند الإغلاق التام",
+"kind": "function",
+"pkg": "nostr"
+},
+"onFailure": {
+"term": "عند الفشل",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrRequest": {
+"term": "طلب نوسْتر",
+"kind": "type",
+"pkg": "nostr"
+},
+"NostrResponse": {
+"term": "استجابة نوسْتر",
+"kind": "type",
+"pkg": "nostr"
+},
+"NostrKind.GIFT_WRAP": {
+"term": "نوع تغليف الهدية",
+"kind": "constant",
+"pkg": "nostr"
+},
+"RelayDirectory": {
+"term": "دليل المُرحّلات",
+"kind": "type",
+"pkg": "nostr"
+},
+"Event": {
+"term": "حدث (طلب)",
+"kind": "data class",
+"pkg": "nostr"
+},
+"Subscribe": {
+"term": "اشتراك",
+"kind": "data class",
+"pkg": "nostr"
+},
+"Close": {
+"term": "إغلاق",
+"kind": "data class",
+"pkg": "nostr"
+},
+"subscriptionId": {
+"term": "معرّف الاشتراك",
+"kind": "property",
+"pkg": "nostr"
+},
+"filters": {
+"term": "مرشّحات",
+"kind": "property",
+"pkg": "nostr"
+},
+"RequestSerializer": {
+"term": "مُسلسِل الطلب",
+"kind": "class",
+"pkg": "nostr"
+},
+"createGson": {
+"term": "إنشاء Gson",
+"kind": "function",
+"pkg": "nostr"
+},
+"toJson": {
+"term": "التحويل إلى JSON",
+"kind": "function",
+"pkg": "nostr"
+},
+"EndOfStoredEvents": {
+"term": "نهاية الأحداث المخزَّنة",
+"kind": "data class",
+"pkg": "nostr"
+},
+"Ok": {
+"term": "موافقة",
+"kind": "data class",
+"pkg": "nostr"
+},
+"Notice": {
+"term": "إشعار",
+"kind": "data class",
+"pkg": "nostr"
+},
+"Unknown": {
+"term": "غير معروف",
+"kind": "data class",
+"pkg": "nostr"
+},
+"accepted": {
+"term": "مقبول",
+"kind": "property",
+"pkg": "nostr"
+},
+"raw": {
+"term": "النص الخام",
+"kind": "property",
+"pkg": "nostr"
+},
+"fromJsonArray": {
+"term": "التحليل من مصفوفة JSON",
+"kind": "function",
+"pkg": "nostr"
+},
+"parseEventFromJson": {
+"term": "تحليل الحدث من JSON",
+"kind": "function",
+"pkg": "nostr"
+},
+"Gson": {
+"term": "محرّك Gson",
+"kind": "type",
+"pkg": "nostr"
+},
+"NostrSubscriptionManager": {
+"term": "مدير اشتراكات نوستر",
+"kind": "class",
+"pkg": "nostr"
+},
+"subscribeGiftWraps": {
+"term": "الاشتراك في أغلفة الهدايا",
+"kind": "function",
+"pkg": "nostr"
+},
+"subscribeGeohashMessages": {
+"term": "الاشتراك في رسائل التجزئة الجغرافية",
+"kind": "function",
+"pkg": "nostr"
+},
+"subscribeGeohashPresence": {
+"term": "الاشتراك في حضور التجزئة الجغرافية",
+"kind": "function",
+"pkg": "nostr"
+},
+"sinceMs": {
+"term": "منذ بالميلّي ثانية",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"NostrTestManager": {
+"term": "مدير اختبار نوستر",
+"kind": "class",
+"pkg": "nostr"
+},
+"testScope": {
+"term": "نطاق الاختبار",
+"kind": "property",
+"pkg": "nostr"
+},
+"nostrClient": {
+"term": "عميل نوستر",
+"kind": "property",
+"pkg": "nostr"
+},
+"runTests": {
+"term": "تشغيل الاختبارات",
+"kind": "function",
+"pkg": "nostr"
+},
+"testClientInitialization": {
+"term": "اختبار تهيئة العميل",
+"kind": "function",
+"pkg": "nostr"
+},
+"testIdentityManagement": {
+"term": "اختبار إدارة الهوية",
+"kind": "function",
+"pkg": "nostr"
+},
+"testRelayConnections": {
+"term": "اختبار اتصالات المُرحّلات",
+"kind": "function",
+"pkg": "nostr"
+},
+"testCryptography": {
+"term": "اختبار التعمية",
+"kind": "function",
+"pkg": "nostr"
+},
+"testBech32": {
+"term": "اختبار ترميز Bech32",
+"kind": "function",
+"pkg": "nostr"
+},
+"testMessageSubscription": {
+"term": "اختبار الاشتراك في الرسائل",
+"kind": "function",
+"pkg": "nostr"
+},
+"testLoopbackMessage": {
+"term": "اختبار رسالة العودة الذاتية",
+"kind": "function",
+"pkg": "nostr"
+},
+"testGeohashMessage": {
+"term": "اختبار رسالة الجيوهاش",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrClient.getInstance": {
+"term": "جلب نسخة عميل نوستر",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrIdentityBridge.deriveIdentity": {
+"term": "اشتقاق الهوية",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrCrypto.generateKeyPair": {
+"term": "توليد زوج المفاتيح",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrCrypto.isValidPrivateKey": {
+"term": "تحقّق صلاحية المفتاح الخاص",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrCrypto.isValidPublicKey": {
+"term": "تحقّق صلاحية المفتاح العام",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrCrypto.derivePublicKey": {
+"term": "اشتقاق المفتاح العام",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrCrypto.encryptNIP44": {
+"term": "التعمية بمعيار NIP-44",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrCrypto.decryptNIP44": {
+"term": "فك التعمية بمعيار NIP-44",
+"kind": "function",
+"pkg": "nostr"
+},
+"Bech32.encode": {
+"term": "ترميز Bech32",
+"kind": "function",
+"pkg": "nostr"
+},
+"Bech32.decode": {
+"term": "فك ترميز Bech32",
+"kind": "function",
+"pkg": "nostr"
+},
+"READ_ACK_INTERVAL": {
+"term": "فاصل تأكيد القراءة",
+"kind": "constant",
+"pkg": "nostr"
+},
+"QueuedRead": {
+"term": "قراءة مُصفوفة في طابور",
+"kind": "class",
+"pkg": "nostr"
+},
+"readQueue": {
+"term": "طابور القراءة",
+"kind": "property",
+"pkg": "nostr"
+},
+"isSendingReadAcks": {
+"term": "هل يُرسَل تأكيدات القراءة",
+"kind": "property",
+"pkg": "nostr"
+},
+"transportScope": {
+"term": "نطاق الناقل",
+"kind": "property",
+"pkg": "nostr"
+},
+"processReadQueueIfNeeded": {
+"term": "عالِج طابور القراءة عند الحاجة",
+"kind": "function",
+"pkg": "nostr"
+},
+"sendNextReadAck": {
+"term": "أرسِل تأكيد القراءة التالي",
+"kind": "function",
+"pkg": "nostr"
+},
+"scheduleNextReadAck": {
+"term": "جدوِل تأكيد القراءة التالي",
+"kind": "function",
+"pkg": "nostr"
+},
+"sendPrivateMessageGeohash": {
+"term": "أرسِل رسالة خاصة بالتجزئة الجغرافية",
+"kind": "function",
+"pkg": "nostr"
+},
+"resolveNostrPublicKey": {
+"term": "حُلّ مفتاح نوستر العام",
+"kind": "function",
+"pkg": "nostr"
+},
+"recipientNostrPubkey": {
+"term": "مفتاح نوستر العام للمستلِم",
+"kind": "variable",
+"pkg": "nostr"
+},
+"recipientHex": {
+"term": "ست عشري المستلِم",
+"kind": "variable",
+"pkg": "nostr"
+},
+"recipientPeerIDForEmbed": {
+"term": "معرّف قرين المستلِم للتضمين",
+"kind": "variable",
+"pkg": "nostr"
+},
+"fromIdentity": {
+"term": "الهوية المرسِلة",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"embedded": {
+"term": "المُضمَّن",
+"kind": "variable",
+"pkg": "nostr"
+},
+"sourceGeohash": {
+"term": "التجزئة الجغرافية المصدر",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"toRecipientHex": {
+"term": "ست عشري المستلِم",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"NostrEmbeddedBitChat.encodePMForNostr": {
+"term": "ترميز رسالة خاصة لنوستر",
+"kind": "call",
+"pkg": "nostr"
+},
+"NostrEmbeddedBitChat.encodeAckForNostr": {
+"term": "ترميز إقرار لنوستر",
+"kind": "call",
+"pkg": "nostr"
+},
+"NostrEmbeddedBitChat.encodeAckForNostrNoRecipient": {
+"term": "ترميز إقرار لنوستر بلا مستلِم",
+"kind": "call",
+"pkg": "nostr"
+},
+"NostrEmbeddedBitChat.encodePMForNostrNoRecipient": {
+"term": "ترميز رسالة خاصة لنوستر بلا مستلِم",
+"kind": "call",
+"pkg": "nostr"
+},
+"NostrProtocol.createPrivateMessage": {
+"term": "إنشاء رسالة خاصة ببروتوكول نوستر",
+"kind": "call",
+"pkg": "nostr"
+},
+"NostrRelayManager.sendEvent": {
+"term": "إرسال الحدث",
+"kind": "call",
+"pkg": "nostr"
+},
+"NostrRelayManager.registerPendingGiftWrap": {
+"term": "تسجيل غلاف الهدية المعلَّق",
+"kind": "call",
+"pkg": "nostr"
+},
+"NostrIdentityBridge.getCurrentNostrIdentity": {
+"term": "جسر هوية نوستر: الهوية الحالية",
+"kind": "call",
+"pkg": "nostr"
+},
+"findPeerIDForNostrPubkey": {
+"term": "ابحث عن معرّف القرين لمفتاح نوستر",
+"kind": "call",
+"pkg": "nostr"
+},
+"findNostrPubkeyForPeerID": {
+"term": "ابحث عن مفتاح نوستر لمعرّف القرين",
+"kind": "call",
+"pkg": "nostr"
+},
+"getFavoriteStatus": {
+"term": "احصل على حالة التفضيل",
+"kind": "call",
+"pkg": "nostr"
+},
+"LocationChannelManager": {
+"term": "مدير قناة الموقع",
+"kind": "class",
+"pkg": "nostr"
+},
+"ChannelID.Location": {
+"term": "قناة موقع",
+"kind": "type",
+"pkg": "nostr"
+},
+"NoisePayloadType.READ_RECEIPT": {
+"term": "نوع حمولة نويز: إيصال القراءة",
+"kind": "enum",
+"pkg": "nostr"
+},
+"NoisePayloadType.DELIVERED": {
+"term": "نوع حمولة نويز: تمّ التسليم",
+"kind": "enum",
+"pkg": "nostr"
+},
+"KEY_POW_ENABLED": {
+"term": "مفتاح تفعيل إثبات العمل",
+"kind": "ثابت خاص (const)",
+"pkg": "nostr"
+},
+"KEY_POW_DIFFICULTY": {
+"term": "مفتاح صعوبة إثبات العمل",
+"kind": "ثابت خاص (const)",
+"pkg": "nostr"
+},
+"DEFAULT_POW_ENABLED": {
+"term": "التفعيل الافتراضي لإثبات العمل",
+"kind": "ثابت خاص (const)",
+"pkg": "nostr"
+},
+"DEFAULT_POW_DIFFICULTY": {
+"term": "الصعوبة الافتراضية لإثبات العمل",
+"kind": "ثابت خاص (const)",
+"pkg": "nostr"
+},
+"_powEnabled / powEnabled": {
+"term": "تدفّق حالة تفعيل إثبات العمل",
+"kind": "خاصيّة StateFlow",
+"pkg": "nostr"
+},
+"_powDifficulty / powDifficulty": {
+"term": "تدفّق حالة صعوبة إثبات العمل",
+"kind": "خاصيّة StateFlow",
+"pkg": "nostr"
+},
+"_isMining / isMining": {
+"term": "تدفّق حالة التعدين",
+"kind": "خاصيّة StateFlow",
+"pkg": "nostr"
+},
+"sharedPrefs": {
+"term": "التفضيلات المشتركة",
+"kind": "متغيّر مؤجّل التهيئة (lateinit)",
+"pkg": "nostr"
+},
+"isPowEnabled": {
+"term": "دالّة قراءة تفعيل إثبات العمل",
+"kind": "دالّة",
+"pkg": "nostr"
+},
+"setPowEnabled": {
+"term": "دالّة ضبط تفعيل إثبات العمل",
+"kind": "دالّة",
+"pkg": "nostr"
+},
+"getPowDifficulty": {
+"term": "دالّة قراءة صعوبة إثبات العمل",
+"kind": "دالّة",
+"pkg": "nostr"
+},
+"setPowDifficulty": {
+"term": "دالّة ضبط صعوبة إثبات العمل",
+"kind": "دالّة",
+"pkg": "nostr"
+},
+"PoWSettings": {
+"term": "صنف إعدادات إثبات العمل",
+"kind": "صنف بيانات (data class)",
+"pkg": "nostr"
+},
+"getCurrentSettings": {
+"term": "دالّة قراءة الإعدادات الحالية",
+"kind": "دالّة",
+"pkg": "nostr"
+},
+"resetToDefaults": {
+"term": "دالّة إعادة الضبط للافتراضي",
+"kind": "دالّة",
+"pkg": "nostr"
+},
+"getDifficultyLevels": {
+"term": "دالّة قائمة مستويات الصعوبة",
+"kind": "دالّة",
+"pkg": "nostr"
+},
+"startMining": {
+"term": "دالّة بدء التعدين",
+"kind": "دالّة",
+"pkg": "nostr"
+},
+"stopMining": {
+"term": "دالّة إيقاف التعدين",
+"kind": "دالّة",
+"pkg": "nostr"
+},
+"RelayInfo": {
+"term": "معلومات المُرحِّل",
+"kind": "data class (صنف بيانات)",
+"pkg": "nostr"
+},
+"closestRelaysForGeohash": {
+"term": "أقرب المُرحِّلات للجيوهاش",
+"kind": "fun (دالة)",
+"pkg": "nostr"
+},
+"haversineMeters": {
+"term": "مسافة هافرسين بالأمتار",
+"kind": "fun (دالة)",
+"pkg": "nostr"
+},
+"normalizeRelayUrl": {
+"term": "توحيد رابط المُرحِّل",
+"kind": "fun (دالة)",
+"pkg": "nostr"
+},
+"getPrefs": {
+"term": "جلب التفضيلات",
+"kind": "fun (دالة)",
+"pkg": "nostr"
+},
+"getDownloadedFile": {
+"term": "جلب الملف المُنزَّل",
+"kind": "fun (دالة)",
+"pkg": "nostr"
+},
+"isStale": {
+"term": "هل البيانات قديمة",
+"kind": "fun (دالة)",
+"pkg": "nostr"
+},
+"startPeriodicRefresh": {
+"term": "بدء التحديث الدوري",
+"kind": "fun (دالة)",
+"pkg": "nostr"
+},
+"fetchAndMaybeSwap": {
+"term": "الجلب والاستبدال عند اللزوم",
+"kind": "fun (دالة)",
+"pkg": "nostr"
+},
+"downloadToFile": {
+"term": "التنزيل إلى ملف",
+"kind": "fun (دالة)",
+"pkg": "nostr"
+},
+"loadFromFile": {
+"term": "التحميل من ملف",
+"kind": "fun (دالة)",
+"pkg": "nostr"
+},
+"loadFromAssets": {
+"term": "التحميل من الأصول",
+"kind": "fun (دالة)",
+"pkg": "nostr"
+},
+"parseCsv": {
+"term": "تحليل CSV",
+"kind": "fun (دالة)",
+"pkg": "nostr"
+},
+"fileSha256Hex": {
+"term": "بصمة الملف SHA256 الست عشرية",
+"kind": "fun (دالة)",
+"pkg": "nostr"
+},
+"streamSha256Hex": {
+"term": "بصمة التدفّق SHA256 الست عشرية",
+"kind": "fun (دالة)",
+"pkg": "nostr"
+},
+"relaysLock": {
+"term": "قفل قائمة المُرحِّلات",
+"kind": "property (خاصية)",
+"pkg": "nostr"
+},
+"ioScope": {
+"term": "نطاق الإدخال/الإخراج",
+"kind": "property (خاصية)",
+"pkg": "nostr"
+},
+"ASSET_FILE_URL": {
+"term": "رابط ملف الأصل",
+"kind": "const (ثابت)",
+"pkg": "nostr"
+},
+"ASSET_FILE": {
+"term": "ملف الأصل",
+"kind": "const (ثابت)",
+"pkg": "nostr"
+},
+"DOWNLOADED_FILE": {
+"term": "الملف المُنزَّل",
+"kind": "const (ثابت)",
+"pkg": "nostr"
+},
+"KEY_LAST_UPDATE_MS": {
+"term": "مفتاح وقت آخر تحديث",
+"kind": "const (ثابت)",
+"pkg": "nostr"
+},
+"ONE_DAY_MS": {
+"term": "ميلي ثواني اليوم الواحد",
+"kind": "property (خاصية)",
+"pkg": "nostr"
+},
+"GCSFilter": {
+"term": "مرشّح المجموعة المرمّزة بغولومب (GCSFilter)",
+"kind": "object",
+"pkg": "sync"
+},
+"Params": {
+"term": "المَعلَمات (Params)",
+"kind": "data class",
+"pkg": "sync"
+},
+"deriveP": {
+"term": "اشتقاق المَعلَمة (deriveP)",
+"kind": "function",
+"pkg": "sync"
+},
+"targetFpr": {
+"term": "معدّل الإيجابيات الكاذبة المستهدف (targetFpr)",
+"kind": "parameter",
+"pkg": "sync"
+},
+"estimateMaxElementsForSize": {
+"term": "تقدير أقصى عدد عناصر لحجم (estimateMaxElementsForSize)",
+"kind": "function",
+"pkg": "sync"
+},
+"buildFilter": {
+"term": "بناء المرشّح (buildFilter)",
+"kind": "function",
+"pkg": "sync"
+},
+"maxBytes": {
+"term": "أقصى عدد بايتات (maxBytes)",
+"kind": "parameter",
+"pkg": "sync"
+},
+"nCap": {
+"term": "سقف العدد (nCap)",
+"kind": "variable",
+"pkg": "sync"
+},
+"trimmedN": {
+"term": "العدد المقتطَع (trimmedN)",
+"kind": "variable",
+"pkg": "sync"
+},
+"finalM": {
+"term": "المدى النهائي (finalM)",
+"kind": "variable",
+"pkg": "sync"
+},
+"mapped": {
+"term": "القيم المُحوَّلة (mapped)",
+"kind": "variable",
+"pkg": "sync"
+},
+"encoded": {
+"term": "التيار المُرمَّز (encoded)",
+"kind": "variable",
+"pkg": "sync"
+},
+"decodeToSortedSet": {
+"term": "فك الترميز إلى مجموعة مرتّبة (decodeToSortedSet)",
+"kind": "function",
+"pkg": "sync"
+},
+"mask": {
+"term": "القناع (mask)",
+"kind": "variable",
+"pkg": "sync"
+},
+"q": {
+"term": "الخارج (q)",
+"kind": "variable",
+"pkg": "sync"
+},
+"r": {
+"term": "الباقي (r)",
+"kind": "variable",
+"pkg": "sync"
+},
+"x": {
+"term": "الفرق المُسترجَع (x)",
+"kind": "variable",
+"pkg": "sync"
+},
+"sortedValues": {
+"term": "القيم المرتّبة (sortedValues)",
+"kind": "parameter",
+"pkg": "sync"
+},
+"candidate": {
+"term": "القيمة المرشّحة (candidate)",
+"kind": "parameter",
+"pkg": "sync"
+},
+"h64": {
+"term": "التجزئة إلى 64 بت (h64)",
+"kind": "function",
+"pkg": "sync"
+},
+"delta": {
+"term": "الفرق (delta)",
+"kind": "variable",
+"pkg": "sync"
+},
+"BitWriter": {
+"term": "كاتب البتات (BitWriter)",
+"kind": "class",
+"pkg": "sync"
+},
+"writeBit": {
+"term": "كتابة بت (writeBit)",
+"kind": "function",
+"pkg": "sync"
+},
+"writeBits": {
+"term": "كتابة بتات (writeBits)",
+"kind": "function",
+"pkg": "sync"
+},
+"BitReader": {
+"term": "قارئ البتات (BitReader)",
+"kind": "class",
+"pkg": "sync"
+},
+"lastWasEOF": {
+"term": "بلوغ نهاية البيانات (lastWasEOF)",
+"kind": "property",
+"pkg": "sync"
+},
+"eof": {
+"term": "نهاية الملف (eof)",
+"kind": "function",
+"pkg": "sync"
+},
+"readBit": {
+"term": "قراءة بت (readBit)",
+"kind": "function",
+"pkg": "sync"
+},
+"readBits": {
+"term": "قراءة بتات (readBits)",
+"kind": "function",
+"pkg": "sync"
+},
+"GossipSyncManager": {
+"term": "مدير مزامنة النميمة",
+"kind": "class",
+"pkg": "sync"
+},
+"Delegate": {
+"term": "واجهة المفوّض",
+"kind": "interface",
+"pkg": "sync"
+},
+"ConfigProvider": {
+"term": "مزوّد الإعدادات",
+"kind": "interface",
+"pkg": "sync"
+},
+"signPacketForBroadcast": {
+"term": "توقيع الحزمة للبثّ",
+"kind": "method",
+"pkg": "sync"
+},
+"seenCapacity": {
+"term": "سعة المرئيّات",
+"kind": "method",
+"pkg": "sync"
+},
+"gcsMaxBytes": {
+"term": "أقصى بايتات GCS",
+"kind": "method",
+"pkg": "sync"
+},
+"gcsTargetFpr": {
+"term": "معدّل الإيجابيات الكاذبة المستهدف",
+"kind": "method",
+"pkg": "sync"
+},
+"configProvider": {
+"term": "مزوّد الإعدادات",
+"kind": "field",
+"pkg": "sync"
+},
+"messages": {
+"term": "خريطة الرسائل البثّية",
+"kind": "field",
+"pkg": "sync"
+},
+"latestAnnouncementByPeer": {
+"term": "أحدث إعلان لكل نظير",
+"kind": "field",
+"pkg": "sync"
+},
+"periodicJob": {
+"term": "المهمة الدورية",
+"kind": "field",
+"pkg": "sync"
+},
+"cleanupJob": {
+"term": "مهمة التنظيف",
+"kind": "field",
+"pkg": "sync"
+},
+"defaultMaxBytes": {
+"term": "أقصى بايتات افتراضي",
+"kind": "field",
+"pkg": "sync"
+},
+"defaultFpr": {
+"term": "معدّل الإيجابيات الكاذبة الافتراضي",
+"kind": "field",
+"pkg": "sync"
+},
+"scheduleInitialSync": {
+"term": "جدولة المزامنة الأولية",
+"kind": "method",
+"pkg": "sync"
+},
+"scheduleInitialSyncToPeer": {
+"term": "جدولة المزامنة الأولية إلى نظير",
+"kind": "method",
+"pkg": "sync"
+},
+"onPublicPacketSeen": {
+"term": "عند رؤية حزمة عامة",
+"kind": "method",
+"pkg": "sync"
+},
+"sendRequestSync": {
+"term": "إرسال طلب المزامنة",
+"kind": "method",
+"pkg": "sync"
+},
+"sendRequestSyncToPeer": {
+"term": "إرسال طلب المزامنة إلى نظير",
+"kind": "method",
+"pkg": "sync"
+},
+"buildGcsPayload": {
+"term": "بناء حمولة GCS",
+"kind": "method",
+"pkg": "sync"
+},
+"pruneStaleAnnouncements": {
+"term": "تقليم الإعلانات البائتة",
+"kind": "method",
+"pkg": "sync"
+},
+"removeAnnouncementForPeer": {
+"term": "إزالة إعلان النظير",
+"kind": "method",
+"pkg": "sync"
+},
+"hexToBytes": {
+"term": "تحويل ست‑عشري إلى بايتات",
+"kind": "method",
+"pkg": "sync"
+},
+"mightContain": {
+"term": "قد يحتوي",
+"kind": "method",
+"pkg": "sync"
+},
+"CLEANUP_INTERVAL_MS": {
+"term": "فترة التنظيف",
+"kind": "constant",
+"pkg": "sync"
+},
+"computeIdBytes": {
+"term": "حساب بايتات المعرّف (computeIdBytes)",
+"kind": "function",
+"pkg": "sync"
+},
+"computeIdHex": {
+"term": "حساب المعرّف بالنظام الست عشري (computeIdHex)",
+"kind": "function",
+"pkg": "sync"
+},
+"packet.type": {
+"term": "نوع الحُزمة (type)",
+"kind": "field",
+"pkg": "sync"
+},
+"packet.senderID": {
+"term": "معرّف المُرسِل (senderID)",
+"kind": "field",
+"pkg": "sync"
+},
+"packet.timestamp": {
+"term": "الطابع الزمني (timestamp)",
+"kind": "field",
+"pkg": "sync"
+},
+"packet.payload": {
+"term": "الحمولة (payload)",
+"kind": "field",
+"pkg": "sync"
+},
+"digest": {
+"term": "الخلاصة (digest)",
+"kind": "variable",
+"pkg": "sync"
+},
+"SHA-256": {
+"term": "خوارزمية التجزئة SHA-256",
+"kind": "constant",
+"pkg": "sync"
+},
+"DEFAULT_FILTER_BYTES": {
+"term": "بايتات المرشّح الافتراضية",
+"kind": "const val (Int)",
+"pkg": "sync"
+},
+"DEFAULT_FPR_PERCENT": {
+"term": "النسبة المئوية الافتراضية لمعدّل الإيجابيات الكاذبة (FPR)",
+"kind": "const val (Double)",
+"pkg": "sync"
+},
+"AndroidGeocoderProvider": {
+"term": "مزوّد المُرَمِّز الجغرافي لأندرويد (AndroidGeocoderProvider)",
+"kind": "class",
+"pkg": "geohash"
+},
+"GeocoderProvider": {
+"term": "واجهة مزوّد المُرَمِّز الجغرافي (GeocoderProvider)",
+"kind": "interface",
+"pkg": "geohash"
+},
+"Geocoder": {
+"term": "المُرَمِّز الجغرافي (Geocoder)",
+"kind": "class",
+"pkg": "geohash"
+},
+"geocoder": {
+"term": "كائن المُرَمِّز الجغرافي (geocoder)",
+"kind": "property",
+"pkg": "geohash"
+},
+"getFromLocation": {
+"term": "الجلب من الموقع (getFromLocation)",
+"kind": "function",
+"pkg": "geohash"
+},
+"latitude": {
+"term": "خط العرض (latitude)",
+"kind": "parameter",
+"pkg": "geohash"
+},
+"longitude": {
+"term": "خط الطول (longitude)",
+"kind": "parameter",
+"pkg": "geohash"
+},
+"maxResults": {
+"term": "الحد الأقصى للنتائج (maxResults)",
+"kind": "parameter",
+"pkg": "geohash"
+},
+"Address": {
+"term": "العنوان (Address)",
+"kind": "class",
+"pkg": "geohash"
+},
+"suspendCancellableCoroutine": {
+"term": "الروتين المتعاون القابل للتعليق والإلغاء (suspendCancellableCoroutine)",
+"kind": "function",
+"pkg": "geohash"
+},
+"cont": {
+"term": "الاستمرارية (cont/continuation)",
+"kind": "parameter",
+"pkg": "geohash"
+},
+"Geocoder.GeocodeListener": {
+"term": "مُستمِع الترميز الجغرافي (Geocoder.GeocodeListener)",
+"kind": "interface",
+"pkg": "geohash"
+},
+"onGeocode": {
+"term": "عند الترميز الجغرافي (onGeocode)",
+"kind": "function",
+"pkg": "geohash"
+},
+"onError": {
+"term": "عند الخطأ (onError)",
+"kind": "function",
+"pkg": "geohash"
+},
+"Build.VERSION_CODES.TIRAMISU": {
+"term": "رمز إصدار تيراميسو (Build.VERSION_CODES.TIRAMISU)",
+"kind": "constant",
+"pkg": "geohash"
+},
+"Log.e": {
+"term": "تسجيل الخطأ (Log.e)",
+"kind": "function",
+"pkg": "geohash"
+},
+"Locale": {
+"term": "المحلّيّة (Locale)",
+"kind": "class",
+"pkg": "geohash"
+},
+"FusedLocationProvider": {
+"term": "مزوّد الموقع المدمج",
+"kind": "class",
+"pkg": "geohash"
+},
+"LocationProvider": {
+"term": "واجهة مزوّد الموقع",
+"kind": "interface",
+"pkg": "geohash"
+},
+"fusedLocationClient": {
+"term": "عميل الموقع المدمج",
+"kind": "property",
+"pkg": "geohash"
+},
+"FusedLocationProviderClient": {
+"term": "عميل مزوّد الموقع المدمج",
+"kind": "type",
+"pkg": "geohash"
+},
+"activeCallbacks": {
+"term": "دوال الاستدعاء النشطة",
+"kind": "property",
+"pkg": "geohash"
+},
+"LocationCallback": {
+"term": "دالة استدعاء الموقع",
+"kind": "type",
+"pkg": "geohash"
+},
+"hasLocationPermission": {
+"term": "هل يملك إذن الموقع",
+"kind": "function",
+"pkg": "geohash"
+},
+"ACCESS_FINE_LOCATION": {
+"term": "إذن الموقع الدقيق",
+"kind": "permission",
+"pkg": "geohash"
+},
+"ACCESS_COARSE_LOCATION": {
+"term": "إذن الموقع التقريبي",
+"kind": "permission",
+"pkg": "geohash"
+},
+"getLastKnownLocation": {
+"term": "احصل على آخر موقع معروف",
+"kind": "function",
+"pkg": "geohash"
+},
+"requestFreshLocation": {
+"term": "اطلب موقعاً جديداً",
+"kind": "function",
+"pkg": "geohash"
+},
+"requestLocationUpdates": {
+"term": "اطلب تحديثات الموقع",
+"kind": "function",
+"pkg": "geohash"
+},
+"removeLocationUpdates": {
+"term": "أزِل تحديثات الموقع",
+"kind": "function",
+"pkg": "geohash"
+},
+"callback": {
+"term": "دالة الاستدعاء الراجعة",
+"kind": "parameter",
+"pkg": "geohash"
+},
+"CurrentLocationRequest": {
+"term": "طلب الموقع الحالي",
+"kind": "type",
+"pkg": "geohash"
+},
+"LocationRequest": {
+"term": "طلب الموقع",
+"kind": "type",
+"pkg": "geohash"
+},
+"Priority.PRIORITY_HIGH_ACCURACY": {
+"term": "أولوية الدقة العالية",
+"kind": "const",
+"pkg": "geohash"
+},
+"intervalMs": {
+"term": "الفترة بالميلّي ثانية",
+"kind": "parameter",
+"pkg": "geohash"
+},
+"minDistanceMeters": {
+"term": "أدنى مسافة بالأمتار",
+"kind": "parameter",
+"pkg": "geohash"
+},
+"onLocationResult": {
+"term": "عند نتيجة الموقع",
+"kind": "function",
+"pkg": "geohash"
+},
+"LocationResult": {
+"term": "نتيجة الموقع",
+"kind": "type",
+"pkg": "geohash"
+},
+"Looper.getMainLooper": {
+"term": "حلقة الرسائل الرئيسة",
+"kind": "function",
+"pkg": "geohash"
+},
+"GeocoderFactory": {
+"term": "مصنع المُرمِّز الجغرافي (GeocoderFactory)",
+"kind": "object",
+"pkg": "geohash"
+},
+"OpenStreetMapGeocoderProvider": {
+"term": "مزوِّد مُرمِّز OpenStreetMap (OpenStreetMapGeocoderProvider)",
+"kind": "class",
+"pkg": "geohash"
+},
+"Geocoder.isPresent": {
+"term": "فحص توفّر المُرمِّز (Geocoder.isPresent)",
+"kind": "function",
+"pkg": "geohash"
+},
+"com.bitchat.android.geohash": {
+"term": "حزمة جيوهاش (geohash package)",
+"kind": "حزمة (package)",
+"pkg": "geohash"
+},
+"Geohash": {
+"term": "كائن الجيوهاش (Geohash)",
+"kind": "object",
+"pkg": "geohash"
+},
+"base32Chars": {
+"term": "أحرف القاعدة ٣٢ (base32Chars)",
+"kind": "property",
+"pkg": "geohash"
+},
+"charToValue": {
+"term": "خريطة الحرف إلى القيمة (charToValue)",
+"kind": "property",
+"pkg": "geohash"
+},
+"Bounds": {
+"term": "الحدود (Bounds)",
+"kind": "data class",
+"pkg": "geohash"
+},
+"latMin": {
+"term": "أدنى خط عرض (latMin)",
+"kind": "property",
+"pkg": "geohash"
+},
+"latMax": {
+"term": "أقصى خط عرض (latMax)",
+"kind": "property",
+"pkg": "geohash"
+},
+"lonMin": {
+"term": "أدنى خط طول (lonMin)",
+"kind": "property",
+"pkg": "geohash"
+},
+"lonMax": {
+"term": "أقصى خط طول (lonMax)",
+"kind": "property",
+"pkg": "geohash"
+},
+"precision": {
+"term": "الدقّة (precision)",
+"kind": "parameter",
+"pkg": "geohash"
+},
+"latInterval": {
+"term": "مجال خط العرض (latInterval)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"lonInterval": {
+"term": "مجال خط الطول (lonInterval)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"isEven": {
+"term": "هل زوجي (isEven)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"bit": {
+"term": "البِت (bit)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"ch": {
+"term": "الحرف العددي (ch)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"mid": {
+"term": "الوسط (mid)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"decodeToCenter": {
+"term": "فكّ الترميز إلى المركز (decodeToCenter)",
+"kind": "function",
+"pkg": "geohash"
+},
+"latCenter": {
+"term": "مركز خط العرض (latCenter)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"lonCenter": {
+"term": "مركز خط الطول (lonCenter)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"decodeToBounds": {
+"term": "فكّ الترميز إلى الحدود (decodeToBounds)",
+"kind": "function",
+"pkg": "geohash"
+},
+"cd": {
+"term": "قيمة الحرف (cd)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"neighborsSamePrecision": {
+"term": "المجاورات بنفس الدقّة (neighborsSamePrecision)",
+"kind": "function",
+"pkg": "geohash"
+},
+"wrapLon": {
+"term": "لفّ خط الطول (wrapLon)",
+"kind": "function",
+"pkg": "geohash"
+},
+"neighbors": {
+"term": "المجاورات (neighbors)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"dLat": {
+"term": "فرق خط العرض (dLat)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"dLon": {
+"term": "فرق خط الطول (dLon)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"centerLat": {
+"term": "مركز خط عرض المجاورة (centerLat)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"centerLon": {
+"term": "مركز خط طول المجاورة (centerLon)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"enc": {
+"term": "الترميز الناتج (enc)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"GeohashBookmarksStore": {
+"term": "مخزن مفضّلات الجيوهاش",
+"kind": "class",
+"pkg": "geohash"
+},
+"STORE_KEY": {
+"term": "مفتاح حفظ المفضّلات",
+"kind": "const",
+"pkg": "geohash"
+},
+"NAMES_STORE_KEY": {
+"term": "مفتاح حفظ الأسماء",
+"kind": "const",
+"pkg": "geohash"
+},
+"allowedChars": {
+"term": "الأحرف المسموحة",
+"kind": "property",
+"pkg": "geohash"
+},
+"normalize": {
+"term": "التطبيع",
+"kind": "function",
+"pkg": "geohash"
+},
+"membership": {
+"term": "مجموعة العضوية",
+"kind": "property",
+"pkg": "geohash"
+},
+"_bookmarks": {
+"term": "تدفّق المفضّلات الداخلي",
+"kind": "property",
+"pkg": "geohash"
+},
+"bookmarks": {
+"term": "المفضّلات",
+"kind": "property",
+"pkg": "geohash"
+},
+"_bookmarkNames": {
+"term": "تدفّق أسماء المفضّلات الداخلي",
+"kind": "property",
+"pkg": "geohash"
+},
+"bookmarkNames": {
+"term": "أسماء المفضّلات",
+"kind": "property",
+"pkg": "geohash"
+},
+"resolving": {
+"term": "قيد الحل",
+"kind": "property",
+"pkg": "geohash"
+},
+"load": {
+"term": "التحميل",
+"kind": "function",
+"pkg": "geohash"
+},
+"isBookmarked": {
+"term": "هل هو مفضّل",
+"kind": "function",
+"pkg": "geohash"
+},
+"toggle": {
+"term": "التبديل",
+"kind": "function",
+"pkg": "geohash"
+},
+"add": {
+"term": "الإضافة",
+"kind": "function",
+"pkg": "geohash"
+},
+"remove": {
+"term": "الإزالة",
+"kind": "function",
+"pkg": "geohash"
+},
+"resolveNameIfNeeded": {
+"term": "حل الاسم عند الحاجة",
+"kind": "function",
+"pkg": "geohash"
+},
+"pickNameForLength": {
+"term": "اختيار الاسم حسب الطول",
+"kind": "function",
+"pkg": "geohash"
+},
+"persist": {
+"term": "حفظ المفضّلات",
+"kind": "function",
+"pkg": "geohash"
+},
+"persistNames": {
+"term": "حفظ الأسماء",
+"kind": "function",
+"pkg": "geohash"
+},
+"Geohash.decodeToBounds": {
+"term": "فك الجيوهاش إلى حدود",
+"kind": "function",
+"pkg": "geohash"
+},
+"Geohash.decodeToCenter": {
+"term": "فك الجيوهاش إلى مركز",
+"kind": "function",
+"pkg": "geohash"
+},
+"GeohashChannelLevel": {
+"term": "مستوى قناة الجيوهاش",
+"kind": "enum class",
+"pkg": "geohash"
+},
+"BUILDING": {
+"term": "المبنى",
+"kind": "enum entry",
+"pkg": "geohash"
+},
+"BLOCK": {
+"term": "الحَيّ السكني",
+"kind": "enum entry",
+"pkg": "geohash"
+},
+"NEIGHBORHOOD": {
+"term": "الجوار",
+"kind": "enum entry",
+"pkg": "geohash"
+},
+"CITY": {
+"term": "المدينة",
+"kind": "enum entry",
+"pkg": "geohash"
+},
+"PROVINCE": {
+"term": "المحافظة",
+"kind": "enum entry",
+"pkg": "geohash"
+},
+"REGION": {
+"term": "المنطقة",
+"kind": "enum entry",
+"pkg": "geohash"
+},
+"allCases": {
+"term": "كل الحالات",
+"kind": "function",
+"pkg": "geohash"
+},
+"GeohashChannel": {
+"term": "قناة الجيوهاش",
+"kind": "data class",
+"pkg": "geohash"
+},
+"level": {
+"term": "المستوى",
+"kind": "property",
+"pkg": "geohash"
+},
+"ChannelID": {
+"term": "معرّف القناة",
+"kind": "sealed class",
+"pkg": "geohash"
+},
+"Location": {
+"term": "الموقع",
+"kind": "data class",
+"pkg": "geohash"
+},
+"fromPersisted": {
+"term": "من المحفوظ",
+"kind": "function",
+"pkg": "geohash"
+},
+"nostrGeohashTag": {
+"term": "وسم جيوهاش نوستر",
+"kind": "property",
+"pkg": "geohash"
+},
+"valueOf": {
+"term": "قيمة من نصّ",
+"kind": "function",
+"pkg": "geohash"
+},
+"PermissionState": {
+"term": "حالة الإذن",
+"kind": "enum",
+"pkg": "geohash"
+},
+"DENIED": {
+"term": "مرفوض",
+"kind": "enum-constant",
+"pkg": "geohash"
+},
+"AUTHORIZED": {
+"term": "مُصرَّح به",
+"kind": "enum-constant",
+"pkg": "geohash"
+},
+"locationManager": {
+"term": "مدير الموقع",
+"kind": "field",
+"pkg": "geohash"
+},
+"locationProvider": {
+"term": "مزوّد الموقع",
+"kind": "field",
+"pkg": "geohash"
+},
+"geocoderProvider": {
+"term": "مزوّد المرمِّز الجغرافي",
+"kind": "field",
+"pkg": "geohash"
+},
+"lastLocation": {
+"term": "آخر موقع",
+"kind": "field",
+"pkg": "geohash"
+},
+"geocodingJob": {
+"term": "مهمّة الترميز الجغرافي",
+"kind": "field",
+"pkg": "geohash"
+},
+"checkSystemLocationEnabled": {
+"term": "فحص تفعيل موقع النظام",
+"kind": "function",
+"pkg": "geohash"
+},
+"locationStateReceiver": {
+"term": "مستقبِل حالة الموقع",
+"kind": "field",
+"pkg": "geohash"
+},
+"locationUpdateCallback": {
+"term": "نداء تحديث الموقع",
+"kind": "field",
+"pkg": "geohash"
+},
+"permissionState": {
+"term": "تدفّق حالة الإذن",
+"kind": "property",
+"pkg": "geohash"
+},
+"availableChannels": {
+"term": "القنوات المتاحة",
+"kind": "property",
+"pkg": "geohash"
+},
+"selectedChannel": {
+"term": "القناة المختارة",
+"kind": "property",
+"pkg": "geohash"
+},
+"locationNames": {
+"term": "أسماء المواقع",
+"kind": "property",
+"pkg": "geohash"
+},
+"isLoadingLocation": {
+"term": "جارٍ تحميل الموقع",
+"kind": "property",
+"pkg": "geohash"
+},
+"locationServicesEnabled": {
+"term": "تفعيل خدمات الموقع (مفتاح التطبيق)",
+"kind": "property",
+"pkg": "geohash"
+},
+"systemLocationEnabled": {
+"term": "تفعيل موقع النظام",
+"kind": "property",
+"pkg": "geohash"
+},
+"effectiveLocationEnabled": {
+"term": "التفعيل الفعلي للموقع",
+"kind": "property",
+"pkg": "geohash"
+},
+"enableLocationChannels": {
+"term": "تفعيل قنوات الموقع",
+"kind": "function",
+"pkg": "geohash"
+},
+"refreshChannels": {
+"term": "تحديث القنوات",
+"kind": "function",
+"pkg": "geohash"
+},
+"beginLiveRefresh": {
+"term": "بدء التحديث الحيّ",
+"kind": "function",
+"pkg": "geohash"
+},
+"endLiveRefresh": {
+"term": "إنهاء التحديث الحيّ",
+"kind": "function",
+"pkg": "geohash"
+},
+"select": {
+"term": "اختيار القناة",
+"kind": "function",
+"pkg": "geohash"
+},
+"setTeleported": {
+"term": "ضبط حالة الانتقال",
+"kind": "function",
+"pkg": "geohash"
+},
+"enableLocationServices": {
+"term": "تفعيل خدمات الموقع",
+"kind": "function",
+"pkg": "geohash"
+},
+"disableLocationServices": {
+"term": "تعطيل خدمات الموقع",
+"kind": "function",
+"pkg": "geohash"
+},
+"isLocationServicesEnabled": {
+"term": "هل خدمات الموقع مفعَّلة",
+"kind": "function",
+"pkg": "geohash"
+},
+"requestOneShotLocation": {
+"term": "طلب موقع لمرّة واحدة",
+"kind": "function",
+"pkg": "geohash"
+},
+"onLocationUpdated": {
+"term": "عند تحديث الموقع",
+"kind": "function",
+"pkg": "geohash"
+},
+"getCurrentPermissionStatus": {
+"term": "جلب حالة الإذن الحالية",
+"kind": "function",
+"pkg": "geohash"
+},
+"checkAndSyncPermission": {
+"term": "فحص ومزامنة الإذن",
+"kind": "function",
+"pkg": "geohash"
+},
+"computeChannels": {
+"term": "حساب القنوات",
+"kind": "function",
+"pkg": "geohash"
+},
+"reverseGeocodeIfNeeded": {
+"term": "الترميز الجغرافي العكسي عند الحاجة",
+"kind": "function",
+"pkg": "geohash"
+},
+"namesByLevel": {
+"term": "الأسماء حسب المستوى",
+"kind": "function",
+"pkg": "geohash"
+},
+"saveChannelSelection": {
+"term": "حفظ اختيار القناة",
+"kind": "function",
+"pkg": "geohash"
+},
+"loadPersistedChannelSelection": {
+"term": "تحميل اختيار القناة المحفوظ",
+"kind": "function",
+"pkg": "geohash"
+},
+"PersistedChannel": {
+"term": "القناة المحفوظة",
+"kind": "data-class",
+"pkg": "geohash"
+},
+"toChannel": {
+"term": "تحويل إلى قناة",
+"kind": "function",
+"pkg": "geohash"
+},
+"clearPersistedChannel": {
+"term": "مسح القناة المحفوظة",
+"kind": "function",
+"pkg": "geohash"
+},
+"saveLocationServicesState": {
+"term": "حفظ حالة خدمات الموقع",
+"kind": "function",
+"pkg": "geohash"
+},
+"loadLocationServicesState": {
+"term": "تحميل حالة خدمات الموقع",
+"kind": "function",
+"pkg": "geohash"
+},
+"ChannelID.Mesh": {
+"term": "قناة شبكة المِش",
+"kind": "type-variant",
+"pkg": "geohash"
+},
+"Geohash.encode": {
+"term": "ترميز التجزئة الجغرافية",
+"kind": "function",
+"pkg": "geohash"
+},
+"SystemLocationProvider": {
+"term": "مزوّد موقع النظام",
+"kind": "class",
+"pkg": "geohash"
+},
+"mapToAddress": {
+"term": "دالة التحويل إلى عنوان (mapToAddress)",
+"kind": "function",
+"pkg": "geohash"
+},
+"OsmResponse": {
+"term": "صنف استجابة خرائط الشارع المفتوحة (OsmResponse)",
+"kind": "data class",
+"pkg": "geohash"
+},
+"OsmAddress": {
+"term": "صنف عنوان خرائط الشارع المفتوحة (OsmAddress)",
+"kind": "data class",
+"pkg": "geohash"
+},
+"Request": {
+"term": "صنف الطلب (Request)",
+"kind": "class",
+"pkg": "geohash"
+},
+"withContext": {
+"term": "دالة تبديل السياق (withContext)",
+"kind": "function",
+"pkg": "geohash"
+},
+"userAgent": {
+"term": "وكيل المستخدم (userAgent)",
+"kind": "property",
+"pkg": "geohash"
+},
+"url": {
+"term": "عنوان الطلب (url)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"isSuccessful": {
+"term": "خاصية نجاح الاستجابة (isSuccessful)",
+"kind": "property",
+"pkg": "geohash"
+},
+"activeListeners": {
+"term": "المُستمِعون النشِطون",
+"kind": "property",
+"pkg": "geohash"
+},
+"activeOneShotListeners": {
+"term": "مُستمِعو اللقطة الواحدة النشِطون",
+"kind": "property",
+"pkg": "geohash"
+},
+"activeOneShotRunnables": {
+"term": "مهامّ اللقطة الواحدة النشِطة",
+"kind": "property",
+"pkg": "geohash"
+},
+"bestLocation": {
+"term": "أفضل موقع",
+"kind": "variable",
+"pkg": "geohash"
+},
+"providers": {
+"term": "المزوّدون",
+"kind": "variable",
+"pkg": "geohash"
+},
+"providerFound": {
+"term": "وُجِد مزوّد",
+"kind": "variable",
+"pkg": "geohash"
+},
+"registered": {
+"term": "مُسجَّل",
+"kind": "variable",
+"pkg": "geohash"
+},
+"listener": {
+"term": "المُستمِع",
+"kind": "variable",
+"pkg": "geohash"
+},
+"timeoutRunnable": {
+"term": "مهمّة المهلة",
+"kind": "variable",
+"pkg": "geohash"
+},
+"LocationManager": {
+"term": "مدير الموقع (نظامي)",
+"kind": "class",
+"pkg": "geohash"
+},
+"LocationListener": {
+"term": "مُستمِع الموقع",
+"kind": "interface",
+"pkg": "geohash"
+},
+"onLocationChanged": {
+"term": "عند تغيّر الموقع",
+"kind": "function",
+"pkg": "geohash"
+},
+"isProviderEnabled": {
+"term": "هل المزوّد مُفعّل",
+"kind": "method",
+"pkg": "geohash"
+},
+"getCurrentLocation": {
+"term": "جلب الموقع الحالي",
+"kind": "method",
+"pkg": "geohash"
+},
+"requestSingleUpdate": {
+"term": "طلب تحديث واحد",
+"kind": "method",
+"pkg": "geohash"
+},
+"removeUpdates": {
+"term": "إزالة التحديثات",
+"kind": "method",
+"pkg": "geohash"
+},
+"FavoriteRelationship": {
+"term": "علاقة المفضّلة",
+"kind": "data class",
+"pkg": "favorites"
+},
+"peerNoisePublicKey": {
+"term": "مفتاح Noise العام للنِّد",
+"kind": "property",
+"pkg": "favorites"
+},
+"peerNostrPublicKey": {
+"term": "مفتاح Nostr العام للنِّد",
+"kind": "property",
+"pkg": "favorites"
+},
+"peerNickname": {
+"term": "كنية النِّد",
+"kind": "property",
+"pkg": "favorites"
+},
+"theyFavoritedUs": {
+"term": "هم فضّلونا",
+"kind": "property",
+"pkg": "favorites"
+},
+"favoritedAt": {
+"term": "تاريخ التفضيل",
+"kind": "property",
+"pkg": "favorites"
+},
+"lastUpdated": {
+"term": "آخر تحديث",
+"kind": "property",
+"pkg": "favorites"
+},
+"isMutual": {
+"term": "التفضيل المتبادل",
+"kind": "computed property",
+"pkg": "favorites"
+},
+"FavoritesChangeListener": {
+"term": "مستمع تغيّر المفضّلات",
+"kind": "interface",
+"pkg": "favorites"
+},
+"onFavoriteChanged": {
+"term": "عند تغيّر مفضّل",
+"kind": "function",
+"pkg": "favorites"
+},
+"onAllCleared": {
+"term": "عند مسح الكل",
+"kind": "function",
+"pkg": "favorites"
+},
+"stateManager": {
+"term": "مدير الحالة الآمنة",
+"kind": "property",
+"pkg": "favorites"
+},
+"favorites": {
+"term": "خريطة المفضّلات",
+"kind": "property",
+"pkg": "favorites"
+},
+"peerIdIndex": {
+"term": "فهرس معرّفات الأنداد",
+"kind": "property",
+"pkg": "favorites"
+},
+"listeners": {
+"term": "قائمة المستمعين",
+"kind": "property",
+"pkg": "favorites"
+},
+"FAVORITES_KEY": {
+"term": "مفتاح تخزين المفضّلات",
+"kind": "const",
+"pkg": "favorites"
+},
+"PEERID_INDEX_KEY": {
+"term": "مفتاح تخزين فهرس الأنداد",
+"kind": "const",
+"pkg": "favorites"
+},
+"updateNostrPublicKey": {
+"term": "تحديث مفتاح Nostr العام",
+"kind": "function",
+"pkg": "favorites"
+},
+"updateNostrPublicKeyForPeerID": {
+"term": "تحديث مفتاح Nostr لمعرّف نِدّ",
+"kind": "function",
+"pkg": "favorites"
+},
+"updateFavoriteStatus": {
+"term": "تحديث حالة التفضيل",
+"kind": "function",
+"pkg": "favorites"
+},
+"updatePeerFavoritedUs": {
+"term": "تحديث راية تفضيل النِّد لنا",
+"kind": "function",
+"pkg": "favorites"
+},
+"getMutualFavorites": {
+"term": "جلب المفضّلين المتبادلين",
+"kind": "function",
+"pkg": "favorites"
+},
+"getOurFavorites": {
+"term": "جلب مفضّلينا",
+"kind": "function",
+"pkg": "favorites"
+},
+"clearAllFavorites": {
+"term": "مسح كل المفضّلات",
+"kind": "function",
+"pkg": "favorites"
+},
+"findNoiseKey": {
+"term": "إيجاد مفتاح Noise",
+"kind": "function",
+"pkg": "favorites"
+},
+"findNostrPubkey": {
+"term": "إيجاد مفتاح Nostr العام",
+"kind": "function",
+"pkg": "favorites"
+},
+"loadFavorites": {
+"term": "تحميل المفضّلات",
+"kind": "function",
+"pkg": "favorites"
+},
+"saveFavorites": {
+"term": "حفظ المفضّلات",
+"kind": "function",
+"pkg": "favorites"
+},
+"loadPeerIdIndex": {
+"term": "تحميل فهرس الأنداد",
+"kind": "function",
+"pkg": "favorites"
+},
+"savePeerIdIndex": {
+"term": "حفظ فهرس الأنداد",
+"kind": "function",
+"pkg": "favorites"
+},
+"addListener": {
+"term": "إضافة مستمع",
+"kind": "function",
+"pkg": "favorites"
+},
+"removeListener": {
+"term": "إزالة مستمع",
+"kind": "function",
+"pkg": "favorites"
+},
+"notifyChanged": {
+"term": "الإبلاغ بالتغيير",
+"kind": "function",
+"pkg": "favorites"
+},
+"notifyAllCleared": {
+"term": "الإبلاغ بمسح الكل",
+"kind": "function",
+"pkg": "favorites"
+},
+"normalizeNostrKeyToHex": {
+"term": "تطبيع مفتاح Nostr إلى سداسي",
+"kind": "function",
+"pkg": "favorites"
+},
+"FavoriteRelationshipData": {
+"term": "بيانات علاقة المفضّلة",
+"kind": "data class",
+"pkg": "favorites"
+},
+"fromFavoriteRelationship": {
+"term": "من علاقة المفضّلة",
+"kind": "function",
+"pkg": "favorites"
+},
+"toFavoriteRelationship": {
+"term": "إلى علاقة المفضّلة",
+"kind": "function",
+"pkg": "favorites"
+}
+}
