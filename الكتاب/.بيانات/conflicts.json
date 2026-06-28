@@ -2020,5 +2020,1745 @@
 "رسالة بِتشات",
 "رسالة بيتشات",
 "mesh"
+],
+[
+"encode",
+"الترميز",
+"دالة الترميز (encode)",
+"nostr"
+],
+[
+"decode",
+"فكّ الترميز",
+"دالة فكّ الترميز (decode)",
+"nostr"
+],
+[
+"data",
+"البيانات",
+"البيانات (data)",
+"nostr"
+],
+[
+"PREFS_NAME",
+"اسم التفضيلات",
+"اسم ملف التفضيلات (PREFS_NAME)",
+"nostr"
+],
+[
+"prefs",
+"المفضّلات",
+"التفضيلات المشتركة (prefs)",
+"nostr"
+],
+[
+"initialize",
+"التهيئة",
+"التهيئة (initialize)",
+"nostr"
+],
+[
+"get",
+"قراءة الوضع",
+"الجلب (get)",
+"nostr"
+],
+[
+"clear",
+"المسح",
+"المسح (clear)",
+"nostr"
+],
+[
+"context",
+"السياق",
+"السياق (context)",
+"nostr"
+],
+[
+"ConcurrentHashMap",
+"خريطة التجزئة المتزامنة",
+"خريطة التجزئة المتزامنة (ConcurrentHashMap)",
+"nostr"
+],
+[
+"SharedPreferences",
+"المفضّلات المشتركة",
+"التفضيلات المشتركة (SharedPreferences)",
+"nostr"
+],
+[
+"PREFS_NAME",
+"اسم التفضيلات",
+"اسم ملف التفضيلات (PREFS_NAME)",
+"nostr"
+],
+[
+"prefs",
+"المفضّلات",
+"التفضيلات المشتركة (prefs)",
+"nostr"
+],
+[
+"initialize",
+"التهيئة",
+"التهيئة (initialize)",
+"nostr"
+],
+[
+"set",
+"حفظ الوضع",
+"الضبط (set)",
+"nostr"
+],
+[
+"get",
+"قراءة الوضع",
+"الجلب (get)",
+"nostr"
+],
+[
+"clear",
+"المسح",
+"المسح (clear)",
+"nostr"
+],
+[
+"ConcurrentHashMap",
+"خريطة التجزئة المتزامنة",
+"خريطة التجزئة المتزامنة (ConcurrentHashMap)",
+"nostr"
+],
+[
+"SharedPreferences",
+"المفضّلات المشتركة",
+"التفضيلات المشتركة (SharedPreferences)",
+"nostr"
+],
+[
+"Context",
+"السياق",
+"السياق (Context)",
+"nostr"
+],
+[
+"CoroutineScope",
+"نطاق المتعاونات (CoroutineScope)",
+"نطاق الكوروتين",
+"nostr"
+],
+[
+"NostrIdentityBridge",
+"جسر هويّة نوستر",
+"جسر هوية نوستر",
+"nostr"
+],
+[
+"GeohashAliasRegistry",
+"سجلّ أسماء الجيوهاش المستعارة (GeohashAliasRegistry)",
+"سجل أسماء الجيوهاش البديلة",
+"nostr"
+],
+[
+"GeohashRepository",
+"مستودع الجيوهاش",
+"مستودع الموقع الجغرافي",
+"nostr"
+],
+[
+"NostrIdentityBridge",
+"جسر هويّة نوستر",
+"جسر هوية نوستر",
+"nostr"
+],
+[
+"pubkeyHex",
+"المفتاح العام بالنظام الست عشري (pubkeyHex)",
+"المفتاح العام الست عشري",
+"nostr"
+],
+[
+"NostrRelayManager",
+"مدير مرحّلات نوستر",
+"مدير مُرحّلات نوستر",
+"nostr"
+],
+[
+"NostrIdentityBridge",
+"جسر هويّة نوستر",
+"جسر هوية نوستر",
+"nostr"
+],
+[
+"initialize",
+"التهيئة",
+"دالة التهيئة",
+"nostr"
+],
+[
+"TAG",
+"الوسم",
+"وسم السجل",
+"nostr"
+],
+[
+"context",
+"السياق",
+"سياق التطبيق",
+"nostr"
+],
+[
+"deriveIdentity",
+"اشتقاق الهوية",
+"دالة اشتقاق الهوية",
+"nostr"
+],
+[
+"id",
+"المعرّف",
+"مُعرّف الاشتراك",
+"nostr"
+],
+[
+"getInstance",
+"إحضار المثيل",
+"جالب النسخة المفردة",
+"nostr"
+],
+[
+"getInstance",
+"إحضار المثيل",
+"جالب النسخة الوحيدة",
+"nostr"
+],
+[
+"INSTANCE",
+"المثيل المفرد",
+"النسخة الوحيدة",
+"nostr"
+],
+[
+"nickname",
+"اللقب",
+"الاسم المستعار",
+"nostr"
+],
+[
+"geohash",
+"الجيوهاش (geohash)",
+"الجيوهاش",
+"nostr"
+],
+[
+"scope",
+"النطاق (نطاق الكوروتين)",
+"نطاق الإجراءات المتزامنة",
+"nostr"
+],
+[
+"initialize",
+"التهيئة",
+"تهيئة التبعيات",
+"nostr"
+],
+[
+"send",
+"إرسال",
+"إرسال ملاحظة",
+"nostr"
+],
+[
+"NostrRelayManager",
+"مدير مرحّلات نوستر",
+"مدير مُرحِّلات نوستر",
+"nostr"
+],
+[
+"getInstance",
+"إحضار المثيل",
+"جلب النسخة الوحيدة",
+"nostr"
+],
+[
+"INSTANCE",
+"المثيل المفرد",
+"النسخة الوحيدة",
+"nostr"
+],
+[
+"relayManager",
+"مزوّد مدير المُرحّلات",
+"مدير المُرحِّلات",
+"nostr"
+],
+[
+"NostrRelayManager",
+"مدير مرحّلات نوستر",
+"مدير مُرحِّلات نوستر",
+"nostr"
+],
+[
+"npub",
+"مفتاح نوستر العام",
+"المفتاح العام بصيغة npub",
+"nostr"
+],
+[
+"scope",
+"النطاق (نطاق الكوروتين)",
+"نطاق الإجراءات المتزامنة",
+"nostr"
+],
+[
+"NostrIdentityBridge",
+"جسر هويّة نوستر",
+"جسر هوية نوستر",
+"nostr"
+],
+[
+"Bech32",
+"كائن بيك٣٢ (Bech32)",
+"ترميز Bech32",
+"nostr"
+],
+[
+"sendEvent",
+"دالة إرسال الحدث",
+"إرسال حدث",
+"nostr"
+],
+[
+"subscribe",
+"دالة الاشتراك",
+"الاشتراك",
+"nostr"
+],
+[
+"geohash",
+"الجيوهاش (geohash)",
+"المنطقة الجغرافية المختصرة",
+"nostr"
+],
+[
+"deriveIdentity",
+"اشتقاق الهوية",
+"اشتقاق هوية",
+"nostr"
+],
+[
+"unsubscribe",
+"دالة إلغاء الاشتراك",
+"إلغاء الاشتراك",
+"nostr"
+],
+[
+"handlePrivateMessage",
+"التعامل مع الرسالة الخاصّة",
+"معالجة الرسالة الخاصة",
+"nostr"
+],
+[
+"NostrProofOfWork",
+"إثبات العمل لنوستر",
+"إثبات عمل نوستر",
+"nostr"
+],
+[
+"generateKeyPair",
+"توليد زوج مفاتيح كيرف",
+"توليدُ زوجِ المفاتيح (generateKeyPair)",
+"nostr"
+],
+[
+"dedupe",
+"دالة إزالة التكرار",
+"إزالة التكرار",
+"nostr"
+],
+[
+"geohash",
+"الجيوهاش (geohash)",
+"الجيوهاش (التشفير الجغرافي)",
+"nostr"
+],
+[
+"NostrIdentity",
+"هوية نوستر",
+"هويّة نوستر",
+"nostr"
+],
+[
+"BitchatMessage",
+"رسالة بِتشات",
+"رسالة بِت‑شات",
+"nostr"
+],
+[
+"BitchatFilePacket",
+"حزمة ملف بِتشات",
+"حزمة ملف بِت‑شات",
+"nostr"
+],
+[
+"BitchatPacket",
+"حزمة بِتشات",
+"حزمة بِت‑شات",
+"nostr"
+],
+[
+"ChatState",
+"حالة المحادثة",
+"حالة الدردشة",
+"nostr"
+],
+[
+"GeohashAliasRegistry",
+"سجلّ أسماء الجيوهاش المستعارة (GeohashAliasRegistry)",
+"سجلّ أسماء الجيوهاش المستعارة",
+"nostr"
+],
+[
+"GeohashConversationRegistry",
+"سجل محادثات الجيوهاش (GeohashConversationRegistry)",
+"سجلّ محادثات الجيوهاش",
+"nostr"
+],
+[
+"convKey",
+"مفتاح المحادثة (convKey)",
+"مفتاح المحادثة",
+"nostr"
+],
+[
+"FileUtils",
+"أداة الملفّات",
+"أدوات الملفات",
+"nostr"
+],
+[
+"didReceiveDeliveryAck",
+"استلمَ إقرار تسليم (didReceiveDeliveryAck)",
+"عند استلام إقرار التسليم",
+"nostr"
+],
+[
+"didReceiveReadReceipt",
+"استلمَ إيصال قراءة (didReceiveReadReceipt)",
+"عند استلام إيصال القراءة",
+"nostr"
+],
+[
+"hexStringToByteArray",
+"نص ست عشري إلى مصفوفة بايتات",
+"تحويل النص الست‑عشري إلى مصفوفة بايتات",
+"nostr"
+],
+[
+"PrivateMessagePacket",
+"حزمة الرسالة الخاصة",
+"رزمة الرسالة الخاصة",
+"nostr"
+],
+[
+"BitchatPacket",
+"حزمة بِتشات",
+"رزمة بِت‑تشات",
+"nostr"
+],
+[
+"recipientPeerID",
+"معرّف النظير المستلِم (recipientPeerID)",
+"معرّف نِدّ المستقبِل",
+"nostr"
+],
+[
+"senderPeerID",
+"معرّف ندّ المرسِل",
+"معرّف نِدّ المرسِل",
+"nostr"
+],
+[
+"TAG",
+"الوسم",
+"وسم السجلّ",
+"nostr"
+],
+[
+"MESSAGE_TTL_HOPS",
+"قفزات بقاء الرسالة",
+"عدد قفزات بقاء الرسالة",
+"nostr"
+],
+[
+"NOISE_ENCRYPTED",
+"مشفّر Noise",
+"مُعمّى بنويز",
+"nostr"
+],
+[
+"READ_RECEIPT",
+"إيصال القراءة",
+"إشعار القراءة",
+"nostr"
+],
+[
+"isValid",
+"التحقّق من الصلاحية",
+"الصلاحية",
+"nostr"
+],
+[
+"toHexString",
+"التحويل إلى نص سداسي",
+"إلى نص ست عشري",
+"nostr"
+],
+[
+"NostrCrypto",
+"أدواتُ تشفيرِ نوستر (NostrCrypto)",
+"تعمية نوستر",
+"nostr"
+],
+[
+"schnorrSign",
+"توقيعُ شنور (schnorrSign)",
+"توقيع شنور",
+"nostr"
+],
+[
+"schnorrVerify",
+"التحقّقُ من توقيعِ شنور (schnorrVerify)",
+"تحقق شنور",
+"nostr"
+],
+[
+"isValidPublicKey",
+"صلاحيةُ المفتاحِ العام (isValidPublicKey)",
+"صحة المفتاح العام",
+"nostr"
+],
+[
+"TAG",
+"الوسم",
+"وسم السجل",
+"nostr"
+],
+[
+"INSTANCE",
+"المثيل المفرد",
+"النسخة المفردة",
+"nostr"
+],
+[
+"getInstance",
+"إحضار المثيل",
+"احصل على النسخة المفردة",
+"nostr"
+],
+[
+"clear",
+"المسح",
+"امسح",
+"nostr"
+],
+[
+"contains",
+"الفحص بالاحتواء (contains)",
+"يحتوي",
+"nostr"
+],
+[
+"ConcurrentHashMap",
+"خريطة التجزئة المتزامنة",
+"خريطة تجزئة متزامنة",
+"nostr"
+],
+[
+"NostrFilter",
+"مُرشِّح نوستر",
+"مُرشّح أحداث نوستر (NostrFilter)",
+"nostr"
+],
+[
+"giftWrapsFor",
+"أغلفة الهدية للمفتاح",
+"أغلفة الهدايا لِـ (giftWrapsFor)",
+"nostr"
+],
+[
+"geohashEphemeral",
+"مُرشِّح المنطقة العابر",
+"الأحداث العابرة بنطاق جغرافي (geohashEphemeral)",
+"nostr"
+],
+[
+"tag",
+"الوسم",
+"وسم (tag)",
+"nostr"
+],
+[
+"getGeohash",
+"جالب تجزئة الموقع",
+"احصل على الترميز الجغرافي (getGeohash)",
+"nostr"
+],
+[
+"NostrEvent",
+"حدث نوستر",
+"حدث نوستر (NostrEvent)",
+"nostr"
+],
+[
+"NostrKind",
+"أنواع حدث نوستر",
+"نوع نوستر (NostrKind)",
+"nostr"
+],
+[
+"GIFT_WRAP",
+"غلاف الهدية",
+"غلاف الهدية (GIFT_WRAP)",
+"nostr"
+],
+[
+"EPHEMERAL_EVENT",
+"الحدث العابر",
+"الحدث العابر (EPHEMERAL_EVENT)",
+"nostr"
+],
+[
+"GEOHASH_PRESENCE",
+"حضور التجزئة الجغرافية",
+"حضور النطاق الجغرافي (GEOHASH_PRESENCE)",
+"nostr"
+],
+[
+"TEXT_NOTE",
+"الملاحظة النصية",
+"الملاحظة النصّية (TEXT_NOTE)",
+"nostr"
+],
+[
+"geohash",
+"الجيوهاش (geohash)",
+"الترميز الجغرافي (geohash)",
+"nostr"
+],
+[
+"pubkey",
+"المفتاح العام",
+"المفتاح العام (pubkey)",
+"nostr"
+],
+[
+"npub",
+"مفتاح نوستر العام",
+"المعرّف العام",
+"nostr"
+],
+[
+"NostrIdentityBridge",
+"جسر هويّة نوستر",
+"جسر هوية نوستر",
+"nostr"
+],
+[
+"SecureIdentityStateManager",
+"مدير حالة الهوية الآمنة",
+"مدير حالة الهوية الآمن",
+"nostr"
+],
+[
+"NostrCrypto",
+"أدواتُ تشفيرِ نوستر (NostrCrypto)",
+"تعمية نوستر",
+"nostr"
+],
+[
+"Bech32",
+"كائن بيك٣٢ (Bech32)",
+"ترميز بيك32",
+"nostr"
+],
+[
+"NostrProofOfWork",
+"إثبات العمل لنوستر",
+"إثبات عمل نوستر",
+"nostr"
+],
+[
+"TAG",
+"الوسم",
+"وسم السجلّ",
+"nostr"
+],
+[
+"validateDifficulty",
+"تصديق الصعوبة",
+"تحقّق من الصعوبة",
+"nostr"
+],
+[
+"computeEventIdHex",
+"حساب معرّف الحدث الست عشري",
+"احسب معرّف الحدث الست عشري",
+"nostr"
+],
+[
+"decryptPrivateMessage",
+"فكّ تشفير الرسالة الخاصة",
+"فكّ تعمية رسالة خاصة",
+"nostr"
+],
+[
+"NostrKind",
+"أنواع حدث نوستر",
+"نوع نوستر",
+"nostr"
+],
+[
+"NostrCrypto",
+"أدواتُ تشفيرِ نوستر (NostrCrypto)",
+"تعمية نوستر",
+"nostr"
+],
+[
+"NostrProofOfWork",
+"إثبات العمل لنوستر",
+"إثبات العمل في نوستر",
+"nostr"
+],
+[
+"giftWrap",
+"الغلاف الهديّة",
+"غلاف الهدية",
+"nostr"
+],
+[
+"geohash",
+"الجيوهاش (geohash)",
+"الترميز الجغرافي",
+"nostr"
+],
+[
+"nickname",
+"اللقب",
+"الاسم المستعار",
+"nostr"
+],
+[
+"encryptNIP44",
+"تشفيرُ NIP-44 (encryptNIP44)",
+"تعمية وفق NIP44",
+"nostr"
+],
+[
+"decryptNIP44",
+"فكُّ تشفيرِ NIP-44 (decryptNIP44)",
+"فكّ التعمية وفق NIP44",
+"nostr"
+],
+[
+"randomizeTimestampUpToPast",
+"عشوَأةُ الطابعِ الزمني نحو الماضي (randomizeTimestampUpToPast)",
+"تعشية الطابع الزمني إلى الماضي",
+"nostr"
+],
+[
+"generateKeyPair",
+"توليد زوج مفاتيح كيرف",
+"توليد زوج المفاتيح",
+"nostr"
+],
+[
+"mineEvent",
+"عدّن الحدث",
+"تعدين الحدث",
+"nostr"
+],
+[
+"calculateDifficulty",
+"احسب الصعوبة",
+"حساب الصعوبة",
+"nostr"
+],
+[
+"NostrRelayManager",
+"مدير مرحّلات نوستر",
+"مدير مُرحّلات نوسْتر",
+"nostr"
+],
+[
+"getInstance",
+"إحضار المثيل",
+"احصل على النسخة",
+"nostr"
+],
+[
+"BACKOFF_MULTIPLIER",
+"مضاعِف التراجع",
+"مُضاعِف التراجع",
+"nostr"
+],
+[
+"registerPendingGiftWrap",
+"تسجيل غلاف هدية معلّق",
+"سجّل غلاف هدية معلّق",
+"nostr"
+],
+[
+"isConnected",
+"أمُتّصل",
+"متصل",
+"nostr"
+],
+[
+"scope",
+"النطاق (نطاق الكوروتين)",
+"نطاق الكوروتين",
+"nostr"
+],
+[
+"httpClient",
+"عميل إتش‌تي‌تي‌بي",
+"عميل http",
+"nostr"
+],
+[
+"gson",
+"محوّل جيسون",
+"محوّل JSON",
+"nostr"
+],
+[
+"subscribeForGeohash",
+"الاشتراك بتجزئة الموقع",
+"اشترك لجيوهاش",
+"nostr"
+],
+[
+"disconnect",
+"قطع الاتصال",
+"اقطع الاتصال",
+"nostr"
+],
+[
+"sendEvent",
+"دالة إرسال الحدث",
+"أرسل حدثاً",
+"nostr"
+],
+[
+"subscribe",
+"دالة الاشتراك",
+"اشترك",
+"nostr"
+],
+[
+"unsubscribe",
+"دالة إلغاء الاشتراك",
+"ألغِ الاشتراك",
+"nostr"
+],
+[
+"handleMessage",
+"التعامل مع الرسالة",
+"عالِج الرسالة",
+"nostr"
+],
+[
+"NostrEvent",
+"حدث نوستر",
+"حدث نوسْتر",
+"nostr"
+],
+[
+"NostrFilter",
+"مُرشِّح نوستر",
+"مُرشّح نوسْتر",
+"nostr"
+],
+[
+"NostrRequest",
+"طلب نوسْتر",
+"طلب Nostr",
+"nostr"
+],
+[
+"serialize",
+"السَّلسَلة (serialize)",
+"دالة التسلسل",
+"nostr"
+],
+[
+"NostrResponse",
+"استجابة نوسْتر",
+"استجابة Nostr",
+"nostr"
+],
+[
+"parseTagsFromJson",
+"تحليل الوسوم من جيسون",
+"تحليل الوسوم من JSON",
+"nostr"
+],
+[
+"NostrEvent",
+"حدث نوستر",
+"حدث Nostr",
+"nostr"
+],
+[
+"NostrFilter",
+"مُرشِّح نوستر",
+"مرشّح Nostr",
+"nostr"
+],
+[
+"scope",
+"النطاق (نطاق الكوروتين)",
+"النطاق",
+"nostr"
+],
+[
+"relayManager",
+"مزوّد مدير المُرحّلات",
+"مدير المُرحِّلات",
+"nostr"
+],
+[
+"connect",
+"اتصل",
+"الاتصال",
+"nostr"
+],
+[
+"unsubscribe",
+"دالة إلغاء الاشتراك",
+"إلغاء الاشتراك",
+"nostr"
+],
+[
+"NostrRelayManager",
+"مدير مرحّلات نوستر",
+"مدير مُرحِّلات نوستر",
+"nostr"
+],
+[
+"handler",
+"المُعالِج",
+"المعالِج",
+"nostr"
+],
+[
+"geohash",
+"الجيوهاش (geohash)",
+"التجزئة الجغرافية",
+"nostr"
+],
+[
+"nRelays",
+"عدد المُرحّلات",
+"عدد المُرحِّلات",
+"nostr"
+],
+[
+"getDebugInfo",
+"الحصول على معلومات التصحيح",
+"جلب معلومات التصحيح",
+"nostr"
+],
+[
+"isInitialized",
+"حالة التهيئة",
+"هل تمت التهيئة",
+"nostr"
+],
+[
+"getCurrentIdentity",
+"الحصول على الهوية الحالية",
+"جلب الهوية الحالية",
+"nostr"
+],
+[
+"npub",
+"مفتاح نوستر العام",
+"المفتاح العام المُرمَّز (npub)",
+"nostr"
+],
+[
+"getShortNpub",
+"المعرّف العام المختصر",
+"جلب npub المختصر",
+"nostr"
+],
+[
+"publicKeyHex",
+"المفتاح العام الست عشري",
+"المفتاح العام السّت‌عشري",
+"nostr"
+],
+[
+"privateKeyHex",
+"المفتاح الخاص الست عشري",
+"المفتاح الخاص السّت‌عشري",
+"nostr"
+],
+[
+"relayInfo",
+"معلومات المُرحِّل",
+"معلومات المُرحّلات",
+"nostr"
+],
+[
+"relayConnectionStatus",
+"حالة اتصال المُرحِّل",
+"حالة اتصال المُرحّل",
+"nostr"
+],
+[
+"hrp",
+"الجزء المقروء بشرياً (hrp)",
+"بادئة القراءة البشرية (HRP)",
+"nostr"
+],
+[
+"subscribeToGeohash",
+"الاشتراك في المنطقة الجغرافية",
+"الاشتراك في الجيوهاش",
+"nostr"
+],
+[
+"sendGeohashMessage",
+"إرسال رسالة المنطقة الجغرافية",
+"إرسال رسالة جيوهاش",
+"nostr"
+],
+[
+"geohash",
+"الجيوهاش (geohash)",
+"مُعرّف الموقع المُجزّأ (geohash)",
+"nostr"
+],
+[
+"NostrTransport",
+"ناقل نوستر",
+"ناقِل نوستر",
+"nostr"
+],
+[
+"senderPeerID",
+"معرّف ندّ المرسِل",
+"معرّف القرين المرسِل",
+"nostr"
+],
+[
+"getInstance",
+"إحضار المثيل",
+"احصل على النسخة",
+"nostr"
+],
+[
+"INSTANCE",
+"المثيل المفرد",
+"النسخة الوحيدة",
+"nostr"
+],
+[
+"myPeerID",
+"معرّف ندّي الخاص",
+"معرّف قريني",
+"nostr"
+],
+[
+"sendPrivateMessage",
+"إرسال رسالة خاصة",
+"أرسِل رسالة خاصة",
+"nostr"
+],
+[
+"sendReadReceipt",
+"إرسال إيصال القراءة",
+"أرسِل إيصال القراءة",
+"nostr"
+],
+[
+"sendFavoriteNotification",
+"إرسال إشعار تفضيل",
+"أرسِل إشعار التفضيل",
+"nostr"
+],
+[
+"sendDeliveryAck",
+"إرسال إقرار تسليم",
+"أرسِل إقرار التسليم",
+"nostr"
+],
+[
+"sendDeliveryAckGeohash",
+"إرسال إقرار التسليم للجيوهاش",
+"أرسِل إقرار التسليم بالتجزئة الجغرافية",
+"nostr"
+],
+[
+"sendReadReceiptGeohash",
+"إرسال إيصال القراءة للجيوهاش",
+"أرسِل إيصال القراءة بالتجزئة الجغرافية",
+"nostr"
+],
+[
+"hexStringToByteArray",
+"نص ست عشري إلى مصفوفة بايتات",
+"حوّل النص الست عشري إلى مصفوفة بايتات",
+"nostr"
+],
+[
+"senderIdentity",
+"هوية المُرسِل",
+"هوية المرسِل",
+"nostr"
+],
+[
+"geohash",
+"الجيوهاش (geohash)",
+"التجزئة الجغرافية",
+"nostr"
+],
+[
+"Bech32.decode",
+"فك ترميز Bech32",
+"فكّ ترميز بيك٣٢",
+"nostr"
+],
+[
+"NostrRelayManager",
+"مدير مرحّلات نوستر",
+"مدير مُرحِّلات نوستر",
+"nostr"
+],
+[
+"NostrIdentityBridge.deriveIdentity",
+"اشتقاق الهوية",
+"جسر هوية نوستر: اشتقاق الهوية",
+"nostr"
+],
+[
+"FavoritesPersistenceService",
+"خدمة تخزين المفضّلات",
+"خدمة استمرار المُفضَّلات",
+"nostr"
+],
+[
+"PREFS_NAME",
+"اسم التفضيلات",
+"اسم ملف التفضيلات",
+"nostr"
+],
+[
+"isInitialized",
+"حالة التهيئة",
+"علامة اكتمال التهيئة",
+"nostr"
+],
+[
+"init",
+"التهيئة",
+"دالّة التهيئة",
+"nostr"
+],
+[
+"RelayDirectory",
+"دليل المُرحّلات",
+"دليل المُرحِّلات",
+"nostr"
+],
+[
+"relays",
+"المُرحّلات",
+"قائمة المُرحِّلات",
+"nostr"
+],
+[
+"httpClient",
+"عميل إتش‌تي‌تي‌بي",
+"عميل HTTP",
+"nostr"
+],
+[
+"initialized",
+"عَلَم التهيئة",
+"مُهيّأ",
+"nostr"
+],
+[
+"TAG",
+"الوسم",
+"وسم السجل",
+"nostr"
+],
+[
+"nRelays",
+"عدد المُرحّلات",
+"عدد المُرحِّلات المطلوب",
+"nostr"
+],
+[
+"p",
+"المعامل P",
+"مَعلَمة غولومب-رايس (p)",
+"sync"
+],
+[
+"m",
+"المدى M",
+"المدى (m)",
+"sync"
+],
+[
+"data",
+"البيانات",
+"بيانات تيار البتات المُرمَّز (data)",
+"sync"
+],
+[
+"ids",
+"المُعرّفات (ids)",
+"معرّفات الرزم (ids)",
+"sync"
+],
+[
+"acc",
+"المُجمِّع (acc)",
+"المُراكِم (acc)",
+"sync"
+],
+[
+"contains",
+"الفحص بالاحتواء (contains)",
+"الاحتواء بالبحث الثنائي (contains)",
+"sync"
+],
+[
+"MessageDigest",
+"هاضِم الرسالة",
+"مُلخِّص الرسالة (MessageDigest)",
+"sync"
+],
+[
+"encode",
+"الترميز",
+"الترميز (encode)",
+"sync"
+],
+[
+"toByteArray",
+"التحويل إلى مصفوفة بايتات",
+"التحويل إلى مصفوفة بايتات (toByteArray)",
+"sync"
+],
+[
+"sendPacket",
+"إرسال الرزمة",
+"إرسال الحزمة",
+"sync"
+],
+[
+"sendPacketToPeer",
+"إرسال الرزمة إلى الندّ",
+"إرسال الحزمة إلى نظير",
+"sync"
+],
+[
+"myPeerID",
+"معرّف ندّي الخاص",
+"معرّفي النظيري",
+"sync"
+],
+[
+"scope",
+"النطاق (نطاق الكوروتين)",
+"نطاق الكوروتينات",
+"sync"
+],
+[
+"delegate",
+"المفوَّض",
+"المفوّض",
+"sync"
+],
+[
+"hexStringToByteArray",
+"نص ست عشري إلى مصفوفة بايتات",
+"تحويل نص ست‑عشري إلى بايتات (8)",
+"sync"
+],
+[
+"BitchatPacket",
+"حزمة بِتشات",
+"حزمة بِت‑شات",
+"sync"
+],
+[
+"SpecialRecipients.BROADCAST",
+"مستلِم البثّ",
+"مستلِم البثّ الخاص",
+"sync"
+],
+[
+"GCSFilter",
+"مرشّح المجموعة المرمّزة بغولومب (GCSFilter)",
+"مرشّح GCS",
+"sync"
+],
+[
+"STALE_PEER_TIMEOUT_MS",
+"مهلة انتهاء صلاحية النظير",
+"مهلة النظير البائت",
+"sync"
+],
+[
+"SYNC_TTL_HOPS",
+"قفزات مدة بقاء المزامنة",
+"قفزات حياة المزامنة",
+"sync"
+],
+[
+"TAG",
+"الوسم",
+"وسم السجل",
+"sync"
+],
+[
+"PacketIdUtil",
+"أداة معرّف الحزمة",
+"أداة معرّف الحُزمة (PacketIdUtil)",
+"sync"
+],
+[
+"BitchatPacket",
+"حزمة بِتشات",
+"حُزمة بِت‑شات (BitchatPacket)",
+"sync"
+],
+[
+"MessageDigest",
+"هاضِم الرسالة",
+"خلاصة الرسالة (MessageDigest)",
+"sync"
+],
+[
+"SyncDefaults",
+"الإعدادات الافتراضية للمزامنة",
+"افتراضات المزامنة",
+"sync"
+],
+[
+"MAX_ACCEPT_FILTER_BYTES",
+"أقصى بايتات مصفاة مقبولة",
+"أقصى بايتات مرشّح مقبولة",
+"sync"
+],
+[
+"RequestSyncPacket",
+"حزمة طلب المزامنة",
+"رزمة طلب المزامنة",
+"sync"
+],
+[
+"TAG",
+"الوسم",
+"الوسم (TAG)",
+"geohash"
+],
+[
+"errorMessage",
+"رسالة الخطأ",
+"رسالة الخطأ (errorMessage)",
+"geohash"
+],
+[
+"Build.VERSION.SDK_INT",
+"رقم إصدار النظام (SDK_INT)",
+"رقم مستوى واجهة النظام (Build.VERSION.SDK_INT)",
+"geohash"
+],
+[
+"Context",
+"السياق",
+"السياق (Context)",
+"geohash"
+],
+[
+"cancel",
+"الإلغاء",
+"ألغِ",
+"geohash"
+],
+[
+"get",
+"قراءة الوضع",
+"دالة الجلب (get)",
+"geohash"
+],
+[
+"GeocoderProvider",
+"واجهة مزوّد المُرَمِّز الجغرافي (GeocoderProvider)",
+"مزوِّد المُرمِّز الجغرافي (GeocoderProvider)",
+"geohash"
+],
+[
+"AndroidGeocoderProvider",
+"مزوّد المُرَمِّز الجغرافي لأندرويد (AndroidGeocoderProvider)",
+"مزوِّد مُرمِّز أندرويد (AndroidGeocoderProvider)",
+"geohash"
+],
+[
+"Context",
+"السياق",
+"السياق (Context)",
+"geohash"
+],
+[
+"Geocoder",
+"المُرَمِّز الجغرافي (Geocoder)",
+"المُرمِّز الجغرافي (Geocoder)",
+"geohash"
+],
+[
+"GeocoderProvider",
+"واجهة مزوّد المُرَمِّز الجغرافي (GeocoderProvider)",
+"مزوّد الترميز الجغرافي (GeocoderProvider)",
+"geohash"
+],
+[
+"getFromLocation",
+"الجلب من الموقع (getFromLocation)",
+"الحصول من الموقع (getFromLocation)",
+"geohash"
+],
+[
+"maxResults",
+"الحد الأقصى للنتائج (maxResults)",
+"أقصى عدد للنتائج (maxResults)",
+"geohash"
+],
+[
+"encode",
+"الترميز",
+"الترميز (encode)",
+"geohash"
+],
+[
+"getInstance",
+"إحضار المثيل",
+"جالب النسخة الوحيدة",
+"geohash"
+],
+[
+"INSTANCE",
+"المثيل المفرد",
+"النسخة الوحيدة",
+"geohash"
+],
+[
+"TAG",
+"الوسم",
+"وسم السجل",
+"geohash"
+],
+[
+"gson",
+"محوّل جيسون",
+"محوّل الجيسون",
+"geohash"
+],
+[
+"prefs",
+"المفضّلات",
+"التفضيلات المحفوظة",
+"geohash"
+],
+[
+"GeocoderFactory",
+"مصنع المُرمِّز الجغرافي (GeocoderFactory)",
+"مصنع المُرمِّز الجغرافي",
+"geohash"
+],
+[
+"precision",
+"الدقّة (precision)",
+"الدقّة",
+"geohash"
+],
+[
+"displayName",
+"اسم العرض",
+"الاسم المعروض",
+"geohash"
+],
+[
+"geohash",
+"الجيوهاش (geohash)",
+"الجيوهاش",
+"geohash"
+],
+[
+"Mesh",
+"الشبكة المتشابكة",
+"الشبكة",
+"geohash"
+],
+[
+"hashCode",
+"الرمز التجزيئي",
+"رمز التجزئة",
+"geohash"
+],
+[
+"LocationChannelManager",
+"مدير قناة الموقع",
+"مدير قنوات الموقع",
+"geohash"
+],
+[
+"getInstance",
+"إحضار المثيل",
+"جالب النسخة الوحيدة",
+"geohash"
+],
+[
+"INSTANCE",
+"المثيل المفرد",
+"النسخة الوحيدة",
+"geohash"
+],
+[
+"scope",
+"النطاق (نطاق الكوروتين)",
+"نطاق الكوروتينات",
+"geohash"
+],
+[
+"teleported",
+"مُنتقَل آنياً",
+"حالة الانتقال الآني",
+"geohash"
+],
+[
+"cleanup",
+"التنظيف",
+"تنظيف الموارد",
+"geohash"
+],
+[
+"ChannelID.Location",
+"قناة موقع",
+"قناة الموقع",
+"geohash"
+],
+[
+"GeohashChannel",
+"قناة الجيوهاش",
+"قناة التجزئة الجغرافية",
+"geohash"
+],
+[
+"GeohashChannelLevel",
+"مستوى قناة الجيوهاش",
+"مستوى قناة التجزئة الجغرافية",
+"geohash"
+],
+[
+"FusedLocationProvider",
+"مزوّد الموقع المدمج",
+"مزوّد الموقع المدمج (جوجل)",
+"geohash"
+],
+[
+"LocationProvider",
+"واجهة مزوّد الموقع",
+"مزوِّد الموقع",
+"geohash"
+],
+[
+"requestFreshLocation",
+"اطلب موقعاً جديداً",
+"اطلب موقعاً طازجاً",
+"geohash"
+],
+[
+"cancel",
+"الإلغاء",
+"ألغِ",
+"geohash"
+],
+[
+"callback",
+"دالة الاستدعاء الراجعة",
+"دالة الاستدعاء الراجع",
+"geohash"
+],
+[
+"intervalMs",
+"الفترة بالميلّي ثانية",
+"الفترة بالميلي ثانية",
+"geohash"
+],
+[
+"OpenStreetMapGeocoderProvider",
+"مزوِّد مُرمِّز OpenStreetMap (OpenStreetMapGeocoderProvider)",
+"مزوّد الترميز الجغرافي بخرائط الشارع المفتوحة (OpenStreetMapGeocoderProvider)",
+"geohash"
+],
+[
+"GeocoderProvider",
+"واجهة مزوّد المُرَمِّز الجغرافي (GeocoderProvider)",
+"واجهة مزوّد الترميز الجغرافي (GeocoderProvider)",
+"geohash"
+],
+[
+"getFromLocation",
+"الجلب من الموقع (getFromLocation)",
+"دالة الحصول على العنوان من الموقع (getFromLocation)",
+"geohash"
+],
+[
+"OkHttpProvider",
+"مزوّد أوك‌إتش‌تي‌تي‌بي",
+"مزوّد عميل HTTP (OkHttpProvider)",
+"geohash"
+],
+[
+"httpClient",
+"عميل إتش‌تي‌تي‌بي",
+"دالة عميل الشبكة (httpClient)",
+"geohash"
+],
+[
+"Gson",
+"محرّك Gson",
+"محوّل JSON (Gson)",
+"geohash"
+],
+[
+"Address",
+"العنوان (Address)",
+"صنف العنوان (Address)",
+"geohash"
+],
+[
+"Dispatchers.IO",
+"موزّع الإدخال/الإخراج (Dispatchers.IO)",
+"موزّع عمليات الدخل/الخرج (Dispatchers.IO)",
+"geohash"
+],
+[
+"Locale",
+"المحلّيّة (Locale)",
+"المحلّية (Locale)",
+"geohash"
+],
+[
+"TAG",
+"الوسم",
+"وسم السجل (TAG)",
+"geohash"
+],
+[
+"hasLocationPermission",
+"هل يملك إذن الموقع",
+"يملك إذن الموقع",
+"geohash"
+],
+[
+"getLastKnownLocation",
+"احصل على آخر موقع معروف",
+"جلب آخر موقع معروف",
+"geohash"
+],
+[
+"requestFreshLocation",
+"اطلب موقعاً جديداً",
+"طلب موقع طازج",
+"geohash"
+],
+[
+"requestLocationUpdates",
+"اطلب تحديثات الموقع",
+"طلب تحديثات الموقع",
+"geohash"
+],
+[
+"removeLocationUpdates",
+"أزِل تحديثات الموقع",
+"إزالة تحديثات الموقع",
+"geohash"
+],
+[
+"callback",
+"دالة الاستدعاء الراجعة",
+"ردّ النداء",
+"geohash"
+],
+[
+"intervalMs",
+"الفترة بالميلّي ثانية",
+"الفترة بالملّي ثانية",
+"geohash"
+],
+[
+"isFavorite",
+"هل هو مفضَّل (isFavorite)",
+"هو مفضّل",
+"favorites"
+],
+[
+"FavoritesPersistenceService",
+"خدمة تخزين المفضّلات",
+"خدمة حفظ المفضّلات",
+"favorites"
+],
+[
+"initialize",
+"التهيئة",
+"تهيئة",
+"favorites"
+],
+[
+"INSTANCE",
+"المثيل المفرد",
+"النسخة المفردة",
+"favorites"
+],
+[
+"gson",
+"محوّل جيسون",
+"محوّل Gson",
+"favorites"
+],
+[
+"getFavoriteStatus",
+"احصل على حالة التفضيل",
+"جلب حالة التفضيل",
+"favorites"
+],
+[
+"findNostrPubkeyForPeerID",
+"ابحث عن مفتاح نوستر لمعرّف القرين",
+"إيجاد مفتاح Nostr لمعرّف نِدّ",
+"favorites"
+],
+[
+"findPeerIDForNostrPubkey",
+"ابحث عن معرّف القرين لمفتاح نوستر",
+"إيجاد معرّف نِدّ لمفتاح Nostr",
+"favorites"
+],
+[
+"Bech32.decode",
+"فك ترميز Bech32",
+"فكّ ترميز Bech32",
+"favorites"
 ]
 ]

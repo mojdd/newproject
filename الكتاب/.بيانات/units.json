@@ -3070,5 +3070,2527 @@
 "lines": "383-385",
 "summary": "دالة خاصة تُعيد ما إذا كانت هناك جلسة مؤسَّسة على البلوتوث للنِّدّ، ضمن كتلة محاولة. تستعملها isBleReady وgetPeerInfo لتمييز جاهزية البلوتوث عن مجرّد اتصاله."
 }
+],
+"app/src/main/java/com/bitchat/android/nostr/Bech32.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/Bech32.kt",
+"name": "object Bech32 (الكائن المفرد بيك٣٢)",
+"lines": "7-132",
+"summary": "كائن مفرد (object) يجمع كل أدوات ترميز وفكّ ترميز Bech32 المستعملة في Nostr لترميز npub/nsec. يحمل ثابتاً واحداً للمحارف (CHARSET، السطر ٨) ومصفوفة توليد ثابتة (GENERATOR، السطر ٩) تستعملهما الدوال الداخلية للحساب."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/Bech32.kt",
+"name": "fun encode (دالة الترميز)",
+"lines": "14-20",
+"summary": "تأخذ جزءاً مقروءاً بشرياً (hrp) ومصفوفة بايتات (data) وتُعيد نص Bech32. تحوّل البايتات من ٨ بِتّات إلى ٥ بِتّات عبر convertBits (السطر ١٥)، ثم تحسب المجموع الاختباري عبر createChecksum (السطر ١٦)، ثم تضمّ القيم بالمجموع (السطر ١٧)، وأخيراً تُركّب النص: hrp ثم \"1\" ثم محارف CHARSET المقابلة للقيم (السطر ١٩)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/Bech32.kt",
+"name": "fun decode (دالة فكّ الترميز)",
+"lines": "26-55",
+"summary": "تأخذ نص Bech32 وتُعيد زوجاً (hrp, data). تجد موضع آخر فاصل '1' (السطر ٢٧) وتتحقّق من وجوده، ثم تفصل hrp عن بقية البيانات (الأسطر ٣٠-٣١). تتحقّق من أن hrp بمحارف ASCII فقط (السطر ٣٤)، وتحوّل كل محرف إلى قيمته في CHARSET مع رفض المحارف غير الصالحة (الأسطر ٣٧-٤١). تفصل الحمولة عن آخر ٦ قيم للمجموع الاختباري (الأسطر ٤٥-٤٦)، وتعيد حساب المجموع المتوقّع عبر createChecksum (السطر ٤٧) وتقارنه (السطر ٤٩)، ثم تحوّل الحمولة من ٥ بِتّات إلى ٨ بِتّات عبر convertBits (السطر ٥٢) وتعيد الزوج (السطر ٥٤)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/Bech32.kt",
+"name": "fun convertBits (مُحمَّلتان عابرتان: بايتات وقائمة)",
+"lines": "57-86",
+"summary": "نسختان مُحمَّلتان (overloads) للراحة فقط: الأولى تأخذ مصفوفة بايتات (data) وتقنّع كل بايت بـ0xFF ثم تنادي النسخة الأساسية (الأسطر ٥٧-٥٩)، والثانية تأخذ قائمة أعداد وتحوّلها إلى مصفوفة ثم تنادي النسخة الأساسية (الأسطر ٨٤-٨٦). كلتاهما تفوّضان العمل إلى convertBits ذات مصفوفة الأعداد."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/Bech32.kt",
+"name": "fun convertBits (النسخة الأساسية لتحويل البِتّات)",
+"lines": "61-82",
+"summary": "القلب الحسابي لإعادة تجميع البِتّات: تأخذ مصفوفة أعداد و عدد البِتّات المصدر (fromBits) والهدف (toBits) وعلم الحشو (pad). تُراكم البِتّات في مُجمِّع acc (السطر ٦٨)، وكلّما توفّر toBits بِتّاً تستخرج مجموعة بطول maxv وتضيفها إلى النتيجة (الأسطر ٧١-٧٤). إذا طُلب الحشو وبقيت بِتّات تضيف مجموعة أخيرة محشوّة (الأسطر ٧٧-٧٩) ثم تُعيد النتيجة مصفوفةً (السطر ٨١). تستعملها encode (٨→٥) وdecode (٥→٨)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/Bech32.kt",
+"name": "fun createChecksum (دالة إنشاء المجموع الاختباري)",
+"lines": "88-95",
+"summary": "تأخذ hrp وقائمة القيم وتُعيد ٦ قيم تمثّل المجموع الاختباري. توسّع hrp عبر hrpExpand وتضمّه بالقيم وستّة أصفار (السطر ٨٩)، ثم تحسب polymod وتطبّق xor مع ١ (السطر ٩٠)، وأخيراً تستخرج ٦ مجموعات من ٥ بِتّات (الأسطر ٩٢-٩٤). تُناديها encode للتركيب وdecode للتحقّق."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/Bech32.kt",
+"name": "fun hrpExpand (دالة توسيع الجزء المقروء)",
+"lines": "97-114",
+"summary": "تحوّل hrp النصّي إلى مصفوفة أعداد كما يقتضي معيار Bech32: أولاً البِتّات العليا لكل محرف (الشيفرة مزاحة يميناً ٥، الأسطر ١٠١-١٠٣)، ثم فاصل قيمته صفر (السطر ١٠٦)، ثم البِتّات الدنيا لكل محرف (الشيفرة مع 31، الأسطر ١٠٩-١١١). تستعملها createChecksum كمدخل للحساب."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/Bech32.kt",
+"name": "fun polymod (دالة المتعدّد القياسي)",
+"lines": "116-131",
+"summary": "تنفّذ دالة المتبقّي المتعدّد (polynomial mod) المعيارية لـBech32. تبدأ بـchk=1 (السطر ١١٧)، ولكل قيمة تحفظ البِتّات العليا في b (السطر ١٢٠) وتُزيح chk وتطبّق xor مع القيمة (السطر ١٢١)، ثم لكل من البِتّات الخمسة في b تطبّق xor مع العنصر المقابل من GENERATOR إذا كان البِتّ مرفوعاً (الأسطر ١٢٣-١٢٧)، وتُعيد chk (السطر ١٣٠). تُناديها createChecksum."
+}
+],
+"app/src/main/java/com/bitchat/android/nostr/GeohashAliasRegistry.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashAliasRegistry.kt",
+"name": "object GeohashAliasRegistry + الحقول (map, PREFS_NAME, prefs)",
+"lines": "12-15",
+"summary": "يعرّف كائناً مفرداً (object) واحداً للتطبيق كله اسمه GeohashAliasRegistry. بداخله صندوق ذاكرة سريع map من نوع ConcurrentHashMap (آمن لو اشتغلت أكثر من مهمّة في وقت واحد) يربط كل اسم مستعار بمفتاح Nostr العام. وفيه اسم ملف الحفظ PREFS_NAME = \"geohash_alias_registry\" ومتغيّر prefs الذي يمسك ملف الحفظ على الجهاز (SharedPreferences) ويبدأ فارغاً (null)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashAliasRegistry.kt",
+"name": "fun initialize",
+"lines": "17-22",
+"summary": "دالة التهيئة: تأخذ context. إن كان ملف الحفظ prefs ما زال فارغاً، تفتح الملف الخاص بالتطبيق بالاسم PREFS_NAME وبوضع خاص (MODE_PRIVATE)، ثم تنادي loadFromPrefs لتعبئة الذاكرة. هي البوّابة التي تشغّل السجلّ وتغذّيه من القرص."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashAliasRegistry.kt",
+"name": "fun loadFromPrefs",
+"lines": "24-33",
+"summary": "دالة خاصة تقرأ كل ما هو محفوظ في الملف (p.all) وتمرّ على كل زوج (key, value)، وإن كان كلاهما نصاً (String) تنسخه إلى الذاكرة map. ينادي عليها initialize فقط، فتكون المنتِج الذي يملأ map من بيانات القرص عند بدء التشغيل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashAliasRegistry.kt",
+"name": "fun put",
+"lines": "35-38",
+"summary": "دالة الإضافة: تضع زوج (alias -> pubkeyHex) في الذاكرة map ثم تحفظه في الملف عبر edit().putString(...).apply(). أي أنها تكتب في مكانين معاً: الذاكرة للسرعة، والقرص ليبقى بعد إعادة التشغيل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashAliasRegistry.kt",
+"name": "fun get",
+"lines": "40-40",
+"summary": "دالة الجلب من سطر واحد: تعيد المفتاح العام المرتبط بالاسم المستعار من الذاكرة map، أو null إن لم يوجد. تقرأ ما كتبته put أو loadFromPrefs."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashAliasRegistry.kt",
+"name": "fun contains",
+"lines": "42-42",
+"summary": "دالة فحص من سطر واحد: تعيد true إن كان الاسم المستعار موجوداً مفتاحاً في map، وإلا false. تسأل الذاكرة مباشرة دون لمس القرص."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashAliasRegistry.kt",
+"name": "fun snapshot",
+"lines": "44-44",
+"summary": "دالة اللقطة من سطر واحد: تعيد نسخة جديدة (HashMap) من كامل محتوى map. النسخة منفصلة، فأي تعديل لاحق على السجلّ لا يؤثّر على من أخذ اللقطة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashAliasRegistry.kt",
+"name": "fun clear",
+"lines": "46-49",
+"summary": "دالة المسح: تفرّغ الذاكرة map ثم تفرّغ الملف عبر edit().clear().apply(). تحذف كل الروابط من المكانين معاً، عكس عمل put."
+}
+],
+"app/src/main/java/com/bitchat/android/nostr/GeohashConversationRegistry.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashConversationRegistry.kt",
+"name": "تعريف الكائن المفرد وحالته (GeohashConversationRegistry + map/PREFS_NAME/prefs)",
+"lines": "13-16",
+"summary": "يُعرّف كائناً مفرداً عالمياً اسمه «سجل محادثات الجيوهاش» (GeohashConversationRegistry) يحمل حالته في ثلاثة حقول: خريطة تجزئة متزامنة (map) آمنة للخيوط تربط مفتاح المحادثة (convKey مثل \"nostr_<pub16>\") بجيوهاش المصدر، وثابت اسم ملف التفضيلات (PREFS_NAME) بقيمة \"geohash_conversation_registry\"، ومتغير التفضيلات المشتركة (prefs) القابل لأن يكون فارغاً ويبدأ بقيمة null. هذه الحقول هي الذاكرة المشتركة التي تنتج لها وتقرأ منها كل الدوال الأخرى."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashConversationRegistry.kt",
+"name": "initialize",
+"lines": "18-23",
+"summary": "دالة التهيئة (initialize) تأخذ السياق (Context). إن كان prefs ما يزال فارغاً (null) فإنها تفتح ملف التفضيلات المشتركة الخاص بالاسم PREFS_NAME في الوضع الخاص وتسنده إلى prefs، ثم تستدعي loadFromPrefs لتعبئة الخريطة من القرص. الفحص على null يجعل التهيئة تحدث مرة واحدة فقط."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashConversationRegistry.kt",
+"name": "loadFromPrefs",
+"lines": "25-34",
+"summary": "دالة خاصة (loadFromPrefs) تقرأ كل المدخلات المحفوظة من prefs (عبر p.all) وتمر عليها بحلقة for؛ ولكل مدخل مفتاحه وقيمته نصّان (String) تنسخه إلى الخريطة (map). هي المستهلك الذي يحمّل البيانات المثابرة إلى الذاكرة، وتُستدعى فقط من initialize عند السطر 21."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashConversationRegistry.kt",
+"name": "set",
+"lines": "36-41",
+"summary": "دالة الضبط (set) تأخذ مفتاح المحادثة (convKey) والجيوهاش (geohash). إن كان الجيوهاش غير فارغ فإنها تكتب الربط في الخريطة (map) وأيضاً تحفظه في prefs عبر edit ثم putString ثم apply بالاستدعاء الآمن. فهي المنتِج الذي يكتب في الذاكرة وفي القرص معاً ليبقى الربط بعد إعادة التشغيل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashConversationRegistry.kt",
+"name": "get",
+"lines": "43-43",
+"summary": "دالة الجلب (get) تأخذ مفتاح المحادثة (convKey) وتُعيد الجيوهاش المرتبط به من الخريطة (map) أو null إن لم يوجد. هي قارئ بسيط للذاكرة لا يلمس القرص، وتمكّن من توجيه الرسائل المباشرة عبر استرجاع هوية الجيوهاش الصحيحة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashConversationRegistry.kt",
+"name": "snapshot",
+"lines": "45-45",
+"summary": "دالة اللقطة (snapshot) تُعيد نسخة غير قابلة للتغيير من كامل الخريطة عبر map.toMap()، فتعطي المستدعي صورة آمنة من كل الروابط الحالية دون كشف الخريطة الداخلية القابلة للتعديل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashConversationRegistry.kt",
+"name": "clear",
+"lines": "47-50",
+"summary": "دالة المسح (clear) تفرّغ الخريطة في الذاكرة عبر map.clear()، وتفرّغ أيضاً المخزون المثابر في prefs عبر edit ثم clear ثم apply بالاستدعاء الآمن. فهي تحذف كل الروابط من الذاكرة والقرص معاً."
+}
+],
+"app/src/main/java/com/bitchat/android/nostr/GeohashMessageHandler.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashMessageHandler.kt",
+"name": "تعريف الصنف ومُنشئه وحقوله (GeohashMessageHandler constructor + fields)",
+"lines": "18-31",
+"summary": "يعرّف الصنف معالِج رسائل الجيوهاش (GeohashMessageHandler) ويحقن في مُنشئه ست تبعيات خاصة: application وstate (حالة المحادثة) وmessageManager (مدير الرسائل) وrepo (مستودع الجيوهاش) وscope (نطاق الكوروتين) وdataManager (مدير البيانات). كما يعرّف كائناً مرافقاً يحوي الثابت TAG، وثلاثة حقول لإزالة التكرار: طابور processedIds (المعرّفات المعالَجة) ومجموعة seen (المرئية) والحدّ الأقصى max=2000."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashMessageHandler.kt",
+"name": "دالة إزالة التكرار (dedupe)",
+"lines": "33-42",
+"summary": "دالة خاصة تأخذ معرّف حدث وتُعيد قيمة منطقية. إن كان المعرّف موجوداً في مجموعة seen أعادت true (أي مكرّر)؛ وإلا أضافته إلى seen وإلى آخر طابور processedIds، فإن تجاوز الطابور الحدّ max أزالت أقدم عنصر من الطابور ومن seen معاً، ثم أعادت false. تستهلكها onEvent في السطر 50."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashMessageHandler.kt",
+"name": "دالة عند الحدث (onEvent)",
+"lines": "44-110",
+"summary": "الدالة العامة الرئيسة، تأخذ حدث نوستر (NostrEvent) والجيوهاش المُشترَك به، وتنفّذ عملها داخل كوروتين على scope ضمن كتلة try. أولاً تصفية: تخرج إن لم يكن نوع الحدث EPHEMERAL_EVENT أو GEOHASH_PRESENCE (47)، أو إن لم يطابق وسم \"g\" الجيوهاش المُشترَك (48-49)، أو إن كان مكرّراً عبر dedupe (50). ثم تتحقق من إثبات العمل لأحداث المحادثة إن كان مفعّلاً (53-58)، وتوحّد pubkey إلى أحرف صغيرة (61)، وتتجاهل المستخدمين المحجوبين عبر dataManager (64). تحدّث المستودع repo: عدّاد المشاركين لأحداث الحضور والمحادثة (67-69)، وتخزّن اللقب من وسم \"n\" (71)، وتعلّم الانتقال الآني من وسم \"teleport\" (72)، وتسجّل اسماً بديلاً في GeohashAliasRegistry (74-76). تخرج عند أحداث الحضور لأنها لا تنتج رسائل (79)، وتتخطّى أحداثنا الذاتية عبر NostrIdentityBridge (82-83) وحضور الانتقال الآني الفارغ (85-87). أخيراً تبني كائن رسالة بِتشات (BitchatMessage) من بيانات الحدث وأسماء العرض من repo وصعوبة إثبات العمل (89-104)، وتمرّرها إلى messageManager.addChannelMessage على قناة \"geo:\" (105). أي استثناء يُسجَّل عبر Log.e (106-107)."
+}
+],
+"app/src/main/java/com/bitchat/android/nostr/GeohashRepository.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashRepository.kt",
+"name": "تعريف الصنف وحقول الحالة (GeohashRepository + الخرائط)",
+"lines": "14-64",
+"summary": "يعرّف الصنف GeohashRepository ومنشئه الذي يأخذ application و state (ChatState) و dataManager. يحمل الكائن المرافق ثابت الوسم TAG، ثم يعرّف خرائط الحالة الداخلية: geohashParticipants (موقع جغرافي ← (مفتاح عام ← آخر ظهور))، geoNicknames (مفتاح عام بحروف صغيرة ← اسم مستعار)، conversationGeohash (مفتاح محادثة ← موقعها المصدر)، nostrKeyMapping (اسم بديل لمعرّف نظير ← مفتاح نوستر العام)، والحقل currentGeohash للموقع المعروض حالياً. هذه الحقول هي مصدر البيانات لبقية الدوال."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashRepository.kt",
+"name": "setConversationGeohash / getConversationGeohash",
+"lines": "31-37",
+"summary": "دالتان تضبطان وتقرآن ربط مفتاح المحادثة بموقعه الجغرافي المصدر في خريطة conversationGeohash؛ الضبط يتجاهل القيمة الفارغة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashRepository.kt",
+"name": "findPubkeyByNickname",
+"lines": "39-44",
+"summary": "تبحث في geoNicknames عن أول مدخل اسمه المستعار (بعد إزالة لاحقة #hash) يطابق targetNickname وتعيد مفتاحه العام، وإلا null."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashRepository.kt",
+"name": "findPubkeyByShortId",
+"lines": "46-58",
+"summary": "تبحث عن مفتاح عام يبدأ بـ shortId: أولاً في مفاتيح geoNicknames المخزّنة (الأسرع)، فإن لم يوجد تمرّ على كل المشاركين عبر كل المواقع في geohashParticipants، وتعيد null إذا لم تجد. تخدم حالة المستخدم المجهول الذي لا اسم مخزّن له."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashRepository.kt",
+"name": "setCurrentGeohash / getCurrentGeohash",
+"lines": "66-67",
+"summary": "دالتان تضبطان وتقرآن الحقل currentGeohash (الموقع الجغرافي المعروض حالياً)، وهو شرط محوري لتحديث قوائم الأشخاص في refreshGeohashPeople."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashRepository.kt",
+"name": "clearAll",
+"lines": "69-77",
+"summary": "تفرّغ كل خرائط الحالة (geohashParticipants و geoNicknames و nostrKeyMapping) وتصفّر currentGeohash، كما تعيد ضبط الحالة في state (قائمة أشخاص فارغة، مجموعة منتقلين فارغة، أعداد مشاركين فارغة). تنتج حالة نظيفة للواجهة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashRepository.kt",
+"name": "cacheNickname / getCachedNickname",
+"lines": "79-88",
+"summary": "cacheNickname تخزّن الاسم المستعار في geoNicknames تحت المفتاح العام بحروف صغيرة، وإذا تغيّر الاسم وكان هناك موقع حالي تستدعي refreshGeohashPeople لتحديث الواجهة. getCachedNickname تجلب الاسم المخزّن بالمفتاح بحروف صغيرة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashRepository.kt",
+"name": "markTeleported / isPersonTeleported",
+"lines": "90-102",
+"summary": "markTeleported تضيف المفتاح العام (بحروف صغيرة) إلى مجموعة المنتقلين آنياً في state عبر نسخ القيمة الحالية والإضافة والنشر الآمن في الخلفية postTeleportedGeo. isPersonTeleported تفحص هل المفتاح موجود في تلك المجموعة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashRepository.kt",
+"name": "updateParticipant",
+"lines": "104-118",
+"summary": "تسجّل ظهور مشارك في موقع جغرافي: تجلب أو تنشئ خريطة مشاركي geohash، تحدّ الطابع الزمني lastSeen بالوقت الحالي (لمنع طوابع مستقبلية بسبب انحراف الساعة أو created_at خبيث)، وتكتب القيمة فقط إن كانت أحدث من الموجودة. ثم إن كان الموقع هو الحالي تستدعي refreshGeohashPeople، وتستدعي دائماً updateReactiveParticipantCounts. هي المُغذّي الرئيسي للبيانات الذي ينادي دوال التحديث."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashRepository.kt",
+"name": "geohashParticipantCount",
+"lines": "120-131",
+"summary": "تحسب عدد المشاركين النشطين في موقع معيّن: تحدد حداً قاطعاً قبل خمس دقائق، تقصّ المدخلات المنتهية من خريطة المشاركين عبر مكرّر، ثم تعدّ المفاتيح غير المحظورة عبر isGeohashUserBlocked من dataManager."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashRepository.kt",
+"name": "refreshGeohashPeople",
+"lines": "133-169",
+"summary": "تبني قائمة أشخاص GeoPerson للموقع الحالي وتدفعها إلى state عبر setGeohashPeople. إن لم يوجد موقع حالي تضع قائمة فارغة. وإلا تقصّ المنتهين (أقدم من خمس دقائق)، تستبعد المحظورين، وتشتق لكل مشارك اسم العرض (اسمنا الفعلي getNicknameValue إن طابق المفتاح هويتنا المشتقّة عبر NostrIdentityBridge.deriveIdentity، وإلا الاسم المخزّن أو anon)، ثم تبني GeoPerson وترتّب تنازلياً حسب آخر ظهور. تُستدعى من cacheNickname و updateParticipant."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashRepository.kt",
+"name": "updateReactiveParticipantCounts",
+"lines": "171-181",
+"summary": "تبني خريطة أعداد المشاركين النشطين (غير المحظورين وغير المنتهين خلال خمس دقائق) لكل موقع جغرافي من geohashParticipants وتدفعها إلى state عبر setGeohashParticipantCounts. تُستدعى من updateParticipant."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashRepository.kt",
+"name": "putNostrKeyMapping / getNostrKeyMapping",
+"lines": "183-187",
+"summary": "putNostrKeyMapping تضع ربط اسم بديل/معرّف نظير بمفتاح نوستر العام في خريطة nostrKeyMapping. getNostrKeyMapping تعيد نسخة غير قابلة للتغيير منها عبر toMap."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashRepository.kt",
+"name": "displayNameForNostrPubkey",
+"lines": "189-204",
+"summary": "تكوّن اسم عرض دائماً بصيغة الاسم#اللاحقة (آخر أربعة محارف): إن طابق المفتاح هويتنا في الموقع الحالي (deriveIdentity) تستعمل اسمنا getNicknameValue، وإلا الاسم المخزّن في geoNicknames أو anon. لا تطبّق منطق إزالة الغموض، بل تلحق الـhash دائماً."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashRepository.kt",
+"name": "displayNameForNostrPubkeyUI",
+"lines": "206-232",
+"summary": "نسخة للواجهة تحسب الاسم الأساس base (اسمنا إن طابق هويتنا، وإلا المخزّن أو anon) ثم تلحق اللاحقة #suffix فقط عند الغموض: تمرّ على مشاركي الموقع الحالي غير المحظورين وغير المنتهين وتعدّ من يحمل اسماً مطابقاً للأساس، وإن تجاوز العدد واحداً تضيف اللاحقة لتمييزه، وإلا تكتفي بالأساس."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/GeohashRepository.kt",
+"name": "displayNameForGeohashConversation",
+"lines": "237-254",
+"summary": "مثل النسخة السابقة لكن لأي موقع جغرافي مصدر sourceGeohash (لا الحالي فقط)، تُستعمل لعناوين الترويسة. تأخذ الأساس base من geoNicknames أو anon، وتلحق اللاحقة #suffix فقط إذا وُجد أكثر من مشارك نشط غير محظور يحمل الاسم نفسه في ذلك الموقع."
+}
+],
+"app/src/main/java/com/bitchat/android/nostr/LocationNotesInitializer.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/LocationNotesInitializer.kt",
+"name": "object LocationNotesInitializer + TAG",
+"lines": "10-13",
+"summary": "كائن مفرد (object) باسم LocationNotesInitializer يحمل ثابتاً خاصاً TAG قيمته \"LocationNotesInitializer\" يُستخدم وسماً لرسائل السجل (Log). الغرض المُعلَن في التوثيق: فصل منطق تهيئة LocationNotesManager عن MainActivity."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/LocationNotesInitializer.kt",
+"name": "fun initialize",
+"lines": "20-62",
+"summary": "دالة initialize تأخذ context وتُعيد Boolean. داخل كتلة try تستدعي LocationNotesManager.getInstance().initialize(...) مُمرِّرةً خمس اعتماديات كدوال لمدا، ثم تسجّل نجاح التهيئة وتُعيد true. عند أي استثناء تلتقطه كتلة catch فتسجّل رسالة خطأ وتُعيد false."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/LocationNotesInitializer.kt",
+"name": "lambda relayManager",
+"lines": "23-23",
+"summary": "دالة لمدا تُمرَّر كاعتمادية relayManager، تُعيد نسخة NostrRelayManager.getInstance(context) عند الطلب لتزويد المدير بمرجع مدير المُرحّلات."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/LocationNotesInitializer.kt",
+"name": "lambda subscribe",
+"lines": "24-41",
+"summary": "دالة لمدا للاشتراك تستقبل filter وid وhandler. تستخرج تجزئة الموقع عبر filter.getGeohash()؛ فإن كانت null تسجّل خطأً وتُرجِع id فوراً. وإلا تسجّل رسالة تتبّع ثم تستدعي NostrRelayManager.getInstance(context).subscribeForGeohash(...) بالوسطاء geohash وfilter وid وhandler مع includeDefaults=true وnRelays=5."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/LocationNotesInitializer.kt",
+"name": "lambda unsubscribe",
+"lines": "42-44",
+"summary": "دالة لمدا لإلغاء الاشتراك تستقبل id وتستدعي NostrRelayManager.getInstance(context).unsubscribe(id)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/LocationNotesInitializer.kt",
+"name": "lambda sendEvent",
+"lines": "45-51",
+"summary": "دالة لمدا لإرسال الحدث تستقبل event وrelayUrls. إن كانت relayUrls غير null استدعت sendEvent(event, relayUrls) على مدير المُرحّلات، وإلا استدعت sendEvent(event) دون عناوين."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/LocationNotesInitializer.kt",
+"name": "lambda deriveIdentity",
+"lines": "52-54",
+"summary": "دالة لمدا لاشتقاق الهوية تستقبل geohash وتستدعي NostrIdentityBridge.deriveIdentity(geohash, context) لاشتقاق هوية نوستر المرتبطة بالموقع."
+}
+],
+"app/src/main/java/com/bitchat/android/nostr/LocationNotesManager.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/LocationNotesManager.kt",
+"name": "companion object + getInstance (نمط النسخة الوحيدة)",
+"lines": "17-29",
+"summary": "الكائن المرافق يحمل الثابتين TAG و MAX_NOTES_IN_MEMORY والحقل المتطاير INSTANCE. تُعيد getInstance نسخة وحيدة من LocationNotesManager باستعمال قفل مزدوج (synchronized) لإنشائها مرة واحدة فقط بأمان بين الخيوط."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/LocationNotesManager.kt",
+"name": "data class Note + displayName",
+"lines": "34-55",
+"summary": "صنف بيانات الملاحظة يحمل id و pubkey و content و createdAt و nickname. الجالب displayName يبني اسم العرض بصيغة «nickname#abcd» أو «anon#abcd» حيث abcd آخر 4 محارف من المفتاح العام، مطابقاً لتنفيذ iOS."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/LocationNotesManager.kt",
+"name": "enum class State",
+"lines": "60-65",
+"summary": "تعداد حالة المدير بأربع قيم: IDLE (خامل) و LOADING (قيد التحميل) و READY (جاهز) و NO_RELAYS (لا مُرحِّلات)؛ تُستهلكها واجهة المستخدم عبر تدفّق state."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/LocationNotesManager.kt",
+"name": "حقول الحالة المنشورة والخاصة والتبعيات",
+"lines": "67-96",
+"summary": "يعرّف تدفّقات الحالة المنشورة للقراءة فقط (notes، geohash، initialLoadComplete، state، errorMessage) المبنية على نظائر خاصة قابلة للتغيير، إضافة إلى حالة داخلية (subscriptionIDs، noteIDs لإزالة التكرار، subscribedGeohashes) ودوال التبعية المحقونة (relayLookup، subscribeFunc، unsubscribeFunc، sendEventFunc، deriveIdentityFunc) ونطاق الإجراءات المتزامنة scope على الخيط الرئيسي. هذه الحقول يستهلكها أغلب الدوال الأخرى."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/LocationNotesManager.kt",
+"name": "initialize",
+"lines": "101-113",
+"summary": "تحقن التبعيات الخمس (relayManager، subscribe، unsubscribe، sendEvent، deriveIdentity) في حقول الصنف، فتُمكّن باقي الدوال من الاشتراك والإرسال واشتقاق الهوية لاحقاً."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/LocationNotesManager.kt",
+"name": "setGeohash",
+"lines": "119-156",
+"summary": "تطبّع الجيوهاش الوارد إلى حروف صغيرة، وتتجاهله إن لم يتغيّر، وترفضه إن لم يكن صالحاً (8 محارف base32) عبر isValidBuildingGeohash. ثم تستدعي cancel وتضبط الحالة إلى LOADING وتمسح الملاحظات، وتحسب مجموعة المركز + الجيران (±1) عبر Geohash.neighborsSamePrecision لتملأ subscribedGeohashes، ثم تستدعي subscribeAll."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/LocationNotesManager.kt",
+"name": "isValidBuildingGeohash",
+"lines": "161-165",
+"summary": "دالة تحقق خاصة تُعيد true فقط إذا كان طول الجيوهاش 8 وكل محارفه ضمن مجموعة base32 المعتمدة؛ تستدعيها setGeohash."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/LocationNotesManager.kt",
+"name": "refresh",
+"lines": "170-190",
+"summary": "تعيد تحميل ملاحظات الجيوهاش الحالي: تتحقق من وجوده، ثم cancel ومسح الملاحظات وإعادة ضبط initialLoadComplete، ثم تعيد بناء subscribedGeohashes من المركز + الجيران وتستدعي subscribeAll."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/LocationNotesManager.kt",
+"name": "send",
+"lines": "195-286",
+"summary": "ترسل ملاحظة موقع جديدة: تتحقق من الجيوهاش والمحتوى، تجلب أقرب المُرحِّلات للجيوهاش عبر RelayDirectory (وتضبط NO_RELAYS إن لم توجد)، ثم تطلق كوروتين يشتقّ الهوية ويبني الحدث بـ NostrProtocol.createGeohashTextNote، يضيف صدى محلياً متفائلاً إلى _notes (مع إزالة التكرار والقصّ عبر trimOldestNotes)، ثم يرسل الحدث عبر sendEventFunc ويضبط الحالة READY أو يكتب رسالة خطأ عند الفشل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/LocationNotesManager.kt",
+"name": "subscribeAll",
+"lines": "291-353",
+"summary": "تشترك في ملاحظات كل جيوهاش في مجموعة ±1: تتحقق من الجيوهاش ومن جاهزية subscribeFunc (وتعيد المحاولة حتى 10 مرات بتأخير 300ملّي إن لم تكن جاهزة)، ثم تبني لكل خلية مُرشّحاً عبر NostrFilter.geohashNotes وتشترك بمعرّف «location-notes-gh» مسجّلةً المعرّف في subscriptionIDs وموجّهةً الأحداث إلى handleEvent، ثم تعلّم اكتمال التحميل الأولي بعد تأخير ثانيتين."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/LocationNotesManager.kt",
+"name": "handleEvent",
+"lines": "358-414",
+"summary": "تعالج الحدث الوارد من الاشتراك: تتجاهل ما ليس TEXT_NOTE وما لا يحمل وسم جيوهاش «g» وما لا يطابق subscribedGeohashes وما سبق استلامه (إزالة تكرار عبر noteIDs). ثم تستخرج الاسم المستعار من وسم «n» وتنشئ Note وتضيفها إلى _notes مرتّبة تنازلياً، وتقصّ عبر trimOldestNotes عند تجاوز الحد، وتعلّم اكتمال التحميل وتضبط READY."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/LocationNotesManager.kt",
+"name": "trimOldestNotes",
+"lines": "419-431",
+"summary": "تحافظ على حد الذاكرة: ترتّب الملاحظات الحالية تنازلياً بوقت الإنشاء وتأخذ أحدث MAX_NOTES_IN_MEMORY منها، تحدّث _notes ومجموعة noteIDs بالمعرّفات المتبقية. يستدعيها كل من send و handleEvent."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/LocationNotesManager.kt",
+"name": "clearError",
+"lines": "436-438",
+"summary": "تمسح رسالة الخطأ بضبط _errorMessage إلى null، مطابقةً لـ clearError في iOS."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/LocationNotesManager.kt",
+"name": "cancel",
+"lines": "443-455",
+"summary": "تلغي كل الاشتراكات القائمة عبر unsubscribeFunc لكل معرّف في subscriptionIDs (مع التقاط آمن للاستثناءات)، ثم تفرّغ subscriptionIDs و subscribedGeohashes وتضبط الحالة إلى IDLE. تستدعيها setGeohash و refresh و cleanup."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/LocationNotesManager.kt",
+"name": "cleanup",
+"lines": "460-468",
+"summary": "تنظيف شامل للموارد: تستدعي cancel وتلغي scope، ثم تفرّغ الملاحظات و noteIDs وتعيد geohash و initialLoadComplete و errorMessage إلى قيمها الابتدائية."
+}
+],
+"app/src/main/java/com/bitchat/android/nostr/NostrClient.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrClient.kt",
+"name": "companion object + getInstance (النسخة الوحيدة)",
+"lines": "16-27",
+"summary": "كائن مرافق يحمل وسم السجل TAG ومتغيّراً متطايراً INSTANCE، وتابع getInstance ينشئ نسخة واحدة فقط من NostrClient بطريقة آمنة للخيوط (قفل مزدوج synchronized) ويستعمل سياق التطبيق. هذه نقطة الدخول الوحيدة لإنشاء العميل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrClient.kt",
+"name": "حقول الحالة والمكوّنات + init",
+"lines": "29-45",
+"summary": "يُعرّف المكوّنات الأساسية: relayManager (مدير المُرحِّلات المشترك) وcurrentIdentity (الهوية)، وتدفّقات الحالة _isInitialized/isInitialized و_currentNpub/currentNpub المكشوفة للقراءة فقط، وscope للإجراءات المتزامنة على الخيط الرئيسي. كتلة init تسجّل بدء التهيئة. هذه الحقول تُغذّي بقية التوابع وتُقرأ من الواجهة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrClient.kt",
+"name": "initialize (التهيئة)",
+"lines": "47-74",
+"summary": "يطلق إجراءً متزامناً يحمّل الهوية عبر NostrIdentityBridge.getCurrentNostrIdentity؛ فإن نجح يضبط _currentNpub ويصل بالمُرحِّلات عبر relayManager.connect ويرفع _isInitialized إلى true، وإلا يسجّل خطأً ويبقيها false. يلتقط الاستثناءات ويعيد ضبط الحالة عند الفشل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrClient.kt",
+"name": "shutdown (الإيقاف)",
+"lines": "76-83",
+"summary": "يقطع الاتصال عن المُرحِّلات عبر relayManager.disconnect ويعيد _isInitialized إلى false. عكس initialize."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrClient.kt",
+"name": "sendPrivateMessage (إرسال رسالة خاصة)",
+"lines": "85-132",
+"summary": "يتحقّق من وجود الهوية ثم يفكّ ترميز npub المستلم عبر Bech32.decode (مع التحقّق من البادئة) إلى مفتاح سداسي عشري، ويبني أغلفة الهدية (NIP-17) عبر NostrProtocol.createPrivateMessage، ثم لكل غلاف يسجّله معلّقاً عبر NostrRelayManager.registerPendingGiftWrap ويرسله عبر relayManager.sendEvent، ويستدعي onSuccess/onError. هو المُنتِج لأحداث الرسائل الخاصة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrClient.kt",
+"name": "subscribeToPrivateMessages (الاشتراك في الرسائل الخاصة)",
+"lines": "134-156",
+"summary": "يبني مُرشِّحاً عبر NostrFilter.giftWrapsFor للمفتاح العام للهوية محدوداً بآخر 48 ساعة، ويشترك في المُرحِّلات تحت المعرّف private-messages، وعند وصول كل غلاف يُحوّل المعالجة إلى handlePrivateMessage داخل scope.launch. يستهلك الأحداث الواردة المقابلة لما يُنتجه sendPrivateMessage."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrClient.kt",
+"name": "sendGeohashMessage (إرسال رسالة جغرافية)",
+"lines": "158-191",
+"summary": "يشتقّ هوية خاصة بالمنطقة عبر NostrIdentityBridge.deriveIdentity، ثم يبني حدثاً عابراً (مع إثبات العمل إن فُعِّل) عبر NostrProtocol.createEphemeralGeohashEvent ويرسله عبر relayManager.sendEvent، ويستدعي onSuccess/onError. المُنتِج للأحداث العامة في قنوات geohash."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrClient.kt",
+"name": "subscribeToGeohash (الاشتراك في قناة جغرافية)",
+"lines": "193-213",
+"summary": "يبني مُرشِّحاً عبر NostrFilter.geohashEphemeral محدوداً بآخر ساعة وبحدّ 200، ويشترك تحت المعرّف geohash-$geohash، وعند وصول كل حدث يُحوّله إلى handleGeohashMessage داخل scope.launch. يستهلك ما يُنتجه sendGeohashMessage."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrClient.kt",
+"name": "unsubscribeFromGeohash (إلغاء الاشتراك من قناة جغرافية)",
+"lines": "215-221",
+"summary": "يلغي اشتراك القناة الجغرافية عبر relayManager.unsubscribe بالمعرّف geohash-$geohash. عكس subscribeToGeohash."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrClient.kt",
+"name": "كاشفات الحالة العامة (getCurrentIdentity/relayConnectionStatus/relayInfo)",
+"lines": "223-236",
+"summary": "توابع وخصائص للقراءة: getCurrentIdentity يعيد الهوية الحالية، وrelayConnectionStatus وrelayInfo يكشفان مباشرةً تدفّقَي isConnected وrelays من مدير المُرحِّلات. تُستهلَك من واجهة المستخدم لمراقبة الحالة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrClient.kt",
+"name": "handlePrivateMessage (معالجة الرسالة الخاصة الواردة)",
+"lines": "240-278",
+"summary": "تابع خاص معلّق: يصفّي الرسائل القديمة حسب العمر (حدّ 173700 ثانية)، ثم يفكّ تشفير الغلاف عبر NostrProtocol.decryptPrivateMessage، ويحوّل مفتاح المرسل إلى npub عبر Bech32.encode (مع معالجة الخطأ)، ثم يستدعي handler على الخيط الرئيسي عبر withContext(Dispatchers.Main). يُستدعى من subscribeToPrivateMessages."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrClient.kt",
+"name": "handleGeohashMessage (معالجة الرسالة الجغرافية الواردة)",
+"lines": "280-307",
+"summary": "تابع خاص معلّق: يتحقّق من إثبات العمل عبر PoWPreferenceManager.getCurrentSettings وNostrProofOfWork.validateDifficulty (ويرفض غير الكافي)، ثم يستخرج الاسم المستعار من وسوم الحدث (الوسم n)، ويستدعي handler على الخيط الرئيسي عبر withContext(Dispatchers.Main). يُستدعى من subscribeToGeohash."
+}
+],
+"app/src/main/java/com/bitchat/android/nostr/NostrCrypto.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrCrypto.kt",
+"name": "تمهيدُ الكائنِ ومعاملاتُ المنحنى (NostrCrypto setup)",
+"lines": "23-35",
+"summary": "يفتح الكائنَ الوحيد «أدواتُ تشفيرِ نوستر (NostrCrypto)» ويُجهّز الأدواتِ المشتركة: مولّدٌ عشوائيٌّ آمن (secureRandom)، ومنحنى secp256k1 (secp256k1Curve)، ومنه يبني «معاملاتِ المنحنى (secp256k1Params)» من المنحنى ونقطةِ المولّد g والرتبة n والمعاملِ المساعد h. هذه القيمُ تُستعمل في كلِّ بقيةِ الملف."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrCrypto.kt",
+"name": "توليدُ زوجِ المفاتيح (generateKeyPair)",
+"lines": "41-73",
+"summary": "يُنشئ زوجَ مفاتيحٍ جديداً على المنحنى عبر «مولّدِ أزواجِ المفاتيح (ECKeyPairGenerator)». يأخذ المفتاحَ الخاص ويحشوه إلى 32 بايتاً مع معالجةِ بايتِ الإشارةِ الذي قد يضيفه العددُ الكبير، ويأخذ من المفتاحِ العام الإحداثيَّ السينيَّ فقط (32 بايتاً). يُعيد زوجاً نصيّاً (الخاص، العام) بصيغةٍ ست عشرية."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrCrypto.kt",
+"name": "اشتقاقُ المفتاحِ العام (derivePublicKey)",
+"lines": "79-87",
+"summary": "يحوّل المفتاحَ الخاصَّ الست عشريَّ إلى عددٍ كبير، ويضربه في نقطةِ المولّد g على المنحنى للحصولِ على نقطةِ المفتاحِ العام، ثم يُعيد إحداثيَّها السينيَّ فقط كنصٍّ ست عشري. يعتمد على «معاملاتِ المنحنى (secp256k1Params)»."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrCrypto.kt",
+"name": "تنفيذُ اتفاقِ ECDH (performECDH)",
+"lines": "93-126",
+"summary": "ينفّذ اتفاقَ مفاتيح ديفي-هيلمان الإهليلجي: يستعيد نقطةَ المفتاحِ العام من إحداثيها السينيِّ عبر «استعادةِ نقطةِ المفتاحِ العام (recoverPublicKeyPoint)»، ثم يحسب السرَّ المشترك عبر «اتفاقِ ECDH الأساسي (ECDHBasicAgreement)»، ويُطبّع الناتجَ إلى 32 بايتاً تماماً مع معالجةِ بايتِ الإشارة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrCrypto.kt",
+"name": "اتفاقُ ECDH باختيارِ الزوجية (performECDHWithParity)",
+"lines": "132-151",
+"summary": "مثل «تنفيذِ اتفاقِ ECDH (performECDH)» لكنه يختار صراحةً زوجيةَ الصادية (فردية أو زوجية) للمفتاحِ العام ذي السينيةِ فقط عبر «استعادةِ النقطةِ بزوجيةٍ محدّدة (recoverPublicKeyPointWithParity)»، ثم يحسب السرَّ المشترك ويُطبّعه إلى 32 بايتاً. دالةٌ خاصّة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrCrypto.kt",
+"name": "استعادةُ نقطةِ المفتاحِ العام (recoverPublicKeyPoint)",
+"lines": "157-175",
+"summary": "تأخذ 32 بايتاً للإحداثيِّ السينيِّ فقط، وتجرّب أولاً البادئةَ 0x02 (صاديةٌ زوجية) لفكِّ النقطةِ على المنحنى، وإن فشلت تجرّب البادئةَ 0x03 (صاديةٌ فردية). تُستعمل في performECDH وisValidPublicKey وliftX."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrCrypto.kt",
+"name": "استعادةُ النقطةِ بزوجيةٍ محدّدة (recoverPublicKeyPointWithParity)",
+"lines": "177-184",
+"summary": "تستعيد نقطةَ المنحنى من 32 بايتاً سينيةً مع تحديدٍ صريحٍ للبادئة: 0x03 إذا طُلِبت الصاديةُ الفردية وإلا 0x02. تُستعمل من performECDHWithParity وcomputeSharedPointWithParity."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrCrypto.kt",
+"name": "حسابُ النقطةِ المشتركةِ بزوجيةٍ محدّدة (computeSharedPointWithParity)",
+"lines": "189-195",
+"summary": "تحسب نقطةَ ECDH المشتركةَ (غيرَ المضغوطة) باستعادةِ نقطةِ المفتاحِ العام بزوجيةٍ محدّدة ثم ضربها في المفتاحِ الخاصِّ كعددٍ كبير وتطبيعها. تُغذّي «النقطةَ المضغوطة (compressedPoint)» داخل تشفيرِ وفكِّ NIP-44."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrCrypto.kt",
+"name": "النقطةُ المضغوطة (compressedPoint)",
+"lines": "197-205",
+"summary": "تحوّل نقطةَ منحنى إلى صيغةٍ مضغوطة بطول 33 بايتاً: بادئةٌ (0x02 إن كانت الصاديةُ زوجية وإلا 0x03 عبر «الصاديةُ زوجية (hasEvenY)») متبوعةٌ بالإحداثيِّ السينيِّ (32 بايتاً). تُعطي المادةَ السرّيةَ المُدخَلةَ لاشتقاقِ مفتاحِ NIP-44."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrCrypto.kt",
+"name": "اشتقاقُ مفتاحِ NIP-44 (deriveNIP44Key)",
+"lines": "211-215",
+"summary": "تشتق مفتاحَ تشفيرٍ من السرِّ المشترك باستخدام HKDF-SHA256: ملحٌ فارغ، والمعلومةُ «nip44-v2»، والطولُ 32 بايتاً. تنادي «استخلاصَ HKDF (hkdfExtract)» ثم «توسيعَ HKDF (hkdfExpand)»."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrCrypto.kt",
+"name": "استخلاصُ HKDF (hkdfExtract)",
+"lines": "217-224",
+"summary": "المرحلةُ الأولى من HKDF: تحسب HMAC-SHA256 على المادةِ الأوليةِ (ikm) بمفتاحٍ هو الملح، وتُعيد المفتاحَ الزائفَ العشوائيَّ (prk). تُستعمل من deriveNIP44Key."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrCrypto.kt",
+"name": "توسيعُ HKDF (hkdfExpand)",
+"lines": "226-236",
+"summary": "المرحلةُ الثانية من HKDF: تأخذ المفتاحَ الزائفَ العشوائيَّ (prk) والمعلومةَ (info)، وتحسب كتلةً واحدةً من HMAC-SHA256 مع لاحقةِ 0x01، ثم تقتطعها إلى الطولِ المطلوب. تُستعمل من deriveNIP44Key."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrCrypto.kt",
+"name": "تشفيرُ NIP-44 (encryptNIP44)",
+"lines": "242-260",
+"summary": "يشفّر نصّاً صريحاً للمستقبِل: يحسب النقطةَ المشتركةَ المضغوطةَ (مطابقةً لـ iOS، بزوجيةٍ زوجية)، ويشتق مفتاحَ NIP-44، ثم يشفّر بـ XChaCha20-Poly1305 ويُخرِج «v2:» متبوعةً بترميزِ base64url لـ (المُعمّى ثم النصِّ المشفّر ثم الوسم). يلتقط الأخطاءَ ويرميها كـ RuntimeException."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrCrypto.kt",
+"name": "فكُّ تشفيرِ NIP-44 (decryptNIP44)",
+"lines": "267-293",
+"summary": "يقبل فقط صيغةَ «v2:» base64url، يفكّ ترميزَها، ثم يجرّب الزوجيتَين (الزوجيةُ أولاً ثم الفردية) لحسابِ النقطةِ المشتركةِ واشتقاقِ المفتاحِ وفكِّ XChaCha20-Poly1305، ويُعيد أوّلَ نجاح. إن فشل الجميع يرمي آخرَ خطأ أو RuntimeException."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrCrypto.kt",
+"name": "ترميزُ base64url بلا حشو (base64UrlNoPad)",
+"lines": "295-298",
+"summary": "ترمّز مصفوفةَ بايتاتٍ إلى base64 قياسي ثم تحوّله إلى صيغةِ url-safe باستبدالِ + بـ - و / بـ _ وحذفِ علاماتِ =. تُستعمل من encryptNIP44."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrCrypto.kt",
+"name": "فكُّ ترميزِ base64url (base64UrlDecode)",
+"lines": "300-309",
+"summary": "تعكس ترميزَ url-safe (- إلى + و_ إلى /)، وتُعيد الحشوَ بعلاماتِ =، ثم تفكّ الترميز؛ وتُعيد null إن كان المُدخَل غيرَ صالح. تُستعمل من decryptNIP44."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrCrypto.kt",
+"name": "عشوَأةُ الطابعِ الزمني (randomizeTimestamp)",
+"lines": "314-317",
+"summary": "تضيف إزاحةً عشوائيةً ضمن ±15 دقيقة إلى طابعٍ زمنيٍّ أساس (افتراضُه الوقتُ الحالي بالثواني) لأجلِ الخصوصية، وتُعيد عدداً صحيحاً."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrCrypto.kt",
+"name": "عشوَأةُ الطابعِ الزمني نحو الماضي (randomizeTimestampUpToPast)",
+"lines": "322-326",
+"summary": "تُعيد طابعاً زمنياً عشوائياً في الماضي يصل إلى maxPastSeconds ثانية (افتراضُه يومان) عبر طرحِ إزاحةٍ عشوائيةٍ من الوقتِ الحالي."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrCrypto.kt",
+"name": "صلاحيةُ المفتاحِ الخاص (isValidPrivateKey)",
+"lines": "331-343",
+"summary": "تتحقق أنّ المفتاحَ الخاصَّ 32 بايتاً، وأنّ قيمتَه كعددٍ كبير أكبرُ من الصفر وأصغرُ من رتبةِ المنحنى n. تُعيد false عند أيِّ خطأ."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrCrypto.kt",
+"name": "صلاحيةُ المفتاحِ العام (isValidPublicKey)",
+"lines": "348-359",
+"summary": "تتحقق أنّ المفتاحَ العامَّ 32 بايتاً وأنه يمكن استعادةُ نقطةٍ صحيحةٍ منه عبر «استعادةِ نقطةِ المفتاحِ العام (recoverPublicKeyPoint)». تُعيد false عند الفشل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrCrypto.kt",
+"name": "التجزئةُ الموسومة (taggedHash)",
+"lines": "368-377",
+"summary": "تطبّق التجزئةَ الموسومةَ وفق BIP-340: تحسب SHA-256 للوسم، ثم تجمع (تجزئةُ الوسم مكرّرةً مرتين ثم البيانات) وتحسب SHA-256 للناتج. تُستعمل في توقيعِ شنور والتحقّقِ منه عبر الوسم «BIP0340/challenge»."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrCrypto.kt",
+"name": "الصاديةُ زوجية (hasEvenY)",
+"lines": "382-385",
+"summary": "تفحص آخرَ بايتٍ من الإحداثيِّ الصاديِّ للنقطةِ المُطبّعة لتقرّر إن كانت الصاديةُ زوجيةً (البتُّ الأدنى = 0). تُستعمل في compressedPoint وliftX وschnorrSign وschnorrVerify."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrCrypto.kt",
+"name": "رفعُ السينية (liftX)",
+"lines": "390-403",
+"summary": "ترفع الإحداثيَّ السينيَّ إلى نقطةٍ كاملةٍ ذاتِ صاديةٍ زوجية: تستعيد النقطةَ ثم تُعيدها كما هي إن كانت صاديتُها زوجية وإلا تُعيد نفيها. تُعيد null عند الخطأ. تُستعمل في schnorrVerify."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrCrypto.kt",
+"name": "توقيعُ شنور (schnorrSign)",
+"lines": "409-472",
+"summary": "ينشئ توقيعَ شنور وفق BIP-340: يتحقق من المُدخَلات، يحسب نقطةَ المفتاحِ العام P=d·G ويُعدّل d لضمانِ صاديةٍ زوجية، يولّد قيمةً مؤقتةً عبر «توليدِ القيمةِ المؤقتة (generateNonce)» ويحسب R=k·G ويُعدّل k، ثم يحسب التحدّي e عبر «التجزئةِ الموسومة (taggedHash)» وs=(k+e·d) mod n، ويُعيد التوقيعَ (r‖s) بطول 64 بايتاً ست عشرياً."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrCrypto.kt",
+"name": "التحقّقُ من توقيعِ شنور (schnorrVerify)",
+"lines": "477-523",
+"summary": "يتحقق من توقيعِ شنور وفق BIP-340: يتأكد من الأطوال، يفصل r وs ويتحقق من نطاقِهما، يرفع المفتاحَ العام عبر «رفعِ السينية (liftX)»، يحسب التحدّي e، ثم R=s·G − e·P، ويقبل التوقيعَ إذا كانت صاديةُ R زوجيةً وإحداثيُها السينيُّ يطابق r. يُعيد false عند أيِّ خطأ."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrCrypto.kt",
+"name": "توليدُ القيمةِ المؤقتة (generateNonce)",
+"lines": "528-558",
+"summary": "تولّد القيمةَ المؤقتة (k) للتوقيع: تجمع (المفتاحَ الخاص ‖ بصمةَ الرسالة ‖ المفتاحَ العام ‖ 32 بايتاً عشوائية) وتحسب SHA-256 للناتج، ثم تحوّله لعددٍ كبير وتأخذ باقيَ قسمتِه على n إن لزم. تعليقُ المصدرِ يذكر أنّ الإنتاجَ يجب أن يستعمل RFC 6979."
+}
+],
+"app/src/main/java/com/bitchat/android/nostr/NostrDirectMessageHandler.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrDirectMessageHandler.kt",
+"name": "تعريف الصنف ومعاملات المُنشئ والحقول",
+"lines": "22-38",
+"summary": "يُعرّف الصنف «معالج رسائل نوستر المباشرة» (NostrDirectMessageHandler) ويحقن فيه عبر المُنشئ سبع تبعيّات: التطبيق (application)، وحالة الدردشة (state)، ومدير الدردشة الخاصة (privateChatManager)، ومعالج وكيل الشبكة (meshDelegateHandler)، ونطاق التزامن (scope)، ومستودع الجيوهاش (repo)، ومدير البيانات (dataManager). كما يُعرّف وسماً ثابتاً TAG للسجلّ، ومخزن الرسائل المرئية المُهيّأ بكسل (seenStore)، وبنى إزالة التكرار: طابور processedIds ومجموعة seen وحدّ أقصى max=2000."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrDirectMessageHandler.kt",
+"name": "dedupe — إزالة تكرار الأحداث",
+"lines": "40-49",
+"summary": "دالة خاصة تأخذ معرّفاً (id) وتُعيد true إن سبق رؤيته (موجود في seen)، وإلا تُضيفه إلى المجموعة seen وإلى آخر الطابور processedIds وتُعيد false. وعند تجاوز الطابور الحدّ max=2000 تُزيل أقدم معرّف من أول الطابور ومن المجموعة معاً حتى لا تنمو الذاكرة بلا حدّ."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrDirectMessageHandler.kt",
+"name": "onGiftWrap — استقبال غلاف نوستر وفكّه",
+"lines": "51-109",
+"summary": "الدالة العامة المدخلية: تُطلق تزامناً على الموزِّع Default. تتحقّق من عدم التكرار عبر dedupe، وتُسقط الرسائل الأقدم من 48 ساعة و15 دقيقة (173700 ثانية). تفكّ تشفير الغلاف الهديّة عبر NostrProtocol.decryptPrivateMessage فتحصل على المحتوى والمفتاح العام للمرسِل وطابع الزمن، وتُسقط المرسِل المحظور (dataManager.isGeohashUserBlocked) والمحتوى الذي لا يبدأ بـ\"bitchat1:\". ثم تفكّ ترميز base64URL وتبني حزمة BitchatPacket، وتتأكّد أنها مشفّرة بنويز (NOISE_ENCRYPTED)، وتفكّ NoisePayload. تبني مفتاح المحادثة convKey وتسجّله في المستودع والسجلّات (putNostrKeyMapping، GeohashAliasRegistry، setConversationGeohash، GeohashConversationRegistry)، وتُحدّث الاسم المستعار المخزّن والمشارِك في قائمة الجيوهاش، ثم تسلّم الحمولة إلى processNoisePayload. أي خطأ يُلتقط ويُسجّل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrDirectMessageHandler.kt",
+"name": "processNoisePayload — توجيه حمولة نويز حسب نوعها",
+"lines": "111-196",
+"summary": "دالة معلّقة (suspend) توزّع المعالجة بتعبير when على نوع الحمولة: PRIVATE_MESSAGE تفكّ PrivateMessagePacket وتتجاهل المكرّر ثم تبني BitchatMessage وتسلّمها لمدير الدردشة الخاصة على الخيط الرئيسي، وترسل إقرار التسليم (sendDeliveryAckGeohash) إن لم يسبق تسليمها وإيصال القراءة (sendReadReceiptGeohash) إن كانت المحادثة معروضة وغير مقروءة. DELIVERED وREAD_RECEIPT تقرآن معرّف الرسالة نصاً وتُبلّغان معالج وكيل الشبكة (didReceiveDeliveryAck / didReceiveReadReceipt). FILE_TRANSFER تفكّ BitchatFilePacket وتحفظ الملف عبر FileUtils.saveIncomingFile وتبني رسالة ملف وتسلّمها للمدير. VERIFY_CHALLENGE وVERIFY_RESPONSE تُتجاهلان."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrDirectMessageHandler.kt",
+"name": "base64URLDecode — فكّ ترميز base64 الآمن للروابط",
+"lines": "198-211",
+"summary": "دالة خاصة تُحوّل نصّ base64URL إلى base64 قياسي باستبدال \"-\" بـ\"+\" و\"_\" بـ\"/\"، ثم تُكمل الحشو بعلامات \"=\" حتى يصبح الطول من مضاعفات 4، وتفكّ الترميز عبر android.util.Base64.decode. تُعيد ByteArray أو null عند أي استثناء مع تسجيل الخطأ. تُستخدم داخل onGiftWrap لتحويل المحتوى النصّي إلى بيانات الحزمة الثنائية."
+}
+],
+"app/src/main/java/com/bitchat/android/nostr/NostrEmbeddedBitChat.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEmbeddedBitChat.kt",
+"name": "تعريف الكائن المفرد والثوابت (object NostrEmbeddedBitChat + TAG)",
+"lines": "15-17",
+"summary": "يعرّف كائناً مفرداً اسمه «محوّل بِت‑تشات المضمّن في نوستر» (NostrEmbeddedBitChat) يضمّ كل دوال الملف، ويعرّف داخله ثابتاً خاصاً TAG قيمته \"NostrEmbeddedBitChat\" يُستخدم وسماً عند تسجيل أخطاء السجلّ في كل دالة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEmbeddedBitChat.kt",
+"name": "encodePMForNostr",
+"lines": "22-58",
+"summary": "تبني نصاً مرمّزاً بادئته \"bitchat1:\" يحمل رسالة خاصة لرسائل نوستر المباشرة مع تضمين معرّف المستقبِل. تنشئ PrivateMessagePacket ثم ترمّزه بصيغة TLV، وتضع بايت نوع الحمولة PRIVATE_MESSAGE في مقدّمة الحمولة، وتطبّع معرّف المستقبِل عبر normalizeRecipientPeerID، ثم تبني BitchatPacket من نوع NOISE_ENCRYPTED وتحوّله إلى بايتات بـ toBinaryData وتُرمّزه عبر base64URLEncode. تعيد null عند أي فشل أو استثناء."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEmbeddedBitChat.kt",
+"name": "encodeAckForNostr",
+"lines": "63-98",
+"summary": "تبني نص \"bitchat1:\" يحمل إشعار تسليم أو قراءة لرسائل نوستر المباشرة مع تضمين معرّف المستقبِل. ترفض الأنواع غير DELIVERED وREAD_RECEIPT بإعادة null. تبني الحمولة من بايت النوع متبوعاً ببايتات messageID نصاً UTF‑8، وتطبّع المستقبِل عبر normalizeRecipientPeerID، ثم تبني BitchatPacket وتحوّله وتُرمّزه عبر base64URLEncode. تعيد null عند الفشل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEmbeddedBitChat.kt",
+"name": "encodeAckForNostrNoRecipient",
+"lines": "103-135",
+"summary": "مثل encodeAckForNostr لكنها لرسائل الـ geohash المباشرة، فتضبط recipientID على null دون تطبيع. ترفض الأنواع غير DELIVERED وREAD_RECEIPT، وتبني الحمولة من بايت النوع وبايتات messageID، ثم تبني BitchatPacket بلا مستقبِل وتُرمّزه عبر base64URLEncode. تعيد null عند الفشل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEmbeddedBitChat.kt",
+"name": "encodePMForNostrNoRecipient",
+"lines": "140-170",
+"summary": "مثل encodePMForNostr لكنها لرسائل الـ geohash المباشرة فلا تضمّن معرّف المستقبِل (recipientID = null). تنشئ PrivateMessagePacket وترمّزه TLV، وتضع بايت PRIVATE_MESSAGE في مقدّمة الحمولة، ثم تبني BitchatPacket من نوع NOISE_ENCRYPTED بلا مستقبِل وتُرمّزه عبر base64URLEncode. تعيد null عند الفشل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEmbeddedBitChat.kt",
+"name": "normalizeRecipientPeerID",
+"lines": "175-197",
+"summary": "دالة خاصة تحوّل معرّف نِدّ المستقبِل إلى صيغة ست‑عشرية بطول ٨ بايتات. تحوّل النص إلى بايتات عبر hexStringToByteArray وتفرّع على الحجم: إن كان ٣٢ (مفتاح نويز العام) تعيد أول ٨ بايتات نصاً ست‑عشرياً، وإن كان ٨ تعيد المعرّف كما هو، وغير ذلك تعيده كما هو احتياطياً، وتعيده كما هو أيضاً عند أي استثناء. تستدعيها دوال الترميز التي تضمّن مستقبِلاً (encodePMForNostr وencodeAckForNostr)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEmbeddedBitChat.kt",
+"name": "base64URLEncode",
+"lines": "202-208",
+"summary": "دالة خاصة ترمّز مصفوفة بايتات بقاعدة‑٦٤ على نمط الرابط دون حشو، مطابقةً لتطبيق iOS. تستدعي Base64.encodeToString بخيار NO_WRAP ثم تستبدل + بـ - و / بـ _ وتحذف علامات =. تستدعيها كل دوال الترميز الأربع لإنتاج النص النهائي بعد البادئة \"bitchat1:\"."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEmbeddedBitChat.kt",
+"name": "hexStringToByteArray",
+"lines": "213-233",
+"summary": "دالة خاصة تحوّل نصاً ست‑عشرياً إلى مصفوفة بايتات بطول ٨ بالضبط مثل iOS. تعيد مصفوفة أصفار بطول ٨ إذا كان الطول فردياً، وإلا تقرأ زوجي محارف في حلقة حتى ٨ بايتات وتحوّل كل زوج إلى بايت بالأساس ١٦ (متجاهلةً ما يفشل تحويله). تستدعيها normalizeRecipientPeerID ودوال الترميز لبناء senderID وrecipientID."
+}
+],
+"app/src/main/java/com/bitchat/android/nostr/NostrEvent.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEvent.kt",
+"name": "تعريف صنف بيانات NostrEvent وحقوله",
+"lines": "12-20",
+"summary": "يُعرِّف صنف البيانات (NostrEvent) وفق المعيار NIP-01 ومتوافق مع تطبيق iOS، ويضم سبعة حقول: المعرّف (id) والمفتاح العام (pubkey) ووقت الإنشاء (createdAt المُسلسَل باسم created_at) والنوع (kind) والوسوم (tags وهي قائمة من قوائم نصوص) والمحتوى (content) والتوقيع (sig) القابل للإفراغ. هذه الحقول هي مادة العمل لبقية دوال الملف."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEvent.kt",
+"name": "fromJson — بناء حدث من قاموس JSON",
+"lines": "26-40",
+"summary": "دالة في الكائن المرافق تأخذ قاموس Map<String,Any> وتبني منه مثيل NostrEvent بتحويل آمن لكل حقل؛ تُعيد null إذا غاب أو فشل أي حقل إجباري (pubkey, created_at, kind, tags, content) أو وقع استثناء."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEvent.kt",
+"name": "fromJsonString — بناء حدث من نص JSON",
+"lines": "45-52",
+"summary": "دالة في الكائن المرافق تأخذ نص JSON وتستخدم Gson لتفكيكه إلى مثيل NostrEvent، وتُعيد null عند وقوع استثناء."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEvent.kt",
+"name": "createTextNote — إنشاء ملاحظة نصية موقّعة",
+"lines": "57-72",
+"summary": "دالة مصنع في الكائن المرافق تبني حدثاً من النوع NostrKind.TEXT_NOTE بمحتوى ومفتاح عام ووسوم ووقت إنشاء (افتراضياً الوقت الحالي بالثواني)، ثم تستدعي sign بالمفتاح الخاص وتُعيد الحدث الموقّع."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEvent.kt",
+"name": "createMetadata — إنشاء حدث بيانات وصفية موقّع",
+"lines": "77-91",
+"summary": "دالة مصنع في الكائن المرافق تبني حدثاً من النوع NostrKind.METADATA (النوع 0) بوسوم فارغة ومحتواه نص البيانات الوصفية، ثم تستدعي sign بالمفتاح الخاص وتُعيد الحدث الموقّع."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEvent.kt",
+"name": "sign — توقيع الحدث",
+"lines": "98-108",
+"summary": "دالة مثيل تستدعي calculateEventId للحصول على المعرّف وبايتات تجزئته، ثم تستدعي signHash لتوقيع التجزئة بالمفتاح الخاص، وتُعيد نسخة (copy) من الحدث بعد ضبط حقلي id و sig. تستدعيها createTextNote و createMetadata."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEvent.kt",
+"name": "computeEventIdHex — حساب المعرّف دون توقيع",
+"lines": "113-116",
+"summary": "دالة مثيل تستدعي calculateEventId وتُعيد الجزء النصي الست عشري للمعرّف فقط (متجاهلةً بايتات التجزئة)، دون أي توقيع."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEvent.kt",
+"name": "calculateEventId — حساب معرّف الحدث وفق NIP-01",
+"lines": "122-146",
+"summary": "دالة خاصة تبني المصفوفة المُسلسَلة [0, pubkey, createdAt, kind, tags, content] وفق NIP-01، تحوّلها إلى JSON مدمج عبر Gson (مع تعطيل تهريب HTML)، تجزّئها بـ SHA-256، ثم تُعيد زوجاً يحوي المعرّف الست عشري وبايتات التجزئة. هي المصدر المشترك لـ sign و computeEventIdHex و isValidSignature."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEvent.kt",
+"name": "signHash — توقيع التجزئة بـ Schnorr",
+"lines": "151-158",
+"summary": "دالة خاصة تستدعي NostrCrypto.schnorrSign لتوقيع بايتات التجزئة بالمفتاح الخاص وفق BIP-340، وترمي RuntimeException عند الفشل. تستدعيها sign."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEvent.kt",
+"name": "toJsonString — التحويل إلى نص JSON",
+"lines": "163-166",
+"summary": "دالة مثيل تستخدم Gson لتحويل الحدث الحالي إلى نص JSON وإعادته."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEvent.kt",
+"name": "isValidSignature — التحقق من التوقيع",
+"lines": "171-187",
+"summary": "دالة مثيل تتحقق من وجود التوقيع وعدم خلو id و pubkey، ثم تعيد حساب المعرّف عبر calculateEventId وتطابقه مع id المخزّن، وأخيراً تستدعي NostrCrypto.schnorrVerify للتحقق من التوقيع وفق BIP-340؛ تُعيد false عند أي فشل أو استثناء. تستدعيها isValid."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEvent.kt",
+"name": "isValid — التحقق من البنية والتوقيع",
+"lines": "192-204",
+"summary": "دالة مثيل تتحقق أولاً من الحقول الأساسية (pubkey و content غير فارغين، createdAt موجب، kind غير سالب، وصحة المفتاح العام عبر NostrCrypto.isValidPublicKey) ثم تستدعي isValidSignature للتحقق من التوقيع؛ تُعيد false عند أي فشل أو استثناء."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEvent.kt",
+"name": "NostrKind — ثوابت أنواع الأحداث",
+"lines": "210-219",
+"summary": "كائن مفرد يجمع ثوابت أنواع أحداث نوستر: METADATA=0، TEXT_NOTE=1، SEAL=13، DIRECT_MESSAGE=14، FILE_MESSAGE=15 (الثلاثة الأخيرة بنمط NIP-17)، GIFT_WRAP=1059، EPHEMERAL_EVENT=20000 و GEOHASH_PRESENCE=20001 (لقنوات وحضور التجزئة الجغرافية). تستهلكها createTextNote و createMetadata."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEvent.kt",
+"name": "hexToByteArray — تحويل نص ست عشري إلى بايتات",
+"lines": "224-229",
+"summary": "دالة امتداد على String تتحقق من أن الطول زوجي، ثم تقسّم النص إلى أزواج حروف وتحوّل كل زوج إلى بايت بالأساس 16، وتُعيد مصفوفة بايت."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEvent.kt",
+"name": "toHexString — تحويل بايتات إلى نص ست عشري",
+"lines": "231-231",
+"summary": "دالة امتداد على ByteArray تدمج كل بايت بصيغة %02x لتُعيد نصاً ست عشرياً. وهي العملية العكسية لـ hexToByteArray."
+}
+],
+"app/src/main/java/com/bitchat/android/nostr/NostrEventDeduplicator.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEventDeduplicator.kt",
+"name": "companion object / getInstance",
+"lines": "23-38",
+"summary": "كائن مرافق يحمل الثوابت (TAG والسعة الافتراضية DEFAULT_CAPACITY المأخوذة من AppConstants) ويوفّر دالة getInstance التي تنشئ نسخة مفردة (singleton) واحدة من مُزيل التكرار بطريقة آمنة على مستوى الخيوط عبر INSTANCE المعلّم @Volatile وكتلة synchronized مع فحص مزدوج للقيمة الفارغة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEventDeduplicator.kt",
+"name": "LRUNode (data class)",
+"lines": "43-47",
+"summary": "صنف بيانات خاص يمثّل عقدة في القائمة المترابطة المزدوجة، يحمل معرّف الحدث eventId ومؤشّرين prev و next إلى العقدتين السابقة والتالية. هو لبنة بنية LRU المستعملة في كامل الملف."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEventDeduplicator.kt",
+"name": "الحقول والحالة + init",
+"lines": "50-73",
+"summary": "يعرّف البنية الداخلية: خريطة nodeMap (ConcurrentHashMap) للبحث بتعقيد O(1)، وعقدتي الرأس head والذيل tail الوهميتين للقائمة المزدوجة، وقفل lruLock، وعدّادات الإحصاء الثلاثة (totalChecks وduplicateCount وevictionCount). كتلة init تربط head بـ tail لتهيئة قائمة فارغة وتُسجّل رسالة بدء بالسعة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEventDeduplicator.kt",
+"name": "isDuplicate",
+"lines": "81-109",
+"summary": "الدالة العامة المحورية: تزيد totalChecks ثم تدخل قفل lruLock وتبحث عن eventId في nodeMap. إن وُجد فهو مكرّر فتستدعي moveToFront وتزيد duplicateCount وتُعيد true؛ وإن لم يوجد فهو جديد فتستدعي addToFront، وإن تجاوز الحجم maxCapacity تستدعي evictOldest، ثم تُعيد false."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEventDeduplicator.kt",
+"name": "processEvent",
+"lines": "118-125",
+"summary": "غلاف ملائم: يأخذ NostrEvent ودالة processor، ويستدعي isDuplicate على event.id؛ إن لم يكن مكرّراً ينفّذ processor ويُعيد true، وإلا يُعيد false دون معالجة. يربط منطق إزالة التكرار بمعالجة الحدث الفعلية."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEventDeduplicator.kt",
+"name": "getStats",
+"lines": "130-141",
+"summary": "تقرأ الحالة داخل قفل lruLock وتبني وتُعيد كائن DeduplicationStats محتوياً السعة والحجم الحالي والعدّادات ومعدّل الإصابة hitRate المحسوب كنسبة duplicateCount إلى totalChecks (أو 0.0 عند انعدام الفحوص)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEventDeduplicator.kt",
+"name": "clear",
+"lines": "146-159",
+"summary": "تفرّغ المخزن داخل قفل lruLock: تمسح nodeMap وتُعيد ربط head بـ tail وتصفّر العدّادات الثلاثة، مفيدة للاختبار وإعادة ضبط الحالة، ثم تُسجّل رسالة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEventDeduplicator.kt",
+"name": "contains / size",
+"lines": "164-171",
+"summary": "دالتان مساعدتان للقراءة: contains تفحص وجود مفتاح eventId في nodeMap، وsize تُعيد عدد العناصر الحالي في nodeMap عبر تعبير مفرد."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEventDeduplicator.kt",
+"name": "addToFront",
+"lines": "178-187",
+"summary": "دالة LRU خاصة: تنشئ LRUNode جديدة للمعرّف eventId وتُسجّلها في nodeMap ثم تُدرجها مباشرةً بعد head (موضع الأكثر استخداماً مؤخراً)، وتُستدعى من isDuplicate عند ورود حدث جديد."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEventDeduplicator.kt",
+"name": "moveToFront",
+"lines": "192-202",
+"summary": "دالة LRU خاصة: تفصل عقدة موجودة عن موضعها الحالي بإعادة وصل جارَيها ثم تُدرجها بعد head لتصبح الأحدث استخداماً، وتُستدعى من isDuplicate عند تكرار حدث."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEventDeduplicator.kt",
+"name": "removeTail",
+"lines": "207-223",
+"summary": "دالة LRU خاصة: تأخذ آخر عقدة (tail.prev)، وإن كانت تساوي head فالقائمة فارغة وتُعيد null؛ وإلا تفصلها من القائمة المزدوجة وتزيلها من nodeMap وتُعيدها. تُستعمَل من evictOldest."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEventDeduplicator.kt",
+"name": "evictOldest",
+"lines": "228-241",
+"summary": "دالة LRU خاصة: حلقة تطرد العقد الأقدم عبر removeTail طالما تجاوز حجم nodeMap السعة maxCapacity، وتزيد evictionCount لكل عقدة مطرودة (مع تسجيل دوري)، وتكسر الحلقة عند العودة الفارغة كفحص أمان. تُستدعى من isDuplicate."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrEventDeduplicator.kt",
+"name": "DeduplicationStats (data class)",
+"lines": "247-260",
+"summary": "صنف بيانات على مستوى الملف يجمع لقطة إحصائية: السعة والحجم الحالي وإجمالي الفحوص وعدّ المكرّرات وعدّ الطرد ومعدّل الإصابة، مع تجاوز toString لعرض ملخّص نصّي منسّق يُظهر معدّل الإصابة كنسبة مئوية بمنزلتين. ينتجه getStats."
+}
+],
+"app/src/main/java/com/bitchat/android/nostr/NostrFilter.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrFilter.kt",
+"name": "تعريف الصنف NostrFilter وحقوله",
+"lines": "11-19",
+"summary": "صنف بيانات (data class) يمثّل مُرشّح أحداث نوستر للاشتراكات، متوافق مع تطبيق iOS. يحمل حقولاً اختيارية كلها افتراضها null: المُعرّفات (ids)، المؤلِّفون (authors)، الأنواع (kinds)، الحدّ الزمني السفلي منذ (since)، والعلوي حتى (until)، وحدّ العدد (limit)، إضافة إلى حقل خاص مُرشّحات الوسوم (tagFilters) وهو خريطة من نص إلى قائمة نصوص. هذه الحقول هي البيانات التي تستهلكها بقية الوحدات في الملف."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrFilter.kt",
+"name": "الكائن المرافق: دوال إنشاء مُرشّحات جاهزة (factory)",
+"lines": "21-103",
+"summary": "كائن مرافق (companion object) يضمّ دوال مصنع تُنشئ كائنات NostrFilter جاهزة. giftWrapsFor تبني مُرشّحاً لأغلفة هدايا NIP-17 (النوع GIFT_WRAP) بوسم \"p\" للمفتاح العام وحدّ 100. geohashEphemeral للأحداث العابرة بنطاق جغرافي (النوعان EPHEMERAL_EVENT وGEOHASH_PRESENCE)، وgeohashMessages لرسائل المحادثة فقط (EPHEMERAL_EVENT)، وgeohashPresence لنبضات الحضور فقط (GEOHASH_PRESENCE)؛ ثلاثتها تستعمل وسم \"g\". textNotesFrom للملاحظات النصّية (TEXT_NOTE) من مؤلِّفين محدّدين، وgeohashNotes للملاحظات النصّية المحصورة بنطاق جغرافي، وforEvents لمُعرّفات أحداث محدّدة. أغلب الدوال تحوّل المعامل since من ميلي ثانية إلى ثوانٍ بالقسمة على 1000. كل هذه الدوال تنتج كائنات من الصنف المعرّف في الأسطر 11-19."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrFilter.kt",
+"name": "الصنف الداخلي FilterSerializer ودالة serialize",
+"lines": "108-127",
+"summary": "صنف يُطبّق الواجهة JsonSerializer<NostrFilter> لتحويل المُرشّح إلى JSON بشكل صحيح. الدالة serialize تبني JsonObject، وتُضيف الحقول القياسية (ids, authors, kinds, since, until, limit) فقط عند كونها غير فارغة، ثم تمرّ على مُرشّحات الوسوم (tagFilters) فتضيف كل وسم باسم مسبوق بالبادئة \"#\" (مثل \"#g\"). يقرأ هذا المُسلسِل حقول الصنف المعرّفة في الأسطر 11-19 ويُخرج تمثيلاً متوافقاً مع بروتوكول نوستر."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrFilter.kt",
+"name": "الصنف الداخلي Builder ودالة build",
+"lines": "132-164",
+"summary": "باني (Builder) بنمط السَّلسَلة لإنشاء مُرشّحات معقّدة. يحمل حقولاً متغيّرة موازية لحقول NostrFilter، ودوالاً تعيد الكائن نفسه عبر apply: ids وauthors وkinds (تأخذ vararg)، وsince وuntil (تحوّلان الطابع الزمني من ميلي ثانية إلى ثوانٍ)، وlimit، ودوال الوسوم tagP (للمفتاح p) وtagE (للحدث e) وtagG (للنطاق الجغرافي g) وtag العامة. الدالة build تجمع هذه الحقول وتنتج كائن NostrFilter نهائياً مع تحويل خريطة الوسوم إلى خريطة غير قابلة للتعديل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrFilter.kt",
+"name": "الدالة matches: مطابقة المُرشّح لحدث",
+"lines": "169-213",
+"summary": "دالة تأخذ NostrEvent وتعيد قيمة منطقية تقول هل يطابق الحدثُ هذا المُرشّح. تفحص بالتتابع: المُعرّفات (هل ids تحتوي event.id)، والمؤلِّفون (event.pubkey)، والأنواع (event.kind)، وحدود الزمن (event.createdAt مقابل since وuntil)، ثم مُرشّحات الوسوم؛ إذ تستخرج وسوم الحدث المطابقة لاسم الوسم وتأخذ قيمها، وتشترط أن تتطابق قيمة واحدة على الأقل من القيم المطلوبة (hasMatch). تعيد false عند فشل أي فحص، وtrue إن نجحت كلها. تقرأ حقول الصنف نفسه وتقارنها بحقول الحدث الوارد."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrFilter.kt",
+"name": "الدالة getDebugDescription: وصف نصّي للتنقيح",
+"lines": "218-234",
+"summary": "دالة تُنتج وصفاً نصّياً مختصراً للمُرشّح لأغراض التنقيح. تبني قائمة أجزاء (parts)، وتُضيف لكل حقل غير فارغ تمثيله: ids وauthors بحجمهما، وkinds وsince وuntil وlimit بقيمها، ومُرشّحات الوسوم كل وسم مسبوق بـ \"#\" مع حجم قيمه. ثم تعيد سلسلة بصيغة \"NostrFilter(...)\" بوصل الأجزاء بفاصلة. تقرأ حقول الصنف المعرّفة في الأعلى."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrFilter.kt",
+"name": "الدالة getGeohash: استخراج الترميز الجغرافي",
+"lines": "240-242",
+"summary": "دالة تعيد سلسلة نصّية قابلة للفراغ تمثّل أوّل ترميز جغرافي (geohash) في مُرشّح الوسم \"g\"، أو null إن لم يوجد. تقرأ من خريطة مُرشّحات الوسوم (tagFilters) قيمة المفتاح \"g\" ثم تأخذ أوّل عنصر فيها عبر firstOrNull."
+}
+],
+"app/src/main/java/com/bitchat/android/nostr/NostrIdentity.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrIdentity.kt",
+"name": "تعريف صنف البيانات NostrIdentity وخصائصه",
+"lines": "13-18",
+"summary": "يُعرّف صنف بيانات «هوية نوستر» (NostrIdentity) يحمل أربع خصائص ثابتة: المفتاح الخاص الست عشري (privateKeyHex)، المفتاح العام الست عشري (publicKeyHex)، المعرّف العام (npub)، ووقت الإنشاء (createdAt). هذا الصنف هو الوحدة الأساسية التي تنتجها كل دوال التوليد والاشتقاق في الملف."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrIdentity.kt",
+"name": "companion.generate — توليد هوية جديدة",
+"lines": "26-38",
+"summary": "دالة في الكائن المرافق تولّد زوج مفاتيح جديداً عبر NostrCrypto.generateKeyPair()، ثم ترمّز المفتاح العام إلى npub عبر Bech32.encode، تسجّل ذلك، وتعيد كائن NostrIdentity جديداً بوقت الإنشاء الحالي. ينادي عليها getCurrentNostrIdentity عند غياب مفتاح محفوظ."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrIdentity.kt",
+"name": "companion.fromPrivateKey — الإنشاء من مفتاح خاص",
+"lines": "43-57",
+"summary": "دالة تتحقق من صلاحية المفتاح الخاص عبر NostrCrypto.isValidPrivateKey، ثم تشتق المفتاح العام عبر derivePublicKey وترمّزه إلى npub، وتعيد كائن NostrIdentity. تُستعمل كنقطة بناء مركزية تناديها fromSeed و getCurrentNostrIdentity و deriveIdentity."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrIdentity.kt",
+"name": "companion.fromSeed — الإنشاء من بذرة حتمية",
+"lines": "62-70",
+"summary": "دالة (لأغراض العرض التوضيحي) تجزّئ نص البذرة بـ SHA-256 لتنتج مفتاحاً خاصاً ست عشرياً، ثم تفوّض البناء إلى fromPrivateKey وتعيد ناتجها."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrIdentity.kt",
+"name": "signEvent — توقيع حدث نوستر",
+"lines": "76-78",
+"summary": "دالة نسخة (instance) توقّع حدث NostrEvent مُمرَّر بمفتاح الهوية الخاص عبر event.sign(privateKeyHex) وتعيد الحدث الموقّع."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrIdentity.kt",
+"name": "getShortNpub — صيغة عرض مختصرة",
+"lines": "83-89",
+"summary": "دالة نسخة تعيد صيغة عرض قصيرة للـ npub: إن تجاوز طوله 16 محرفاً تأخذ أول 8 وآخر 8 محارف مفصولة بـ '...'، وإلا تعيد npub كاملاً. تُستعمل في تسجيل getCurrentNostrIdentity."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrIdentity.kt",
+"name": "NostrIdentityBridge — رأس الكائن المفرد والحقول",
+"lines": "96-102",
+"summary": "يُعرّف الكائن المفرد «جسر هوية نوستر» (NostrIdentityBridge) الذي يربط هويتي Noise و Nostr، ويعلن ثوابت التخزين (NOSTR_PRIVATE_KEY، DEVICE_SEED_KEY) وذاكرة مؤقتة geohashIdentityCache (خريطة من جيوهاش إلى NostrIdentity) لتجنّب تكرار عمليات التعمية."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrIdentity.kt",
+"name": "getCurrentNostrIdentity — الحصول على الهوية الحالية أو إنشاؤها",
+"lines": "107-127",
+"summary": "دالة تُنشئ SecureIdentityStateManager، تحاول تحميل المفتاح الخاص المحفوظ عبر loadNostrPrivateKey فإن وُجد تبني منه الهوية عبر fromPrivateKey (مع التقاط الأخطاء وإرجاع null)؛ وإلا تولّد هوية جديدة عبر generate، تحفظها عبر saveNostrPrivateKey وتعيدها."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrIdentity.kt",
+"name": "deriveIdentity — اشتقاق هوية حتمية لكل جيوهاش",
+"lines": "137-177",
+"summary": "دالة تشتق هوية غير قابلة للربط لجيوهاش معيّن: تتحقق من الذاكرة المؤقتة أولاً، ثم تجلب بذرة الجهاز عبر getOrCreateDeviceSeed، وتجرّب حتى 10 تكرارات تنتج فيها مفتاحاً مرشّحاً عبر candidateKey وتفحص صلاحيته؛ عند أول مفتاح صالح تبني الهوية عبر fromPrivateKey وتخزنها مؤقتاً وتعيدها. وكبديل أخير تجزّئ (seed+geohash) بـ SHA-256 وتبني هوية احتياطية. تطابق تطبيق iOS."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrIdentity.kt",
+"name": "candidateKey — توليد المفتاح المرشّح لتكرار",
+"lines": "182-185",
+"summary": "دالة خاصة تبني مدخلاً من دمج الرسالة (الجيوهاش) مع بايتات رقم التكرار بترتيب صغير-أولاً، ثم تعيد HMAC-SHA256(seed, input) عبر hmacSha256. تناديها deriveIdentity داخل حلقة التكرارات."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrIdentity.kt",
+"name": "associateNostrIdentity — ربط هوية نوستر بمفتاح Noise",
+"lines": "190-198",
+"summary": "دالة (غير مكتملة التنفيذ) يُفترض أن تربط مفتاح نوستر العام بمفتاح Noise العام للمفضّلة؛ حالياً تُنشئ مدير الحالة وتكتفي بتسجيل الربط دون تخزين فعلي."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrIdentity.kt",
+"name": "getNostrPublicKey — جلب مفتاح نوستر العام المرتبط",
+"lines": "203-207",
+"summary": "دالة (غير مكتملة) يُفترض أن تعيد مفتاح نوستر العام المرتبط بمفتاح Noise العام؛ حالياً تعيد null لغياب نظام الربط الكامل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrIdentity.kt",
+"name": "clearAllAssociations — مسح كل بيانات الهوية",
+"lines": "212-226",
+"summary": "دالة تفرّغ الذاكرة المؤقتة geohashIdentityCache ثم تمسح المفتاح الخاص وبذرة الجهاز من التخزين الآمن عبر clearSecureValues مع التقاط الأخطاء وتسجيلها."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrIdentity.kt",
+"name": "loadNostrPrivateKey — تحميل المفتاح الخاص من التخزين الآمن",
+"lines": "230-238",
+"summary": "دالة خاصة تقرأ المفتاح الخاص من التخزين الآمن عبر getSecureValue(NOSTR_PRIVATE_KEY)، وتعيد null عند الفشل مع تسجيل الخطأ. تناديها getCurrentNostrIdentity."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrIdentity.kt",
+"name": "saveNostrPrivateKey — حفظ المفتاح الخاص في التخزين الآمن",
+"lines": "240-250",
+"summary": "دالة خاصة تخزّن المفتاح الخاص عبر storeSecureValue(NOSTR_PRIVATE_KEY)، وتعيد رمي الاستثناء عند الفشل بعد تسجيله. تناديها getCurrentNostrIdentity عند توليد هوية جديدة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrIdentity.kt",
+"name": "getOrCreateDeviceSeed — جلب بذرة الجهاز أو توليدها",
+"lines": "252-273",
+"summary": "دالة خاصة تقرأ بذرة الجهاز المخزّنة (مرمّزة Base64) وتفك ترميزها إن وُجدت، وإلا تولّد بذرة جديدة 32 بايت عبر SecureRandom، ترمّزها Base64 وتخزّنها وتعيدها. تناديها deriveIdentity للحصول على مادة الاشتقاق."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrIdentity.kt",
+"name": "hmacSha256 — حساب HMAC-SHA256",
+"lines": "275-280",
+"summary": "دالة خاصة تحسب HMAC-SHA256 لرسالة بمفتاح معطى عبر javax.crypto.Mac و SecretKeySpec وتعيد البايتات الناتجة. تناديها candidateKey."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrIdentity.kt",
+"name": "hexToByteArrayLocal — تحويل نص ست عشري إلى بايتات",
+"lines": "284-286",
+"summary": "دالة امتداد خاصة على String تقطّع النص أزواجاً وتحوّل كل زوج من الأساس 16 إلى بايت وتجمعها في مصفوفة. تُستعمل في generate و fromPrivateKey لتغذية Bech32.encode."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrIdentity.kt",
+"name": "toHexStringLocal — تحويل بايتات إلى نص ست عشري",
+"lines": "288-290",
+"summary": "دالة امتداد خاصة على ByteArray تنسّق كل بايت بالصيغة '%02x' وتضمّها في نص. تُستعمل في deriveIdentity لتحويل المفتاح المرشّح والمفتاح الاحتياطي إلى صيغة ست عشرية."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrIdentity.kt",
+"name": "toLittleEndianBytes — تحويل UInt إلى 4 بايتات صغير-أولاً",
+"lines": "292-299",
+"summary": "دالة امتداد خاصة على UInt تكتب القيمة في 4 بايتات بترتيب البايت الأصغر أولاً (little-endian) عبر الإزاحة والقناع. تناديها candidateKey لدمج رقم التكرار في مدخل HMAC."
+}
+],
+"app/src/main/java/com/bitchat/android/nostr/NostrProofOfWork.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrProofOfWork.kt",
+"name": "calculateDifficulty",
+"lines": "26-46",
+"summary": "دالة تحسب صعوبة معرّف الحدث (eventIdHex)؛ تمرّ على حروف المعرّف الست عشري، فإذا كان الحرف (nibble) صفراً أضافت ٤ بتّات صفر، وإلا حسبت عدد أصفار البداية في ذلك الحرف عبر تعبير when ثم توقّفت. تُعيد العدد الكلّي لبتّات الصفر البادئة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrProofOfWork.kt",
+"name": "validateDifficulty",
+"lines": "54-81",
+"summary": "دالة تتحقّق أن حدث نوستر يحقّق الصعوبة الدنيا المطلوبة. تقبل مباشرة إن كانت الدنيا صفراً، وترفض إن لم يكن للحدث وسم nonce (تستدعي hasNonce). ثم تحسب الصعوبة الفعلية عبر calculateDifficulty والصعوبة الملتزَم بها عبر getCommittedDifficulty، وترفض إن قصُرت الفعلية عن المطلوب أو كانت الملتزَم بها أقل من الدنيا (احتمال رسالة مزعجة)، وإلا تقبل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrProofOfWork.kt",
+"name": "mineEvent",
+"lines": "90-133",
+"summary": "دالة معلّقة (suspend) تعمل على موزّع Dispatchers.Default لتعدين الحدث حتى بلوغ الصعوبة المستهدفة. تبدأ بقيمة nonce عشوائية وتدور في حلقة (حتى maxIterations) منشئةً نسخة من الحدث بوسم nonce عبر addNonceTag، ثم تحسب المعرّف عبر computeEventIdHex وصعوبته عبر calculateDifficulty؛ فإذا بلغت المستهدفة أعادت الحدث مع المعرّف المحسوب، وإلا زادت nonce وكرّرت مع تسجيل التقدّم. تُعيد null عند الفشل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrProofOfWork.kt",
+"name": "addNonceTag",
+"lines": "142-158",
+"summary": "دالة خاصة تنشئ نسخة جديدة من الحدث بإضافة/تحديث وسم nonce. تنسخ الوسوم إلى قائمة قابلة للتعديل، تحذف أي وسم nonce سابق، تضيف وسماً بالصيغة [\"nonce\", قيمة, الصعوبة المستهدفة]، وتحدّث الحقل createdAt إلى الوقت الحالي بالثواني كما يوصي NIP-13. تستخدمها mineEvent في كل دورة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrProofOfWork.kt",
+"name": "getCommittedDifficulty",
+"lines": "165-171",
+"summary": "دالة خاصة تستخرج الصعوبة الملتزَم بها من وسم nonce في الحدث؛ تبحث عن وسم أوله \"nonce\" بحجم ٣ على الأقل وتعيد العنصر الثالث محوّلاً إلى عدد صحيح أو null. تستدعيها validateDifficulty."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrProofOfWork.kt",
+"name": "hasNonce",
+"lines": "178-180",
+"summary": "دالة تفحص هل يحوي الحدث وسم nonce (دلالة أنه عُدّن) عبر any على الوسوم. تستدعيها validateDifficulty لرفض الأحداث بلا إثبات عمل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrProofOfWork.kt",
+"name": "getNonce",
+"lines": "187-193",
+"summary": "دالة تستخرج قيمة nonce من الحدث؛ تبحث عن وسم أوله \"nonce\" بحجم ٢ على الأقل وتعيد العنصر الثاني، أو null إن لم يوجد."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrProofOfWork.kt",
+"name": "estimateWork",
+"lines": "200-202",
+"summary": "دالة تقدّر عدد عمليات التجزئة المطلوبة لصعوبة معيّنة؛ تُعيد 1 إن كانت الصعوبة صفراً أو أقل، وإلا 2 مرفوعة لقيمة الصعوبة عبر الإزاحة لليسار (1L shl difficulty). تستخدمها estimateMiningTime."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrProofOfWork.kt",
+"name": "estimateMiningTime",
+"lines": "210-221",
+"summary": "دالة تعطي وصفاً مقروءاً لزمن التعدين المقدّر؛ تستدعي estimateWork لعدد التجزئات ثم تقسمه على hashesPerSecond (افتراضياً ١٠٠٬٠٠٠)، وتصوغ الناتج عبر when كثوانٍ أو دقائق أو ساعات أو أيام."
+}
+],
+"app/src/main/java/com/bitchat/android/nostr/NostrProtocol.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrProtocol.kt",
+"name": "تمهيد الملف وتعريف الكائن المفرد NostrProtocol",
+"lines": "1-16",
+"summary": "يُعرّف الحزمة `com.bitchat.android.nostr` ويستورد أدوات التسجيل (Log) وجيسون (Gson, JsonParser) والكوروتينات (Dispatchers, withContext). ثم يفتح الكائن المفرد `object NostrProtocol` الذي ينفّذ بروتوكول NIP-17 للرسائل المباشرة الخاصة (متوافقاً مع iOS)، ويعرّف فيه ثابت الوسم `TAG` ومتغيّر `gson` المستعمل للتحويل من/إلى جيسون. هذه الحقول مشتركة لكل دوال الملف."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrProtocol.kt",
+"name": "createPrivateMessage — بناء غلاف هدية NIP-17 للمستلِم",
+"lines": "22-55",
+"summary": "الدالة العامة الرئيسية للإرسال. تأخذ المحتوى والمفتاح العام للمستلِم وهوية المُرسِل، وتعيد قائمة `List<NostrEvent>`. تبني الخطوات الثلاث لـ NIP-17: (1) تنشئ `rumorBase` حدثاً من النوع `DIRECT_MESSAGE` مع وسم p ثم تحسب معرّفه عبر `computeEventIdHex` وتنسخه إلى `rumor`؛ (2) تستدعي `createSeal` لختم الإشاعة؛ (3) تستدعي `createGiftWrap` لتغليف الختم للمستلِم، ثم تعيد قائمة تحوي غلاف الهدية الواحد. تنتج مدخلات لكل من createSeal وcreateGiftWrap."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrProtocol.kt",
+"name": "decryptPrivateMessage — فكّ تعمية رسالة NIP-17 مُستلَمة",
+"lines": "61-101",
+"summary": "الدالة العامة الرئيسية للاستلام. تأخذ `giftWrap` وهوية المستلِم وتعيد ثلاثيّة (المحتوى، مفتاح المُرسِل، الطابع الزمني) أو null. ضمن try: (1) تستدعي `unwrapGiftWrap` للحصول على الختم وإلا تعيد null؛ ثم تتحقّق أنّ نوع الختم `SEAL` وأنّ توقيعه صالح عبر `isValidSignature`؛ (2) تستدعي `openSeal` لاستخراج الإشاعة وإلا تعيد null؛ وتتحقّق من تطابق المفتاح العام للختم مع الإشاعة. عند أي فشل أو استثناء تعيد null. تستهلك مخرجات unwrapGiftWrap وopenSeal."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrProtocol.kt",
+"name": "createGeohashTextNote — ملاحظة نصية دائمة بترميز جغرافي",
+"lines": "107-129",
+"summary": "دالة معلّقة تعمل على `Dispatchers.Default`. تبني وسوماً تتضمّن وسم g للترميز الجغرافي ووسم n للاسم المستعار إن وُجد، ثم تنشئ حدث `NostrEvent` من النوع `TEXT_NOTE` (النوع 1) وتعيده موقّعاً عبر `senderIdentity.signEvent`. مستقلة عن دوال الختم/الغلاف."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrProtocol.kt",
+"name": "createGeohashPresenceEvent — حدث حضور لعدّ المشاركين",
+"lines": "135-151",
+"summary": "دالة معلّقة تعمل على `Dispatchers.Default`. تنشئ حدث حضور من النوع `GEOHASH_PRESENCE` (20001) يحمل وسم g فقط، ومحتوى فارغاً ولا اسم مستعار، يُستعمل لعدّ المشاركين، وتعيده موقّعاً عبر `signEvent`. مستقلة بنيوياً عن باقي الدوال."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrProtocol.kt",
+"name": "createEphemeralGeohashEvent — رسالة عامة عابرة مع إثبات عمل اختياري",
+"lines": "157-214",
+"summary": "دالة معلّقة تعمل على `Dispatchers.Default`. تبني وسوم g وn (اختياري) ووسم t=teleport إن كان `teleported`، ثم تنشئ حدثاً من النوع `EPHEMERAL_EVENT` (20000). تقرأ إعدادات إثبات العمل من `PoWPreferenceManager.getCurrentSettings`؛ وإن كان مُفعّلاً والصعوبة موجبة تبدأ التعدين عبر `startMining` وتُعدّن الحدث عبر `NostrProofOfWork.mineEvent` (حتى مليونَي تكرار)، وعند النجاح تستبدل الحدث وتحسب الصعوبة الفعلية عبر `calculateDifficulty`، وفي `finally` توقف التعدين عبر `stopMining`. أخيراً تعيد الحدث موقّعاً عبر `signEvent`."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrProtocol.kt",
+"name": "createSeal — ختم الإشاعة (النوع 13)",
+"lines": "218-242",
+"summary": "دالة خاصة. تحوّل الإشاعة إلى جيسون عبر `gson.toJson`، تعمّيها وفق NIP44 عبر `NostrCrypto.encryptNIP44` بمفتاح المُرسِل الخاص وللمستلِم، ثم تبني حدث الختم `SEAL` بطابع زمني مُعشّى إلى الماضي عبر `randomizeTimestampUpToPast` ومحتوى مُعمّى وبلا وسوم، وتعيده موقّعاً بمفتاح المُرسِل عبر `seal.sign`. تُستدعى من createPrivateMessage وتُنتج مدخلاً لـ createGiftWrap."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrProtocol.kt",
+"name": "createGiftWrap — تغليف الختم للمستلِم (النوع 1059)",
+"lines": "244-271",
+"summary": "دالة خاصة. تحوّل الختم إلى جيسون، تولّد زوج مفاتيح عابراً جديداً عبر `NostrCrypto.generateKeyPair`، تعمّي الختم وفق NIP44 بالمفتاح العابر وللمستلِم، ثم تبني حدث `GIFT_WRAP` بطابع زمني مُعشّى إلى الماضي ووسم p للمستلِم ومحتوى مُعمّى، وتعيده موقّعاً بالمفتاح العابر. تُستدعى من createPrivateMessage."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrProtocol.kt",
+"name": "unwrapGiftWrap — فكّ غلاف الهدية إلى ختم",
+"lines": "273-309",
+"summary": "دالة خاصة تعيد `NostrEvent?`. ضمن try تفكّ تعمية محتوى غلاف الهدية وفق NIP44 عبر `NostrCrypto.decryptNIP44` بمفتاح المستلِم الخاص ومفتاح الغلاف العام، ثم تحلّل الناتج بجيسون عبر `JsonParser.parseString`، وتبني منه حدث الختم (id, pubkey, created_at, kind, tags عبر `parseTagsFromJson`, content, sig). تعيد null إن لم يكن الناتج كائن جيسون أو عند استثناء. تُستدعى من decryptPrivateMessage وتُنتج مدخلاً لـ openSeal."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrProtocol.kt",
+"name": "openSeal — فتح الختم إلى إشاعة",
+"lines": "311-342",
+"summary": "دالة خاصة تعيد `NostrEvent?`. ضمن try تفكّ تعمية محتوى الختم وفق NIP44 عبر `decryptNIP44` بمفتاح المستلِم الخاص ومفتاح الختم العام، ثم تحلّل بجيسون وتبني منه حدث الإشاعة بنفس الحقول (مع `parseTagsFromJson` للوسوم). تعيد null إن لم يكن الناتج كائن جيسون أو عند استثناء. تُستدعى من decryptPrivateMessage."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrProtocol.kt",
+"name": "parseTagsFromJson — تحليل الوسوم من مصفوفة جيسون",
+"lines": "344-360",
+"summary": "دالة خاصة مساعدة تأخذ مصفوفة جيسون قابلة للعدم وتعيد `List<List<String>>?`. إن كانت المصفوفة null تعيد قائمة فارغة؛ وإلا ضمن try تحوّل كل عنصر: إن كان مصفوفة جيسون تحوّل عناصره إلى سلاسل وإلا قائمة فارغة، وتعيد null عند استثناء. تُستدعى من unwrapGiftWrap وopenSeal لقراءة حقل tags."
+}
+],
+"app/src/main/java/com/bitchat/android/nostr/NostrRelayManager.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRelayManager.kt",
+"name": "الكائن المرافق والثوابت والمُرحّلات الافتراضية (companion object)",
+"lines": "23-58",
+"summary": "يحوي النسخة المشتركة (shared) ودالة getInstance، وقائمة المُرحّلات الافتراضية (DEFAULT_RELAYS) الأربعة، وثوابت التراجع الأُسّي (INITIAL_BACKOFF_INTERVAL وMAX_BACKOFF_INTERVAL وBACKOFF_MULTIPLIER وMAX_RECONNECT_ATTEMPTS)، ومجموعة معرّفات أغلفة الهدايا المعلّقة (pendingGiftWrapIDs) مع دالة تسجيلها registerPendingGiftWrap، ودالة defaultRelays. تُستعمَل هذه القيم من قِبل بقية الصنف للاتصال وإعادة الاتصال."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRelayManager.kt",
+"name": "صنف بيانات المُرحّل (Relay)",
+"lines": "63-73",
+"summary": "صنف بيانات يصف حالة مُرحّل واحد: عنوانه (url) وهل هو متصل (isConnected) وآخر خطأ ووقت الاتصال والقطع وعدّادات الرسائل المُرسَلة والمُستقبَلة ومحاولات إعادة الاتصال ووقت إعادة الاتصال التالي. تُملأ حقوله في updateRelayStatus وsendToRelay وhandleMessage."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRelayManager.kt",
+"name": "الحقول والحالة الداخلية",
+"lines": "76-124",
+"summary": "يعرّف الحالة المنشورة كتدفّقات (relays وisConnected) والحقول الداخلية الخاصة بها (_relays و_isConnected)، وقائمة المُرحّلات (relaysList)، وخرائط الاتصالات (connections) والاشتراكات لكل مُرحّل (subscriptions) ومعالِجات الرسائل (messageHandlers) والاشتراكات النشطة (activeSubscriptions)، ومُزيل تكرار الأحداث (eventDeduplicator)، وطابور الرسائل (messageQueue) وقفله، ونطاق الكوروتين (scope)، ومهمة التحقق من الاشتراكات وفترتها، وعميل http، ومحوّل gson، وخريطة الجيوهاش إلى المُرحّلات (geohashToRelays). هذه الحقول هي ذاكرة الصنف التي تقرأها وتكتبها كل الدوال."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRelayManager.kt",
+"name": "صنف بيانات معلومات الاشتراك (SubscriptionInfo)",
+"lines": "94-101",
+"summary": "يصف اشتراكاً نشطاً يلزم الحفاظ عليه عبر إعادات الاتصال: معرّفه (id) ومُرشّحه (filter) ومعالِجه (handler) وعناوين المُرحّلات المستهدفة (targetRelayUrls) ووقت إنشائه وجيوهاش الأصل (originGeohash). يُنشأ في subscribe ويُخزَّن في activeSubscriptions ويُقرأ عند الاستعادة والتحقق."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRelayManager.kt",
+"name": "واجهة الجيوهاش العامة: ensureGeohashRelaysConnected وgetRelaysForGeohash",
+"lines": "131-154",
+"summary": "ensureGeohashRelaysConnected تحسب أقرب المُرحّلات لجيوهاش معطى عبر RelayDirectory (مع إضافة الافتراضيات اختيارياً)، تخزّن الربط في geohashToRelays، ثم تنادي ensureConnectionsFor. وgetRelaysForGeohash تُعيد المُرحّلات المربوطة بجيوهاش أو قائمة فارغة. تستهلكهما subscribeForGeohash وsendEventToGeohash."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRelayManager.kt",
+"name": "subscribeForGeohash و sendEventToGeohash",
+"lines": "159-196",
+"summary": "دالتان عامتان للتشغيل حسب الجيوهاش: subscribeForGeohash تضمن الاتصالات أولاً ثم تنادي subscribe مستهدفةً مُرحّلات الجيوهاش فقط وتحدّث originGeohash للاشتراك. sendEventToGeohash تضمن الاتصالات ثم تنادي sendEvent على مُرحّلات الجيوهاش، وترجع إلى الافتراضيات إن لم توجد مُرحّلات."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRelayManager.kt",
+"name": "ensureConnectionsFor (مساعد داخلي)",
+"lines": "200-218",
+"summary": "يتأكد أن كل عنوان في المجموعة مُتتبَّع في relaysList (يضيف Relay جديداً عند الحاجة)، يحدّث القائمة المنشورة، ثم يطلق كوروتينات متوازية تنادي connectToRelay لكل عنوان غير متصل. ينادى من ensureGeohashRelaysConnected."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRelayManager.kt",
+"name": "كتلة التهيئة (init)",
+"lines": "220-239",
+"summary": "تملأ relaysList بالمُرحّلات الافتراضية الأربعة عند إنشاء الصنف، تنشر القائمة في _relays، وتحدّث حالة الاتصال؛ وعند الفشل تهيّئ بقائمة فارغة وتضبط الاتصال على false. هكذا يبدأ الصنف بمُرحّلات جاهزة قبل أي اتصال."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRelayManager.kt",
+"name": "connect و disconnect",
+"lines": "244-277",
+"summary": "connect تطلق كوروتينات متوازية تنادي connectToRelay لكل مُرحّل ثم تبدأ التحقق الدوري للاشتراكات (startSubscriptionValidation). disconnect توقف التحقق، تغلق كل مقابس الاتصالات برمز 1000، تفرّغ خرائط الاتصالات والاشتراكات، وتحدّث حالة الاتصال."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRelayManager.kt",
+"name": "sendEvent",
+"lines": "282-299",
+"summary": "الدالة العامة لإرسال حدث إلى مُرحّلات محددة أو إلى الكل. تضيف الزوج (الحدث، المُرحّلات المستهدفة) إلى messageQueue تحت القفل لأجل الموثوقية، ثم تحاول الإرسال الفوري عبر sendToRelay لكل مُرحّل له اتصال قائم. ينتج لها sendEventToGeohash وغيرها."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRelayManager.kt",
+"name": "subscribe و sendSubscriptionToRelays",
+"lines": "305-369",
+"summary": "subscribe تبني SubscriptionInfo وتخزّنها في activeSubscriptions والمعالِج في messageHandlers ثم تنادي sendSubscriptionToRelays وتُعيد المعرّف. وsendSubscriptionToRelays تسلسل طلب NostrRequest.Subscribe إلى JSON عبر gson وترسله عبر مقابس المُرحّلات المستهدفة (أو كل المتصلة)، وتتتبّع نجاح الاشتراك في خريطة subscriptions، وتسجّل إن لم تكن هناك اتصالات."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRelayManager.kt",
+"name": "unsubscribe",
+"lines": "374-403",
+"summary": "يزيل الاشتراك من activeSubscriptions وmessageHandlers، ويحذّر إن كان غير معروف، ثم يرسل طلب NostrRequest.Close المُسلسَل عبر كل مقبس مُرحّل يحوي هذا الاشتراك ويحدّث خريطة subscriptions بإزالة المعرّف."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRelayManager.kt",
+"name": "retryConnection و resetAllConnections و reestablishAllSubscriptions",
+"lines": "408-455",
+"summary": "retryConnection تصفّر محاولات إعادة الاتصال لمُرحّل، تغلق اتصاله وتزيله، ثم تعيد الاتصال فوراً. resetAllConnections تنادي disconnect ثم تصفّر حالات كل المُرحّلات وتنادي connect (تُستعاد الاشتراكات في onOpen). reestablishAllSubscriptions تفرض استعادة الاشتراكات على كل اتصال قائم عبر restoreSubscriptionsForRelay."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRelayManager.kt",
+"name": "clearAllSubscriptions",
+"lines": "461-480",
+"summary": "يمسح كل تتبّع الاشتراكات (activeSubscriptions وmessageHandlers وsubscriptions) ومخابئ التوجيه (geohashToRelays) وطابور الرسائل تحت القفل. مُعَدّ لمسارات الذعر/إعادة التعيين قبل الاتصال والاشتراك من الصفر."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRelayManager.kt",
+"name": "دوال الحالة والإحصاءات للقراءة",
+"lines": "485-516",
+"summary": "getRelayStatuses تُعيد نسخة من relaysList، وgetDeduplicationStats تُعيد إحصاءات eventDeduplicator، وclearDeduplicationCache تمسح مخبأ إزالة التكرار، وgetActiveSubscriptionCount تُعيد عدد الاشتراكات النشطة، وgetActiveSubscriptions تُعيد نسخة خريطة من activeSubscriptions. دوال قراءة/تنقيح للواجهة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRelayManager.kt",
+"name": "validateSubscriptionConsistency و SubscriptionConsistencyReport",
+"lines": "522-558",
+"summary": "تقارن الاشتراكات المتوقعة (من activeSubscriptions حسب الاستهداف) مع الفعلية (من subscriptions) لكل مُرحّل متصل، تجمع المفقود والزائد في قائمة حالات عدم الاتساق، وتُعيد تقرير SubscriptionConsistencyReport (هل مُتّسق، القائمة، الإجمالي، عدد المتصلين). يستهلكها startSubscriptionValidation."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRelayManager.kt",
+"name": "startSubscriptionValidation و stopSubscriptionValidation",
+"lines": "563-606",
+"summary": "startSubscriptionValidation تطلق حلقة كوروتين دورية (كل SUBSCRIPTION_VALIDATION_INTERVAL) تنادي validateSubscriptionConsistency، وعند اكتشاف نقص اشتراكات على مُرحّل متصل تصلح تلقائياً عبر restoreSubscriptionsForRelay. stopSubscriptionValidation تلغي المهمة وتصفّرها. تُشغَّل من connect وتُوقَف من disconnect."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRelayManager.kt",
+"name": "connectToRelay",
+"lines": "610-630",
+"summary": "دالة معلّقة خاصة تتخطى إن وُجد اتصال، وإلا تبني Request بعنوان المُرحّل وتفتح مقبس ويب جديداً عبر httpClient مع RelayWebSocketListener، وتخزّنه في connections؛ وعند الفشل تنادي handleDisconnection. هي نقطة إنشاء كل اتصال فعلي."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRelayManager.kt",
+"name": "sendToRelay",
+"lines": "632-651",
+"summary": "تسلسل NostrRequest.Event إلى JSON وترسله عبر المقبس؛ عند النجاح تزيد عدّاد الرسائل المُرسَلة للمُرحّل وتحدّث القائمة، وعند الفشل تسجّل خطأً. ينادى من sendEvent ومن onOpen عند تفريغ الطابور."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRelayManager.kt",
+"name": "handleMessage",
+"lines": "653-733",
+"summary": "يحلل رسالة المُرحّل JSON إلى NostrResponse ويفرّع عليها: للحدث (Event) يزيد عدّاد الاستقبال، يفرض مُرشّح الاشتراك من جهة العميل (يُسقط ما لا يطابق)، يمرّ بمُزيل التكرار (eventDeduplicator) ثم يستدعي معالِج الاشتراك على الخيط الرئيسي؛ ويعالج EndOfStoredEvents وOk (قبول/رفض الحدث مع منطق أغلفة الهدايا) وNotice وUnknown بالتسجيل. هو قلب استقبال البيانات، ينادى من onMessage."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRelayManager.kt",
+"name": "handleDisconnection",
+"lines": "735-780",
+"summary": "يزيل الاتصال (مبقياً الاشتراكات للاستعادة)، يحدّث حالة المُرحّل، وإن كان الخطأ خطأ DNS لا يعيد المحاولة؛ وإلا يطبّق التراجع الأُسّي (يزيد المحاولات، يتوقف عند MAX_RECONNECT_ATTEMPTS، يحسب فترة backoff عبر min وpow، ويجدول إعادة الاتصال بعد delay عبر connectToRelay). ينادى من connectToRelay وonClosed وonFailure."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRelayManager.kt",
+"name": "updateRelayStatus و updateRelaysList و updateConnectionStatus",
+"lines": "782-807",
+"summary": "updateRelayStatus تضبط حالة مُرحّل (متصل/خطأ، أوقات الاتصال/القطع، تصفير المحاولات عند الاتصال) ثم تنادي updateRelaysList وupdateConnectionStatus. updateRelaysList تنشر نسخة relaysList في _relays. updateConnectionStatus تضبط _isConnected بحسب وجود أي مُرحّل متصل. هي جسر الحالة إلى التدفّقات المنشورة للواجهة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRelayManager.kt",
+"name": "generateSubscriptionId",
+"lines": "809-811",
+"summary": "يولّد معرّف اشتراك نصّياً فريداً من البادئة sub- زائد الوقت الحالي بالملّي ثانية زائد رقم عشوائي. يُستعمَل كقيمة افتراضية لمعرّف الاشتراك في subscribe وsubscribeForGeohash."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRelayManager.kt",
+"name": "restoreSubscriptionsForRelay",
+"lines": "816-848",
+"summary": "يرشّح الاشتراكات النشطة التي تستهدف كل المُرحّلات أو هذا المُرحّل تحديداً، ثم يرسل لكلٍّ طلب NostrRequest.Subscribe المُسلسَل عبر المقبس ويحدّث خريطة subscriptions عند النجاح. ينادى من onOpen وreestablishAllSubscriptions وحلقة التحقق الدوري."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRelayManager.kt",
+"name": "الصنف الداخلي RelayWebSocketListener",
+"lines": "853-892",
+"summary": "مُستمِع مقبس الويب لكل مُرحّل: onOpen يحدّث الحالة ويستعيد الاشتراكات ويفرّغ رسائل الطابور المستهدفة لهذا المُرحّل، onMessage يمرّر النص إلى handleMessage، onClosing/onClosed يسجّلان وonClosed يبني خطأً وينادي handleDisconnection، وonFailure يسجّل ويعالج قطع الاتصال. هو جسر أحداث okhttp إلى دوال الصنف."
+}
+],
+"app/src/main/java/com/bitchat/android/nostr/NostrRequest.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRequest.kt",
+"name": "NostrRequest: أنواع رسائل الطلب (Event/Subscribe/Close)",
+"lines": "10-28",
+"summary": "صنف مختوم (NostrRequest) يجمع أنواع رسائل الطلب الثلاثة في بروتوكول Nostr: Event لنشر حدث، وSubscribe للاشتراك في الأحداث (يحمل معرّف الاشتراك subscriptionId وقائمة مرشّحات filters من نوع NostrFilter)، وClose لإغلاق اشتراك (يحمل subscriptionId). كلّها أصناف بيانات ترث من NostrRequest."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRequest.kt",
+"name": "RequestSerializer.serialize: تحويل الطلب إلى مصفوفة JSON",
+"lines": "33-59",
+"summary": "صنف داخلي (RequestSerializer) يحقّق JsonSerializer ويُعيد تعريف serialize. ينشئ JsonArray ثم يفحص نوع المصدر src بتعبير when: لو Event يضيف \"EVENT\" ثم الحدث المُسلسَل؛ لو Subscribe يضيف \"REQ\" ثم subscriptionId ثم كل مرشّح مُسلسَلاً؛ لو Close يضيف \"CLOSE\" ثم subscriptionId. يُعيد المصفوفة. هو المنتِج الذي يستهلكه createGson."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRequest.kt",
+"name": "NostrRequest.companion: createGson و toJson",
+"lines": "61-79",
+"summary": "كائن مرافق فيه دالّتان: createGson تبني نسخة Gson وتسجّل RequestSerializer لنوع NostrRequest وFilterSerializer لنوع NostrFilter مع تعطيل تهريب HTML؛ وtoJson تستدعي createGson ثم toJson لتحويل أي NostrRequest إلى نص JSON. toJson ينادي createGson الذي يعتمد على RequestSerializer."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRequest.kt",
+"name": "NostrResponse: أنواع رسائل الاستجابة",
+"lines": "86-124",
+"summary": "صنف مختوم (NostrResponse) يجمع أنواع الاستجابة الواردة من المُرحِّل: Event (حدث مُستلَم بمعرّف اشتراك)، وEndOfStoredEvents (نهاية الأحداث المخزَّنة)، وOk (نتيجة نشر فيها eventId وaccepted ورسالة اختيارية)، وNotice (إشعار نصّي)، وUnknown (نوع غير معروف يحمل النص الخام raw). كلّها أصناف بيانات."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRequest.kt",
+"name": "NostrResponse.fromJsonArray: تحليل مصفوفة الاستجابة",
+"lines": "130-180",
+"summary": "دالة في الكائن المرافق تقرأ أول عنصر من jsonArray كنوع، وبتعبير when تبني الاستجابة المناسبة بعد التحقق من عدد العناصر: \"EVENT\" تستدعي parseEventFromJson وتبني Event، \"EOSE\" تبني EndOfStoredEvents، \"OK\" تبني Ok (مع رسالة اختيارية)، \"NOTICE\" تبني Notice، وأي شيء آخر أو نقص عناصر أو استثناء يُنتج Unknown. هي المستهلِك الرئيسي لـ parseEventFromJson."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRequest.kt",
+"name": "parseEventFromJson: بناء NostrEvent من كائن JSON",
+"lines": "182-192",
+"summary": "دالة خاصة تأخذ JsonObject وتبني NostrEvent بقراءة المفاتيح id وpubkey وcreated_at وkind وcontent وsig مع قيم افتراضية عند الغياب، وتستدعي parseTagsFromJson لقراءة الوسوم. تُنادى من fromJsonArray وتُنادي parseTagsFromJson."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrRequest.kt",
+"name": "parseTagsFromJson: تحليل الوسوم إلى قائمة قوائم نصوص",
+"lines": "194-209",
+"summary": "دالة خاصة تحوّل مصفوفة الوسوم (قد تكون null فتُعيد قائمة فارغة) إلى List<List<String>>: تطبّق map على العناصر، وكل عنصر إن كان مصفوفة JSON يُحوَّل إلى قائمة نصوص وإلا قائمة فارغة، مع التقاط أي استثناء وإرجاع قائمة فارغة. تُنادى من parseEventFromJson."
+}
+],
+"app/src/main/java/com/bitchat/android/nostr/NostrSubscriptionManager.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrSubscriptionManager.kt",
+"name": "تعريف الصنف وحقوله (NostrSubscriptionManager + relayManager)",
+"lines": "12-18",
+"summary": "يُعرِّف الصنف «مدير اشتراكات نوستر» (NostrSubscriptionManager) بمعاملي باني خاصين: «التطبيق» (application) و«النطاق» (scope) للمهام المتزامنة. يحمل ثابت «الوسم» (TAG) في كائن مرافق للتسجيل، ويوفّر خاصية «مدير المُرحِّلات» (relayManager) التي تُحضِر النسخة الوحيدة من NostrRelayManager عبر getInstance(application). هذه الخاصية هي البوابة التي تنادي عبرها كل الدوال الأخرى مُرحِّلات نوستر."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrSubscriptionManager.kt",
+"name": "connect / disconnect (إدارة الاتصال)",
+"lines": "20-21",
+"summary": "دالتان قصيرتان تُطلقان مهمة على «النطاق» (scope.launch) لتنادي «مدير المُرحِّلات» بـ connect() أو disconnect() داخل runCatching؛ وعند الفشل تُسجِّل الخطأ بـ Log.e بالوسم TAG. تربطان دورة حياة الاتصال بشبكة المُرحِّلات."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrSubscriptionManager.kt",
+"name": "subscribeGiftWraps (الاشتراك في أغلفة الهدايا)",
+"lines": "23-28",
+"summary": "تأخذ «المفتاح العام» (pubkey) و«منذ» (sinceMs) و«المعرّف» (id) و«المعالِج» (handler). تُطلق مهمة على النطاق تبني «مُرشِّحاً» (filter) عبر NostrFilter.giftWrapsFor(pubkey, sinceMs) ثم تُمرّره مع المعرّف والمعالِج إلى relayManager.subscribe لتلقّي رسائل أغلفة الهدايا الخاصة بالمستخدم."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrSubscriptionManager.kt",
+"name": "subscribeGeohashMessages (الاشتراك في رسائل التجزئة الجغرافية)",
+"lines": "30-36",
+"summary": "تشترك في رسائل دردشة التجزئة الجغرافية فقط (النوع 20000، منخفضة الحجم وتُبقى حيّة في الخلفية). تبني المُرشِّح عبر NostrFilter.geohashMessages(geohash, sinceMs, limit) ثم تنادي relayManager.subscribeForGeohash مع includeDefaults=false وnRelays=5."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrSubscriptionManager.kt",
+"name": "subscribeGeohashPresence (الاشتراك في حضور التجزئة الجغرافية)",
+"lines": "38-44",
+"summary": "تشترك في نبضات حضور التجزئة الجغرافية فقط (النوع 20001، مرتفعة الحجم وتُوقَف مؤقتاً في الخلفية). تبني المُرشِّح عبر NostrFilter.geohashPresence(geohash, sinceMs, limit) ثم تنادي relayManager.subscribeForGeohash مع includeDefaults=false وnRelays=5، بتركيب موازٍ تماماً لدالة الرسائل لكن لنوع حدث مختلف."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrSubscriptionManager.kt",
+"name": "unsubscribe (إلغاء الاشتراك)",
+"lines": "46-46",
+"summary": "تأخذ «المعرّف» (id) وتُطلق مهمة على النطاق تنادي relayManager.unsubscribe(id) داخل runCatching لإنهاء اشتراك سابق بأمان دون انهيار عند الخطأ."
+}
+],
+"app/src/main/java/com/bitchat/android/nostr/NostrTestManager.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrTestManager.kt",
+"name": "تعريف الصنف وخصائصه (NostrTestManager + companion + testScope + nostrClient)",
+"lines": "11-18",
+"summary": "يُعرّف الصنف `NostrTestManager` الذي يأخذ `context`، ويُنشئ كائناً مرافقاً يحمل ثابت الوسم `TAG`، ويُهيّئ نطاق كوروتين `testScope` على الخيط الرئيسي مع `SupervisorJob`، ويُعلن خاصية مؤجّلة التهيئة `nostrClient` التي تُستعمل لاحقاً في كل الاختبارات."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrTestManager.kt",
+"name": "runTests (مُنظّم تشغيل الاختبارات الشاملة)",
+"lines": "23-52",
+"summary": "الدالة العامة المنسّقة: تطلق كوروتيناً على `testScope` يستدعي بالترتيب اختبارات التهيئة والهوية والمُرحّلات والتعمية وBech32 والاشتراك، ضمن `try/catch` يسجّل النجاح الكلي أو يلتقط أي استثناء ويسجّله بـ `Log.e`. هي نقطة الدخول التي تنادي بقية دوال الاختبار الخاصة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrTestManager.kt",
+"name": "testClientInitialization (اختبار تهيئة العميل)",
+"lines": "54-67",
+"summary": "دالة معلّقة خاصة تُسند إلى `nostrClient` نسخة `NostrClient.getInstance(context)` وتستدعي `initialize()`، ثم تنتظر ٢ ثانية وتتحقق عبر `require` أن `isInitialized` صحيحة وإلا ترمي خطأ. تُنتج العميل المُهيّأ الذي تعتمد عليه باقي الاختبارات."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrTestManager.kt",
+"name": "testIdentityManagement (اختبار إدارة الهوية)",
+"lines": "69-88",
+"summary": "دالة معلّقة خاصة تجلب الهوية الحالية من `nostrClient` وتتحقق من وجودها وصحة صيغة `npub` وطول مفتاحيها (٦٤). ثم تشتق هوية جيوهاش عبر `NostrIdentityBridge.deriveIdentity` وتتأكد أنها مختلفة عن الهوية الأصلية. تعتمد على العميل الذي هيّأته الدالة السابقة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrTestManager.kt",
+"name": "testRelayConnections (اختبار اتصالات المُرحّلات)",
+"lines": "90-105",
+"summary": "دالة معلّقة خاصة تنتظر ٣ ثوانٍ لإتاحة الاتصالات، ثم تقرأ `relayInfo` من `nostrClient` وتتحقق أنها ليست فارغة، ثم تطبع كل مُرحّل وحالة اتصاله عبر `forEach`. تعتمد على العميل المُهيّأ."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrTestManager.kt",
+"name": "testCryptography (اختبار التعمية)",
+"lines": "107-136",
+"summary": "دالة معلّقة خاصة لا تعتمد على العميل بل على `NostrCrypto`: تولّد زوج مفاتيح وتتحقق من طوله وصلاحيته، ثم تتأكد من تطابق المفتاح العام المشتق، ثم تولّد مفاتيح مُستقبِل وتُعمّي نصاً بـ `encryptNIP44` وتفكّه بـ `decryptNIP44` وتتحقق أن الناتج يطابق الأصل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrTestManager.kt",
+"name": "testBech32 (اختبار ترميز Bech32)",
+"lines": "138-159",
+"summary": "دالة معلّقة خاصة تختبر دائرة ترميز/فك ترميز `Bech32`: ترمّز بيانات اختبارية ببادئة `test` وتتحقق من البادئة والبيانات بعد فكّها، ثم تولّد مفتاحاً عاماً عبر `NostrCrypto` وترمّزه كـ `npub` وتتحقق من سلامة دائرة الترميز والفكّ."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrTestManager.kt",
+"name": "testMessageSubscription (اختبار الاشتراك في الرسائل)",
+"lines": "161-182",
+"summary": "دالة معلّقة خاصة تختبر آلية الاشتراك دون توقّع استقبال: تشترك في الرسائل الخاصة عبر `subscribeToPrivateMessages` وفي الجيوهاش عبر `subscribeToGeohash` مع دوال لمدا تسجّل أي رسالة وتضبط العَلَم `messageReceived`، ثم تنتظر ٢ ثانية. تعتمد على العميل المُهيّأ."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrTestManager.kt",
+"name": "testLoopbackMessage (اختبار رسالة العودة الذاتية)",
+"lines": "187-211",
+"summary": "دالة عامة مستقلّة عن `runTests` تطلق كوروتيناً يجلب الهوية الحالية ويرسل رسالة خاصة إلى `npub` الذات نفسها عبر `sendPrivateMessage` مع ردّي `onSuccess`/`onError`، ضمن `try/catch`. تعتمد على عميل مُهيّأ مسبقاً ذي هوية."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrTestManager.kt",
+"name": "testGeohashMessage (اختبار رسالة الجيوهاش)",
+"lines": "216-237",
+"summary": "دالة عامة مستقلّة تطلق كوروتيناً يرسل رسالة جيوهاش إلى الموقع `u4pru` باسم مستعار `android-test` عبر `sendGeohashMessage` مع ردّي نجاح وخطأ، ضمن `try/catch` يسجّل الفشل. تعتمد على العميل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrTestManager.kt",
+"name": "getDebugInfo (جلب معلومات التصحيح)",
+"lines": "242-267",
+"summary": "دالة عامة تُعيد سلسلة نصية مبنية بـ `buildString` تجمع حالة العميل: الهوية المختصرة ومفتاحها ووقت إنشائها، وحالة `isInitialized` و`relayConnectionStatus`، وقائمة المُرحّلات مع حالة اتصال كلٍّ وعدّادات الإرسال/الاستقبال. تقرأ من `nostrClient` فقط دون تعديل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrTestManager.kt",
+"name": "shutdown (الإيقاف)",
+"lines": "272-275",
+"summary": "دالة عامة تنظّف الموارد: تُلغي نطاق الكوروتين `testScope.cancel()` ثم تستدعي `nostrClient.shutdown()`. تُنهي دورة حياة المدير وكل الاختبارات الجارية فيه."
+}
+],
+"app/src/main/java/com/bitchat/android/nostr/NostrTransport.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrTransport.kt",
+"name": "تعريف الصنف والكائن المرافق (NostrTransport + companion getInstance/INSTANCE)",
+"lines": "15-32",
+"summary": "يعرّف صنف «ناقِل نوستر» (NostrTransport) ببارامتري الباني: السياق (context) ومعرّف القرين المرسِل (senderPeerID). يحوي كائناً مرافقاً يخزّن نسخة وحيدة (INSTANCE) محميّة بـ @Volatile ويوفّر الدالة getInstance التي تُنشئ النسخة مرة واحدة بنمط متزامن (singleton)، ويعرّف الوسم TAG وفاصل تأكيد القراءة READ_ACK_INTERVAL من AppConstants."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrTransport.kt",
+"name": "حالة الطابور والنطاق (QueuedRead, readQueue, isSendingReadAcks, transportScope, myPeerID)",
+"lines": "34-46",
+"summary": "يعرّف صنف بيانات داخلياً «قراءة مُصفوفة في طابور» (QueuedRead) يجمع إيصالاً (receipt) ومعرّف قرين (peerID)، وطابوراً متزامناً (readQueue) لتخفيض معدل إيصالات القراءة، وعلَماً (isSendingReadAcks) يمنع التشغيل المتوازي، ونطاق كوروتينات (transportScope) على Dispatchers.IO، وخاصية myPeerID التي تعيد senderPeerID."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrTransport.kt",
+"name": "sendPrivateMessage — إرسال رسالة خاصة",
+"lines": "48-125",
+"summary": "يطلق كوروتيناً يحلّ مفتاح نوستر العام للمستلِم عبر resolveNostrPublicKey، يجلب هوية المرسِل من NostrIdentityBridge، يحوّل npub إلى ست عشري عبر Bech32.decode، يجد معرّف قرين المستلِم من FavoritesPersistenceService، يبني حزمة مضمّنة بـ encodePMForNostr، يلفّها بـ NostrProtocol.createPrivateMessage، ثم يرسل كل غلاف عبر NostrRelayManager.sendEvent، مع تسجيل وخروج عند أي فشل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrTransport.kt",
+"name": "sendReadReceipt + processReadQueueIfNeeded — إدخال الطابور وبدء معالجته",
+"lines": "127-139",
+"summary": "تضع sendReadReceipt إيصال القراءة مع المستلِم في readQueue ثم تستدعي processReadQueueIfNeeded التي تتحقّق من عدم وجود إرسال جارٍ ومن أن الطابور غير فارغ، فترفع العلَم isSendingReadAcks وتبدأ السلسلة عبر sendNextReadAck."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrTransport.kt",
+"name": "sendNextReadAck — إرسال تأكيد القراءة التالي من الطابور",
+"lines": "141-214",
+"summary": "تسحب عنصراً من readQueue (poll)؛ إن نفد الطابور تُنزل العلَم وتتوقف. وإلا تطلق كوروتيناً يحلّ مفتاح المستلِم والهوية ويحوّل npub إلى ست عشري، يبني تأكيداً عبر encodeAckForNostr بنوع READ_RECEIPT، يلفّه ويرسله عبر NostrRelayManager، ثم يستدعي scheduleNextReadAck في كل مسار (نجاح أو فشل) لمواصلة السلسلة مع التخفيض."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrTransport.kt",
+"name": "scheduleNextReadAck — جدولة التأكيد التالي بفاصل زمني",
+"lines": "216-222",
+"summary": "يطلق كوروتيناً ينتظر بمقدار READ_ACK_INTERVAL ثم يُنزل العلَم isSendingReadAcks ويستدعي processReadQueueIfNeeded من جديد، فيتشكّل تخفيض المعدل (نحو 3 رسائل في الثانية) ويعاد تشغيل المعالجة إن بقي عناصر."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrTransport.kt",
+"name": "sendFavoriteNotification — إرسال إشعار تفضيل/إلغاء تفضيل",
+"lines": "224-283",
+"summary": "يطلق كوروتيناً يحلّ مفتاح المستلِم والهوية، يبني نصاً «[FAVORITED]:npub» أو «[UNFAVORITED]:npub» حسب isFavorite، يحوّل npub إلى ست عشري، يضمّنه بـ encodePMForNostr بمعرّف رسالة عشوائي (UUID)، يلفّه بـ createPrivateMessage، ويرسله عبر NostrRelayManager."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrTransport.kt",
+"name": "sendDeliveryAck — إرسال إقرار التسليم",
+"lines": "285-341",
+"summary": "يطلق كوروتيناً مماثلاً للمسارات السابقة: يحلّ مفتاح المستلِم والهوية، يحوّل npub إلى ست عشري، يبني إقراراً عبر encodeAckForNostr بنوع DELIVERED بمعرّف الرسالة المعطى، يلفّه بـ createPrivateMessage ويرسله عبر NostrRelayManager، مع تسجيل عند الفشل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrTransport.kt",
+"name": "sendDeliveryAckGeohash — إقرار تسليم برسائل التجزئة الجغرافية",
+"lines": "345-378",
+"summary": "يأخذ ست عشري المستلِم وهوية مرسِلة (fromIdentity) مباشرة دون حلّ من المُفضَّلات. يبني إقرار DELIVERED عبر encodeAckForNostrNoRecipient (بلا تضمين معرّف المستلِم)، يلفّه بـ createPrivateMessage، ثم لكل غلاف يسجّله بـ registerPendingGiftWrap (لمنع التكرار) ويرسله عبر sendEvent."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrTransport.kt",
+"name": "sendReadReceiptGeohash — إيصال قراءة برسائل التجزئة الجغرافية",
+"lines": "380-413",
+"summary": "نظير sendDeliveryAckGeohash لكن بنوع READ_RECEIPT: يبني الإقرار عبر encodeAckForNostrNoRecipient، يلفّه بـ createPrivateMessage مع fromIdentity وtoRecipientHex، ثم يسجّل كل غلاف هدية بـ registerPendingGiftWrap ويرسله عبر NostrRelayManager."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrTransport.kt",
+"name": "sendPrivateMessageGeohash — رسالة خاصة عبر هوية التجزئة الجغرافية",
+"lines": "417-476",
+"summary": "يحدّد التجزئة الجغرافية من sourceGeohash أو من القناة المختارة في LocationChannelManager (شرط أن تكون ChannelID.Location)، يشتقّ هوية مرسِلة عبر NostrIdentityBridge.deriveIdentity، ثم يطلق كوروتيناً يضمّن الحزمة بـ encodePMForNostrNoRecipient، يلفّها بـ createPrivateMessage، ويسجّل ثم يرسل كل غلاف عبر NostrRelayManager."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrTransport.kt",
+"name": "resolveNostrPublicKey — حلّ مفتاح نوستر العام لمعرّف قرين",
+"lines": "480-504",
+"summary": "دالة مساعدة خاصة تحلّ مفتاح نوستر بثلاثة مسارات: (1) مسار سريع بربط مباشر معرّف القرين→npub عبر findNostrPubkeyForPeerID، (2) مسار قديم بتحويل المعرّف إلى مفتاح Noise (hexStringToByteArray) ثم getFavoriteStatus، (3) مطابقة بادئة لمعرّف بطول 16 ست عشري. تُعيد null إن فشلت كلها. تستدعيها كل دوال الإرسال غير الجغرافية."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrTransport.kt",
+"name": "hexStringToByteArray — تحويل نص ست عشري إلى مصفوفة بايتات",
+"lines": "509-512",
+"summary": "دالة مساعدة خاصة تضبط طول النص الست عشري (تضيف صفراً بادئاً إن كان فردياً)، ثم تقطّعه أزواجاً وتحوّل كل زوج بالأساس 16 إلى بايت وتجمعها مصفوفة. يستخدمها resolveNostrPublicKey في المسار القديم."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/NostrTransport.kt",
+"name": "cleanup — إلغاء نطاق الكوروتينات",
+"lines": "514-516",
+"summary": "تستدعي transportScope.cancel() لإلغاء كل الكوروتينات الجارية وتنظيف موارد الناقل."
+}
+],
+"app/src/main/java/com/bitchat/android/nostr/PoWPreferenceManager.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/PoWPreferenceManager.kt",
+"name": "الحزمة والاستيرادات (package/imports)",
+"lines": "1-7",
+"summary": "يُعرّف انتماء الملف لحزمة com.bitchat.android.nostr، ويستورد Context وSharedPreferences من أندرويد، إضافة إلى أدوات تدفّق الحالة MutableStateFlow وStateFlow وasStateFlow من كوروتينات كوتلن."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/PoWPreferenceManager.kt",
+"name": "تعريف الكائن المفرد والثوابت (PoWPreferenceManager + constants)",
+"lines": "12-20",
+"summary": "يفتح الكائن المفرد PoWPreferenceManager ويُعرّف ثوابته: اسم ملف التفضيلات PREFS_NAME ومفتاحَي التخزين KEY_POW_ENABLED وKEY_POW_DIFFICULTY، والقيم الافتراضية DEFAULT_POW_ENABLED (false) وDEFAULT_POW_DIFFICULTY (12، قيمة معقولة لمنع البريد المزعج في الجيوهاش)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/PoWPreferenceManager.kt",
+"name": "حقول الحالة المشتركة (state flows + sharedPrefs + isInitialized)",
+"lines": "23-34",
+"summary": "يُعرّف ثلاثة تدفّقات حالة قابلة للقراءة من الخارج: powEnabled وpowDifficulty (مهيّآن بالقيم الافتراضية) وisMining (يبدأ false)، كلٌّ منها مدعوم بمتغيّر خاص قابل للتغيير ومكشوف للقراءة عبر asStateFlow. كما يُعرّف sharedPrefs مؤجّل التهيئة وعَلَم isInitialized. هذه الحقول هي المخزن الذي تقرأ منه دوال القراءة وتكتب فيه دوال الضبط."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/PoWPreferenceManager.kt",
+"name": "دالّة التهيئة init",
+"lines": "40-50",
+"summary": "تتلقّى سياق التطبيق وتمنع التهيئة المكرّرة عبر isInitialized، ثم تفتح ملف التفضيلات PREFS_NAME بوضع خاص وتُسنده إلى sharedPrefs، وتُحمّل القيم المخزّنة لمفتاحَي التفعيل والصعوبة إلى تدفّقَي _powEnabled و_powDifficulty (بقيم افتراضية عند غيابها)، ثم ترفع علم isInitialized. تُنتج الحالة الابتدائية التي تستهلكها دوال القراءة والواجهة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/PoWPreferenceManager.kt",
+"name": "قراءة وضبط تفعيل إثبات العمل (isPowEnabled/setPowEnabled)",
+"lines": "55-67",
+"summary": "isPowEnabled تُعيد القيمة الحالية من _powEnabled.value. setPowEnabled تُحدّث التدفّق _powEnabled ثم تُديم القيمة في sharedPrefs (إن كان مهيّأً) عبر edit().putBoolean(...).apply()، فتربط بين الحالة في الذاكرة والتخزين الدائم."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/PoWPreferenceManager.kt",
+"name": "قراءة وضبط صعوبة إثبات العمل (getPowDifficulty/setPowDifficulty)",
+"lines": "72-85",
+"summary": "getPowDifficulty تُعيد _powDifficulty.value. setPowDifficulty تحصر القيمة الواردة بين 0 و32 عبر coerceIn، ثم تُحدّث التدفّق _powDifficulty وتُديمها في sharedPrefs (إن كان مهيّأً). تضمن صحّة نطاق الصعوبة قبل التخزين."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/PoWPreferenceManager.kt",
+"name": "صنف الإعدادات وقراءته (PoWSettings + getCurrentSettings)",
+"lines": "90-103",
+"summary": "صنف البيانات PoWSettings يحمل حقلَي enabled وdifficulty. دالّة getCurrentSettings تجمع القيمتين الحاليتين من _powEnabled.value و_powDifficulty.value في كائن PoWSettings واحد، فتوفّر لقطة موحّدة للإعدادات."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/PoWPreferenceManager.kt",
+"name": "إعادة الضبط للافتراضي resetToDefaults",
+"lines": "108-111",
+"summary": "تستدعي setPowEnabled وsetPowDifficulty بالقيم الافتراضية، فتعيد كلا التدفّقين والتخزين الدائم إلى الحالة الأصلية معتمدةً على دالتَي الضبط السابقتين."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/PoWPreferenceManager.kt",
+"name": "مستويات الصعوبة للواجهة getDifficultyLevels",
+"lines": "116-127",
+"summary": "تُعيد قائمة أزواج (عدد، وصف نصّي) تربط قيم الصعوبة 0/8/12/16/20/24/28/32 بأوصاف ومدد تقريبية (من معطّل إلى نحو 8 ساعات)، لعرضها في واجهة المستخدم لاختيار الصعوبة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/PoWPreferenceManager.kt",
+"name": "إدارة حالة التعدين (isMining/startMining/stopMining)",
+"lines": "132-148",
+"summary": "isMining تُعيد _isMining.value. startMining ترفع التدفّق _isMining إلى true وstopMining تُعيده إلى false، لتشغيل وإيقاف المؤشّرات المتحرّكة في الواجهة. هذه الحالة وقتية ولا تُخزَّن في sharedPrefs."
+}
+],
+"app/src/main/java/com/bitchat/android/nostr/RelayDirectory.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/RelayDirectory.kt",
+"name": "تعريف الكائن المفرد والثوابت والحالة المشتركة (RelayDirectory + الثوابت + relays/relaysLock/ioScope)",
+"lines": "26-50",
+"summary": "يُعرّف الكائن المفرد «دليل المُرحِّلات» (RelayDirectory) وثوابته: روابط ملف الأصل (ASSET_FILE_URL)، أسماء الملفات (ASSET_FILE وDOWNLOADED_FILE)، اسم التفضيلات (PREFS_NAME) ومفتاح وقت آخر تحديث (KEY_LAST_UPDATE_MS)، ومدة اليوم بالميلي ثانية (ONE_DAY_MS). كما يُنشئ نطاق كوروتين للإدخال/الإخراج (ioScope) وعميل HTTP (httpClient) عبر مُحصِّل من OkHttpProvider. ويحمل الحالة المشتركة: علم التهيئة (initialized) المعلَّم @Volatile، وقائمة المُرحِّلات القابلة للتغيير (relays) مع قفلها (relaysLock)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/RelayDirectory.kt",
+"name": "RelayInfo",
+"lines": "40-44",
+"summary": "صنف بيانات «معلومات المُرحِّل» (RelayInfo) يمثّل سجلاً واحداً للمُرحِّل: الرابط (url)، خط العرض (latitude)، وخط الطول (longitude). وهو الوحدة المخزَّنة في قائمة relays والمُنتَجة من parseCsv."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/RelayDirectory.kt",
+"name": "initialize",
+"lines": "52-83",
+"summary": "دالة «التهيئة» العامة. تستعمل قفلاً مزدوج الفحص (double-checked) على initialized. تحاول التحميل من الملف المُنزَّل (getDownloadedFile ثم loadFromFile)، وإن فشل تعود إلى التحميل من الأصول (loadFromAssets). ثم تضبط initialized=true، وتُطلق كوروتين فورياً يستدعي fetchAndMaybeSwap إذا كانت البيانات قديمة (isStale)، وتبدأ التحديث الدوري (startPeriodicRefresh). الأخطاء تُسجَّل عبر Log.e. هذه هي نقطة الدخول الرئيسية للملف."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/RelayDirectory.kt",
+"name": "closestRelaysForGeohash",
+"lines": "88-106",
+"summary": "دالة عامة تُعيد حتى nRelays من روابط أقرب المُرحِّلات إلى مركز الجيوهاش. تأخذ لقطة آمنة من relays تحت القفل، تفكّ ترميز الجيوهاش إلى مركز عبر Geohash.decodeToCenter، ثم ترتّب المُرحِّلات بحسب المسافة (haversineMeters) وتأخذ الأقرب وتُحوّلها إلى روابط (url). هذه واجهة الاستعلام التي يستهلكها بقية النظام."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/RelayDirectory.kt",
+"name": "haversineMeters",
+"lines": "108-115",
+"summary": "دالة خاصة تحسب المسافة بالأمتار بين نقطتين (خط عرض/طول لكل منهما) باستعمال صيغة هافرسين ونصف قطر الأرض 6371000 متراً. يستدعيها closestRelaysForGeohash في الترتيب."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/RelayDirectory.kt",
+"name": "normalizeRelayUrl",
+"lines": "117-121",
+"summary": "دالة خاصة تُوحّد رابط المُرحِّل: تزيل الفراغات الطرفية، وإن لم يحتوِ على بروتوكول («://») تُضيف البادئة «wss://». يستدعيها parseCsv عند بناء كل سجل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/RelayDirectory.kt",
+"name": "getPrefs",
+"lines": "125-126",
+"summary": "دالة خاصة تُعيد كائن SharedPreferences باسم PREFS_NAME بوضع خاص. تُستعمل لقراءة/كتابة وقت آخر تحديث في isStale وfetchAndMaybeSwap."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/RelayDirectory.kt",
+"name": "getDownloadedFile",
+"lines": "128-129",
+"summary": "دالة خاصة تُعيد كائن File يشير إلى الملف المُنزَّل (DOWNLOADED_FILE) داخل filesDir للتطبيق. يستعملها initialize وfetchAndMaybeSwap."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/RelayDirectory.kt",
+"name": "isStale",
+"lines": "131-135",
+"summary": "دالة خاصة تُحدّد إن كانت البيانات قديمة بمقارنة الفرق بين الوقت الحالي ووقت آخر تحديث المخزَّن (KEY_LAST_UPDATE_MS) مع ONE_DAY_MS (٢٤ ساعة). يستدعيها initialize وstartPeriodicRefresh لتقرير الجلب."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/RelayDirectory.kt",
+"name": "startPeriodicRefresh",
+"lines": "137-150",
+"summary": "دالة خاصة تُطلق كوروتين بحلقة لا نهائية: كل دقيقة (delay) تفحص القِدَم (isStale) وتستدعي fetchAndMaybeSwap عند اللزوم، مع التقاط الأخطاء وتسجيلها عبر Log.w. تُمثّل دورة التحديث في الخلفية."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/RelayDirectory.kt",
+"name": "fetchAndMaybeSwap",
+"lines": "152-191",
+"summary": "دالة خاصة تُنزّل أحدث قائمة مُرحِّلات إلى ملف مؤقت (downloadToFile)، فإن نجح التنزيل وتحليلها (parseCsv) إلى عناصر غير فارغة، تنسخها إلى الملف المُنزَّل الدائم (getDownloadedFile)، تستبدل محتوى relays تحت القفل، تخزّن وقت التحديث في التفضيلات، وتسجّل البصمة (fileSha256Hex) وعدد العناصر. إن فشل أي شرط تحافظ على القائمة الحالية وتحذف الملف المؤقت."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/RelayDirectory.kt",
+"name": "downloadToFile",
+"lines": "193-213",
+"summary": "دالة خاصة تُنفّذ طلب HTTP GET عبر httpClient لتنزيل المحتوى من رابط إلى ملف وجهة، وتنسخ جسم الاستجابة إلى الملف، وتُعيد true عند النجاح وfalse عند فشل الحالة أو غياب الجسم أو وقوع استثناء (مع Log.w). يستدعيها fetchAndMaybeSwap."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/RelayDirectory.kt",
+"name": "loadFromFile",
+"lines": "215-234",
+"summary": "دالة خاصة تُحلّل ملفاً عبر parseCsv، وإن كانت النتيجة غير فارغة تستبدل محتوى relays تحت القفل وتسجّل البصمة والعدد (Log.i)، وتُعيد true. عند الفراغ أو الاستثناء تُعيد false. يستدعيها initialize لتحميل الملف المُنزَّل، مع وسم مصدر (sourceLabel)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/RelayDirectory.kt",
+"name": "loadFromAssets",
+"lines": "236-256",
+"summary": "دالة خاصة تُحلّل ملف الأصل المُجمَّع (ASSET_FILE) من أصول التطبيق عبر parseCsv وتستبدل به محتوى relays تحت القفل، ثم تحسب بصمة الأصل (streamSha256Hex) للتسجيل (Log.i). تُمثّل المصدر الاحتياطي حين يتعذّر التحميل من الملف المُنزَّل، ويستدعيها initialize."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/RelayDirectory.kt",
+"name": "parseCsv",
+"lines": "258-278",
+"summary": "دالة خاصة تقرأ تدفّق دخل CSV سطراً سطراً (BufferedReader): تتجاهل الأسطر الفارغة وسطر الترويسة («relay url»)، تقسّم كل سطر على الفواصل وتشترط ٣ حقول على الأقل، تُوحّد الرابط (normalizeRelayUrl) وتحوّل خطّي العرض والطول إلى أعداد عشرية، وتبني قائمة RelayInfo. هي المُنتِج المركزي للسجلات الذي تستهلكه loadFromFile وloadFromAssets وfetchAndMaybeSwap."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/RelayDirectory.kt",
+"name": "fileSha256Hex",
+"lines": "280-284",
+"summary": "دالة خاصة تفتح ملفاً كتدفّق وتُفوّض حساب البصمة إلى streamSha256Hex، وتُعيد «error» عند أي استثناء. تُستعمل للتسجيل في fetchAndMaybeSwap وloadFromFile."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/nostr/RelayDirectory.kt",
+"name": "streamSha256Hex",
+"lines": "286-301",
+"summary": "دالة خاصة تحسب بصمة SHA-256 لتدفّق دخل بقراءته في مخزن ٨١٩٢ بايت وتحديث MessageDigest، ثم تُحوّل البايتات الناتجة إلى نص ست عشري. هي الأساس الذي تبني عليه fileSha256Hex وloadFromAssets بصماتها."
+}
+],
+"app/src/main/java/com/bitchat/android/sync/GCSFilter.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/sync/GCSFilter.kt",
+"name": "الترويسة والاستيرادات والتوثيق (header/imports/doc)",
+"lines": "1-19",
+"summary": "يعلن الحزمة sync ويستورد MessageDigest و ceil و ln، ثم كتلة توثيق تشرح فكرة المرشّح: تجزئة المعرّف بـ h64 (أول 8 بايتات من SHA-256) والتحويل للمدى [0,M) ثم ترميز الفروق بشيفرة غولومب-رايس بالمَعلَمة P معبّأة بدءاً من البت الأعلى."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/sync/GCSFilter.kt",
+"name": "الكائن GCSFilter وصنف Params",
+"lines": "20-25",
+"summary": "يفتح الكائن المفرد GCSFilter ويعرّف صنف البيانات Params الحاوي للمَعلَمة p والمدى m وتيار البتات المُرمَّز data؛ هذا الصنف هو ناتج buildFilter ومدخل decodeToSortedSet."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/sync/GCSFilter.kt",
+"name": "deriveP — اشتقاق المَعلَمة P",
+"lines": "27-31",
+"summary": "تقيّد معدّل الإيجابيات الكاذبة المستهدف ضمن [0.000001,0.25] ثم تحسب P = سقف(ln(1/f)/ln(2)) بحد أدنى 1. تُستدعى من buildFilter لتحديد دقّة المرشّح."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/sync/GCSFilter.kt",
+"name": "estimateMaxElementsForSize — تقدير سعة العناصر",
+"lines": "33-38",
+"summary": "تقدّر أقصى عدد عناصر يلائم حجماً بالبايتات: تحوّل البايتات لبتات (بحد أدنى 8) وتقسمها على (P+2) المقدّرة لكل عنصر. تُستدعى من buildFilter لحساب nCap."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/sync/GCSFilter.kt",
+"name": "buildFilter — بناء المرشّح",
+"lines": "40-70",
+"summary": "الوحدة المنسّقة الرئيسية: تستدعي deriveP و estimateMaxElementsForSize لاشتقاق p و nCap، تقتطع المعرّفات، تحسب M=trimmedN<<p، تحوّل كل معرّف بـ h64%M (مع تحويل 0 إلى 1) ثم distinct وsorted، وتستدعي encode. إن تجاوز الناتج maxBytes تكرّر حلقة تنقص 10% من العناصر وتعيد التحويل والترميز حتى يلائم، ثم تُعيد Params."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/sync/GCSFilter.kt",
+"name": "decodeToSortedSet — فك الترميز",
+"lines": "72-93",
+"summary": "تنشئ BitReader على البيانات وتقرأ كل عنصر: خارج أحادي q (آحاد متبوعة بصفر) ثم p بتات للباقي r، فتعيد بناء الفرق x=(q<<p)+r+1 وتراكمه في acc لاستعادة القيم المرتّبة. تتوقّف عند بلوغ النهاية أو تجاوز المدى m، وتُعيد LongArray."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/sync/GCSFilter.kt",
+"name": "contains — البحث الثنائي",
+"lines": "95-105",
+"summary": "بحث ثنائي على مصفوفة القيم المرتّبة (ناتج decodeToSortedSet) عن قيمة مرشّحة، يُعيد true عند الإيجاد و false خلاف ذلك."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/sync/GCSFilter.kt",
+"name": "h64 — دالة التجزئة",
+"lines": "107-116",
+"summary": "تحسب SHA-256 للمعرّف ذي الـ16 بايتاً، تأخذ أول 8 بايتات وتجمّعها كبيرة النهاية في Long ثم تقنّعها لتكون موجبة. تُستدعى من buildFilter لتحويل كل معرّف إلى قيمة عددية."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/sync/GCSFilter.kt",
+"name": "encode — ترميز الفروق بغولومب-رايس",
+"lines": "118-135",
+"summary": "تمرّ على القيم المرتّبة وتحسب الفرق عن السابق، ثم لكل فرق x تكتب الخارج q=(x-1)>>p بالترميز الأحادي (آحاد ثم صفر) عبر BitWriter، يليها p بتات للباقي r. تُعيد مصفوفة البايتات وتُستدعى من buildFilter."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/sync/GCSFilter.kt",
+"name": "BitWriter — كاتب البتات",
+"lines": "137-165",
+"summary": "صنف داخلي يكتب البتات بدءاً من البت الأعلى أهمية: writeBit يجمع بتاً ويفرغ بايتاً عند اكتمال 8، writeBits يكتب count بتاً من قيمة، و toByteArray يحشو البتات المتبقّية ويعيد المخزن. يستخدمه encode."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/sync/GCSFilter.kt",
+"name": "BitReader — قارئ البتات",
+"lines": "167-197",
+"summary": "صنف داخلي يقرأ البتات بدءاً من البت الأعلى أهمية: eof يكشف النهاية، readBit يُعيد بتاً أو null مع ضبط lastWasEOF، و readBits يقرأ count بتاً مجمّعةً في Long. يستخدمه decodeToSortedSet."
+}
+],
+"app/src/main/java/com/bitchat/android/sync/GossipSyncManager.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/sync/GossipSyncManager.kt",
+"name": "تعريف الصنف والواجهتان والحقول (الترويسة)",
+"lines": "17-51",
+"summary": "يُعرّف الصنف GossipSyncManager (مدير مزامنة النميمة) ووُسطاء بانيه: myPeerID و scope و configProvider. يُصرّح بواجهة Delegate (المفوّض) لإرسال وتوقيع الحزم، وواجهة ConfigProvider (مزوّد الإعدادات) لقراءة seenCapacity و gcsMaxBytes و gcsTargetFpr. يُهيّئ المخزنين: messages وهي LinkedHashMap للرسائل البثّية مُفتَّحة بمعرّف الحزمة، و latestAnnouncementByPeer وهي ConcurrentHashMap تحتفظ بأحدث إعلان لكل مُرسِل. كما يعرّف حقلَي المهام periodicJob و cleanupJob والقيم الافتراضية defaultMaxBytes و defaultFpr."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/sync/GossipSyncManager.kt",
+"name": "start",
+"lines": "52-75",
+"summary": "يبدأ كوروتينين على Dispatchers.IO: الأول periodicJob يكرّر كل 30 ثانية ويستدعي sendRequestSync (إرسال طلب المزامنة)؛ والثاني cleanupJob يكرّر كل CLEANUP_INTERVAL_MS ويستدعي pruneStaleAnnouncements (تقليم الإعلانات البائتة). كلاهما داخل حلقة while مع التقاط الاستثناءات وإعادة رمي CancellationException وتسجيل بقية الأخطاء."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/sync/GossipSyncManager.kt",
+"name": "stop",
+"lines": "77-80",
+"summary": "يُلغي المهمتين periodicJob و cleanupJob ويضبطهما على null لإيقاف العمل الدوري."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/sync/GossipSyncManager.kt",
+"name": "scheduleInitialSync",
+"lines": "82-87",
+"summary": "يُطلق كوروتيناً يؤخّر بمقدار delayMs (افتراضياً 5000) ثم يستدعي sendRequestSync لإرسال طلب مزامنة بثّي مبدئي بعد فترة وجيزة من البدء."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/sync/GossipSyncManager.kt",
+"name": "scheduleInitialSyncToPeer",
+"lines": "89-94",
+"summary": "نظير الدالة السابقة لكن موجّه إلى نظير محدّد: يؤخّر delayMs ثم يستدعي sendRequestSyncToPeer بالوسيط peerID."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/sync/GossipSyncManager.kt",
+"name": "onPublicPacketSeen",
+"lines": "96-134",
+"summary": "نقطة الإدخال التي تُغذّي المخزنين. تقبل فقط الرسائل البثّية (MESSAGE موجّهة للبثّ أو بلا مستلِم) والإعلانات (ANNOUNCE). تحسب معرّف الحزمة عبر PacketIdUtil.computeIdBytes وتحوّله ست‑عشرياً. للرسالة البثّية: تخزّنها في messages (داخل synchronized) وتفرض سعة seenCapacity بحذف الأقدم. للإعلان: تتجاهله إن تجاوز عمره STALE_PEER_TIMEOUT_MS، وإلّا تخزّن أحدث إعلان في latestAnnouncementByPeer مُفتَّحاً بمعرّف المُرسِل الست‑عشري، مع فرض السعة كذلك."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/sync/GossipSyncManager.kt",
+"name": "sendRequestSync",
+"lines": "136-149",
+"summary": "يبني حمولة GCS عبر buildGcsPayload، ويُغلّفها في BitchatPacket من نوع REQUEST_SYNC بمعرّف المرسِل myPeerID و ttl=SYNC_TTL_HOPS (الجيران فقط)، ثم يوقّعها عبر delegate.signPacketForBroadcast ويبثّها عبر delegate.sendPacket."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/sync/GossipSyncManager.kt",
+"name": "sendRequestSyncToPeer",
+"lines": "151-166",
+"summary": "كـ sendRequestSync لكنه يضيف recipientID للنظير المستهدف ويرسل مباشرة عبر delegate.sendPacketToPeer بدلاً من البثّ، مع تسجيل حجم الحمولة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/sync/GossipSyncManager.kt",
+"name": "handleRequestSync",
+"lines": "168-199",
+"summary": "يستجيب لطلب مزامنة وارد. يفكّ ترميز مرشّح GCS من request إلى مجموعة مرتّبة عبر GCSFilter.decodeToSortedSet، ويعرّف دالة محلية mightContain تفحص عضوية معرّف عبر التجزئة h64 و contains. ثم (1) يمرّ على latestAnnouncementByPeer ويرسل كل إعلان لا يحتويه الطرف البعيد إلى fromPeerID، و(2) يمرّ على messages ويرسل كل رسالة بثّية ينقصها، مع ضبط ttl=SYNC_TTL_HOPS على النسخ المُرسَلة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/sync/GossipSyncManager.kt",
+"name": "hexStringToByteArray",
+"lines": "201-213",
+"summary": "دالة مساعدة تحوّل نصاً ست‑عشرياً إلى مصفوفة بايتات ثابتة الطول (8) تُستعمل لمعرّفات النظراء (senderID/recipientID)؛ تأخذ أول 8 بايتات وتتسامح مع الأحرف غير الصالحة بتركها صفراً."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/sync/GossipSyncManager.kt",
+"name": "hexToBytes",
+"lines": "215-224",
+"summary": "دالة مساعدة عامة الطول تحوّل نصاً ست‑عشرياً إلى بايتات (تُكمّل بصفر بادئ عند الطول الفردي)، تُستعمل في handleRequestSync لإعادة معرّف الإعلان المخزّن ست‑عشرياً إلى بايتات لفحص mightContain."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/sync/GossipSyncManager.kt",
+"name": "buildGcsPayload",
+"lines": "226-254",
+"summary": "يجمع المرشّحين (آخر إعلان لكل نظير + الرسائل البثّية) في قائمة، يرتّبها تنازلياً بالطابع الزمني، يقرأ gcsMaxBytes و gcsTargetFpr (مع رجوع للقيم الافتراضية عند الاستثناء)، يشتقّ p عبر GCSFilter.deriveP ويقدّر nMax، ثم يأخذ takeN=min(nMax, seenCapacity, الحجم). إن كان takeN صفراً يُعيد حزمة طلب فارغة؛ وإلّا يحسب معرّفات العناصر ويبني مرشّح GCS عبر GCSFilter.buildFilter ويُعيد RequestSyncPacket مُرمّزة. تُستهلك مخرجاتها من sendRequestSync و sendRequestSyncToPeer."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/sync/GossipSyncManager.kt",
+"name": "pruneStaleAnnouncements",
+"lines": "257-290",
+"summary": "تُنادى دورياً من cleanupJob. تحدّد النظراء الذين تجاوز عمر إعلانهم STALE_PEER_TIMEOUT_MS، ثم لكل منهم تعدّ رسائله وتستدعي removeAnnouncementForPeer لإزالة الإعلان ورسائله، وتسجّل الإجمالي."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/sync/GossipSyncManager.kt",
+"name": "removeAnnouncementForPeer",
+"lines": "293-320",
+"summary": "دالة عامة تزيل إعلان نظير معيّن من latestAnnouncementByPeer (بمفتاح بحروف صغيرة)، ثم تجمع معرّفات الرسائل التي مُرسِلها هو ذلك النظير وتزيلها من messages على مرحلتين متزامنتين (جمع ثم حذف) لتفادي التعديل أثناء التكرار، مع التسجيل. تُستدعى من pruneStaleAnnouncements وقابلة للاستدعاء خارجياً."
+}
+],
+"app/src/main/java/com/bitchat/android/sync/PacketIdUtil.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/sync/PacketIdUtil.kt",
+"name": "computeIdBytes",
+"lines": "13-25",
+"summary": "دالّة تأخذ حُزمة (BitchatPacket) وتُنتج معرّفاً ثابتاً على شكل مصفوفة بايتات. تُنشئ خلاصة رسالة (MessageDigest) بخوارزمية SHA-256، ثم تُغذّيها بالترتيب: نوع الحُزمة كبايت واحد (سطر 15)، ثم معرّف المُرسِل (سطر 16)، ثم الطابع الزمني محوَّلاً إلى عدد طويل ومكتوباً 8 بايتات بترتيب البايت الأكبر أولاً عبر حلقة تنازلية من 7 إلى 0 (الأسطر 18-21)، ثم الحمولة (سطر 22). أخيراً تحسب الخلاصة (سطر 23) وتقطعها إلى أول 16 بايت (128 بِت) وتُعيدها (سطر 24). الترتيب المعياري الثابت للحقول يضمن أن نفس الحُزمة تعطي دائماً نفس المعرّف."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/sync/PacketIdUtil.kt",
+"name": "computeIdHex",
+"lines": "27-29",
+"summary": "دالّة تأخذ نفس الحُزمة (BitchatPacket) وتُعيد المعرّف كنصّ ست عشري (String). تستدعي computeIdBytes للحصول على بايتات المعرّف، ثم تحوّل كل بايت إلى حرفين ست عشريين عبر التنسيق %02x وتدمجها بلا فاصل (سطر 28). فهي غلاف نصّي مبني فوق computeIdBytes."
+}
+],
+"app/src/main/java/com/bitchat/android/sync/SyncDefaults.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/sync/SyncDefaults.kt",
+"name": "الكائن SyncDefaults (افتراضات المزامنة) — حاوية القيم الافتراضية",
+"lines": "3-10",
+"summary": "كائن مفرد (object) باسم SyncDefaults يجمع القيم الثابتة الافتراضية المستعملة في المزامنة، وتحديداً عندما تكون تفضيلات التنقيح (debug prefs) غير متوفّرة (السطر 4). يحتوي على ثلاثة ثوابت: DEFAULT_FILTER_BYTES = 256 (حجم المرشّح الافتراضي بالبايت، السطر 5)، وDEFAULT_FPR_PERCENT = 1.0 (نسبة الإيجابيات الكاذبة الافتراضية، السطر 6)، وMAX_ACCEPT_FILTER_BYTES = 1024 (الحدّ الأقصى الصارم في جانب المُستقبِل لتفادي هجوم حجب الخدمة DoS، السطر 9). لا يحتوي الكائن على دوال أو منطق تنفيذي، بل هو مجرد مستودع لقيم ثابتة يُقرأ منها."
+}
+],
+"app/src/main/java/com/bitchat/android/geohash/AndroidGeocoderProvider.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/AndroidGeocoderProvider.kt",
+"name": "الاستيرادات وتعريف الحزمة (package + imports)",
+"lines": "1-11",
+"summary": "يُعرِّف اسم الحزمة com.bitchat.android.geohash ثم يستورد الأصناف والدوال اللازمة: Context و Address و Geocoder و Build و Log من أندرويد، و suspendCancellableCoroutine و resume و resumeWithException من الروتينات المتعاونة (coroutines)، و Locale من جافا. هذه الاستيرادات تُهيّئ أدوات الترميز الجغرافي والتعليق غير المتزامن المستخدمة لاحقاً."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/AndroidGeocoderProvider.kt",
+"name": "تعريف الصنف وخصائصه (AndroidGeocoderProvider class header)",
+"lines": "13-15",
+"summary": "يُعرِّف الصنف AndroidGeocoderProvider الذي يأخذ context (السياق) في بانيه ويُحقِّق الواجهة GeocoderProvider. داخله يُنشئ الخاصّية الخاصّة geocoder بكائن Geocoder باستعمال السياق والمحلّيّة الافتراضية Locale.getDefault()، ويُعرِّف الخاصّية TAG كوسم نصّي للتسجيل. هذه الخاصّيات تُغذّي دالة getFromLocation التي تستعملهما."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/AndroidGeocoderProvider.kt",
+"name": "الدالة getFromLocation — الفرع الحديث (TIRAMISU+)",
+"lines": "17-41",
+"summary": "دالة قابلة للتعليق (suspend) تُعيد تعريف getFromLocation وتأخذ latitude و longitude و maxResults وتُعيد قائمة List<Address>. إن كان رقم النظام SDK_INT يساوي تيراميسو أو أعلى، تستعمل suspendCancellableCoroutine لتحويل واجهة المُستمِع غير المتزامنة إلى استدعاء معلَّق: تستدعي geocoder.getFromLocation ممرِّرةً الإحداثيات و GeocodeListener؛ في onGeocode تستأنف الاستمرارية cont بالعناوين addresses إن كانت نشطة، وفي onError تُسجِّل الخطأ ثم تستأنف بقائمة فارغة، وأي استثناء يُعاد عبر resumeWithException."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/AndroidGeocoderProvider.kt",
+"name": "الدالة getFromLocation — الفرع البديل (الإصدارات الأقدم)",
+"lines": "42-51",
+"summary": "الفرع else للأنظمة الأقدم من تيراميسو: مع كتم تحذير الإهمال عبر @Suppress(\"DEPRECATION\")، يستدعي النسخة المتزامنة القديمة geocoder.getFromLocation(latitude, longitude, maxResults) ويُعيد ناتجها أو قائمة فارغة عند null عبر مُعامِل الدمج الفارغ (?:)، وعند حدوث استثناء يُسجِّله بـ Log.e ويُعيد قائمة فارغة."
+}
+],
+"app/src/main/java/com/bitchat/android/geohash/FusedLocationProvider.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/FusedLocationProvider.kt",
+"name": "إعلان الصنف والحالة الداخلية (FusedLocationProvider + companion + fusedLocationClient + activeCallbacks)",
+"lines": "13-22",
+"summary": "يعرّف الصنف «مزوّد الموقع المدمج» (FusedLocationProvider) الذي يأخذ «السياق» (context) ويحقّق واجهة «مزوّد الموقع» (LocationProvider). يحوي ثابت الوسم (TAG) للسجل، ويهيّئ «عميل الموقع المدمج» (fusedLocationClient) عبر LocationServices، ويُنشئ خريطة «دوال الاستدعاء النشطة» (activeCallbacks) التي تربط كل دالة استدعاء راجعة من المستخدم بكائن LocationCallback المقابل لها لتتمكّن لاحقاً من إزالته."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/FusedLocationProvider.kt",
+"name": "hasLocationPermission",
+"lines": "24-27",
+"summary": "دالة خاصة مساعدة تتحقّق هل يملك التطبيق إذن الموقع الدقيق (ACCESS_FINE_LOCATION) أو التقريبي (ACCESS_COARSE_LOCATION) عبر ActivityCompat.checkSelfPermission، وتُعيد Boolean. تستدعيها بقية الدوال كبوّابة قبل الوصول للموقع."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/FusedLocationProvider.kt",
+"name": "getLastKnownLocation",
+"lines": "29-49",
+"summary": "دالة متجاوِزة تجلب آخر موقع معروف. تتحقّق أولاً من الإذن عبر hasLocationPermission، وإن لم يوجد تستدعي callback بـ null وتخرج. وإلا تقرأ fusedLocationClient.lastLocation وتُمرّر النتيجة إلى callback عند النجاح، أو تسجّل خطأً وتُمرّر null عند الفشل أو الاستثناء."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/FusedLocationProvider.kt",
+"name": "requestFreshLocation",
+"lines": "51-76",
+"summary": "دالة متجاوِزة تطلب موقعاً جديداً (حياً). تتحقّق من الإذن، ثم تبني CurrentLocationRequest بأولوية دقة عالية ومدة 30000 ميلّي ثانية، وتستدعي getCurrentLocation على العميل. تُمرّر الموقع إلى callback عند النجاح، أو null مع تسجيل خطأ عند الفشل أو الاستثناء."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/FusedLocationProvider.kt",
+"name": "requestLocationUpdates",
+"lines": "79-112",
+"summary": "دالة متجاوِزة تسجّل تحديثات موقع متكرّرة وفق الفترة (intervalMs) وأدنى مسافة (minDistanceMeters). تتحقّق من الإذن، تبني LocationRequest، وتُنشئ LocationCallback يمرّر lastLocation إلى callback عند كل onLocationResult. تخزّن الربط في activeCallbacks داخل كتلة متزامنة، ثم تستدعي fusedLocationClient.requestLocationUpdates على الحلقة الرئيسة. تسجّل النجاح أو الخطأ."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/FusedLocationProvider.kt",
+"name": "removeLocationUpdates",
+"lines": "114-127",
+"summary": "دالة متجاوِزة تُلغي تحديثات موقع واحدة. تُزيل دالة الاستدعاء الراجعة (callback) من خريطة activeCallbacks داخل كتلة متزامنة، وإن وُجد LocationCallback المقابل تستدعي fusedLocationClient.removeLocationUpdates عليه وتسجّل ذلك، مع التقاط أي استثناء وتسجيله."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/FusedLocationProvider.kt",
+"name": "cancel",
+"lines": "129-141",
+"summary": "دالة متجاوِزة تُلغي كل التحديثات النشطة. تمرّ على كل مداخل activeCallbacks داخل كتلة متزامنة وتستدعي removeLocationUpdates على العميل لكل LocationCallback، ثم تفرّغ الخريطة بـ clear وتسجّل ذلك، مع التقاط أي استثناء وتسجيله."
+}
+],
+"app/src/main/java/com/bitchat/android/geohash/GeocoderFactory.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/GeocoderFactory.kt",
+"name": "GeocoderFactory (الكائن المفرد)",
+"lines": "9-19",
+"summary": "كائن مفرد (object) اسمه «مصنع المُرمِّز الجغرافي» (GeocoderFactory). وظيفته إعطاء أفضل مُرمِّز جغرافي متاح للتطبيق، كما يقول تعليق التوثيق في السطر ٧. هو يحتوي على دالة واحدة هي get."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/GeocoderFactory.kt",
+"name": "get",
+"lines": "10-18",
+"summary": "دالة «الجلب» (get) تأخذ سياق أندرويد (context من النوع Context) وتُعيد «مزوِّد مُرمِّز جغرافي» (GeocoderProvider). تسأل سؤالاً واحداً في السطر ١٣: هل مُرمِّز أندرويد موجود؟ (Geocoder.isPresent). لو نعم، تُعطي مزوِّد مُرمِّز أندرويد (AndroidGeocoderProvider) ومعه الـ context (السطر ١٤). لو لا، ترجع احتياطياً وتُعطي مزوِّد مُرمِّز OpenStreetMap (OpenStreetMapGeocoderProvider) بدون وسائط (السطر ١٦)."
+}
+],
+"app/src/main/java/com/bitchat/android/geohash/GeocoderProvider.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/GeocoderProvider.kt",
+"name": "تعريف الحزمة والاستيراد (package + import)",
+"lines": "1-4",
+"summary": "يُعرّف هذا المقطع الحزمة com.bitchat.android.geohash التي ينتمي إليها الملف (السطر 1)، ثم يستورد الصنف Address من حزمة android.location (السطر 3) لكي يُستعمل لاحقاً كنوع لقيمة الإرجاع في الواجهة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/GeocoderProvider.kt",
+"name": "واجهة GeocoderProvider",
+"lines": "5-13",
+"summary": "تعليق توثيقي (الأسطر 5-7) يصف أن هذا عقد لمزوّدي الترميز الجغرافي العكسي (reverse geocoding)، ثم تعريف الواجهة GeocoderProvider (السطر 8). تحتوي الواجهة على دالة معلّقة واحدة getFromLocation (السطر 12) مسبوقة بتعليق توثيقي (الأسطر 9-11) يشرح أنها تأخذ خط العرض latitude وخط الطول longitude وأقصى عدد للنتائج maxResults، وتُعيد قائمة List من كائنات Address. ثم يُغلق نطاق الواجهة (السطر 13)."
+}
+],
+"app/src/main/java/com/bitchat/android/geohash/Geohash.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/Geohash.kt",
+"name": "object Geohash + جداول base32",
+"lines": "9-12",
+"summary": "يفتح الكائن المفرد (Geohash) ويُعرّف جدولين ثابتين: مصفوفة أحرف القاعدة ٣٢ (base32Chars) من ٣٢ حرفاً، وخريطة (charToValue) تربط كلّ حرف بفهرسه. هذان الجدولان هما المرجع الذي يستعمله الترميز وفكّ الترميز لتحويل الحرف إلى رقم والعكس."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/Geohash.kt",
+"name": "data class Bounds",
+"lines": "14-14",
+"summary": "صنف بيانات (Bounds) يحمل أربعة أعداد عشرية: أدنى/أقصى خط عرض (latMin/latMax) وأدنى/أقصى خط طول (lonMin/lonMax). يمثّل الصندوق المحيط بخليّة الجيوهاش، وتُنتجه decodeToBounds وتستهلكه decodeToCenter و neighborsSamePrecision."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/Geohash.kt",
+"name": "fun encode",
+"lines": "23-67",
+"summary": "يُرمّز خط العرض وخط الطول إلى نصّ جيوهاش بطول الدقّة (precision) المطلوبة. يُعيد نصّاً فارغاً إذا كانت الدقّة <= 0، ثمّ يحصر الإحداثيات في مجاليها، ويقسّم مجال خط الطول/العرض بالتناوب (isEven) بطريقة الثنائية: في كلّ بِت يقارن القيمة بالوسط (mid) فيضبط بِتاً في ch ويضيّق المجال، وكلّ ٥ بتّات يلحق حرفاً من base32Chars بالنصّ الناتج."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/Geohash.kt",
+"name": "fun decodeToCenter",
+"lines": "73-78",
+"summary": "يفكّ ترميز نصّ جيوهاش إلى نقطة مركز خليّته. ينادي decodeToBounds للحصول على الصندوق المحيط (b)، ثمّ يحسب متوسّط الحدّين الأدنى والأقصى لخط العرض وخط الطول، ويُعيدهما كزوج (latCenter, lonCenter)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/Geohash.kt",
+"name": "fun decodeToBounds",
+"lines": "83-117",
+"summary": "يفكّ ترميز نصّ جيوهاش إلى صندوق محيط (Bounds). يُعيد صندوقاً صفرياً إذا كان النصّ فارغاً أو احتوى حرفاً غير صالح. يمرّ على كلّ حرف بعد تصغيره، يحوّله إلى قيمة عبر charToValue، ثمّ يفكّ بتّاته الخمسة بأقنعة (mask) 16,8,4,2,1 مع التناوب (isEven) ليضيّق مجالي خط الطول والعرض، ويُعيد أخيراً الحدود مرتّبة بـ minOf/maxOf."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/Geohash.kt",
+"name": "fun wrapLon (محليّة)",
+"lines": "130-135",
+"summary": "دالّة محليّة داخل neighborsSamePrecision تُسوّي قيمة خط الطول لتبقى ضمن المدى [-180, 180] بطرح أو إضافة 360 حسب الحاجة، لمعالجة عبور خط التاريخ الدولي عند حساب مراكز المجاورات."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/Geohash.kt",
+"name": "fun neighborsSamePrecision",
+"lines": "123-149",
+"summary": "يُعيد مجموعة خلايا الجيوهاش المجاورة الثماني بنفس دقّة المُدخَل. يفكّ حدود الخليّة عبر decodeToBounds لحساب عرض الخليّة (dLat) وارتفاعها (dLon)، ثمّ يمرّ على الإزاحات (dx, dy) من -1 إلى 1 متخطّياً المركز، يحسب مركز كلّ مجاورة (مع لفّ خط الطول بـ wrapLon وحصر خط العرض)، ويُرمّزه عبر encode، ويضيف الناتج (enc) إلى المجموعة إن لم يكن فارغاً ولا مساوياً للأصل."
+}
+],
+"app/src/main/java/com/bitchat/android/geohash/GeohashBookmarksStore.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/GeohashBookmarksStore.kt",
+"name": "companion object + getInstance (النسخة الوحيدة)",
+"lines": "25-35",
+"summary": "كائن مرافق يحفظ نسخة وحيدة (INSTANCE) من المخزن موسومة بـ@Volatile، ويوفّر getInstance التي تُرجع النسخة الموجودة أو تُنشئ واحدة داخل كتلة synchronized باستخدام context.applicationContext (نمط Singleton آمن للخيوط). يعرّف أيضاً الثوابت TAG وSTORE_KEY وNAMES_STORE_KEY."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/GeohashBookmarksStore.kt",
+"name": "normalize + allowedChars (التطبيع)",
+"lines": "37-42",
+"summary": "دالة مرافقة تطبّع نص الجيوهاش: تزيل الفراغات الطرفية وتحوّله إلى أحرف صغيرة وفق Locale.US وتحذف '#' ثم ترشّح المحارف لتبقى فقط أحرف base32 المسموحة (allowedChars). تستدعيها كل دوال القراءة/التعديل لتوحيد المفاتيح."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/GeohashBookmarksStore.kt",
+"name": "حقول الحالة والتهيئة",
+"lines": "45-59",
+"summary": "يعرّف الحقول: gson للتحويل من/إلى JSON، prefs (SharedPreferences باسم \"geohash_prefs\")، membership كفهرس عضوية سريع، التدفّقان القابلان للرصد _bookmarks/bookmarks (قائمة جيوهاشات) و_bookmarkNames/bookmarkNames (خريطة جيوهاش→اسم مقروء)، وresolving لمنع تكرار عمليات الحل. كتلة init تستدعي load() عند الإنشاء."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/GeohashBookmarksStore.kt",
+"name": "isBookmarked",
+"lines": "61-61",
+"summary": "تُرجع true إن كان الجيوهاش (بعد التطبيع) موجوداً في membership، أي مفضّلاً."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/GeohashBookmarksStore.kt",
+"name": "toggle",
+"lines": "63-66",
+"summary": "تبدّل حالة المفضّلة: تطبّع المدخل، فإن كان موجوداً في membership تستدعي remove وإلا تستدعي add."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/GeohashBookmarksStore.kt",
+"name": "add",
+"lines": "68-77",
+"summary": "تضيف جيوهاشاً جديداً: تطبّعه، وتتجاهله إن كان فارغاً أو موجوداً مسبقاً، ثم تضيفه إلى membership وتضعه في مقدّمة قائمة _bookmarks، وتستدعي persist(updated) للحفظ، ثم resolveNameIfNeeded(gh) لحل الاسم المقروء بشكل غير متزامن."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/GeohashBookmarksStore.kt",
+"name": "remove",
+"lines": "79-92",
+"summary": "تزيل جيوهاشاً: تطبّعه وتتجاهله إن لم يكن موجوداً، ثم تحذفه من membership ومن قائمة _bookmarks، وتحذف اسمه المخزّن من _bookmarkNames لتفادي تضخّم الذاكرة المؤقتة (مع persistNames عند التغيير)، ثم تستدعي persist(updated)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/GeohashBookmarksStore.kt",
+"name": "load",
+"lines": "96-127",
+"summary": "تُحمّل عند التهيئة: تقرأ مصفوفة الجيوهاشات من prefs (STORE_KEY) عبر gson، وتطبّع كل عنصر وتزيل التكرارات محافظةً على الترتيب (seen/ordered)، ثم تملأ membership و_bookmarks. ثم تقرأ خريطة الأسماء من NAMES_STORE_KEY وتسندها إلى _bookmarkNames. كل جزء ضمن try/catch يسجّل الخطأ عبر Log.e."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/GeohashBookmarksStore.kt",
+"name": "persist()/persistNames() (نسخة بلا معاملات)",
+"lines": "129-141",
+"summary": "دالتان خاصتان تحفظان الحالة الحالية: persist() تحوّل _bookmarks.value إلى JSON وتكتبه تحت STORE_KEY، وpersistNames() تحوّل _bookmarkNames.value إلى JSON وتكتبه تحت NAMES_STORE_KEY، كلاهما عبر prefs.edit().putString(...).apply() مع ابتلاع الاستثناءات. ملاحظة عدم يقين: الاستدعاءات في الأسطر 74 و89 و91 تمرّر وسيطاً واحداً، وهو ما يطابق التعريفات ذات المعاملات في الأسطر 234 و241 أكثر من هذه التعريفات بلا معاملات."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/GeohashBookmarksStore.kt",
+"name": "clearAll",
+"lines": "145-160",
+"summary": "إعادة ضبط متلفة: تفرّغ membership وتجعل _bookmarks و_bookmarkNames فارغين، وتحذف المفتاحين STORE_KEY وNAMES_STORE_KEY من prefs، وتفرّغ resolving لمنع إعادة ملء البيانات من عمليات حل جارية، وتسجّل النتيجة عبر Log داخل try/catch."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/GeohashBookmarksStore.kt",
+"name": "resolveNameIfNeeded",
+"lines": "165-221",
+"summary": "تحلّ الاسم المقروء لجيوهاش غير متزامن: تتجاهل الفارغ أو ما له اسم مسبق أو ما هو قيد الحل، ثم تضيفه إلى resolving وتطلق كوروتين على Dispatchers.IO. تجلب مزوّد الترميز من GeocoderFactory؛ فإن كان طول الجيوهاش ≤2 تبني اسماً إدارياً مركّباً من عدة نقاط (مركز وزوايا الحدود من decodeToBounds) بجمع adminArea/countryName في مجموعة مرتبة (admins) حتى عنصرين، وإلا تفكّ المركز (decodeToCenter) وتجلب عنواناً واحداً وتمرّره إلى pickNameForLength. عند نجاح الاسم تخزّنه في _bookmarkNames وتستدعي persistNames(current)، وفي finally تزيله من resolving."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/GeohashBookmarksStore.kt",
+"name": "pickNameForLength",
+"lines": "223-232",
+"summary": "دالة خاصة تختار أنسب اسم من عنوان (Address) حسب طول الجيوهاش: للأطوال 0..2 تختار المنطقة الإدارية ثم الدولة، و3..4 تضيف المنطقة الفرعية، و5 تفضّل البلدة، و6..7 تفضّل الحي الفرعي، وغير ذلك تتدرّج حتى الدولة. تُرجع null إن كان العنوان null."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/GeohashBookmarksStore.kt",
+"name": "persist(list)/persistNames(map) (نسخة بمعاملات)",
+"lines": "234-246",
+"summary": "دالتان خاصتان تأخذان قائمة أو خريطة وتحوّلانها إلى JSON عبر gson وتكتبانها تحت STORE_KEY/NAMES_STORE_KEY عبر prefs.edit().putString(...).apply() مع ابتلاع الاستثناءات. هاتان هما الصيغتان المطابقتان للاستدعاءات في add/remove/resolveNameIfNeeded التي تمرّر وسيطاً واحداً."
+}
+],
+"app/src/main/java/com/bitchat/android/geohash/LocationChannel.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationChannel.kt",
+"name": "التعداد مستوى قناة الجيوهاش (GeohashChannelLevel) مع كائنه المرافق",
+"lines": "7-18",
+"summary": "صنف تعدادي يربط كل مستوى موقع بدرجة دقّة جيوهاش (precision) واسم معروض (displayName): المبنى (BUILDING) دقّة 8، الحَيّ (BLOCK) 7، الجوار (NEIGHBORHOOD) 6، المدينة (CITY) 5، المحافظة (PROVINCE) 4، المنطقة (REGION) 2. وكائنه المرافق يقدّم الدالّة allCases التي تُعيد قائمة بكل الأعضاء عبر values().toList()."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationChannel.kt",
+"name": "صنف البيانات قناة الجيوهاش (GeohashChannel)",
+"lines": "24-31",
+"summary": "صنف بيانات يجمع مستوى (level من نوع GeohashChannelLevel) ونصّ جيوهاش (geohash). يشتقّ منهما خاصيّتين محسوبتين: المعرّف (id) بصيغة «اسم المستوى-الجيوهاش»، والاسم المعروض (displayName) بصيغة «الاسم المعروض للمستوى • الجيوهاش»."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationChannel.kt",
+"name": "الكائن المرافق fromPersisted داخل صنف الموقع (Location)",
+"lines": "40-50",
+"summary": "دالّة fromPersisted تعيد بناء كائن Location من بيانات محفوظة: تأخذ اسم المستوى نصّاً (levelName) والجيوهاش، وتحوّل الاسم إلى عضو تعداد عبر GeohashChannelLevel.valueOf، ثم تبني GeohashChannel وتغلّفه في Location. عند فشل التحويل (IllegalArgumentException) تُعيد null."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationChannel.kt",
+"name": "الصنف المختوم معرّف القناة (ChannelID) وحالتاه",
+"lines": "37-50",
+"summary": "صنف مختوم يمثّل معرّف قناة الدردشة العامّة الحاليّة بحالتين: الكائن المفرد الشبكة (Mesh) للشبكة اللامركزية، وصنف البيانات الموقع (Location) الذي يحمل GeohashChannel. هذا هو الهيكل الأساسي الذي تعتمد عليه بقيّة خصائص ودوال الصنف."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationChannel.kt",
+"name": "الخصائص المحسوبة displayName و nostrGeohashTag على ChannelID",
+"lines": "55-68",
+"summary": "خاصيّتان محسوبتان بتعبير when على this: displayName تُعيد \"Mesh\" للشبكة وقيمة channel.displayName للموقع؛ و nostrGeohashTag تُعيد null للشبكة وقيمة channel.geohash للموقع (وسم Nostr للتحديد النطاقي)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationChannel.kt",
+"name": "إعادة تعريف equals و hashCode على ChannelID",
+"lines": "70-83",
+"summary": "الدالّة equals تعتبر شبكتين متساويتين دائماً، وموقعين متساويين إذا تساوت قناتاهما (channel)، وغير ذلك false. والدالّة hashCode تُعيد رمز تجزئة النصّ \"mesh\" للشبكة ورمز تجزئة channel للموقع، بما يوافق منطق المساواة."
+}
+],
+"app/src/main/java/com/bitchat/android/geohash/LocationChannelManager.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationChannelManager.kt",
+"name": "الإعلانات والاستيرادات (imports + package)",
+"lines": "1-28",
+"summary": "إعلان حزمة geohash واستيراد أصناف أندرويد (السياق، الموقع، الأذونات، المرمِّز الجغرافي)، وخدمات جوجل (GoogleApiAvailability)، والكوروتينات وتدفّقات الحالة (StateFlow/MutableStateFlow/combine/stateIn)، ومكتبة Gson للتحويل من/إلى JSON. توثيق الصنف يوضّح أنه نقل مباشر من نسخة iOS لتوافق كامل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationChannelManager.kt",
+"name": "كائن المرافقة ونمط النسخة الوحيدة getInstance",
+"lines": "29-42",
+"summary": "تعريف الصنف بباني خاص يحفظ context، وكائن مرافقة يحوي وسم السجل TAG وحقلاً متطايراً INSTANCE. الدالة getInstance تطبّق نمط النسخة الوحيدة (singleton) بقفل مزدوج الفحص عبر synchronized، وتُنشئ النسخة باستعمال applicationContext."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationChannelManager.kt",
+"name": "تعداد حالة الإذن PermissionState",
+"lines": "44-48",
+"summary": "تعداد بقيمتين DENIED (مرفوض) وAUTHORIZED (مُصرَّح به)، مطابق لنظيره في iOS، يُستعمل لتمثيل حالة إذن الوصول للموقع."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationChannelManager.kt",
+"name": "الحقول الداخلية ومستقبِل تغيّر الموقع",
+"lines": "50-79",
+"summary": "تهيئة الحقول: locationManager من خدمة النظام، locationProvider وgeocoderProvider (من GeocoderFactory)، lastLocation، geocodingJob، gson، dataManager. الدالة الخاصة checkSystemLocationEnabled تفحص تفعيل مزوّدي GPS أو الشبكة. locationStateReceiver مستقبِل بثّ يلتقط PROVIDERS_CHANGED_ACTION ويحدّث _systemLocationEnabled. locationUpdateCallback نداء يوجّه أي تحديث موقع إلى onLocationUpdated."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationChannelManager.kt",
+"name": "تدفّقات الحالة المنشورة للواجهة",
+"lines": "81-117",
+"summary": "تعريف نطاق الكوروتينات scope، ومجموعة أزواج (حقل داخلي MutableStateFlow + خاصية عامة StateFlow تكشفه): حالة الإذن، القنوات المتاحة، القناة المختارة (افتراضياً Mesh)، الانتقال الآني، أسماء المواقع، جارٍ التحميل، تفعيل خدمات التطبيق، تفعيل موقع النظام. وأخيراً effectiveLocationEnabled الذي يدمج (combine) مفتاح التطبيق ومفتاح النظام بـ«و» منطقية ويحوّله إلى StateFlow عبر stateIn."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationChannelManager.kt",
+"name": "كتلة التهيئة init",
+"lines": "120-139",
+"summary": "تختار أفضل مزوّد للموقع: FusedLocationProvider إن توافرت خدمات جوجل وإلا SystemLocationProvider. ثم تستدعي checkAndSyncPermission، وتُنشئ DataManager وتحمّل الإعدادات المحفوظة (loadPersistedChannelSelection وloadLocationServicesState)، وتسجّل مستقبِل تغيّرات موقع النظام."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationChannelManager.kt",
+"name": "الواجهة العامة: enableLocationChannels و refreshChannels",
+"lines": "141-173",
+"summary": "enableLocationChannels تتحقق أن خدمات التطبيق والنظام مفعَّلة، وإن كان الإذن مُصرَّحاً به (getCurrentPermissionStatus) تضبط الحالة وتطلب موقعاً لمرّة واحدة، وإلا تضبط الحالة مرفوض. refreshChannels تطلب موقعاً لمرّة واحدة فقط إن كان الإذن مُصرَّحاً والخدمات مفعَّلة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationChannelManager.kt",
+"name": "التحديث الحيّ: beginLiveRefresh و endLiveRefresh",
+"lines": "175-209",
+"summary": "beginLiveRefresh تبدأ تحديثات موقع مستمرة (تتحقق من الإذن والخدمات أولاً) عبر locationProvider.requestLocationUpdates بفاصل زمني وحدّ مسافة 5 أمتار وردّ نداء locationUpdateCallback، ثم تطلب موقعاً فورياً لتهيئة الحالة. endLiveRefresh تزيل التحديثات عبر removeLocationUpdates."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationChannelManager.kt",
+"name": "اختيار القناة وحساب الانتقال: select",
+"lines": "211-238",
+"summary": "select تحفظ القناة المختارة في _selectedChannel وتستدعي saveChannelSelection، ثم تعيد فوراً حساب حالة الانتقال teleported مقابل آخر موقع: للمِش تُصفَّر، ولقناة الموقع تُرمَّز التجزئة الحالية بدقّة مستوى القناة وتُقارَن بتجزئة القناة المختارة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationChannelManager.kt",
+"name": "ضبط الانتقال اليدوي: setTeleported",
+"lines": "240-246",
+"summary": "setTeleported تضبط قيمة _teleported يدوياً (للانتقال اليدوي للتجزئة الجغرافية) وتسجّل ذلك."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationChannelManager.kt",
+"name": "مفاتيح خدمات الموقع: enableLocationServices و disableLocationServices و isLocationServicesEnabled",
+"lines": "248-291",
+"summary": "enableLocationServices تفعّل مفتاح التطبيق وتحفظ الحالة، وتطلب موقعاً إن كان الإذن مُصرَّحاً وموقع النظام مشغّلاً. disableLocationServices تعطّل المفتاح وتحفظه، وتنهي التحديث الحيّ، وتمسح القنوات والأسماء، وترجع للمِش إن كانت قناة موقع مختارة. isLocationServicesEnabled تُعيد «و» منطقية بين مفتاح التطبيق ومفتاح النظام."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationChannelManager.kt",
+"name": "عمليات الموقع: requestOneShotLocation و onLocationUpdated",
+"lines": "293-331",
+"summary": "requestOneShotLocation تتحقق من الإذن، تضبط حالة التحميل، ثم تجلب آخر موقع معروف (getLastKnownLocation)؛ إن وُجد تستعمله وإلا تطلب موقعاً جديداً (requestFreshLocation)، وفي كلتا الحالتين توجّه النتيجة إلى onLocationUpdated. onLocationUpdated تحفظ آخر موقع، تُلغي التحميل، وتستدعي computeChannels وreverseGeocodeIfNeeded."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationChannelManager.kt",
+"name": "مساعِدات الإذن: getCurrentPermissionStatus و checkAndSyncPermission",
+"lines": "333-356",
+"summary": "getCurrentPermissionStatus تُعيد AUTHORIZED أو DENIED بناءً على checkAndSyncPermission. الأخيرة تفحص إذنَي الموقع الدقيق والتقريبي عبر ActivityCompat، تحدّث _permissionState عند تغيّرها، وتُعيد ما إذا كان الإذن ممنوحاً."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationChannelManager.kt",
+"name": "حساب القنوات: computeChannels",
+"lines": "358-394",
+"summary": "computeChannels تمرّ على كل مستويات GeohashChannelLevel، ترمّز لكل مستوى تجزئة جغرافية بدقّته وتبني قائمة GeohashChannel تُسنَد إلى _availableChannels. ثم تعيد حساب حالة الانتقال teleported بمقارنة تجزئة الموقع الحالي بتجزئة القناة المختارة (للمِش تُصفَّر)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationChannelManager.kt",
+"name": "الترميز العكسي: reverseGeocodeIfNeeded",
+"lines": "396-422",
+"summary": "reverseGeocodeIfNeeded تُلغي أي مهمّة ترميز معلّقة (تجنّباً للتسابق)، ثم تطلق كوروتيناً على Dispatchers.IO يستدعي geocoderProvider.getFromLocation للحصول على العنوان، ويحوّله عبر namesByLevel إلى أسماء يُسنِدها لـ _locationNames، مع احترام isActive والتقاط الأخطاء (وتجاهل CancellationException)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationChannelManager.kt",
+"name": "تحويل العنوان لأسماء المستويات: namesByLevel",
+"lines": "424-465",
+"summary": "namesByLevel تبني خريطة من GeohashChannelLevel إلى اسم نصّي من حقول العنوان: البلد للإقليم (REGION)، وسلسلة بدائل (adminArea ثم subAdminArea ثم locality) للمقاطعة (PROVINCE)، وبدائل أخرى للمدينة (CITY)، وsubLocality/locality للحيّ (NEIGHBORHOOD) والمربّع السكني (BLOCK) دون كشف مستوى الشارع."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationChannelManager.kt",
+"name": "حفظ القناة وصنف PersistedChannel: saveChannelSelection و loadPersistedChannelSelection و PersistedChannel",
+"lines": "467-534",
+"summary": "saveChannelSelection تحوّل القناة إلى JSON عبر PersistedChannel وتحفظها بـ dataManager. loadPersistedChannelSelection تقرأ JSON المحفوظ، تفكّكه إلى PersistedChannel، وتحوّله بـ toChannel؛ وعند الفشل أو الغياب تعود للمِش. صنف البيانات PersistedChannel يحمل mesh وlevel وgeohash، ودالته toChannel تعيد بناء ChannelID (مِش أو موقع عبر fromPersisted)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationChannelManager.kt",
+"name": "مسح القناة المحفوظة: clearPersistedChannel",
+"lines": "536-544",
+"summary": "clearPersistedChannel تمسح القناة المحفوظة من dataManager، وتعيد القناة المختارة للمِش، وتصفّر حالة الانتقال (مفيدة للاختبار أو إعادة الضبط)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationChannelManager.kt",
+"name": "حفظ وتحميل حالة خدمات الموقع: saveLocationServicesState و loadLocationServicesState",
+"lines": "546-572",
+"summary": "saveLocationServicesState تحفظ قيمة تفعيل خدمات الموقع في dataManager. loadLocationServicesState تقرؤها (أو false عند الغياب) وتُسنِدها إلى _locationServicesEnabled، مع التقاط الأخطاء والرجوع إلى false."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationChannelManager.kt",
+"name": "تنظيف الموارد: cleanup",
+"lines": "574-588",
+"summary": "cleanup تنهي التحديث الحيّ، تُلغي مزوّد الموقع ومهمّة الترميز الجغرافي وتصفّرها، وتلغي تسجيل مستقبِل تغيّرات الموقع داخل try/catch."
+}
+],
+"app/src/main/java/com/bitchat/android/geohash/LocationProvider.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationProvider.kt",
+"name": "تعريف الحزمة والاستيراد (package + import)",
+"lines": "1-3",
+"summary": "يُعرِّف الحزمة `com.bitchat.android.geohash` التي ينتمي إليها الملف، ثم يستورد الصنف `Location` من حزمة أندرويد `android.location` لاستعماله نوعاً في توقيعات الدوال اللاحقة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationProvider.kt",
+"name": "واجهة LocationProvider (مزوِّد الموقع)",
+"lines": "5-40",
+"summary": "تجريد (واجهة) لمزوّدي الموقع يُوحِّد طريقة الحصول على الموقع بصرف النظر عن المصدر الفعلي: نظام أندرويد (LocationManager) أو خدمات Google Play (FusedLocationProvider). تضم خمس دوال بلا أجسام تُعلِن العقد الذي يجب أن تُنفِّذه أي فئة مُحقِّقة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationProvider.kt",
+"name": "getLastKnownLocation",
+"lines": "10-14",
+"summary": "دالة تطلب آخر موقع معروف مخزَّن في الذاكرة المؤقتة (cache)، وتُرجِع النتيجة عبر معامل `callback` الذي يُستدعى بالموقع `Location?` أو بقيمة فارغة (null) إذا لم يُعثر عليه أو حدث خطأ."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationProvider.kt",
+"name": "requestFreshLocation",
+"lines": "16-20",
+"summary": "دالة تطلب تحديث موقع واحداً طازجاً (لمرة واحدة)، وتُرجِع النتيجة عبر `callback` الذي يُستدعى بالموقع `Location?` أو بقيمة فارغة (null) إذا فشل الطلب."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationProvider.kt",
+"name": "requestLocationUpdates",
+"lines": "22-28",
+"summary": "دالة تطلب تحديثات موقع مستمرة، تأخذ `intervalMs` (الفترة المرغوبة بالميلي ثانية، نوع Long) و`minDistanceMeters` (أدنى مسافة بالأمتار، نوع Float) و`callback` (دالة تستقبل `Location` غير الفارغ) الذي يُستدعى عند كل تحديث للموقع."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationProvider.kt",
+"name": "removeLocationUpdates",
+"lines": "30-34",
+"summary": "دالة تُوقِف التحديثات المستمرة، وتأخذ نفس نسخة `callback` التي مُرِّرت إلى `requestLocationUpdates` كي تتعرّف على الاشتراك المطلوب إيقافه."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/LocationProvider.kt",
+"name": "cancel",
+"lines": "36-39",
+"summary": "دالة بلا معاملات تُلغي أي طلبات موقع لمرة واحدة معلّقة وتُنظِّف الموارد المرتبطة بمزوّد الموقع."
+}
+],
+"app/src/main/java/com/bitchat/android/geohash/OpenStreetMapGeocoderProvider.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/OpenStreetMapGeocoderProvider.kt",
+"name": "تعريف الصنف وخصائصه الثابتة (OpenStreetMapGeocoderProvider header)",
+"lines": "12-15",
+"summary": "يُعرّف الصنف OpenStreetMapGeocoderProvider الذي يطبّق الواجهة GeocoderProvider، ويهيّئ ثلاث خصائص خاصة ثابتة: الوسم TAG للسجل، والمحوّل gson لتحليل JSON، ونص userAgent المرسَل في ترويسة الطلب. هذه الخصائص يستعملها الجزآن التاليان."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/OpenStreetMapGeocoderProvider.kt",
+"name": "getFromLocation",
+"lines": "17-56",
+"summary": "دالة معلّقة تأخذ خط العرض latitude وخط الطول longitude وعدد النتائج maxResults، وتعمل على موزّع الدخل/الخرج (Dispatchers.IO). تبني عنوان خدمة Nominatim التابعة لخرائط الشارع المفتوحة (السطر 21) بصيغة jsonv2 مع لغة الجهاز، ثم تبني طلب HTTP عبر Request.Builder وتضيف ترويسة User-Agent، وتنفّذه عبر عميل OkHttpProvider.httpClient. إذا فشلت الاستجابة (ليست isSuccessful) أو كان جسمها فارغاً تُعيد قائمة فارغة. وإلا تحلّل الجسم إلى OsmResponse عبر gson وتستدعي mapToAddress لتحويله إلى Address واحد داخل قائمة. تَلتقط كتلتا catch (الداخلية لفشل التحليل، والخارجية لفشل الشبكة) أي استثناء وتُسجّله عبر Log.e وتُعيد قائمة فارغة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/OpenStreetMapGeocoderProvider.kt",
+"name": "mapToAddress",
+"lines": "58-82",
+"summary": "دالة خاصة تحوّل كائن OsmResponse القادم من الخدمة إلى كائن Address من نظام أندرويد. تنشئ Address بالمحلّية الافتراضية وتضبط فيه خط العرض lat وخط الطول lon، ثم تنسخ من الحقل الفرعي address (المسمّى a): اسم الدولة countryName والمنطقة الإدارية adminArea والمنطقة الفرعية subAdminArea. تختار المدينة locality كأول قيمة غير فارغة من city أو town أو village أو hamlet، وتختار الحيّ subLocality كأول قيمة غير فارغة من suburb أو neighbourhood أو residential أو quarter، ثم تضبط الرمز البريدي postalCode والشارع thoroughfare واسم المَعلَم featureName، وتُعيد العنوان. إن كان حقل address فارغاً تُعيد العنوان مكتفية بالإحداثيات (السطر 63)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/OpenStreetMapGeocoderProvider.kt",
+"name": "OsmResponse و OsmAddress (أصناف البيانات)",
+"lines": "84-105",
+"summary": "صنفا بيانات خاصان لتمثيل بنية JSON القادمة من الخدمة. OsmResponse يضم name وdisplay_name وحقل address من نوع OsmAddress. وOsmAddress يضم حقولاً نصية اختيارية (قابلة لـ null) لمكوّنات العنوان: country وstate وcounty ومستويات المدينة (city, town, village, hamlet) ومستويات الحيّ (suburb, neighbourhood, residential, quarter) والرمز البريدي postcode والشارع road. هذان الصنفان هما هدف التحليل في gson.fromJson ومصدر القراءة في mapToAddress."
+}
+],
+"app/src/main/java/com/bitchat/android/geohash/SystemLocationProvider.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/SystemLocationProvider.kt",
+"name": "تعريف الصنف وحالته الداخلية (SystemLocationProvider + الخصائص)",
+"lines": "15-27",
+"summary": "يُعرّف الصنف «مزوّد موقع النظام» (SystemLocationProvider) الذي يأخذ «السياق» (context) ويُنفّذ واجهة «مزوّد الموقع» (LocationProvider). يُهيّئ «مدير الموقع» (locationManager) من خدمة النظام، و«المُعالِج» (handler) على الخيط الرئيسي، ويعرّف ثلاث خرائط لتتبّع المُستمِعين والمهامّ: «المُستمِعون النشِطون» (activeListeners) للتحديثات المستمرة، و«مُستمِعو اللقطة الواحدة النشِطون» (activeOneShotListeners) و«مهامّ اللقطة الواحدة النشِطة» (activeOneShotRunnables) للطلبات لمرة واحدة. هذه الخرائط هي الذاكرة المشتركة التي تنتج لها الدوال وتستهلكها دالة الإلغاء."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/SystemLocationProvider.kt",
+"name": "hasLocationPermission - فحص إذن الموقع",
+"lines": "29-32",
+"summary": "دالة خاصة تُعيد قيمة منطقية صحيحة إذا كان أحد إذنَي الموقع (الدقيق ACCESS_FINE_LOCATION أو التقريبي ACCESS_COARSE_LOCATION) ممنوحاً. تستدعيها كل الدوال العامة في بدايتها كبوّابة حماية قبل أي عمل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/SystemLocationProvider.kt",
+"name": "getLastKnownLocation - جلب آخر موقع معروف",
+"lines": "34-57",
+"summary": "تتحقق أولاً من الإذن عبر «يملك إذن الموقع»، فإن غاب نادت «ردّ النداء» بـ null وخرجت. وإلا تمرّ على كل المزوّدين المُفعّلين، وتجلب آخر موقع معروف من كلٍّ منهم، وتختار «أفضل موقع» (bestLocation) الأحدث زمناً، ثم تُسلّمه لردّ النداء. أي خطأ يُسجَّل ويُعاد null."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/SystemLocationProvider.kt",
+"name": "requestFreshLocation - طلب موقع طازج لمرة واحدة",
+"lines": "59-146",
+"summary": "تتحقق من الإذن، ثم تمرّ على المزوّدين (GPS ثم الشبكة ثم السلبي) وتأخذ أول مزوّد مُفعّل. على أندرويد R فأحدث تستعمل getCurrentLocation مباشرة. على الأقدم تبني «مُستمِعاً» (listener) و«مهمّة مهلة» (timeoutRunnable) مدتها 30 ثانية، تُسجّلهما في خريطتَي اللقطة الواحدة، وتطلب تحديثاً واحداً (requestSingleUpdate). عند وصول الموقع يُنظَّف المُستمِع والمهمّة من الخرائط ويُستدعى ردّ النداء؛ وعند انقضاء المهلة يُنظَّف ويُعاد null. إن لم يوجد مزوّد مُفعّل يُعاد null."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/SystemLocationProvider.kt",
+"name": "requestLocationUpdates - طلب تحديثات مستمرة",
+"lines": "148-194",
+"summary": "تتحقق من الإذن (تخرج إن غاب)، ثم تبني «مُستمِعاً» يستدعي «ردّ النداء» (callback) عند كل تغيّر موقع، وتخزّنه في «المُستمِعون النشِطون» مفتوحاً بمفتاح ردّ النداء كي يُزال لاحقاً. ثم تسجّل التحديثات على مزوّدَي GPS والشبكة المُفعّلين باستعمال «الفترة بالملّي ثانية» (intervalMs) و«أدنى مسافة بالأمتار» (minDistanceMeters). تُنتج هذه الدالة مدخلاً في الخريطة يستهلكه removeLocationUpdates وcancel."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/SystemLocationProvider.kt",
+"name": "removeLocationUpdates - إزالة تحديثات مستمرة بعينها",
+"lines": "196-209",
+"summary": "تُزيل المُستمِع المرتبط بردّ نداء معيّن من «المُستمِعون النشِطون» (داخل كتلة متزامنة)، وإن وُجد تلغي تحديثاته عبر removeUpdates على مدير الموقع. هي النظير المعاكس لـ requestLocationUpdates لمستمِع واحد."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/geohash/SystemLocationProvider.kt",
+"name": "cancel - إلغاء كل الطلبات",
+"lines": "211-238",
+"summary": "تُنظّف كل الحالة دفعة واحدة: تُزيل تحديثات كل «المُستمِعين النشِطين» ثم تُفرغ خريطتهم؛ وتُزيل تحديثات كل «مُستمِعي اللقطة الواحدة النشِطين» وتُفرغ خريطتهم؛ وتُلغي كل «مهامّ اللقطة الواحدة النشِطة» من المُعالِج وتُفرغ خريطتها. كل ذلك ضمن كتل متزامنة، مع تجاهل أخطاء الإزالة الفردية وتسجيل أي خطأ عام."
+}
+],
+"app/src/main/java/com/bitchat/android/favorites/FavoritesPersistenceService.kt": [
+{
+"file": "app/src/main/java/com/bitchat/android/favorites/FavoritesPersistenceService.kt",
+"name": "FavoriteRelationship (صنف بيانات العلاقة + equals/hashCode/isMutual)",
+"lines": "15-49",
+"summary": "صنف بيانات (FavoriteRelationship) يمثّل علاقة تفضيل بين المستخدم ونِدّ: يحمل مفتاح Noise العام (ByteArray)، ومفتاح Nostr العام (npub، قابل للعدم)، والكنية، ورايتين (هل فضّلناه isFavorite، وهل فضّلنا theyFavoritedUs)، وتاريخَي التفضيل وآخر تحديث. يوفّر خاصّية محسوبة isMutual تكون صحيحة إذا كان التفضيل من الطرفين، ويعيد تعريف equals وhashCode معتمداً على محتوى مصفوفة البايتات (contentEquals/contentHashCode) لأنّ ByteArray لا تقارن بالمحتوى افتراضياً."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/favorites/FavoritesPersistenceService.kt",
+"name": "FavoritesChangeListener (واجهة المستمع)",
+"lines": "51-54",
+"summary": "واجهة (FavoritesChangeListener) تعرّف ردّي نداء: onFavoriteChanged(noiseKeyHex) يُستدعى عند تغيّر مفضّل واحد، وonAllCleared() يُستدعى عند مسح كل المفضّلات. تنفّذها المكوّنات الأخرى لتُبلَّغ بالتغييرات."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/favorites/FavoritesPersistenceService.kt",
+"name": "companion object: المفرد والتهيئة (shared/initialize/INSTANCE)",
+"lines": "62-82",
+"summary": "كائن رفيق يطبّق نمط المفرد (Singleton): يحتفظ بنسخة وحيدة INSTANCE مع @Volatile، وتُهيّأ عبر initialize(context) بقفل مزدوج الفحص (double-checked locking) داخل synchronized. الخاصّية shared تعيد النسخة أو ترمي IllegalStateException إن لم تُهيّأ. يعرّف أيضاً ثوابت مفاتيح التخزين FAVORITES_KEY وPEERID_INDEX_KEY والوسم TAG."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/favorites/FavoritesPersistenceService.kt",
+"name": "حقول الخدمة وكتلة init",
+"lines": "84-94",
+"summary": "تعرّف الحقول الداخلية للخدمة: stateManager (مدير الهوية الآمنة للتخزين)، gson (للتحويل JSON)، خريطة favorites (noiseHex إلى FavoriteRelationship)، خريطة peerIdIndex (peerID المكوّن من 16 خانة سداسية صغيرة إلى npub) للبحث السريع، وقائمة listeners. كتلة init تستدعي loadFavorites وloadPeerIdIndex عند الإنشاء لتعبئة الخريطتين من التخزين."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/favorites/FavoritesPersistenceService.kt",
+"name": "getFavoriteStatus (نسختان: بمفتاح Noise وبمعرّف النِّد)",
+"lines": "96-110",
+"summary": "دالتان محمّلتان لجلب حالة التفضيل. الأولى تأخذ noisePublicKey كـ ByteArray، تحوّله إلى سلسلة سداسية keyHex وتقرأ من favorites مباشرة. الثانية تأخذ peerID نصّياً (16 خانة)، تحوّله لأحرف صغيرة وتبحث في كل العلاقات عن أوّل noiseKeyHex يبدأ بهذه البادئة (مطابقة بادئة) وتعيدها أو null."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/favorites/FavoritesPersistenceService.kt",
+"name": "updateNostrPublicKey (ربط npub بمفتاح Noise)",
+"lines": "112-139",
+"summary": "تحدّث مفتاح Nostr العام لنِدّ مفهرس بمفتاح Noise: تحسب keyHex، فإن وُجدت علاقة سابقة تنسخها (copy) مع peerNostrPublicKey الجديد وlastUpdated، وإلّا تنشئ علاقة جديدة بقيم افتراضية (كنية Unknown، رايتا التفضيل false). ثم تستدعي saveFavorites وnotifyChanged(keyHex) وتسجّل في السجل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/favorites/FavoritesPersistenceService.kt",
+"name": "updateNostrPublicKeyForPeerID (فهرسة npub لمعرّف نِدّ شبكي)",
+"lines": "142-152",
+"summary": "تحدّث الفهرس السريع peerIdIndex: تتحقّق أنّ peerID مكوّن من 16 خانة سداسية صغيرة عبر Regex، فإن صحّ تخزّن peerID->npub وتستدعي savePeerIdIndex وتسجّل، وإلّا تسجّل تحذيراً (Log.w) بأنّ المعرّف غير صالح."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/favorites/FavoritesPersistenceService.kt",
+"name": "findNostrPubkeyForPeerID (المسار السريع)",
+"lines": "155-158",
+"summary": "تعيد مفتاح Nostr العام لمعرّف نِدّ بقراءة مباشرة من peerIdIndex بعد تحويل peerID لأحرف صغيرة. مسار بحث سريع (O(1)) عند إرسال رسائل Nostr الخاصّة من سياق الشبكة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/favorites/FavoritesPersistenceService.kt",
+"name": "findPeerIDForNostrPubkey (الاتجاه العكسي مع مسار قديم)",
+"lines": "160-177",
+"summary": "تعيد معرّف النِّد (16 خانة) لمفتاح Nostr معطى: أولاً تحاول مطابقة مباشرة في peerIdIndex بتجاهل حالة الأحرف. وإلّا تطبّع المفتاح إلى hex عبر normalizeNostrKeyToHex وتبحث في favorites عن علاقة مطابقة، فإن وُجدت تعيد بادئة الـ16 خانة من noiseHex كأفضل محاولة، وإلّا null."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/favorites/FavoritesPersistenceService.kt",
+"name": "updateFavoriteStatus (تحديث/إنشاء حالة تفضيلنا)",
+"lines": "179-209",
+"summary": "تحدّث حالة تفضيلنا لنِدّ: تحسب keyHex، فإن وُجدت علاقة تنسخها مع الكنية والراية الجديدة وlastUpdated، وتضبط favoritedAt بوقت جديد فقط عند الانتقال من غير مفضّل إلى مفضّل (وإلّا تبقي القديم). وإن لم توجد تنشئ علاقة جديدة (peerNostrPublicKey=null، theyFavoritedUs=false). ثم تحفظ وتُبلّغ وتسجّل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/favorites/FavoritesPersistenceService.kt",
+"name": "updatePeerFavoritedUs (راية: النِّد فضّلنا)",
+"lines": "211-227",
+"summary": "تحدّث راية theyFavoritedUs لعلاقة قائمة فقط (إن وُجدت بمفتاح keyHex): تنسخها مع الراية الجديدة وlastUpdated، ثم تحفظ وتُبلّغ بالتغيير وتسجّل. لا تنشئ علاقة جديدة إن لم تكن موجودة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/favorites/FavoritesPersistenceService.kt",
+"name": "getMutualFavorites / getOurFavorites (مرشّحات القوائم)",
+"lines": "229-230",
+"summary": "دالتان تعيدان قوائم: getMutualFavorites ترشّح قيم favorites لمن isMutual صحيح (تفضيل متبادل)، وgetOurFavorites ترشّح لمن isFavorite صحيح (من فضّلناهم)."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/favorites/FavoritesPersistenceService.kt",
+"name": "clearAllFavorites (مسح الكل)",
+"lines": "232-239",
+"summary": "تفرّغ خريطتي favorites وpeerIdIndex وتحفظهما (saveFavorites وsavePeerIdIndex)، ثم تسجّل وتستدعي notifyAllCleared لإبلاغ المستمعين بمسح كل المفضّلات."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/favorites/FavoritesPersistenceService.kt",
+"name": "findNoiseKey / findNostrPubkey (تحويل بين المفتاحين عبر favorites)",
+"lines": "241-253",
+"summary": "findNoiseKey تطبّع مفتاح Nostr إلى hex ثم تبحث في favorites عن علاقة مطابقة وتعيد مفتاح Noise العام (ByteArray) منها. findNostrPubkey تحسب keyHex لمفتاح Noise وتعيد peerNostrPublicKey المخزّن مباشرة من الخريطة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/favorites/FavoritesPersistenceService.kt",
+"name": "loadFavorites / saveFavorites (مثابرة المفضّلات)",
+"lines": "257-286",
+"summary": "loadFavorites تقرأ JSON من stateManager بمفتاح FAVORITES_KEY، تفكّه عبر gson إلى خريطة من FavoriteRelationshipData، تفرّغ favorites وتعيد بناء كل علاقة عبر toFavoriteRelationship. saveFavorites تحوّل قيم favorites إلى FavoriteRelationshipData عبر fromFavoriteRelationship، ترمّزها JSON وتخزّنها بـ storeSecureValue. كلاهما داخل try/catch مع تسجيل أخطاء."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/favorites/FavoritesPersistenceService.kt",
+"name": "loadPeerIdIndex / savePeerIdIndex (مثابرة فهرس الأنداد)",
+"lines": "288-311",
+"summary": "loadPeerIdIndex تقرأ JSON بمفتاح PEERID_INDEX_KEY، تفكّه إلى خريطة String->String، تفرّغ peerIdIndex وتملؤه عبر putAll. savePeerIdIndex ترمّز peerIdIndex إلى JSON وتخزّنه. كلاهما داخل try/catch مع تسجيل."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/favorites/FavoritesPersistenceService.kt",
+"name": "المستمعون: addListener/removeListener/notifyChanged/notifyAllCleared",
+"lines": "313-327",
+"summary": "إدارة المستمعين بأمان خيوط: addListener وremoveListener تعملان داخل synchronized على listeners (مع منع التكرار). notifyChanged وnotifyAllCleared تأخذان نسخة (snapshot) من القائمة داخل synchronized ثم تستدعيان ردّ النداء المناسب على كل مستمع داخل runCatching حتى لا يفشل الإبلاغ بسبب مستمع واحد."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/favorites/FavoritesPersistenceService.kt",
+"name": "normalizeNostrKeyToHex (تطبيع مفتاح Nostr)",
+"lines": "329-335",
+"summary": "تطبّع نص مفتاح Nostr إلى hex صغير الأحرف: إن بدأ بـ npub1 تفكّ ترميز Bech32 عبر Bech32.decode وتتحقّق أنّ الـ hrp يساوي npub ثم تحوّل البايتات إلى hex، وإلّا تعيد القيمة بأحرف صغيرة. تعيد null عند أيّ استثناء. تستعملها دوال البحث للمقارنة الموحّدة."
+},
+{
+"file": "app/src/main/java/com/bitchat/android/favorites/FavoritesPersistenceService.kt",
+"name": "FavoriteRelationshipData (صنف التسلسل + fromFavoriteRelationship/toFavoriteRelationship)",
+"lines": "338-374",
+"summary": "صنف بيانات خاص قابل للتسلسل للتخزين بـ JSON: يخزّن مفتاح Noise كسلسلة hex (peerNoisePublicKeyHex) والتواريخ كأعداد Long (ملّي ثانية) بدل ByteArray وDate. fromFavoriteRelationship تحوّل من العلاقة الحيّة إلى صيغة التخزين، وtoFavoriteRelationship تعكس التحويل (تقطّع الـ hex إلى بايتات وتبني Date من الـ Long). هذان الجسران يستعملهما saveFavorites وloadFavorites."
+}
 ]
 }

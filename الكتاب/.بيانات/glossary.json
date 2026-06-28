@@ -5393,5 +5393,3920 @@
 "term": "جسر هويّة نوستر",
 "kind": "class",
 "pkg": "mesh"
+},
+"Bech32": {
+"term": "كائن بيك٣٢ (Bech32)",
+"kind": "object",
+"pkg": "nostr"
+},
+"CHARSET": {
+"term": "مجموعة المحارف (CHARSET)",
+"kind": "const",
+"pkg": "nostr"
+},
+"GENERATOR": {
+"term": "مصفوفة التوليد (GENERATOR)",
+"kind": "val",
+"pkg": "nostr"
+},
+"convertBits": {
+"term": "دالة تحويل البِتّات (convertBits)",
+"kind": "fun",
+"pkg": "nostr"
+},
+"createChecksum": {
+"term": "دالة إنشاء المجموع الاختباري (createChecksum)",
+"kind": "fun",
+"pkg": "nostr"
+},
+"hrpExpand": {
+"term": "دالة توسيع الجزء المقروء (hrpExpand)",
+"kind": "fun",
+"pkg": "nostr"
+},
+"polymod": {
+"term": "دالة المتعدّد القياسي (polymod)",
+"kind": "fun",
+"pkg": "nostr"
+},
+"hrp": {
+"term": "الجزء المقروء بشرياً (hrp)",
+"kind": "param",
+"pkg": "nostr"
+},
+"checksum": {
+"term": "المجموع الاختباري (checksum)",
+"kind": "val",
+"pkg": "nostr"
+},
+"separatorIndex": {
+"term": "موضع الفاصل (separatorIndex)",
+"kind": "val",
+"pkg": "nostr"
+},
+"payloadValues": {
+"term": "قيم الحمولة (payloadValues)",
+"kind": "val",
+"pkg": "nostr"
+},
+"acc": {
+"term": "المُجمِّع (acc)",
+"kind": "var",
+"pkg": "nostr"
+},
+"maxv": {
+"term": "القيمة القصوى (maxv)",
+"kind": "val",
+"pkg": "nostr"
+},
+"chk": {
+"term": "قيمة الفحص (chk)",
+"kind": "var",
+"pkg": "nostr"
+},
+"GeohashAliasRegistry": {
+"term": "سجلّ أسماء الجيوهاش المستعارة (GeohashAliasRegistry)",
+"kind": "object",
+"pkg": "nostr"
+},
+"map": {
+"term": "الخريطة (map)",
+"kind": "property",
+"pkg": "nostr"
+},
+"loadFromPrefs": {
+"term": "التحميل من التفضيلات (loadFromPrefs)",
+"kind": "function",
+"pkg": "nostr"
+},
+"put": {
+"term": "الوضع/الإضافة (put)",
+"kind": "function",
+"pkg": "nostr"
+},
+"contains": {
+"term": "الفحص بالاحتواء (contains)",
+"kind": "function",
+"pkg": "nostr"
+},
+"snapshot": {
+"term": "اللقطة (snapshot)",
+"kind": "function",
+"pkg": "nostr"
+},
+"alias": {
+"term": "الاسم المستعار (alias)",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"pubkeyHex": {
+"term": "المفتاح العام بالنظام الست عشري (pubkeyHex)",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"GeohashConversationRegistry": {
+"term": "سجل محادثات الجيوهاش (GeohashConversationRegistry)",
+"kind": "object",
+"pkg": "nostr"
+},
+"convKey": {
+"term": "مفتاح المحادثة (convKey)",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"geohash": {
+"term": "الجيوهاش (geohash)",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"GeohashMessageHandler": {
+"term": "معالِج رسائل الجيوهاش",
+"kind": "class",
+"pkg": "nostr"
+},
+"onEvent": {
+"term": "دالة عند الحدث",
+"kind": "function",
+"pkg": "nostr"
+},
+"dedupe": {
+"term": "دالة إزالة التكرار",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrEvent": {
+"term": "حدث نوستر",
+"kind": "type",
+"pkg": "nostr"
+},
+"NostrKind.EPHEMERAL_EVENT": {
+"term": "نوع الحدث الزائل",
+"kind": "constant",
+"pkg": "nostr"
+},
+"NostrKind.GEOHASH_PRESENCE": {
+"term": "نوع حضور الجيوهاش",
+"kind": "constant",
+"pkg": "nostr"
+},
+"MessageManager": {
+"term": "مدير الرسائل",
+"kind": "type",
+"pkg": "nostr"
+},
+"ChatState": {
+"term": "حالة المحادثة",
+"kind": "type",
+"pkg": "nostr"
+},
+"GeohashRepository": {
+"term": "مستودع الجيوهاش",
+"kind": "type",
+"pkg": "nostr"
+},
+"DataManager": {
+"term": "مدير البيانات",
+"kind": "type",
+"pkg": "nostr"
+},
+"PoWPreferenceManager": {
+"term": "مدير تفضيلات إثبات العمل",
+"kind": "object",
+"pkg": "nostr"
+},
+"NostrProofOfWork": {
+"term": "إثبات العمل لنوستر",
+"kind": "object",
+"pkg": "nostr"
+},
+"processedIds": {
+"term": "المعرّفات المعالَجة",
+"kind": "field",
+"pkg": "nostr"
+},
+"seen": {
+"term": "المرئية",
+"kind": "field",
+"pkg": "nostr"
+},
+"pubkey": {
+"term": "المفتاح العام",
+"kind": "variable",
+"pkg": "nostr"
+},
+"subscribedGeohash": {
+"term": "الجيوهاش المُشترَك به",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"isTeleportPresence": {
+"term": "حضور الانتقال الآني",
+"kind": "variable",
+"pkg": "nostr"
+},
+"application": {
+"term": "التطبيق",
+"kind": "property",
+"pkg": "nostr"
+},
+"dataManager": {
+"term": "مدير البيانات",
+"kind": "property",
+"pkg": "nostr"
+},
+"geohashParticipants": {
+"term": "مشاركو الموقع الجغرافي",
+"kind": "property",
+"pkg": "nostr"
+},
+"geoNicknames": {
+"term": "الأسماء المستعارة الجغرافية",
+"kind": "property",
+"pkg": "nostr"
+},
+"conversationGeohash": {
+"term": "موقع المحادثة الجغرافي",
+"kind": "property",
+"pkg": "nostr"
+},
+"nostrKeyMapping": {
+"term": "تعيين مفاتيح نوستر",
+"kind": "property",
+"pkg": "nostr"
+},
+"currentGeohash": {
+"term": "الموقع الجغرافي الحالي",
+"kind": "property",
+"pkg": "nostr"
+},
+"setConversationGeohash": {
+"term": "تعيين موقع المحادثة الجغرافي",
+"kind": "function",
+"pkg": "nostr"
+},
+"getConversationGeohash": {
+"term": "جلب موقع المحادثة الجغرافي",
+"kind": "function",
+"pkg": "nostr"
+},
+"findPubkeyByNickname": {
+"term": "إيجاد المفتاح العام بالاسم المستعار",
+"kind": "function",
+"pkg": "nostr"
+},
+"findPubkeyByShortId": {
+"term": "إيجاد المفتاح العام بالمعرّف القصير",
+"kind": "function",
+"pkg": "nostr"
+},
+"setCurrentGeohash": {
+"term": "تعيين الموقع الجغرافي الحالي",
+"kind": "function",
+"pkg": "nostr"
+},
+"getCurrentGeohash": {
+"term": "جلب الموقع الجغرافي الحالي",
+"kind": "function",
+"pkg": "nostr"
+},
+"clearAll": {
+"term": "مسح الكل",
+"kind": "function",
+"pkg": "nostr"
+},
+"cacheNickname": {
+"term": "تخزين الاسم المستعار مؤقتاً",
+"kind": "function",
+"pkg": "nostr"
+},
+"getCachedNickname": {
+"term": "جلب الاسم المستعار المخزّن",
+"kind": "function",
+"pkg": "nostr"
+},
+"markTeleported": {
+"term": "وسم بالانتقال الآني",
+"kind": "function",
+"pkg": "nostr"
+},
+"isPersonTeleported": {
+"term": "هل الشخص منتقل آنياً",
+"kind": "function",
+"pkg": "nostr"
+},
+"updateParticipant": {
+"term": "تحديث مشارك",
+"kind": "function",
+"pkg": "nostr"
+},
+"geohashParticipantCount": {
+"term": "عدد مشاركي الموقع الجغرافي",
+"kind": "function",
+"pkg": "nostr"
+},
+"refreshGeohashPeople": {
+"term": "تحديث أشخاص الموقع الجغرافي",
+"kind": "function",
+"pkg": "nostr"
+},
+"updateReactiveParticipantCounts": {
+"term": "تحديث أعداد المشاركين التفاعلية",
+"kind": "function",
+"pkg": "nostr"
+},
+"putNostrKeyMapping": {
+"term": "وضع تعيين مفتاح نوستر",
+"kind": "function",
+"pkg": "nostr"
+},
+"getNostrKeyMapping": {
+"term": "جلب تعيين مفاتيح نوستر",
+"kind": "function",
+"pkg": "nostr"
+},
+"displayNameForNostrPubkey": {
+"term": "اسم العرض لمفتاح نوستر العام",
+"kind": "function",
+"pkg": "nostr"
+},
+"displayNameForNostrPubkeyUI": {
+"term": "اسم العرض لمفتاح نوستر العام للواجهة",
+"kind": "function",
+"pkg": "nostr"
+},
+"displayNameForGeohashConversation": {
+"term": "اسم العرض لمحادثة الموقع الجغرافي",
+"kind": "function",
+"pkg": "nostr"
+},
+"deriveIdentity": {
+"term": "اشتقاق الهوية",
+"kind": "function",
+"pkg": "nostr"
+},
+"publicKeyHex": {
+"term": "المفتاح العام الست عشري",
+"kind": "property",
+"pkg": "nostr"
+},
+"GeoPerson": {
+"term": "الشخص الجغرافي",
+"kind": "class",
+"pkg": "nostr"
+},
+"cutoff": {
+"term": "الحد القاطع",
+"kind": "variable",
+"pkg": "nostr"
+},
+"isGeohashUserBlocked": {
+"term": "هل مستخدم الموقع الجغرافي محظور",
+"kind": "function",
+"pkg": "nostr"
+},
+"getNicknameValue": {
+"term": "جلب قيمة الاسم المستعار",
+"kind": "function",
+"pkg": "nostr"
+},
+"setGeohashPeople": {
+"term": "تعيين أشخاص الموقع الجغرافي",
+"kind": "function",
+"pkg": "nostr"
+},
+"setGeohashParticipantCounts": {
+"term": "تعيين أعداد مشاركي الموقع الجغرافي",
+"kind": "function",
+"pkg": "nostr"
+},
+"LocationNotesInitializer": {
+"term": "مُهيّئ ملاحظات الموقع",
+"kind": "object",
+"pkg": "nostr"
+},
+"LocationNotesManager": {
+"term": "مدير ملاحظات الموقع",
+"kind": "class",
+"pkg": "nostr"
+},
+"relayManager": {
+"term": "مزوّد مدير المُرحّلات",
+"kind": "lambda-parameter",
+"pkg": "nostr"
+},
+"subscribe": {
+"term": "دالة الاشتراك",
+"kind": "lambda-parameter",
+"pkg": "nostr"
+},
+"unsubscribe": {
+"term": "دالة إلغاء الاشتراك",
+"kind": "lambda-parameter",
+"pkg": "nostr"
+},
+"sendEvent": {
+"term": "دالة إرسال الحدث",
+"kind": "lambda-parameter",
+"pkg": "nostr"
+},
+"filter": {
+"term": "المُرشِّح",
+"kind": "variable",
+"pkg": "nostr"
+},
+"getGeohash": {
+"term": "جالب تجزئة الموقع",
+"kind": "method",
+"pkg": "nostr"
+},
+"geohashFromFilter": {
+"term": "تجزئة الموقع من المُرشِّح",
+"kind": "variable",
+"pkg": "nostr"
+},
+"subscribeForGeohash": {
+"term": "الاشتراك بتجزئة الموقع",
+"kind": "method",
+"pkg": "nostr"
+},
+"includeDefaults": {
+"term": "تضمين الافتراضيات",
+"kind": "argument",
+"pkg": "nostr"
+},
+"nRelays": {
+"term": "عدد المُرحّلات",
+"kind": "argument",
+"pkg": "nostr"
+},
+"handler": {
+"term": "المُعالِج",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"relayUrls": {
+"term": "عناوين المُرحّلات",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"event": {
+"term": "الحدث",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"MAX_NOTES_IN_MEMORY": {
+"term": "الحد الأقصى للملاحظات في الذاكرة",
+"kind": "const",
+"pkg": "nostr"
+},
+"Note": {
+"term": "الملاحظة",
+"kind": "class",
+"pkg": "nostr"
+},
+"displayName": {
+"term": "اسم العرض",
+"kind": "property",
+"pkg": "nostr"
+},
+"createdAt": {
+"term": "وقت الإنشاء",
+"kind": "property",
+"pkg": "nostr"
+},
+"State": {
+"term": "الحالة",
+"kind": "enum",
+"pkg": "nostr"
+},
+"IDLE": {
+"term": "خامل",
+"kind": "enum-value",
+"pkg": "nostr"
+},
+"LOADING": {
+"term": "قيد التحميل",
+"kind": "enum-value",
+"pkg": "nostr"
+},
+"READY": {
+"term": "جاهز",
+"kind": "enum-value",
+"pkg": "nostr"
+},
+"NO_RELAYS": {
+"term": "لا مُرحِّلات",
+"kind": "enum-value",
+"pkg": "nostr"
+},
+"notes": {
+"term": "الملاحظات",
+"kind": "property",
+"pkg": "nostr"
+},
+"initialLoadComplete": {
+"term": "اكتمال التحميل الأولي",
+"kind": "property",
+"pkg": "nostr"
+},
+"errorMessage": {
+"term": "رسالة الخطأ",
+"kind": "property",
+"pkg": "nostr"
+},
+"subscriptionIDs": {
+"term": "معرّفات الاشتراكات",
+"kind": "field",
+"pkg": "nostr"
+},
+"noteIDs": {
+"term": "معرّفات الملاحظات",
+"kind": "field",
+"pkg": "nostr"
+},
+"subscribedGeohashes": {
+"term": "الجيوهاشات المشترَك بها",
+"kind": "field",
+"pkg": "nostr"
+},
+"relayLookup": {
+"term": "باحث المُرحِّل",
+"kind": "field",
+"pkg": "nostr"
+},
+"subscribeFunc": {
+"term": "دالة الاشتراك",
+"kind": "field",
+"pkg": "nostr"
+},
+"unsubscribeFunc": {
+"term": "دالة إلغاء الاشتراك",
+"kind": "field",
+"pkg": "nostr"
+},
+"sendEventFunc": {
+"term": "دالة إرسال الحدث",
+"kind": "field",
+"pkg": "nostr"
+},
+"deriveIdentityFunc": {
+"term": "دالة اشتقاق الهوية",
+"kind": "field",
+"pkg": "nostr"
+},
+"setGeohash": {
+"term": "ضبط الجيوهاش",
+"kind": "function",
+"pkg": "nostr"
+},
+"isValidBuildingGeohash": {
+"term": "التحقق من جيوهاش المبنى",
+"kind": "function",
+"pkg": "nostr"
+},
+"refresh": {
+"term": "تحديث الملاحظات",
+"kind": "function",
+"pkg": "nostr"
+},
+"subscribeAll": {
+"term": "الاشتراك في الكل",
+"kind": "function",
+"pkg": "nostr"
+},
+"handleEvent": {
+"term": "معالجة الحدث",
+"kind": "function",
+"pkg": "nostr"
+},
+"trimOldestNotes": {
+"term": "قصّ أقدم الملاحظات",
+"kind": "function",
+"pkg": "nostr"
+},
+"clearError": {
+"term": "مسح الخطأ",
+"kind": "function",
+"pkg": "nostr"
+},
+"cancel": {
+"term": "الإلغاء",
+"kind": "function",
+"pkg": "nostr"
+},
+"cleanup": {
+"term": "التنظيف",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrFilter": {
+"term": "مُرشِّح نوستر",
+"kind": "type",
+"pkg": "nostr"
+},
+"NostrIdentity": {
+"term": "هوية نوستر",
+"kind": "type",
+"pkg": "nostr"
+},
+"NostrProtocol.createGeohashTextNote": {
+"term": "إنشاء ملاحظة نصية بجيوهاش",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrFilter.geohashNotes": {
+"term": "مُرشِّح ملاحظات الجيوهاش",
+"kind": "function",
+"pkg": "nostr"
+},
+"RelayDirectory.closestRelaysForGeohash": {
+"term": "أقرب المُرحِّلات للجيوهاش",
+"kind": "function",
+"pkg": "nostr"
+},
+"Geohash.neighborsSamePrecision": {
+"term": "جيران بنفس الدقّة",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrKind.TEXT_NOTE": {
+"term": "نوع الملاحظة النصية",
+"kind": "const",
+"pkg": "nostr"
+},
+"NostrClient": {
+"term": "عميل نوستر",
+"kind": "class",
+"pkg": "nostr"
+},
+"currentIdentity": {
+"term": "الهوية الحالية",
+"kind": "property",
+"pkg": "nostr"
+},
+"isInitialized": {
+"term": "حالة التهيئة",
+"kind": "property",
+"pkg": "nostr"
+},
+"currentNpub": {
+"term": "المفتاح العام الحالي",
+"kind": "property",
+"pkg": "nostr"
+},
+"recipientNpub": {
+"term": "مفتاح المستلم العام",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"NostrProtocol": {
+"term": "بروتوكول نوستر",
+"kind": "type",
+"pkg": "nostr"
+},
+"createPrivateMessage": {
+"term": "إنشاء رسالة خاصة",
+"kind": "function",
+"pkg": "nostr"
+},
+"giftWraps": {
+"term": "أغلفة الهدية",
+"kind": "variable",
+"pkg": "nostr"
+},
+"registerPendingGiftWrap": {
+"term": "تسجيل غلاف هدية معلّق",
+"kind": "function",
+"pkg": "nostr"
+},
+"subscribeToPrivateMessages": {
+"term": "الاشتراك في الرسائل الخاصة",
+"kind": "function",
+"pkg": "nostr"
+},
+"giftWrapsFor": {
+"term": "أغلفة الهدية للمفتاح",
+"kind": "function",
+"pkg": "nostr"
+},
+"sendGeohashMessage": {
+"term": "إرسال رسالة المنطقة الجغرافية",
+"kind": "function",
+"pkg": "nostr"
+},
+"createEphemeralGeohashEvent": {
+"term": "إنشاء حدث جغرافي عابر",
+"kind": "function",
+"pkg": "nostr"
+},
+"subscribeToGeohash": {
+"term": "الاشتراك في المنطقة الجغرافية",
+"kind": "function",
+"pkg": "nostr"
+},
+"geohashEphemeral": {
+"term": "مُرشِّح المنطقة العابر",
+"kind": "function",
+"pkg": "nostr"
+},
+"unsubscribeFromGeohash": {
+"term": "إلغاء الاشتراك من المنطقة الجغرافية",
+"kind": "function",
+"pkg": "nostr"
+},
+"getCurrentIdentity": {
+"term": "الحصول على الهوية الحالية",
+"kind": "function",
+"pkg": "nostr"
+},
+"relayConnectionStatus": {
+"term": "حالة اتصال المُرحِّل",
+"kind": "property",
+"pkg": "nostr"
+},
+"relayInfo": {
+"term": "معلومات المُرحِّل",
+"kind": "property",
+"pkg": "nostr"
+},
+"decryptPrivateMessage": {
+"term": "فكّ تشفير الرسالة الخاصة",
+"kind": "function",
+"pkg": "nostr"
+},
+"handleGeohashMessage": {
+"term": "معالجة رسالة المنطقة الجغرافية",
+"kind": "function",
+"pkg": "nostr"
+},
+"validateDifficulty": {
+"term": "تصديق الصعوبة",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrCrypto": {
+"term": "أدواتُ تشفيرِ نوستر (NostrCrypto)",
+"kind": "كائن وحيد (object)",
+"pkg": "nostr"
+},
+"secureRandom": {
+"term": "المولّدُ العشوائيُّ الآمن (secureRandom)",
+"kind": "خاصّية",
+"pkg": "nostr"
+},
+"secp256k1Curve": {
+"term": "منحنى secp256k1 (secp256k1Curve)",
+"kind": "خاصّية",
+"pkg": "nostr"
+},
+"secp256k1Params": {
+"term": "معاملاتُ منحنى secp256k1 (secp256k1Params)",
+"kind": "خاصّية",
+"pkg": "nostr"
+},
+"derivePublicKey": {
+"term": "اشتقاقُ المفتاحِ العام (derivePublicKey)",
+"kind": "دالة",
+"pkg": "nostr"
+},
+"performECDH": {
+"term": "تنفيذُ اتفاقِ ECDH (performECDH)",
+"kind": "دالة",
+"pkg": "nostr"
+},
+"performECDHWithParity": {
+"term": "اتفاقُ ECDH باختيارِ الزوجية (performECDHWithParity)",
+"kind": "دالة خاصّة",
+"pkg": "nostr"
+},
+"recoverPublicKeyPoint": {
+"term": "استعادةُ نقطةِ المفتاحِ العام (recoverPublicKeyPoint)",
+"kind": "دالة خاصّة",
+"pkg": "nostr"
+},
+"recoverPublicKeyPointWithParity": {
+"term": "استعادةُ نقطةِ المفتاحِ بزوجيةٍ محدّدة (recoverPublicKeyPointWithParity)",
+"kind": "دالة خاصّة",
+"pkg": "nostr"
+},
+"computeSharedPointWithParity": {
+"term": "حسابُ النقطةِ المشتركةِ بزوجيةٍ محدّدة (computeSharedPointWithParity)",
+"kind": "دالة خاصّة",
+"pkg": "nostr"
+},
+"compressedPoint": {
+"term": "النقطةُ المضغوطة (compressedPoint)",
+"kind": "دالة خاصّة",
+"pkg": "nostr"
+},
+"deriveNIP44Key": {
+"term": "اشتقاقُ مفتاحِ NIP-44 (deriveNIP44Key)",
+"kind": "دالة",
+"pkg": "nostr"
+},
+"hkdfExtract": {
+"term": "استخلاصُ HKDF (hkdfExtract)",
+"kind": "دالة خاصّة",
+"pkg": "nostr"
+},
+"hkdfExpand": {
+"term": "توسيعُ HKDF (hkdfExpand)",
+"kind": "دالة خاصّة",
+"pkg": "nostr"
+},
+"encryptNIP44": {
+"term": "تشفيرُ NIP-44 (encryptNIP44)",
+"kind": "دالة",
+"pkg": "nostr"
+},
+"decryptNIP44": {
+"term": "فكُّ تشفيرِ NIP-44 (decryptNIP44)",
+"kind": "دالة",
+"pkg": "nostr"
+},
+"base64UrlNoPad": {
+"term": "ترميزُ base64url بلا حشو (base64UrlNoPad)",
+"kind": "دالة خاصّة",
+"pkg": "nostr"
+},
+"base64UrlDecode": {
+"term": "فكُّ ترميزِ base64url (base64UrlDecode)",
+"kind": "دالة خاصّة",
+"pkg": "nostr"
+},
+"randomizeTimestamp": {
+"term": "عشوَأةُ الطابعِ الزمني (randomizeTimestamp)",
+"kind": "دالة",
+"pkg": "nostr"
+},
+"randomizeTimestampUpToPast": {
+"term": "عشوَأةُ الطابعِ الزمني نحو الماضي (randomizeTimestampUpToPast)",
+"kind": "دالة",
+"pkg": "nostr"
+},
+"isValidPrivateKey": {
+"term": "صلاحيةُ المفتاحِ الخاص (isValidPrivateKey)",
+"kind": "دالة",
+"pkg": "nostr"
+},
+"isValidPublicKey": {
+"term": "صلاحيةُ المفتاحِ العام (isValidPublicKey)",
+"kind": "دالة",
+"pkg": "nostr"
+},
+"taggedHash": {
+"term": "التجزئةُ الموسومة (taggedHash)",
+"kind": "دالة خاصّة",
+"pkg": "nostr"
+},
+"hasEvenY": {
+"term": "الصاديةُ زوجية (hasEvenY)",
+"kind": "دالة خاصّة",
+"pkg": "nostr"
+},
+"liftX": {
+"term": "رفعُ السينية (liftX)",
+"kind": "دالة خاصّة",
+"pkg": "nostr"
+},
+"schnorrSign": {
+"term": "توقيعُ شنور (schnorrSign)",
+"kind": "دالة",
+"pkg": "nostr"
+},
+"schnorrVerify": {
+"term": "التحقّقُ من توقيعِ شنور (schnorrVerify)",
+"kind": "دالة",
+"pkg": "nostr"
+},
+"generateNonce": {
+"term": "توليدُ القيمةِ المؤقتة (generateNonce)",
+"kind": "دالة خاصّة",
+"pkg": "nostr"
+},
+"NostrDirectMessageHandler": {
+"term": "معالج رسائل نوستر المباشرة",
+"kind": "class",
+"pkg": "nostr"
+},
+"onGiftWrap": {
+"term": "عند وصول الغلاف الهديّة",
+"kind": "function",
+"pkg": "nostr"
+},
+"processNoisePayload": {
+"term": "معالجة حمولة نويز",
+"kind": "function",
+"pkg": "nostr"
+},
+"base64URLDecode": {
+"term": "فكّ ترميز base64URL",
+"kind": "function",
+"pkg": "nostr"
+},
+"giftWrap": {
+"term": "الغلاف الهديّة",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"identity": {
+"term": "الهويّة",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"NostrTransport": {
+"term": "ناقل نوستر",
+"kind": "class",
+"pkg": "nostr"
+},
+"SeenMessageStore": {
+"term": "مخزن الرسائل المرئية",
+"kind": "class",
+"pkg": "nostr"
+},
+"seenStore": {
+"term": "مخزن المرئية",
+"kind": "property",
+"pkg": "nostr"
+},
+"PrivateChatManager": {
+"term": "مدير الدردشة الخاصة",
+"kind": "type",
+"pkg": "nostr"
+},
+"MeshDelegateHandler": {
+"term": "معالج وكيل الشبكة",
+"kind": "type",
+"pkg": "nostr"
+},
+"senderPubkey": {
+"term": "المفتاح العام للمرسِل",
+"kind": "variable",
+"pkg": "nostr"
+},
+"messageAge": {
+"term": "عمر الرسالة",
+"kind": "variable",
+"pkg": "nostr"
+},
+"decryptResult": {
+"term": "نتيجة فكّ التشفير",
+"kind": "variable",
+"pkg": "nostr"
+},
+"handleIncomingPrivateMessage": {
+"term": "معالجة الرسالة الخاصة الواردة",
+"kind": "function",
+"pkg": "nostr"
+},
+"sendDeliveryAckGeohash": {
+"term": "إرسال إقرار التسليم للجيوهاش",
+"kind": "function",
+"pkg": "nostr"
+},
+"sendReadReceiptGeohash": {
+"term": "إرسال إيصال القراءة للجيوهاش",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrEmbeddedBitChat": {
+"term": "محوّل بِت‑تشات المضمّن في نوستر",
+"kind": "object",
+"pkg": "nostr"
+},
+"encodePMForNostr": {
+"term": "ترميز الرسالة الخاصة لنوستر",
+"kind": "function",
+"pkg": "nostr"
+},
+"encodeAckForNostr": {
+"term": "ترميز إشعار الاستلام لنوستر",
+"kind": "function",
+"pkg": "nostr"
+},
+"encodeAckForNostrNoRecipient": {
+"term": "ترميز إشعار الاستلام لنوستر بلا مستقبِل",
+"kind": "function",
+"pkg": "nostr"
+},
+"encodePMForNostrNoRecipient": {
+"term": "ترميز الرسالة الخاصة لنوستر بلا مستقبِل",
+"kind": "function",
+"pkg": "nostr"
+},
+"normalizeRecipientPeerID": {
+"term": "تطبيع معرّف نِدّ المستقبِل",
+"kind": "function",
+"pkg": "nostr"
+},
+"base64URLEncode": {
+"term": "ترميز قاعدة‑٦٤ على نمط الرابط",
+"kind": "function",
+"pkg": "nostr"
+},
+"recipientIDHex": {
+"term": "معرّف المستقبِل الست‑عشري",
+"kind": "variable",
+"pkg": "nostr"
+},
+"PRIVATE_MESSAGE": {
+"term": "رسالة خاصة",
+"kind": "enum-constant",
+"pkg": "nostr"
+},
+"DELIVERED": {
+"term": "تم التسليم",
+"kind": "enum-constant",
+"pkg": "nostr"
+},
+"kind": {
+"term": "النوع",
+"kind": "property",
+"pkg": "nostr"
+},
+"tags": {
+"term": "الوسوم",
+"kind": "property",
+"pkg": "nostr"
+},
+"sig": {
+"term": "التوقيع",
+"kind": "property",
+"pkg": "nostr"
+},
+"fromJson": {
+"term": "من قاموس JSON",
+"kind": "function",
+"pkg": "nostr"
+},
+"fromJsonString": {
+"term": "من نص JSON",
+"kind": "function",
+"pkg": "nostr"
+},
+"createTextNote": {
+"term": "إنشاء ملاحظة نصية",
+"kind": "function",
+"pkg": "nostr"
+},
+"createMetadata": {
+"term": "إنشاء بيانات وصفية",
+"kind": "function",
+"pkg": "nostr"
+},
+"computeEventIdHex": {
+"term": "حساب معرّف الحدث الست عشري",
+"kind": "function",
+"pkg": "nostr"
+},
+"calculateEventId": {
+"term": "حساب معرّف الحدث",
+"kind": "function",
+"pkg": "nostr"
+},
+"signHash": {
+"term": "توقيع التجزئة",
+"kind": "function",
+"pkg": "nostr"
+},
+"toJsonString": {
+"term": "التحويل إلى نص JSON",
+"kind": "function",
+"pkg": "nostr"
+},
+"isValidSignature": {
+"term": "صحة التوقيع",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrKind": {
+"term": "أنواع حدث نوستر",
+"kind": "object",
+"pkg": "nostr"
+},
+"METADATA": {
+"term": "البيانات الوصفية",
+"kind": "const",
+"pkg": "nostr"
+},
+"TEXT_NOTE": {
+"term": "الملاحظة النصية",
+"kind": "const",
+"pkg": "nostr"
+},
+"DIRECT_MESSAGE": {
+"term": "الرسالة المباشرة",
+"kind": "const",
+"pkg": "nostr"
+},
+"FILE_MESSAGE": {
+"term": "رسالة الملف",
+"kind": "const",
+"pkg": "nostr"
+},
+"SEAL": {
+"term": "الختم",
+"kind": "const",
+"pkg": "nostr"
+},
+"GIFT_WRAP": {
+"term": "غلاف الهدية",
+"kind": "const",
+"pkg": "nostr"
+},
+"EPHEMERAL_EVENT": {
+"term": "الحدث العابر",
+"kind": "const",
+"pkg": "nostr"
+},
+"GEOHASH_PRESENCE": {
+"term": "حضور التجزئة الجغرافية",
+"kind": "const",
+"pkg": "nostr"
+},
+"hexToByteArray": {
+"term": "الست عشري إلى مصفوفة بايت",
+"kind": "extension function",
+"pkg": "nostr"
+},
+"NostrEventDeduplicator": {
+"term": "مُزيل تكرار أحداث نوستر",
+"kind": "class",
+"pkg": "nostr"
+},
+"maxCapacity": {
+"term": "السعة القصوى",
+"kind": "property",
+"pkg": "nostr"
+},
+"DEFAULT_CAPACITY": {
+"term": "السعة الافتراضية",
+"kind": "const",
+"pkg": "nostr"
+},
+"LRUNode": {
+"term": "عقدة الأقل استخداماً مؤخراً",
+"kind": "class",
+"pkg": "nostr"
+},
+"eventId": {
+"term": "معرّف الحدث",
+"kind": "property",
+"pkg": "nostr"
+},
+"prev": {
+"term": "السابق",
+"kind": "property",
+"pkg": "nostr"
+},
+"next": {
+"term": "التالي",
+"kind": "property",
+"pkg": "nostr"
+},
+"nodeMap": {
+"term": "خريطة العقد",
+"kind": "property",
+"pkg": "nostr"
+},
+"head": {
+"term": "الرأس",
+"kind": "property",
+"pkg": "nostr"
+},
+"tail": {
+"term": "الذيل",
+"kind": "property",
+"pkg": "nostr"
+},
+"lruLock": {
+"term": "قفل الأقل استخداماً مؤخراً",
+"kind": "property",
+"pkg": "nostr"
+},
+"totalChecks": {
+"term": "إجمالي الفحوص",
+"kind": "property",
+"pkg": "nostr"
+},
+"duplicateCount": {
+"term": "عدّ المكرّرات",
+"kind": "property",
+"pkg": "nostr"
+},
+"evictionCount": {
+"term": "عدّ الطرد",
+"kind": "property",
+"pkg": "nostr"
+},
+"isDuplicate": {
+"term": "هل مكرّر",
+"kind": "function",
+"pkg": "nostr"
+},
+"processEvent": {
+"term": "عالِج الحدث",
+"kind": "function",
+"pkg": "nostr"
+},
+"getStats": {
+"term": "احصل على الإحصاءات",
+"kind": "function",
+"pkg": "nostr"
+},
+"size": {
+"term": "الحجم",
+"kind": "function",
+"pkg": "nostr"
+},
+"addToFront": {
+"term": "أضِف إلى المقدمة",
+"kind": "function",
+"pkg": "nostr"
+},
+"moveToFront": {
+"term": "انقل إلى المقدمة",
+"kind": "function",
+"pkg": "nostr"
+},
+"removeTail": {
+"term": "أزِل الذيل",
+"kind": "function",
+"pkg": "nostr"
+},
+"evictOldest": {
+"term": "اطرُد الأقدم",
+"kind": "function",
+"pkg": "nostr"
+},
+"DeduplicationStats": {
+"term": "إحصاءات إزالة التكرار",
+"kind": "class",
+"pkg": "nostr"
+},
+"capacity": {
+"term": "السعة",
+"kind": "property",
+"pkg": "nostr"
+},
+"currentSize": {
+"term": "الحجم الحالي",
+"kind": "property",
+"pkg": "nostr"
+},
+"hitRate": {
+"term": "معدّل الإصابة",
+"kind": "property",
+"pkg": "nostr"
+},
+"ids": {
+"term": "المُعرّفات (ids)",
+"kind": "property",
+"pkg": "nostr"
+},
+"authors": {
+"term": "المؤلِّفون (authors)",
+"kind": "property",
+"pkg": "nostr"
+},
+"kinds": {
+"term": "الأنواع (kinds)",
+"kind": "property",
+"pkg": "nostr"
+},
+"since": {
+"term": "منذ (since)",
+"kind": "property",
+"pkg": "nostr"
+},
+"until": {
+"term": "حتى (until)",
+"kind": "property",
+"pkg": "nostr"
+},
+"limit": {
+"term": "الحدّ (limit)",
+"kind": "property",
+"pkg": "nostr"
+},
+"tagFilters": {
+"term": "مُرشّحات الوسوم (tagFilters)",
+"kind": "property",
+"pkg": "nostr"
+},
+"geohashMessages": {
+"term": "رسائل النطاق الجغرافي (geohashMessages)",
+"kind": "function",
+"pkg": "nostr"
+},
+"geohashPresence": {
+"term": "حضور النطاق الجغرافي (geohashPresence)",
+"kind": "function",
+"pkg": "nostr"
+},
+"textNotesFrom": {
+"term": "الملاحظات النصّية من (textNotesFrom)",
+"kind": "function",
+"pkg": "nostr"
+},
+"geohashNotes": {
+"term": "ملاحظات النطاق الجغرافي (geohashNotes)",
+"kind": "function",
+"pkg": "nostr"
+},
+"forEvents": {
+"term": "لأحداث محدّدة (forEvents)",
+"kind": "function",
+"pkg": "nostr"
+},
+"FilterSerializer": {
+"term": "مُسلسِل المُرشّح (FilterSerializer)",
+"kind": "class",
+"pkg": "nostr"
+},
+"serialize": {
+"term": "السَّلسَلة (serialize)",
+"kind": "function",
+"pkg": "nostr"
+},
+"Builder": {
+"term": "الباني (Builder)",
+"kind": "class",
+"pkg": "nostr"
+},
+"build": {
+"term": "ابْنِ (build)",
+"kind": "function",
+"pkg": "nostr"
+},
+"tagP": {
+"term": "وسم الأشخاص (tagP)",
+"kind": "function",
+"pkg": "nostr"
+},
+"tagE": {
+"term": "وسم الأحداث (tagE)",
+"kind": "function",
+"pkg": "nostr"
+},
+"tagG": {
+"term": "وسم النطاق الجغرافي (tagG)",
+"kind": "function",
+"pkg": "nostr"
+},
+"matches": {
+"term": "يُطابِق (matches)",
+"kind": "function",
+"pkg": "nostr"
+},
+"getDebugDescription": {
+"term": "احصل على وصف التنقيح (getDebugDescription)",
+"kind": "function",
+"pkg": "nostr"
+},
+"privateKeyHex": {
+"term": "المفتاح الخاص الست عشري",
+"kind": "property",
+"pkg": "nostr"
+},
+"generate": {
+"term": "التوليد",
+"kind": "function",
+"pkg": "nostr"
+},
+"fromPrivateKey": {
+"term": "الإنشاء من المفتاح الخاص",
+"kind": "function",
+"pkg": "nostr"
+},
+"fromSeed": {
+"term": "الإنشاء من البذرة",
+"kind": "function",
+"pkg": "nostr"
+},
+"signEvent": {
+"term": "توقيع الحدث",
+"kind": "function",
+"pkg": "nostr"
+},
+"getShortNpub": {
+"term": "المعرّف العام المختصر",
+"kind": "function",
+"pkg": "nostr"
+},
+"NOSTR_PRIVATE_KEY": {
+"term": "مفتاح نوستر الخاص (ثابت التخزين)",
+"kind": "const",
+"pkg": "nostr"
+},
+"DEVICE_SEED_KEY": {
+"term": "مفتاح بذرة الجهاز (ثابت التخزين)",
+"kind": "const",
+"pkg": "nostr"
+},
+"geohashIdentityCache": {
+"term": "ذاكرة هويات الجيوهاش المؤقتة",
+"kind": "property",
+"pkg": "nostr"
+},
+"getCurrentNostrIdentity": {
+"term": "الحصول على الهوية الحالية",
+"kind": "function",
+"pkg": "nostr"
+},
+"candidateKey": {
+"term": "المفتاح المرشّح",
+"kind": "function",
+"pkg": "nostr"
+},
+"associateNostrIdentity": {
+"term": "ربط هوية نوستر",
+"kind": "function",
+"pkg": "nostr"
+},
+"getNostrPublicKey": {
+"term": "الحصول على مفتاح نوستر العام",
+"kind": "function",
+"pkg": "nostr"
+},
+"clearAllAssociations": {
+"term": "مسح كل الروابط",
+"kind": "function",
+"pkg": "nostr"
+},
+"loadNostrPrivateKey": {
+"term": "تحميل مفتاح نوستر الخاص",
+"kind": "function",
+"pkg": "nostr"
+},
+"saveNostrPrivateKey": {
+"term": "حفظ مفتاح نوستر الخاص",
+"kind": "function",
+"pkg": "nostr"
+},
+"getOrCreateDeviceSeed": {
+"term": "الحصول على بذرة الجهاز أو إنشاؤها",
+"kind": "function",
+"pkg": "nostr"
+},
+"hmacSha256": {
+"term": "دالة هماك-شا256",
+"kind": "function",
+"pkg": "nostr"
+},
+"hexToByteArrayLocal": {
+"term": "تحويل النص الست عشري إلى بايتات",
+"kind": "extension function",
+"pkg": "nostr"
+},
+"toHexStringLocal": {
+"term": "تحويل البايتات إلى نص ست عشري",
+"kind": "extension function",
+"pkg": "nostr"
+},
+"toLittleEndianBytes": {
+"term": "التحويل إلى بايتات بترتيب صغير-أولاً",
+"kind": "extension function",
+"pkg": "nostr"
+},
+"calculateDifficulty": {
+"term": "احسب الصعوبة",
+"kind": "function",
+"pkg": "nostr"
+},
+"mineEvent": {
+"term": "عدّن الحدث",
+"kind": "function",
+"pkg": "nostr"
+},
+"addNonceTag": {
+"term": "أضِف وسم القيمة العشوائية",
+"kind": "function",
+"pkg": "nostr"
+},
+"getCommittedDifficulty": {
+"term": "احصل على الصعوبة الملتزَم بها",
+"kind": "function",
+"pkg": "nostr"
+},
+"hasNonce": {
+"term": "لديه قيمة عشوائية",
+"kind": "function",
+"pkg": "nostr"
+},
+"getNonce": {
+"term": "احصل على القيمة العشوائية",
+"kind": "function",
+"pkg": "nostr"
+},
+"estimateWork": {
+"term": "قدّر العمل",
+"kind": "function",
+"pkg": "nostr"
+},
+"estimateMiningTime": {
+"term": "قدّر زمن التعدين",
+"kind": "function",
+"pkg": "nostr"
+},
+"nonce": {
+"term": "القيمة العشوائية",
+"kind": "variable",
+"pkg": "nostr"
+},
+"targetDifficulty": {
+"term": "الصعوبة المستهدفة",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"minimumDifficulty": {
+"term": "الصعوبة الدنيا",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"actualDifficulty": {
+"term": "الصعوبة الفعلية",
+"kind": "variable",
+"pkg": "nostr"
+},
+"committedDifficulty": {
+"term": "الصعوبة الملتزَم بها",
+"kind": "variable",
+"pkg": "nostr"
+},
+"maxIterations": {
+"term": "أقصى عدد للتكرارات",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"nibble": {
+"term": "النِّبل (نصف بايت)",
+"kind": "variable",
+"pkg": "nostr"
+},
+"hashesPerSecond": {
+"term": "التجزئات في الثانية",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"gson": {
+"term": "محوّل جيسون",
+"kind": "متغيّر خاص",
+"pkg": "nostr"
+},
+"createGeohashTextNote": {
+"term": "إنشاء ملاحظة نصية بترميز جغرافي",
+"kind": "دالة معلّقة",
+"pkg": "nostr"
+},
+"createGeohashPresenceEvent": {
+"term": "إنشاء حدث حضور بترميز جغرافي",
+"kind": "دالة معلّقة",
+"pkg": "nostr"
+},
+"createSeal": {
+"term": "إنشاء الختم",
+"kind": "دالة خاصة",
+"pkg": "nostr"
+},
+"createGiftWrap": {
+"term": "إنشاء غلاف الهدية",
+"kind": "دالة خاصة",
+"pkg": "nostr"
+},
+"unwrapGiftWrap": {
+"term": "فكّ غلاف الهدية",
+"kind": "دالة خاصة",
+"pkg": "nostr"
+},
+"openSeal": {
+"term": "فتح الختم",
+"kind": "دالة خاصة",
+"pkg": "nostr"
+},
+"parseTagsFromJson": {
+"term": "تحليل الوسوم من جيسون",
+"kind": "دالة خاصة",
+"pkg": "nostr"
+},
+"rumor": {
+"term": "الإشاعة",
+"kind": "متغيّر/مفهوم",
+"pkg": "nostr"
+},
+"seal": {
+"term": "الختم",
+"kind": "متغيّر/مفهوم",
+"pkg": "nostr"
+},
+"recipientPubkey": {
+"term": "المفتاح العام للمستلِم",
+"kind": "معامل",
+"pkg": "nostr"
+},
+"senderIdentity": {
+"term": "هوية المُرسِل",
+"kind": "معامل",
+"pkg": "nostr"
+},
+"teleported": {
+"term": "مُنتقَل آنياً",
+"kind": "معامل",
+"pkg": "nostr"
+},
+"shared": {
+"term": "النسخة المشتركة",
+"kind": "property",
+"pkg": "nostr"
+},
+"DEFAULT_RELAYS": {
+"term": "المُرحّلات الافتراضية",
+"kind": "property",
+"pkg": "nostr"
+},
+"INITIAL_BACKOFF_INTERVAL": {
+"term": "فترة التراجع الأولية",
+"kind": "constant",
+"pkg": "nostr"
+},
+"MAX_BACKOFF_INTERVAL": {
+"term": "الحد الأقصى لفترة التراجع",
+"kind": "constant",
+"pkg": "nostr"
+},
+"MAX_RECONNECT_ATTEMPTS": {
+"term": "أقصى محاولات إعادة الاتصال",
+"kind": "constant",
+"pkg": "nostr"
+},
+"pendingGiftWrapIDs": {
+"term": "معرّفات أغلفة الهدايا المعلّقة",
+"kind": "property",
+"pkg": "nostr"
+},
+"defaultRelays": {
+"term": "المُرحّلات الافتراضية",
+"kind": "function",
+"pkg": "nostr"
+},
+"Relay": {
+"term": "المُرحّل",
+"kind": "class",
+"pkg": "nostr"
+},
+"reconnectAttempts": {
+"term": "محاولات إعادة الاتصال",
+"kind": "property",
+"pkg": "nostr"
+},
+"nextReconnectTime": {
+"term": "وقت إعادة الاتصال التالي",
+"kind": "property",
+"pkg": "nostr"
+},
+"_relays": {
+"term": "حقل المُرحّلات الداخلي",
+"kind": "property",
+"pkg": "nostr"
+},
+"relays": {
+"term": "المُرحّلات",
+"kind": "property",
+"pkg": "nostr"
+},
+"_isConnected": {
+"term": "حقل الاتصال الداخلي",
+"kind": "property",
+"pkg": "nostr"
+},
+"relaysList": {
+"term": "قائمة المُرحّلات",
+"kind": "property",
+"pkg": "nostr"
+},
+"connections": {
+"term": "الاتصالات",
+"kind": "property",
+"pkg": "nostr"
+},
+"subscriptions": {
+"term": "الاشتراكات",
+"kind": "property",
+"pkg": "nostr"
+},
+"messageHandlers": {
+"term": "معالِجات الرسائل",
+"kind": "property",
+"pkg": "nostr"
+},
+"activeSubscriptions": {
+"term": "الاشتراكات النشطة",
+"kind": "property",
+"pkg": "nostr"
+},
+"SubscriptionInfo": {
+"term": "معلومات الاشتراك",
+"kind": "class",
+"pkg": "nostr"
+},
+"targetRelayUrls": {
+"term": "عناوين المُرحّلات المستهدفة",
+"kind": "property",
+"pkg": "nostr"
+},
+"originGeohash": {
+"term": "جيوهاش الأصل",
+"kind": "property",
+"pkg": "nostr"
+},
+"eventDeduplicator": {
+"term": "مُزيل تكرار الأحداث",
+"kind": "property",
+"pkg": "nostr"
+},
+"messageQueue": {
+"term": "طابور الرسائل",
+"kind": "property",
+"pkg": "nostr"
+},
+"messageQueueLock": {
+"term": "قفل طابور الرسائل",
+"kind": "property",
+"pkg": "nostr"
+},
+"subscriptionValidationJob": {
+"term": "مهمة التحقق من الاشتراكات",
+"kind": "property",
+"pkg": "nostr"
+},
+"SUBSCRIPTION_VALIDATION_INTERVAL": {
+"term": "فترة التحقق من الاشتراكات",
+"kind": "property",
+"pkg": "nostr"
+},
+"geohashToRelays": {
+"term": "خريطة الجيوهاش إلى المُرحّلات",
+"kind": "property",
+"pkg": "nostr"
+},
+"ensureGeohashRelaysConnected": {
+"term": "تأكيد اتصال مُرحّلات الجيوهاش",
+"kind": "function",
+"pkg": "nostr"
+},
+"getRelaysForGeohash": {
+"term": "احصل على مُرحّلات الجيوهاش",
+"kind": "function",
+"pkg": "nostr"
+},
+"sendEventToGeohash": {
+"term": "أرسل حدثاً لجيوهاش",
+"kind": "function",
+"pkg": "nostr"
+},
+"ensureConnectionsFor": {
+"term": "تأكيد الاتصالات لـ",
+"kind": "function",
+"pkg": "nostr"
+},
+"connect": {
+"term": "اتصل",
+"kind": "function",
+"pkg": "nostr"
+},
+"sendSubscriptionToRelays": {
+"term": "أرسل الاشتراك إلى المُرحّلات",
+"kind": "function",
+"pkg": "nostr"
+},
+"retryConnection": {
+"term": "أعد محاولة الاتصال",
+"kind": "function",
+"pkg": "nostr"
+},
+"resetAllConnections": {
+"term": "أعد تعيين كل الاتصالات",
+"kind": "function",
+"pkg": "nostr"
+},
+"reestablishAllSubscriptions": {
+"term": "أعد إنشاء كل الاشتراكات",
+"kind": "function",
+"pkg": "nostr"
+},
+"clearAllSubscriptions": {
+"term": "امسح كل الاشتراكات",
+"kind": "function",
+"pkg": "nostr"
+},
+"getRelayStatuses": {
+"term": "احصل على حالات المُرحّلات",
+"kind": "function",
+"pkg": "nostr"
+},
+"getDeduplicationStats": {
+"term": "احصل على إحصاءات إزالة التكرار",
+"kind": "function",
+"pkg": "nostr"
+},
+"clearDeduplicationCache": {
+"term": "امسح مخبأ إزالة التكرار",
+"kind": "function",
+"pkg": "nostr"
+},
+"getActiveSubscriptionCount": {
+"term": "احصل على عدد الاشتراكات النشطة",
+"kind": "function",
+"pkg": "nostr"
+},
+"getActiveSubscriptions": {
+"term": "احصل على الاشتراكات النشطة",
+"kind": "function",
+"pkg": "nostr"
+},
+"validateSubscriptionConsistency": {
+"term": "تحقّق من اتساق الاشتراكات",
+"kind": "function",
+"pkg": "nostr"
+},
+"SubscriptionConsistencyReport": {
+"term": "تقرير اتساق الاشتراكات",
+"kind": "class",
+"pkg": "nostr"
+},
+"startSubscriptionValidation": {
+"term": "ابدأ التحقق من الاشتراكات",
+"kind": "function",
+"pkg": "nostr"
+},
+"stopSubscriptionValidation": {
+"term": "أوقف التحقق من الاشتراكات",
+"kind": "function",
+"pkg": "nostr"
+},
+"connectToRelay": {
+"term": "اتصل بالمُرحّل",
+"kind": "function",
+"pkg": "nostr"
+},
+"sendToRelay": {
+"term": "أرسل إلى المُرحّل",
+"kind": "function",
+"pkg": "nostr"
+},
+"handleDisconnection": {
+"term": "عالِج قطع الاتصال",
+"kind": "function",
+"pkg": "nostr"
+},
+"updateRelayStatus": {
+"term": "حدّث حالة المُرحّل",
+"kind": "function",
+"pkg": "nostr"
+},
+"updateRelaysList": {
+"term": "حدّث قائمة المُرحّلات",
+"kind": "function",
+"pkg": "nostr"
+},
+"updateConnectionStatus": {
+"term": "حدّث حالة الاتصال",
+"kind": "function",
+"pkg": "nostr"
+},
+"generateSubscriptionId": {
+"term": "ولّد معرّف اشتراك",
+"kind": "function",
+"pkg": "nostr"
+},
+"restoreSubscriptionsForRelay": {
+"term": "استعد اشتراكات المُرحّل",
+"kind": "function",
+"pkg": "nostr"
+},
+"RelayWebSocketListener": {
+"term": "مُستمِع مقبس ويب المُرحّل",
+"kind": "class",
+"pkg": "nostr"
+},
+"onOpen": {
+"term": "عند الفتح",
+"kind": "function",
+"pkg": "nostr"
+},
+"onMessage": {
+"term": "عند الرسالة",
+"kind": "function",
+"pkg": "nostr"
+},
+"onClosing": {
+"term": "عند الإغلاق الجاري",
+"kind": "function",
+"pkg": "nostr"
+},
+"onClosed": {
+"term": "عند الإغلاق التام",
+"kind": "function",
+"pkg": "nostr"
+},
+"onFailure": {
+"term": "عند الفشل",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrRequest": {
+"term": "طلب نوسْتر",
+"kind": "type",
+"pkg": "nostr"
+},
+"NostrResponse": {
+"term": "استجابة نوسْتر",
+"kind": "type",
+"pkg": "nostr"
+},
+"NostrKind.GIFT_WRAP": {
+"term": "نوع تغليف الهدية",
+"kind": "constant",
+"pkg": "nostr"
+},
+"RelayDirectory": {
+"term": "دليل المُرحّلات",
+"kind": "type",
+"pkg": "nostr"
+},
+"Event": {
+"term": "حدث (طلب)",
+"kind": "data class",
+"pkg": "nostr"
+},
+"Subscribe": {
+"term": "اشتراك",
+"kind": "data class",
+"pkg": "nostr"
+},
+"Close": {
+"term": "إغلاق",
+"kind": "data class",
+"pkg": "nostr"
+},
+"subscriptionId": {
+"term": "معرّف الاشتراك",
+"kind": "property",
+"pkg": "nostr"
+},
+"filters": {
+"term": "مرشّحات",
+"kind": "property",
+"pkg": "nostr"
+},
+"RequestSerializer": {
+"term": "مُسلسِل الطلب",
+"kind": "class",
+"pkg": "nostr"
+},
+"createGson": {
+"term": "إنشاء Gson",
+"kind": "function",
+"pkg": "nostr"
+},
+"toJson": {
+"term": "التحويل إلى JSON",
+"kind": "function",
+"pkg": "nostr"
+},
+"EndOfStoredEvents": {
+"term": "نهاية الأحداث المخزَّنة",
+"kind": "data class",
+"pkg": "nostr"
+},
+"Ok": {
+"term": "موافقة",
+"kind": "data class",
+"pkg": "nostr"
+},
+"Notice": {
+"term": "إشعار",
+"kind": "data class",
+"pkg": "nostr"
+},
+"Unknown": {
+"term": "غير معروف",
+"kind": "data class",
+"pkg": "nostr"
+},
+"accepted": {
+"term": "مقبول",
+"kind": "property",
+"pkg": "nostr"
+},
+"raw": {
+"term": "النص الخام",
+"kind": "property",
+"pkg": "nostr"
+},
+"fromJsonArray": {
+"term": "التحليل من مصفوفة JSON",
+"kind": "function",
+"pkg": "nostr"
+},
+"parseEventFromJson": {
+"term": "تحليل الحدث من JSON",
+"kind": "function",
+"pkg": "nostr"
+},
+"Gson": {
+"term": "محرّك Gson",
+"kind": "type",
+"pkg": "nostr"
+},
+"NostrSubscriptionManager": {
+"term": "مدير اشتراكات نوستر",
+"kind": "class",
+"pkg": "nostr"
+},
+"subscribeGiftWraps": {
+"term": "الاشتراك في أغلفة الهدايا",
+"kind": "function",
+"pkg": "nostr"
+},
+"subscribeGeohashMessages": {
+"term": "الاشتراك في رسائل التجزئة الجغرافية",
+"kind": "function",
+"pkg": "nostr"
+},
+"subscribeGeohashPresence": {
+"term": "الاشتراك في حضور التجزئة الجغرافية",
+"kind": "function",
+"pkg": "nostr"
+},
+"sinceMs": {
+"term": "منذ بالميلّي ثانية",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"NostrTestManager": {
+"term": "مدير اختبار نوستر",
+"kind": "class",
+"pkg": "nostr"
+},
+"testScope": {
+"term": "نطاق الاختبار",
+"kind": "property",
+"pkg": "nostr"
+},
+"nostrClient": {
+"term": "عميل نوستر",
+"kind": "property",
+"pkg": "nostr"
+},
+"runTests": {
+"term": "تشغيل الاختبارات",
+"kind": "function",
+"pkg": "nostr"
+},
+"testClientInitialization": {
+"term": "اختبار تهيئة العميل",
+"kind": "function",
+"pkg": "nostr"
+},
+"testIdentityManagement": {
+"term": "اختبار إدارة الهوية",
+"kind": "function",
+"pkg": "nostr"
+},
+"testRelayConnections": {
+"term": "اختبار اتصالات المُرحّلات",
+"kind": "function",
+"pkg": "nostr"
+},
+"testCryptography": {
+"term": "اختبار التعمية",
+"kind": "function",
+"pkg": "nostr"
+},
+"testBech32": {
+"term": "اختبار ترميز Bech32",
+"kind": "function",
+"pkg": "nostr"
+},
+"testMessageSubscription": {
+"term": "اختبار الاشتراك في الرسائل",
+"kind": "function",
+"pkg": "nostr"
+},
+"testLoopbackMessage": {
+"term": "اختبار رسالة العودة الذاتية",
+"kind": "function",
+"pkg": "nostr"
+},
+"testGeohashMessage": {
+"term": "اختبار رسالة الجيوهاش",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrClient.getInstance": {
+"term": "جلب نسخة عميل نوستر",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrIdentityBridge.deriveIdentity": {
+"term": "اشتقاق الهوية",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrCrypto.generateKeyPair": {
+"term": "توليد زوج المفاتيح",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrCrypto.isValidPrivateKey": {
+"term": "تحقّق صلاحية المفتاح الخاص",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrCrypto.isValidPublicKey": {
+"term": "تحقّق صلاحية المفتاح العام",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrCrypto.derivePublicKey": {
+"term": "اشتقاق المفتاح العام",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrCrypto.encryptNIP44": {
+"term": "التعمية بمعيار NIP-44",
+"kind": "function",
+"pkg": "nostr"
+},
+"NostrCrypto.decryptNIP44": {
+"term": "فك التعمية بمعيار NIP-44",
+"kind": "function",
+"pkg": "nostr"
+},
+"Bech32.encode": {
+"term": "ترميز Bech32",
+"kind": "function",
+"pkg": "nostr"
+},
+"Bech32.decode": {
+"term": "فك ترميز Bech32",
+"kind": "function",
+"pkg": "nostr"
+},
+"READ_ACK_INTERVAL": {
+"term": "فاصل تأكيد القراءة",
+"kind": "constant",
+"pkg": "nostr"
+},
+"QueuedRead": {
+"term": "قراءة مُصفوفة في طابور",
+"kind": "class",
+"pkg": "nostr"
+},
+"readQueue": {
+"term": "طابور القراءة",
+"kind": "property",
+"pkg": "nostr"
+},
+"isSendingReadAcks": {
+"term": "هل يُرسَل تأكيدات القراءة",
+"kind": "property",
+"pkg": "nostr"
+},
+"transportScope": {
+"term": "نطاق الناقل",
+"kind": "property",
+"pkg": "nostr"
+},
+"processReadQueueIfNeeded": {
+"term": "عالِج طابور القراءة عند الحاجة",
+"kind": "function",
+"pkg": "nostr"
+},
+"sendNextReadAck": {
+"term": "أرسِل تأكيد القراءة التالي",
+"kind": "function",
+"pkg": "nostr"
+},
+"scheduleNextReadAck": {
+"term": "جدوِل تأكيد القراءة التالي",
+"kind": "function",
+"pkg": "nostr"
+},
+"sendPrivateMessageGeohash": {
+"term": "أرسِل رسالة خاصة بالتجزئة الجغرافية",
+"kind": "function",
+"pkg": "nostr"
+},
+"resolveNostrPublicKey": {
+"term": "حُلّ مفتاح نوستر العام",
+"kind": "function",
+"pkg": "nostr"
+},
+"recipientNostrPubkey": {
+"term": "مفتاح نوستر العام للمستلِم",
+"kind": "variable",
+"pkg": "nostr"
+},
+"recipientHex": {
+"term": "ست عشري المستلِم",
+"kind": "variable",
+"pkg": "nostr"
+},
+"recipientPeerIDForEmbed": {
+"term": "معرّف قرين المستلِم للتضمين",
+"kind": "variable",
+"pkg": "nostr"
+},
+"fromIdentity": {
+"term": "الهوية المرسِلة",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"embedded": {
+"term": "المُضمَّن",
+"kind": "variable",
+"pkg": "nostr"
+},
+"sourceGeohash": {
+"term": "التجزئة الجغرافية المصدر",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"toRecipientHex": {
+"term": "ست عشري المستلِم",
+"kind": "parameter",
+"pkg": "nostr"
+},
+"NostrEmbeddedBitChat.encodePMForNostr": {
+"term": "ترميز رسالة خاصة لنوستر",
+"kind": "call",
+"pkg": "nostr"
+},
+"NostrEmbeddedBitChat.encodeAckForNostr": {
+"term": "ترميز إقرار لنوستر",
+"kind": "call",
+"pkg": "nostr"
+},
+"NostrEmbeddedBitChat.encodeAckForNostrNoRecipient": {
+"term": "ترميز إقرار لنوستر بلا مستلِم",
+"kind": "call",
+"pkg": "nostr"
+},
+"NostrEmbeddedBitChat.encodePMForNostrNoRecipient": {
+"term": "ترميز رسالة خاصة لنوستر بلا مستلِم",
+"kind": "call",
+"pkg": "nostr"
+},
+"NostrProtocol.createPrivateMessage": {
+"term": "إنشاء رسالة خاصة ببروتوكول نوستر",
+"kind": "call",
+"pkg": "nostr"
+},
+"NostrRelayManager.sendEvent": {
+"term": "إرسال الحدث",
+"kind": "call",
+"pkg": "nostr"
+},
+"NostrRelayManager.registerPendingGiftWrap": {
+"term": "تسجيل غلاف الهدية المعلَّق",
+"kind": "call",
+"pkg": "nostr"
+},
+"NostrIdentityBridge.getCurrentNostrIdentity": {
+"term": "جسر هوية نوستر: الهوية الحالية",
+"kind": "call",
+"pkg": "nostr"
+},
+"findPeerIDForNostrPubkey": {
+"term": "ابحث عن معرّف القرين لمفتاح نوستر",
+"kind": "call",
+"pkg": "nostr"
+},
+"findNostrPubkeyForPeerID": {
+"term": "ابحث عن مفتاح نوستر لمعرّف القرين",
+"kind": "call",
+"pkg": "nostr"
+},
+"getFavoriteStatus": {
+"term": "احصل على حالة التفضيل",
+"kind": "call",
+"pkg": "nostr"
+},
+"LocationChannelManager": {
+"term": "مدير قناة الموقع",
+"kind": "class",
+"pkg": "nostr"
+},
+"ChannelID.Location": {
+"term": "قناة موقع",
+"kind": "type",
+"pkg": "nostr"
+},
+"NoisePayloadType.READ_RECEIPT": {
+"term": "نوع حمولة نويز: إيصال القراءة",
+"kind": "enum",
+"pkg": "nostr"
+},
+"NoisePayloadType.DELIVERED": {
+"term": "نوع حمولة نويز: تمّ التسليم",
+"kind": "enum",
+"pkg": "nostr"
+},
+"KEY_POW_ENABLED": {
+"term": "مفتاح تفعيل إثبات العمل",
+"kind": "ثابت خاص (const)",
+"pkg": "nostr"
+},
+"KEY_POW_DIFFICULTY": {
+"term": "مفتاح صعوبة إثبات العمل",
+"kind": "ثابت خاص (const)",
+"pkg": "nostr"
+},
+"DEFAULT_POW_ENABLED": {
+"term": "التفعيل الافتراضي لإثبات العمل",
+"kind": "ثابت خاص (const)",
+"pkg": "nostr"
+},
+"DEFAULT_POW_DIFFICULTY": {
+"term": "الصعوبة الافتراضية لإثبات العمل",
+"kind": "ثابت خاص (const)",
+"pkg": "nostr"
+},
+"_powEnabled / powEnabled": {
+"term": "تدفّق حالة تفعيل إثبات العمل",
+"kind": "خاصيّة StateFlow",
+"pkg": "nostr"
+},
+"_powDifficulty / powDifficulty": {
+"term": "تدفّق حالة صعوبة إثبات العمل",
+"kind": "خاصيّة StateFlow",
+"pkg": "nostr"
+},
+"_isMining / isMining": {
+"term": "تدفّق حالة التعدين",
+"kind": "خاصيّة StateFlow",
+"pkg": "nostr"
+},
+"sharedPrefs": {
+"term": "التفضيلات المشتركة",
+"kind": "متغيّر مؤجّل التهيئة (lateinit)",
+"pkg": "nostr"
+},
+"isPowEnabled": {
+"term": "دالّة قراءة تفعيل إثبات العمل",
+"kind": "دالّة",
+"pkg": "nostr"
+},
+"setPowEnabled": {
+"term": "دالّة ضبط تفعيل إثبات العمل",
+"kind": "دالّة",
+"pkg": "nostr"
+},
+"getPowDifficulty": {
+"term": "دالّة قراءة صعوبة إثبات العمل",
+"kind": "دالّة",
+"pkg": "nostr"
+},
+"setPowDifficulty": {
+"term": "دالّة ضبط صعوبة إثبات العمل",
+"kind": "دالّة",
+"pkg": "nostr"
+},
+"PoWSettings": {
+"term": "صنف إعدادات إثبات العمل",
+"kind": "صنف بيانات (data class)",
+"pkg": "nostr"
+},
+"getCurrentSettings": {
+"term": "دالّة قراءة الإعدادات الحالية",
+"kind": "دالّة",
+"pkg": "nostr"
+},
+"resetToDefaults": {
+"term": "دالّة إعادة الضبط للافتراضي",
+"kind": "دالّة",
+"pkg": "nostr"
+},
+"getDifficultyLevels": {
+"term": "دالّة قائمة مستويات الصعوبة",
+"kind": "دالّة",
+"pkg": "nostr"
+},
+"startMining": {
+"term": "دالّة بدء التعدين",
+"kind": "دالّة",
+"pkg": "nostr"
+},
+"stopMining": {
+"term": "دالّة إيقاف التعدين",
+"kind": "دالّة",
+"pkg": "nostr"
+},
+"RelayInfo": {
+"term": "معلومات المُرحِّل",
+"kind": "data class (صنف بيانات)",
+"pkg": "nostr"
+},
+"closestRelaysForGeohash": {
+"term": "أقرب المُرحِّلات للجيوهاش",
+"kind": "fun (دالة)",
+"pkg": "nostr"
+},
+"haversineMeters": {
+"term": "مسافة هافرسين بالأمتار",
+"kind": "fun (دالة)",
+"pkg": "nostr"
+},
+"normalizeRelayUrl": {
+"term": "توحيد رابط المُرحِّل",
+"kind": "fun (دالة)",
+"pkg": "nostr"
+},
+"getPrefs": {
+"term": "جلب التفضيلات",
+"kind": "fun (دالة)",
+"pkg": "nostr"
+},
+"getDownloadedFile": {
+"term": "جلب الملف المُنزَّل",
+"kind": "fun (دالة)",
+"pkg": "nostr"
+},
+"isStale": {
+"term": "هل البيانات قديمة",
+"kind": "fun (دالة)",
+"pkg": "nostr"
+},
+"startPeriodicRefresh": {
+"term": "بدء التحديث الدوري",
+"kind": "fun (دالة)",
+"pkg": "nostr"
+},
+"fetchAndMaybeSwap": {
+"term": "الجلب والاستبدال عند اللزوم",
+"kind": "fun (دالة)",
+"pkg": "nostr"
+},
+"downloadToFile": {
+"term": "التنزيل إلى ملف",
+"kind": "fun (دالة)",
+"pkg": "nostr"
+},
+"loadFromFile": {
+"term": "التحميل من ملف",
+"kind": "fun (دالة)",
+"pkg": "nostr"
+},
+"loadFromAssets": {
+"term": "التحميل من الأصول",
+"kind": "fun (دالة)",
+"pkg": "nostr"
+},
+"parseCsv": {
+"term": "تحليل CSV",
+"kind": "fun (دالة)",
+"pkg": "nostr"
+},
+"fileSha256Hex": {
+"term": "بصمة الملف SHA256 الست عشرية",
+"kind": "fun (دالة)",
+"pkg": "nostr"
+},
+"streamSha256Hex": {
+"term": "بصمة التدفّق SHA256 الست عشرية",
+"kind": "fun (دالة)",
+"pkg": "nostr"
+},
+"relaysLock": {
+"term": "قفل قائمة المُرحِّلات",
+"kind": "property (خاصية)",
+"pkg": "nostr"
+},
+"ioScope": {
+"term": "نطاق الإدخال/الإخراج",
+"kind": "property (خاصية)",
+"pkg": "nostr"
+},
+"ASSET_FILE_URL": {
+"term": "رابط ملف الأصل",
+"kind": "const (ثابت)",
+"pkg": "nostr"
+},
+"ASSET_FILE": {
+"term": "ملف الأصل",
+"kind": "const (ثابت)",
+"pkg": "nostr"
+},
+"DOWNLOADED_FILE": {
+"term": "الملف المُنزَّل",
+"kind": "const (ثابت)",
+"pkg": "nostr"
+},
+"KEY_LAST_UPDATE_MS": {
+"term": "مفتاح وقت آخر تحديث",
+"kind": "const (ثابت)",
+"pkg": "nostr"
+},
+"ONE_DAY_MS": {
+"term": "ميلي ثواني اليوم الواحد",
+"kind": "property (خاصية)",
+"pkg": "nostr"
+},
+"GCSFilter": {
+"term": "مرشّح المجموعة المرمّزة بغولومب (GCSFilter)",
+"kind": "object",
+"pkg": "sync"
+},
+"Params": {
+"term": "المَعلَمات (Params)",
+"kind": "data class",
+"pkg": "sync"
+},
+"deriveP": {
+"term": "اشتقاق المَعلَمة (deriveP)",
+"kind": "function",
+"pkg": "sync"
+},
+"targetFpr": {
+"term": "معدّل الإيجابيات الكاذبة المستهدف (targetFpr)",
+"kind": "parameter",
+"pkg": "sync"
+},
+"estimateMaxElementsForSize": {
+"term": "تقدير أقصى عدد عناصر لحجم (estimateMaxElementsForSize)",
+"kind": "function",
+"pkg": "sync"
+},
+"buildFilter": {
+"term": "بناء المرشّح (buildFilter)",
+"kind": "function",
+"pkg": "sync"
+},
+"maxBytes": {
+"term": "أقصى عدد بايتات (maxBytes)",
+"kind": "parameter",
+"pkg": "sync"
+},
+"nCap": {
+"term": "سقف العدد (nCap)",
+"kind": "variable",
+"pkg": "sync"
+},
+"trimmedN": {
+"term": "العدد المقتطَع (trimmedN)",
+"kind": "variable",
+"pkg": "sync"
+},
+"finalM": {
+"term": "المدى النهائي (finalM)",
+"kind": "variable",
+"pkg": "sync"
+},
+"mapped": {
+"term": "القيم المُحوَّلة (mapped)",
+"kind": "variable",
+"pkg": "sync"
+},
+"encoded": {
+"term": "التيار المُرمَّز (encoded)",
+"kind": "variable",
+"pkg": "sync"
+},
+"decodeToSortedSet": {
+"term": "فك الترميز إلى مجموعة مرتّبة (decodeToSortedSet)",
+"kind": "function",
+"pkg": "sync"
+},
+"mask": {
+"term": "القناع (mask)",
+"kind": "variable",
+"pkg": "sync"
+},
+"q": {
+"term": "الخارج (q)",
+"kind": "variable",
+"pkg": "sync"
+},
+"r": {
+"term": "الباقي (r)",
+"kind": "variable",
+"pkg": "sync"
+},
+"x": {
+"term": "الفرق المُسترجَع (x)",
+"kind": "variable",
+"pkg": "sync"
+},
+"sortedValues": {
+"term": "القيم المرتّبة (sortedValues)",
+"kind": "parameter",
+"pkg": "sync"
+},
+"candidate": {
+"term": "القيمة المرشّحة (candidate)",
+"kind": "parameter",
+"pkg": "sync"
+},
+"h64": {
+"term": "التجزئة إلى 64 بت (h64)",
+"kind": "function",
+"pkg": "sync"
+},
+"delta": {
+"term": "الفرق (delta)",
+"kind": "variable",
+"pkg": "sync"
+},
+"BitWriter": {
+"term": "كاتب البتات (BitWriter)",
+"kind": "class",
+"pkg": "sync"
+},
+"writeBit": {
+"term": "كتابة بت (writeBit)",
+"kind": "function",
+"pkg": "sync"
+},
+"writeBits": {
+"term": "كتابة بتات (writeBits)",
+"kind": "function",
+"pkg": "sync"
+},
+"BitReader": {
+"term": "قارئ البتات (BitReader)",
+"kind": "class",
+"pkg": "sync"
+},
+"lastWasEOF": {
+"term": "بلوغ نهاية البيانات (lastWasEOF)",
+"kind": "property",
+"pkg": "sync"
+},
+"eof": {
+"term": "نهاية الملف (eof)",
+"kind": "function",
+"pkg": "sync"
+},
+"readBit": {
+"term": "قراءة بت (readBit)",
+"kind": "function",
+"pkg": "sync"
+},
+"readBits": {
+"term": "قراءة بتات (readBits)",
+"kind": "function",
+"pkg": "sync"
+},
+"GossipSyncManager": {
+"term": "مدير مزامنة النميمة",
+"kind": "class",
+"pkg": "sync"
+},
+"Delegate": {
+"term": "واجهة المفوّض",
+"kind": "interface",
+"pkg": "sync"
+},
+"ConfigProvider": {
+"term": "مزوّد الإعدادات",
+"kind": "interface",
+"pkg": "sync"
+},
+"signPacketForBroadcast": {
+"term": "توقيع الحزمة للبثّ",
+"kind": "method",
+"pkg": "sync"
+},
+"seenCapacity": {
+"term": "سعة المرئيّات",
+"kind": "method",
+"pkg": "sync"
+},
+"gcsMaxBytes": {
+"term": "أقصى بايتات GCS",
+"kind": "method",
+"pkg": "sync"
+},
+"gcsTargetFpr": {
+"term": "معدّل الإيجابيات الكاذبة المستهدف",
+"kind": "method",
+"pkg": "sync"
+},
+"configProvider": {
+"term": "مزوّد الإعدادات",
+"kind": "field",
+"pkg": "sync"
+},
+"messages": {
+"term": "خريطة الرسائل البثّية",
+"kind": "field",
+"pkg": "sync"
+},
+"latestAnnouncementByPeer": {
+"term": "أحدث إعلان لكل نظير",
+"kind": "field",
+"pkg": "sync"
+},
+"periodicJob": {
+"term": "المهمة الدورية",
+"kind": "field",
+"pkg": "sync"
+},
+"cleanupJob": {
+"term": "مهمة التنظيف",
+"kind": "field",
+"pkg": "sync"
+},
+"defaultMaxBytes": {
+"term": "أقصى بايتات افتراضي",
+"kind": "field",
+"pkg": "sync"
+},
+"defaultFpr": {
+"term": "معدّل الإيجابيات الكاذبة الافتراضي",
+"kind": "field",
+"pkg": "sync"
+},
+"scheduleInitialSync": {
+"term": "جدولة المزامنة الأولية",
+"kind": "method",
+"pkg": "sync"
+},
+"scheduleInitialSyncToPeer": {
+"term": "جدولة المزامنة الأولية إلى نظير",
+"kind": "method",
+"pkg": "sync"
+},
+"onPublicPacketSeen": {
+"term": "عند رؤية حزمة عامة",
+"kind": "method",
+"pkg": "sync"
+},
+"sendRequestSync": {
+"term": "إرسال طلب المزامنة",
+"kind": "method",
+"pkg": "sync"
+},
+"sendRequestSyncToPeer": {
+"term": "إرسال طلب المزامنة إلى نظير",
+"kind": "method",
+"pkg": "sync"
+},
+"buildGcsPayload": {
+"term": "بناء حمولة GCS",
+"kind": "method",
+"pkg": "sync"
+},
+"pruneStaleAnnouncements": {
+"term": "تقليم الإعلانات البائتة",
+"kind": "method",
+"pkg": "sync"
+},
+"removeAnnouncementForPeer": {
+"term": "إزالة إعلان النظير",
+"kind": "method",
+"pkg": "sync"
+},
+"hexToBytes": {
+"term": "تحويل ست‑عشري إلى بايتات",
+"kind": "method",
+"pkg": "sync"
+},
+"mightContain": {
+"term": "قد يحتوي",
+"kind": "method",
+"pkg": "sync"
+},
+"CLEANUP_INTERVAL_MS": {
+"term": "فترة التنظيف",
+"kind": "constant",
+"pkg": "sync"
+},
+"computeIdBytes": {
+"term": "حساب بايتات المعرّف (computeIdBytes)",
+"kind": "function",
+"pkg": "sync"
+},
+"computeIdHex": {
+"term": "حساب المعرّف بالنظام الست عشري (computeIdHex)",
+"kind": "function",
+"pkg": "sync"
+},
+"packet.type": {
+"term": "نوع الحُزمة (type)",
+"kind": "field",
+"pkg": "sync"
+},
+"packet.senderID": {
+"term": "معرّف المُرسِل (senderID)",
+"kind": "field",
+"pkg": "sync"
+},
+"packet.timestamp": {
+"term": "الطابع الزمني (timestamp)",
+"kind": "field",
+"pkg": "sync"
+},
+"packet.payload": {
+"term": "الحمولة (payload)",
+"kind": "field",
+"pkg": "sync"
+},
+"digest": {
+"term": "الخلاصة (digest)",
+"kind": "variable",
+"pkg": "sync"
+},
+"SHA-256": {
+"term": "خوارزمية التجزئة SHA-256",
+"kind": "constant",
+"pkg": "sync"
+},
+"DEFAULT_FILTER_BYTES": {
+"term": "بايتات المرشّح الافتراضية",
+"kind": "const val (Int)",
+"pkg": "sync"
+},
+"DEFAULT_FPR_PERCENT": {
+"term": "النسبة المئوية الافتراضية لمعدّل الإيجابيات الكاذبة (FPR)",
+"kind": "const val (Double)",
+"pkg": "sync"
+},
+"AndroidGeocoderProvider": {
+"term": "مزوّد المُرَمِّز الجغرافي لأندرويد (AndroidGeocoderProvider)",
+"kind": "class",
+"pkg": "geohash"
+},
+"GeocoderProvider": {
+"term": "واجهة مزوّد المُرَمِّز الجغرافي (GeocoderProvider)",
+"kind": "interface",
+"pkg": "geohash"
+},
+"Geocoder": {
+"term": "المُرَمِّز الجغرافي (Geocoder)",
+"kind": "class",
+"pkg": "geohash"
+},
+"geocoder": {
+"term": "كائن المُرَمِّز الجغرافي (geocoder)",
+"kind": "property",
+"pkg": "geohash"
+},
+"getFromLocation": {
+"term": "الجلب من الموقع (getFromLocation)",
+"kind": "function",
+"pkg": "geohash"
+},
+"latitude": {
+"term": "خط العرض (latitude)",
+"kind": "parameter",
+"pkg": "geohash"
+},
+"longitude": {
+"term": "خط الطول (longitude)",
+"kind": "parameter",
+"pkg": "geohash"
+},
+"maxResults": {
+"term": "الحد الأقصى للنتائج (maxResults)",
+"kind": "parameter",
+"pkg": "geohash"
+},
+"Address": {
+"term": "العنوان (Address)",
+"kind": "class",
+"pkg": "geohash"
+},
+"suspendCancellableCoroutine": {
+"term": "الروتين المتعاون القابل للتعليق والإلغاء (suspendCancellableCoroutine)",
+"kind": "function",
+"pkg": "geohash"
+},
+"cont": {
+"term": "الاستمرارية (cont/continuation)",
+"kind": "parameter",
+"pkg": "geohash"
+},
+"Geocoder.GeocodeListener": {
+"term": "مُستمِع الترميز الجغرافي (Geocoder.GeocodeListener)",
+"kind": "interface",
+"pkg": "geohash"
+},
+"onGeocode": {
+"term": "عند الترميز الجغرافي (onGeocode)",
+"kind": "function",
+"pkg": "geohash"
+},
+"onError": {
+"term": "عند الخطأ (onError)",
+"kind": "function",
+"pkg": "geohash"
+},
+"Build.VERSION_CODES.TIRAMISU": {
+"term": "رمز إصدار تيراميسو (Build.VERSION_CODES.TIRAMISU)",
+"kind": "constant",
+"pkg": "geohash"
+},
+"Log.e": {
+"term": "تسجيل الخطأ (Log.e)",
+"kind": "function",
+"pkg": "geohash"
+},
+"Locale": {
+"term": "المحلّيّة (Locale)",
+"kind": "class",
+"pkg": "geohash"
+},
+"FusedLocationProvider": {
+"term": "مزوّد الموقع المدمج",
+"kind": "class",
+"pkg": "geohash"
+},
+"LocationProvider": {
+"term": "واجهة مزوّد الموقع",
+"kind": "interface",
+"pkg": "geohash"
+},
+"fusedLocationClient": {
+"term": "عميل الموقع المدمج",
+"kind": "property",
+"pkg": "geohash"
+},
+"FusedLocationProviderClient": {
+"term": "عميل مزوّد الموقع المدمج",
+"kind": "type",
+"pkg": "geohash"
+},
+"activeCallbacks": {
+"term": "دوال الاستدعاء النشطة",
+"kind": "property",
+"pkg": "geohash"
+},
+"LocationCallback": {
+"term": "دالة استدعاء الموقع",
+"kind": "type",
+"pkg": "geohash"
+},
+"hasLocationPermission": {
+"term": "هل يملك إذن الموقع",
+"kind": "function",
+"pkg": "geohash"
+},
+"ACCESS_FINE_LOCATION": {
+"term": "إذن الموقع الدقيق",
+"kind": "permission",
+"pkg": "geohash"
+},
+"ACCESS_COARSE_LOCATION": {
+"term": "إذن الموقع التقريبي",
+"kind": "permission",
+"pkg": "geohash"
+},
+"getLastKnownLocation": {
+"term": "احصل على آخر موقع معروف",
+"kind": "function",
+"pkg": "geohash"
+},
+"requestFreshLocation": {
+"term": "اطلب موقعاً جديداً",
+"kind": "function",
+"pkg": "geohash"
+},
+"requestLocationUpdates": {
+"term": "اطلب تحديثات الموقع",
+"kind": "function",
+"pkg": "geohash"
+},
+"removeLocationUpdates": {
+"term": "أزِل تحديثات الموقع",
+"kind": "function",
+"pkg": "geohash"
+},
+"callback": {
+"term": "دالة الاستدعاء الراجعة",
+"kind": "parameter",
+"pkg": "geohash"
+},
+"CurrentLocationRequest": {
+"term": "طلب الموقع الحالي",
+"kind": "type",
+"pkg": "geohash"
+},
+"LocationRequest": {
+"term": "طلب الموقع",
+"kind": "type",
+"pkg": "geohash"
+},
+"Priority.PRIORITY_HIGH_ACCURACY": {
+"term": "أولوية الدقة العالية",
+"kind": "const",
+"pkg": "geohash"
+},
+"intervalMs": {
+"term": "الفترة بالميلّي ثانية",
+"kind": "parameter",
+"pkg": "geohash"
+},
+"minDistanceMeters": {
+"term": "أدنى مسافة بالأمتار",
+"kind": "parameter",
+"pkg": "geohash"
+},
+"onLocationResult": {
+"term": "عند نتيجة الموقع",
+"kind": "function",
+"pkg": "geohash"
+},
+"LocationResult": {
+"term": "نتيجة الموقع",
+"kind": "type",
+"pkg": "geohash"
+},
+"Looper.getMainLooper": {
+"term": "حلقة الرسائل الرئيسة",
+"kind": "function",
+"pkg": "geohash"
+},
+"GeocoderFactory": {
+"term": "مصنع المُرمِّز الجغرافي (GeocoderFactory)",
+"kind": "object",
+"pkg": "geohash"
+},
+"OpenStreetMapGeocoderProvider": {
+"term": "مزوِّد مُرمِّز OpenStreetMap (OpenStreetMapGeocoderProvider)",
+"kind": "class",
+"pkg": "geohash"
+},
+"Geocoder.isPresent": {
+"term": "فحص توفّر المُرمِّز (Geocoder.isPresent)",
+"kind": "function",
+"pkg": "geohash"
+},
+"com.bitchat.android.geohash": {
+"term": "حزمة جيوهاش (geohash package)",
+"kind": "حزمة (package)",
+"pkg": "geohash"
+},
+"Geohash": {
+"term": "كائن الجيوهاش (Geohash)",
+"kind": "object",
+"pkg": "geohash"
+},
+"base32Chars": {
+"term": "أحرف القاعدة ٣٢ (base32Chars)",
+"kind": "property",
+"pkg": "geohash"
+},
+"charToValue": {
+"term": "خريطة الحرف إلى القيمة (charToValue)",
+"kind": "property",
+"pkg": "geohash"
+},
+"Bounds": {
+"term": "الحدود (Bounds)",
+"kind": "data class",
+"pkg": "geohash"
+},
+"latMin": {
+"term": "أدنى خط عرض (latMin)",
+"kind": "property",
+"pkg": "geohash"
+},
+"latMax": {
+"term": "أقصى خط عرض (latMax)",
+"kind": "property",
+"pkg": "geohash"
+},
+"lonMin": {
+"term": "أدنى خط طول (lonMin)",
+"kind": "property",
+"pkg": "geohash"
+},
+"lonMax": {
+"term": "أقصى خط طول (lonMax)",
+"kind": "property",
+"pkg": "geohash"
+},
+"precision": {
+"term": "الدقّة (precision)",
+"kind": "parameter",
+"pkg": "geohash"
+},
+"latInterval": {
+"term": "مجال خط العرض (latInterval)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"lonInterval": {
+"term": "مجال خط الطول (lonInterval)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"isEven": {
+"term": "هل زوجي (isEven)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"bit": {
+"term": "البِت (bit)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"ch": {
+"term": "الحرف العددي (ch)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"mid": {
+"term": "الوسط (mid)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"decodeToCenter": {
+"term": "فكّ الترميز إلى المركز (decodeToCenter)",
+"kind": "function",
+"pkg": "geohash"
+},
+"latCenter": {
+"term": "مركز خط العرض (latCenter)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"lonCenter": {
+"term": "مركز خط الطول (lonCenter)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"decodeToBounds": {
+"term": "فكّ الترميز إلى الحدود (decodeToBounds)",
+"kind": "function",
+"pkg": "geohash"
+},
+"cd": {
+"term": "قيمة الحرف (cd)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"neighborsSamePrecision": {
+"term": "المجاورات بنفس الدقّة (neighborsSamePrecision)",
+"kind": "function",
+"pkg": "geohash"
+},
+"wrapLon": {
+"term": "لفّ خط الطول (wrapLon)",
+"kind": "function",
+"pkg": "geohash"
+},
+"neighbors": {
+"term": "المجاورات (neighbors)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"dLat": {
+"term": "فرق خط العرض (dLat)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"dLon": {
+"term": "فرق خط الطول (dLon)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"centerLat": {
+"term": "مركز خط عرض المجاورة (centerLat)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"centerLon": {
+"term": "مركز خط طول المجاورة (centerLon)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"enc": {
+"term": "الترميز الناتج (enc)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"GeohashBookmarksStore": {
+"term": "مخزن مفضّلات الجيوهاش",
+"kind": "class",
+"pkg": "geohash"
+},
+"STORE_KEY": {
+"term": "مفتاح حفظ المفضّلات",
+"kind": "const",
+"pkg": "geohash"
+},
+"NAMES_STORE_KEY": {
+"term": "مفتاح حفظ الأسماء",
+"kind": "const",
+"pkg": "geohash"
+},
+"allowedChars": {
+"term": "الأحرف المسموحة",
+"kind": "property",
+"pkg": "geohash"
+},
+"normalize": {
+"term": "التطبيع",
+"kind": "function",
+"pkg": "geohash"
+},
+"membership": {
+"term": "مجموعة العضوية",
+"kind": "property",
+"pkg": "geohash"
+},
+"_bookmarks": {
+"term": "تدفّق المفضّلات الداخلي",
+"kind": "property",
+"pkg": "geohash"
+},
+"bookmarks": {
+"term": "المفضّلات",
+"kind": "property",
+"pkg": "geohash"
+},
+"_bookmarkNames": {
+"term": "تدفّق أسماء المفضّلات الداخلي",
+"kind": "property",
+"pkg": "geohash"
+},
+"bookmarkNames": {
+"term": "أسماء المفضّلات",
+"kind": "property",
+"pkg": "geohash"
+},
+"resolving": {
+"term": "قيد الحل",
+"kind": "property",
+"pkg": "geohash"
+},
+"load": {
+"term": "التحميل",
+"kind": "function",
+"pkg": "geohash"
+},
+"isBookmarked": {
+"term": "هل هو مفضّل",
+"kind": "function",
+"pkg": "geohash"
+},
+"toggle": {
+"term": "التبديل",
+"kind": "function",
+"pkg": "geohash"
+},
+"add": {
+"term": "الإضافة",
+"kind": "function",
+"pkg": "geohash"
+},
+"remove": {
+"term": "الإزالة",
+"kind": "function",
+"pkg": "geohash"
+},
+"resolveNameIfNeeded": {
+"term": "حل الاسم عند الحاجة",
+"kind": "function",
+"pkg": "geohash"
+},
+"pickNameForLength": {
+"term": "اختيار الاسم حسب الطول",
+"kind": "function",
+"pkg": "geohash"
+},
+"persist": {
+"term": "حفظ المفضّلات",
+"kind": "function",
+"pkg": "geohash"
+},
+"persistNames": {
+"term": "حفظ الأسماء",
+"kind": "function",
+"pkg": "geohash"
+},
+"Geohash.decodeToBounds": {
+"term": "فك الجيوهاش إلى حدود",
+"kind": "function",
+"pkg": "geohash"
+},
+"Geohash.decodeToCenter": {
+"term": "فك الجيوهاش إلى مركز",
+"kind": "function",
+"pkg": "geohash"
+},
+"GeohashChannelLevel": {
+"term": "مستوى قناة الجيوهاش",
+"kind": "enum class",
+"pkg": "geohash"
+},
+"BUILDING": {
+"term": "المبنى",
+"kind": "enum entry",
+"pkg": "geohash"
+},
+"BLOCK": {
+"term": "الحَيّ السكني",
+"kind": "enum entry",
+"pkg": "geohash"
+},
+"NEIGHBORHOOD": {
+"term": "الجوار",
+"kind": "enum entry",
+"pkg": "geohash"
+},
+"CITY": {
+"term": "المدينة",
+"kind": "enum entry",
+"pkg": "geohash"
+},
+"PROVINCE": {
+"term": "المحافظة",
+"kind": "enum entry",
+"pkg": "geohash"
+},
+"REGION": {
+"term": "المنطقة",
+"kind": "enum entry",
+"pkg": "geohash"
+},
+"allCases": {
+"term": "كل الحالات",
+"kind": "function",
+"pkg": "geohash"
+},
+"GeohashChannel": {
+"term": "قناة الجيوهاش",
+"kind": "data class",
+"pkg": "geohash"
+},
+"level": {
+"term": "المستوى",
+"kind": "property",
+"pkg": "geohash"
+},
+"ChannelID": {
+"term": "معرّف القناة",
+"kind": "sealed class",
+"pkg": "geohash"
+},
+"Location": {
+"term": "الموقع",
+"kind": "data class",
+"pkg": "geohash"
+},
+"fromPersisted": {
+"term": "من المحفوظ",
+"kind": "function",
+"pkg": "geohash"
+},
+"nostrGeohashTag": {
+"term": "وسم جيوهاش نوستر",
+"kind": "property",
+"pkg": "geohash"
+},
+"valueOf": {
+"term": "قيمة من نصّ",
+"kind": "function",
+"pkg": "geohash"
+},
+"PermissionState": {
+"term": "حالة الإذن",
+"kind": "enum",
+"pkg": "geohash"
+},
+"DENIED": {
+"term": "مرفوض",
+"kind": "enum-constant",
+"pkg": "geohash"
+},
+"AUTHORIZED": {
+"term": "مُصرَّح به",
+"kind": "enum-constant",
+"pkg": "geohash"
+},
+"locationManager": {
+"term": "مدير الموقع",
+"kind": "field",
+"pkg": "geohash"
+},
+"locationProvider": {
+"term": "مزوّد الموقع",
+"kind": "field",
+"pkg": "geohash"
+},
+"geocoderProvider": {
+"term": "مزوّد المرمِّز الجغرافي",
+"kind": "field",
+"pkg": "geohash"
+},
+"lastLocation": {
+"term": "آخر موقع",
+"kind": "field",
+"pkg": "geohash"
+},
+"geocodingJob": {
+"term": "مهمّة الترميز الجغرافي",
+"kind": "field",
+"pkg": "geohash"
+},
+"checkSystemLocationEnabled": {
+"term": "فحص تفعيل موقع النظام",
+"kind": "function",
+"pkg": "geohash"
+},
+"locationStateReceiver": {
+"term": "مستقبِل حالة الموقع",
+"kind": "field",
+"pkg": "geohash"
+},
+"locationUpdateCallback": {
+"term": "نداء تحديث الموقع",
+"kind": "field",
+"pkg": "geohash"
+},
+"permissionState": {
+"term": "تدفّق حالة الإذن",
+"kind": "property",
+"pkg": "geohash"
+},
+"availableChannels": {
+"term": "القنوات المتاحة",
+"kind": "property",
+"pkg": "geohash"
+},
+"selectedChannel": {
+"term": "القناة المختارة",
+"kind": "property",
+"pkg": "geohash"
+},
+"locationNames": {
+"term": "أسماء المواقع",
+"kind": "property",
+"pkg": "geohash"
+},
+"isLoadingLocation": {
+"term": "جارٍ تحميل الموقع",
+"kind": "property",
+"pkg": "geohash"
+},
+"locationServicesEnabled": {
+"term": "تفعيل خدمات الموقع (مفتاح التطبيق)",
+"kind": "property",
+"pkg": "geohash"
+},
+"systemLocationEnabled": {
+"term": "تفعيل موقع النظام",
+"kind": "property",
+"pkg": "geohash"
+},
+"effectiveLocationEnabled": {
+"term": "التفعيل الفعلي للموقع",
+"kind": "property",
+"pkg": "geohash"
+},
+"enableLocationChannels": {
+"term": "تفعيل قنوات الموقع",
+"kind": "function",
+"pkg": "geohash"
+},
+"refreshChannels": {
+"term": "تحديث القنوات",
+"kind": "function",
+"pkg": "geohash"
+},
+"beginLiveRefresh": {
+"term": "بدء التحديث الحيّ",
+"kind": "function",
+"pkg": "geohash"
+},
+"endLiveRefresh": {
+"term": "إنهاء التحديث الحيّ",
+"kind": "function",
+"pkg": "geohash"
+},
+"select": {
+"term": "اختيار القناة",
+"kind": "function",
+"pkg": "geohash"
+},
+"setTeleported": {
+"term": "ضبط حالة الانتقال",
+"kind": "function",
+"pkg": "geohash"
+},
+"enableLocationServices": {
+"term": "تفعيل خدمات الموقع",
+"kind": "function",
+"pkg": "geohash"
+},
+"disableLocationServices": {
+"term": "تعطيل خدمات الموقع",
+"kind": "function",
+"pkg": "geohash"
+},
+"isLocationServicesEnabled": {
+"term": "هل خدمات الموقع مفعَّلة",
+"kind": "function",
+"pkg": "geohash"
+},
+"requestOneShotLocation": {
+"term": "طلب موقع لمرّة واحدة",
+"kind": "function",
+"pkg": "geohash"
+},
+"onLocationUpdated": {
+"term": "عند تحديث الموقع",
+"kind": "function",
+"pkg": "geohash"
+},
+"getCurrentPermissionStatus": {
+"term": "جلب حالة الإذن الحالية",
+"kind": "function",
+"pkg": "geohash"
+},
+"checkAndSyncPermission": {
+"term": "فحص ومزامنة الإذن",
+"kind": "function",
+"pkg": "geohash"
+},
+"computeChannels": {
+"term": "حساب القنوات",
+"kind": "function",
+"pkg": "geohash"
+},
+"reverseGeocodeIfNeeded": {
+"term": "الترميز الجغرافي العكسي عند الحاجة",
+"kind": "function",
+"pkg": "geohash"
+},
+"namesByLevel": {
+"term": "الأسماء حسب المستوى",
+"kind": "function",
+"pkg": "geohash"
+},
+"saveChannelSelection": {
+"term": "حفظ اختيار القناة",
+"kind": "function",
+"pkg": "geohash"
+},
+"loadPersistedChannelSelection": {
+"term": "تحميل اختيار القناة المحفوظ",
+"kind": "function",
+"pkg": "geohash"
+},
+"PersistedChannel": {
+"term": "القناة المحفوظة",
+"kind": "data-class",
+"pkg": "geohash"
+},
+"toChannel": {
+"term": "تحويل إلى قناة",
+"kind": "function",
+"pkg": "geohash"
+},
+"clearPersistedChannel": {
+"term": "مسح القناة المحفوظة",
+"kind": "function",
+"pkg": "geohash"
+},
+"saveLocationServicesState": {
+"term": "حفظ حالة خدمات الموقع",
+"kind": "function",
+"pkg": "geohash"
+},
+"loadLocationServicesState": {
+"term": "تحميل حالة خدمات الموقع",
+"kind": "function",
+"pkg": "geohash"
+},
+"ChannelID.Mesh": {
+"term": "قناة شبكة المِش",
+"kind": "type-variant",
+"pkg": "geohash"
+},
+"Geohash.encode": {
+"term": "ترميز التجزئة الجغرافية",
+"kind": "function",
+"pkg": "geohash"
+},
+"SystemLocationProvider": {
+"term": "مزوّد موقع النظام",
+"kind": "class",
+"pkg": "geohash"
+},
+"mapToAddress": {
+"term": "دالة التحويل إلى عنوان (mapToAddress)",
+"kind": "function",
+"pkg": "geohash"
+},
+"OsmResponse": {
+"term": "صنف استجابة خرائط الشارع المفتوحة (OsmResponse)",
+"kind": "data class",
+"pkg": "geohash"
+},
+"OsmAddress": {
+"term": "صنف عنوان خرائط الشارع المفتوحة (OsmAddress)",
+"kind": "data class",
+"pkg": "geohash"
+},
+"Request": {
+"term": "صنف الطلب (Request)",
+"kind": "class",
+"pkg": "geohash"
+},
+"withContext": {
+"term": "دالة تبديل السياق (withContext)",
+"kind": "function",
+"pkg": "geohash"
+},
+"userAgent": {
+"term": "وكيل المستخدم (userAgent)",
+"kind": "property",
+"pkg": "geohash"
+},
+"url": {
+"term": "عنوان الطلب (url)",
+"kind": "variable",
+"pkg": "geohash"
+},
+"isSuccessful": {
+"term": "خاصية نجاح الاستجابة (isSuccessful)",
+"kind": "property",
+"pkg": "geohash"
+},
+"activeListeners": {
+"term": "المُستمِعون النشِطون",
+"kind": "property",
+"pkg": "geohash"
+},
+"activeOneShotListeners": {
+"term": "مُستمِعو اللقطة الواحدة النشِطون",
+"kind": "property",
+"pkg": "geohash"
+},
+"activeOneShotRunnables": {
+"term": "مهامّ اللقطة الواحدة النشِطة",
+"kind": "property",
+"pkg": "geohash"
+},
+"bestLocation": {
+"term": "أفضل موقع",
+"kind": "variable",
+"pkg": "geohash"
+},
+"providers": {
+"term": "المزوّدون",
+"kind": "variable",
+"pkg": "geohash"
+},
+"providerFound": {
+"term": "وُجِد مزوّد",
+"kind": "variable",
+"pkg": "geohash"
+},
+"registered": {
+"term": "مُسجَّل",
+"kind": "variable",
+"pkg": "geohash"
+},
+"listener": {
+"term": "المُستمِع",
+"kind": "variable",
+"pkg": "geohash"
+},
+"timeoutRunnable": {
+"term": "مهمّة المهلة",
+"kind": "variable",
+"pkg": "geohash"
+},
+"LocationManager": {
+"term": "مدير الموقع (نظامي)",
+"kind": "class",
+"pkg": "geohash"
+},
+"LocationListener": {
+"term": "مُستمِع الموقع",
+"kind": "interface",
+"pkg": "geohash"
+},
+"onLocationChanged": {
+"term": "عند تغيّر الموقع",
+"kind": "function",
+"pkg": "geohash"
+},
+"isProviderEnabled": {
+"term": "هل المزوّد مُفعّل",
+"kind": "method",
+"pkg": "geohash"
+},
+"getCurrentLocation": {
+"term": "جلب الموقع الحالي",
+"kind": "method",
+"pkg": "geohash"
+},
+"requestSingleUpdate": {
+"term": "طلب تحديث واحد",
+"kind": "method",
+"pkg": "geohash"
+},
+"removeUpdates": {
+"term": "إزالة التحديثات",
+"kind": "method",
+"pkg": "geohash"
+},
+"FavoriteRelationship": {
+"term": "علاقة المفضّلة",
+"kind": "data class",
+"pkg": "favorites"
+},
+"peerNoisePublicKey": {
+"term": "مفتاح Noise العام للنِّد",
+"kind": "property",
+"pkg": "favorites"
+},
+"peerNostrPublicKey": {
+"term": "مفتاح Nostr العام للنِّد",
+"kind": "property",
+"pkg": "favorites"
+},
+"peerNickname": {
+"term": "كنية النِّد",
+"kind": "property",
+"pkg": "favorites"
+},
+"theyFavoritedUs": {
+"term": "هم فضّلونا",
+"kind": "property",
+"pkg": "favorites"
+},
+"favoritedAt": {
+"term": "تاريخ التفضيل",
+"kind": "property",
+"pkg": "favorites"
+},
+"lastUpdated": {
+"term": "آخر تحديث",
+"kind": "property",
+"pkg": "favorites"
+},
+"isMutual": {
+"term": "التفضيل المتبادل",
+"kind": "computed property",
+"pkg": "favorites"
+},
+"FavoritesChangeListener": {
+"term": "مستمع تغيّر المفضّلات",
+"kind": "interface",
+"pkg": "favorites"
+},
+"onFavoriteChanged": {
+"term": "عند تغيّر مفضّل",
+"kind": "function",
+"pkg": "favorites"
+},
+"onAllCleared": {
+"term": "عند مسح الكل",
+"kind": "function",
+"pkg": "favorites"
+},
+"stateManager": {
+"term": "مدير الحالة الآمنة",
+"kind": "property",
+"pkg": "favorites"
+},
+"favorites": {
+"term": "خريطة المفضّلات",
+"kind": "property",
+"pkg": "favorites"
+},
+"peerIdIndex": {
+"term": "فهرس معرّفات الأنداد",
+"kind": "property",
+"pkg": "favorites"
+},
+"listeners": {
+"term": "قائمة المستمعين",
+"kind": "property",
+"pkg": "favorites"
+},
+"FAVORITES_KEY": {
+"term": "مفتاح تخزين المفضّلات",
+"kind": "const",
+"pkg": "favorites"
+},
+"PEERID_INDEX_KEY": {
+"term": "مفتاح تخزين فهرس الأنداد",
+"kind": "const",
+"pkg": "favorites"
+},
+"updateNostrPublicKey": {
+"term": "تحديث مفتاح Nostr العام",
+"kind": "function",
+"pkg": "favorites"
+},
+"updateNostrPublicKeyForPeerID": {
+"term": "تحديث مفتاح Nostr لمعرّف نِدّ",
+"kind": "function",
+"pkg": "favorites"
+},
+"updateFavoriteStatus": {
+"term": "تحديث حالة التفضيل",
+"kind": "function",
+"pkg": "favorites"
+},
+"updatePeerFavoritedUs": {
+"term": "تحديث راية تفضيل النِّد لنا",
+"kind": "function",
+"pkg": "favorites"
+},
+"getMutualFavorites": {
+"term": "جلب المفضّلين المتبادلين",
+"kind": "function",
+"pkg": "favorites"
+},
+"getOurFavorites": {
+"term": "جلب مفضّلينا",
+"kind": "function",
+"pkg": "favorites"
+},
+"clearAllFavorites": {
+"term": "مسح كل المفضّلات",
+"kind": "function",
+"pkg": "favorites"
+},
+"findNoiseKey": {
+"term": "إيجاد مفتاح Noise",
+"kind": "function",
+"pkg": "favorites"
+},
+"findNostrPubkey": {
+"term": "إيجاد مفتاح Nostr العام",
+"kind": "function",
+"pkg": "favorites"
+},
+"loadFavorites": {
+"term": "تحميل المفضّلات",
+"kind": "function",
+"pkg": "favorites"
+},
+"saveFavorites": {
+"term": "حفظ المفضّلات",
+"kind": "function",
+"pkg": "favorites"
+},
+"loadPeerIdIndex": {
+"term": "تحميل فهرس الأنداد",
+"kind": "function",
+"pkg": "favorites"
+},
+"savePeerIdIndex": {
+"term": "حفظ فهرس الأنداد",
+"kind": "function",
+"pkg": "favorites"
+},
+"addListener": {
+"term": "إضافة مستمع",
+"kind": "function",
+"pkg": "favorites"
+},
+"removeListener": {
+"term": "إزالة مستمع",
+"kind": "function",
+"pkg": "favorites"
+},
+"notifyChanged": {
+"term": "الإبلاغ بالتغيير",
+"kind": "function",
+"pkg": "favorites"
+},
+"notifyAllCleared": {
+"term": "الإبلاغ بمسح الكل",
+"kind": "function",
+"pkg": "favorites"
+},
+"normalizeNostrKeyToHex": {
+"term": "تطبيع مفتاح Nostr إلى سداسي",
+"kind": "function",
+"pkg": "favorites"
+},
+"FavoriteRelationshipData": {
+"term": "بيانات علاقة المفضّلة",
+"kind": "data class",
+"pkg": "favorites"
+},
+"fromFavoriteRelationship": {
+"term": "من علاقة المفضّلة",
+"kind": "function",
+"pkg": "favorites"
+},
+"toFavoriteRelationship": {
+"term": "إلى علاقة المفضّلة",
+"kind": "function",
+"pkg": "favorites"
 }
 }
